@@ -12,7 +12,7 @@ public actor ServerConnection {
     private let log = RemoteCodeLog("ServerConnection")
     private var subscriptions: [String: Task<Void, Never>] = [:]
     private var notificationTask: Task<Void, Never>?
-    private var automatTask: Task<Void, Never>?
+    private var promoStudioTask: Task<Void, Never>?
     private var didHello = false
     private var isClosed = false
 
@@ -159,21 +159,21 @@ public actor ServerConnection {
         case .permissionResponse(let response):
             try await service.respondToPermission(response, from: client)
             return .ok
-        case .automat(let request):
-            return .automatResponse(try await service.automat(request))
-        case .automatSubscribe:
-            let stream = try await service.automatEvents()
-            automatTask?.cancel()
-            automatTask = Task { [weak self] in
+        case .promoStudio(let request):
+            return .promoStudioResponse(try await service.promoStudio(request))
+        case .promoStudioSubscribe:
+            let stream = try await service.promoStudioEvents()
+            promoStudioTask?.cancel()
+            promoStudioTask = Task { [weak self] in
                 for await event in stream {
                     guard let self else { return }
-                    await self.send(.automatEvent(event))
+                    await self.send(.promoStudioEvent(event))
                 }
             }
             return .ok
-        case .automatUnsubscribe:
-            automatTask?.cancel()
-            automatTask = nil
+        case .promoStudioUnsubscribe:
+            promoStudioTask?.cancel()
+            promoStudioTask = nil
             return .ok
         }
     }
@@ -231,8 +231,8 @@ public actor ServerConnection {
     private func cleanUp() {
         notificationTask?.cancel()
         notificationTask = nil
-        automatTask?.cancel()
-        automatTask = nil
+        promoStudioTask?.cancel()
+        promoStudioTask = nil
         for task in subscriptions.values { task.cancel() }
         subscriptions.removeAll()
     }

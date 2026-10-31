@@ -57,19 +57,19 @@ public protocol HostService: Sendable {
     func respondToPermission(_ response: PermissionResponse, from client: ClientContext) async throws
     /// A fresh stream of notifications for one connection.
     func notifications() async -> AsyncStream<HostNotification>
-    /// Forwards a request to the Automat app's local API (capability `automat`).
-    func automat(_ request: AutomatRequest) async throws -> AutomatResponse
-    /// Automat's server-sent events until the stream is cancelled.
-    func automatEvents() async throws -> AsyncStream<AutomatEvent>
+    /// Forwards a request to the Promo Studio app's local API (capability `promoStudio`).
+    func promoStudio(_ request: PromoStudioRequest) async throws -> PromoStudioResponse
+    /// Promo Studio's server-sent events until the stream is cancelled.
+    func promoStudioEvents() async throws -> AsyncStream<PromoStudioEvent>
 }
 
 extension HostService {
-    public func automat(_ request: AutomatRequest) async throws -> AutomatResponse {
-        throw ErrorPayload(code: .automatUnavailable, message: "Automat is not available on this Mac.")
+    public func promoStudio(_ request: PromoStudioRequest) async throws -> PromoStudioResponse {
+        throw ErrorPayload(code: .promoStudioUnavailable, message: "Promo Studio is not available on this Mac.")
     }
 
-    public func automatEvents() async throws -> AsyncStream<AutomatEvent> {
-        throw ErrorPayload(code: .automatUnavailable, message: "Automat is not available on this Mac.")
+    public func promoStudioEvents() async throws -> AsyncStream<PromoStudioEvent> {
+        throw ErrorPayload(code: .promoStudioUnavailable, message: "Promo Studio is not available on this Mac.")
     }
 }
 

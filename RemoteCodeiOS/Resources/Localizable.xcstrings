@@ -1973,64 +1973,6 @@
         }
       }
     },
-    "Automat": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automat"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automat"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automat"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automat"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automat"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automat"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automat"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automat"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automat"
-          }
-        }
-      }
-    },
     "Browse your Mac and start a chat where your project lives.": {
       "localizations": {
         "de": {
@@ -14095,6 +14037,64 @@
         }
       }
     },
+    "Promo Studio": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promo Studio"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promo Studio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promo Studio"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promo Studio"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promo Studio"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promo Studio"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promo Studio"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promo Studio"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promo Studio"
+          }
+        }
+      }
+    },
     "Promo film (directed by Claude)": {
       "localizations": {
         "de": {
@@ -17227,60 +17227,60 @@
         }
       }
     },
-    "Scheduled posts go out while Automat is running on your Mac.": {
+    "Scheduled posts go out while Promo Studio is running on your Mac.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geplante Beiträge werden gepostet, solange Automat auf deinem Mac läuft."
+            "value": "Geplante Beiträge werden gepostet, solange Promo Studio auf deinem Mac läuft."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Las publicaciones programadas se publican mientras Automat se ejecuta en tu Mac."
+            "value": "Las publicaciones programadas se publican mientras Promo Studio se ejecuta en tu Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les publications planifiées partent tant qu’Automat fonctionne sur votre Mac."
+            "value": "Les publications planifiées partent tant qu’Promo Studio fonctionne sur votre Mac."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "I post pianificati vengono pubblicati mentre Automat è in esecuzione sul Mac."
+            "value": "I post pianificati vengono pubblicati mentre Promo Studio è in esecuzione sul Mac."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "予約投稿はMacでAutomatが実行中に投稿されます。"
+            "value": "予約投稿はMacでPromo Studioが実行中に投稿されます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "예약 게시물은 Mac에서 Automat이 실행 중일 때 게시됩니다."
+            "value": "예약 게시물은 Mac에서 Promo Studio가 실행 중일 때 게시됩니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "As publicações agendadas saem enquanto o Automat estiver aberto no seu Mac."
+            "value": "As publicações agendadas saem enquanto o Promo Studio estiver aberto no seu Mac."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zamanlanmış gönderiler, Mac'inde Automat çalışırken paylaşılır."
+            "value": "Zamanlanmış gönderiler, Mac'inde Promo Studio çalışırken paylaşılır."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "定时帖子会在你的 Mac 上运行 Automat 时发布。"
+            "value": "定时帖子会在你的 Mac 上运行 Promo Studio 时发布。"
           }
         }
       }

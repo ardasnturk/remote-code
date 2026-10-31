@@ -18,8 +18,8 @@ final class MacConnection {
     private(set) var capabilities: Set<String> = []
     /// Set when the app returns to the foreground while sessions were busy.
     var resumedWhileAwayNotice: String?
-    /// The Automat app on the Mac (capability `automat`).
-    let automat = AutomatStore()
+    /// The Promo Studio app on the Mac (capability `promoStudio`).
+    let promoStudio = PromoStudioStore()
 
     @ObservationIgnored let client: MacClient
     @ObservationIgnored private var chats: [String: ChatState] = [:]
@@ -55,7 +55,7 @@ final class MacConnection {
             }
         )
         sessions = cache.sessions(macId: mac.id)
-        automat.attach(self)
+        promoStudio.attach(self)
     }
 
     var isConnected: Bool { state.isConnected }
@@ -114,7 +114,7 @@ final class MacConnection {
     private func stateChanged(_ newState: MacConnectionState) async {
         state = newState
         guard newState.isConnected else {
-            automat.disconnected()
+            promoStudio.disconnected()
             return
         }
         await refreshSessions()
@@ -136,9 +136,9 @@ final class MacConnection {
             pendingPermissions = ack.pendingPermissions
             capabilities = Set(ack.capabilities ?? [])
             let capabilities = self.capabilities
-            Task { await automat.connected(capabilities: capabilities) }
-        case .automatEvent(let event):
-            automat.handle(event)
+            Task { await promoStudio.connected(capabilities: capabilities) }
+        case .promoStudioEvent(let event):
+            promoStudio.handle(event)
         case .event(let payload):
             let event = payload.sequencedEvent
             chat(for: payload.sessionId).apply(event)
@@ -164,7 +164,7 @@ final class MacConnection {
             if error.code == .deviceRevoked {
                 state = .failed(message: error.message, code: error.code)
             }
-        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog, .automatResponse:
+        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog, .promoStudioResponse:
             break
         }
     }

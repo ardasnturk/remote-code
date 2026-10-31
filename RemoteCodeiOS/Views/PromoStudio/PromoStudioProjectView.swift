@@ -1,10 +1,10 @@
 import SwiftUI
 
-/// One Automat project: account, analysis, new video from a prompt, features, suggestions and posts.
-struct AutomatProjectView: View {
-    let store: AutomatStore
+/// One Promo Studio project: account, analysis, new video from a prompt, features, suggestions and posts.
+struct PromoStudioProjectView: View {
+    let store: PromoStudioStore
     let projectId: String
-    @State private var composer: AutomatComposerRequest?
+    @State private var composer: PromoStudioComposerRequest?
     @State private var openedPost: String?
     @State private var error: String?
 
@@ -13,7 +13,7 @@ struct AutomatProjectView: View {
             List {
                 Section {
                     HStack(spacing: 14) {
-                        AutomatImage(store: store, path: project.logo)
+                        PromoStudioImage(store: store, path: project.logo)
                             .frame(width: 56, height: 56)
                             .clipShape(RoundedRectangle(cornerRadius: 13))
                         VStack(alignment: .leading, spacing: 2) {
@@ -31,7 +31,7 @@ struct AutomatProjectView: View {
                         ForEach(store.state?.accounts ?? []) { Text(verbatim: "@\($0.username)").tag($0.userId) }
                     }
                     if let job = store.job(projectId) {
-                        AutomatJobLine(job: job)
+                        PromoStudioJobLine(job: job)
                     }
                     Button {
                         run("analyze", ["projectId": projectId])
@@ -48,7 +48,7 @@ struct AutomatProjectView: View {
                 if let analysis = project.analysis {
                     Section {
                         Button {
-                            composer = AutomatComposerRequest(projectId: projectId, featureId: nil)
+                            composer = PromoStudioComposerRequest(projectId: projectId, featureId: nil)
                         } label: {
                             Label("New Video from a Prompt", systemImage: "text.bubble")
                         }
@@ -65,7 +65,7 @@ struct AutomatProjectView: View {
                                         create("createPost", ["projectId": projectId, "featureId": feature.id, "seconds": 15, "autoRender": true])
                                     }
                                     .buttonStyle(.borderedProminent)
-                                    Button("Prompt…") { composer = AutomatComposerRequest(projectId: projectId, featureId: feature.id) }
+                                    Button("Prompt…") { composer = PromoStudioComposerRequest(projectId: projectId, featureId: feature.id) }
                                         .buttonStyle(.bordered)
                                 }
                                 .controlSize(.small)
@@ -92,8 +92,8 @@ struct AutomatProjectView: View {
                 if !posts.isEmpty {
                     Section("Posts") {
                         ForEach(posts) { post in
-                            NavigationLink(value: AutomatRoute.post(post.id)) {
-                                AutomatPostRow(store: store, post: post)
+                            NavigationLink(value: PromoStudioRoute.post(post.id)) {
+                                PromoStudioPostRow(store: store, post: post)
                             }
                         }
                     }
@@ -102,10 +102,10 @@ struct AutomatProjectView: View {
             .navigationTitle(project.name)
             .navigationBarTitleDisplayMode(.inline)
             .sheet(item: $composer) { request in
-                AutomatComposerView(store: store, request: request) { openedPost = $0 }
+                PromoStudioComposerView(store: store, request: request) { openedPost = $0 }
             }
-            .navigationDestination(item: $openedPost) { AutomatPostView(store: store, postId: $0) }
-            .alert("Automat", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
+            .navigationDestination(item: $openedPost) { PromoStudioPostView(store: store, postId: $0) }
+            .alert("Promo Studio", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
                 Button("OK") { error = nil }
             } message: {
                 Text(error ?? "")
@@ -133,16 +133,16 @@ struct AutomatProjectView: View {
     }
 }
 
-struct AutomatComposerRequest: Identifiable {
+struct PromoStudioComposerRequest: Identifiable {
     let id = UUID()
     let projectId: String
     let featureId: String?
 }
 
 /// New video from the user's own prompt: a promo film directed by Claude, or a quick screenshot template.
-struct AutomatComposerView: View {
-    let store: AutomatStore
-    let request: AutomatComposerRequest
+struct PromoStudioComposerView: View {
+    let store: PromoStudioStore
+    let request: PromoStudioComposerRequest
     var onCreated: (String) -> Void
     @Environment(\.dismiss) private var dismiss
 

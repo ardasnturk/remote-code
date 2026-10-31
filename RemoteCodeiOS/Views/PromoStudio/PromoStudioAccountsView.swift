@@ -1,11 +1,11 @@
 import SwiftUI
 import WebKit
 
-/// Instagram accounts connected in Automat; sign in with Facebook on the phone.
-struct AutomatAccountsView: View {
-    let store: AutomatStore
+/// Instagram accounts connected in Promo Studio; sign in with Facebook on the phone.
+struct PromoStudioAccountsView: View {
+    let store: PromoStudioStore
     @Environment(\.dismiss) private var dismiss
-    @State private var login: AutomatLogin?
+    @State private var login: PromoStudioLogin?
     @State private var error: String?
 
     var body: some View {
@@ -54,7 +54,7 @@ struct AutomatAccountsView: View {
                 ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
             }
             .sheet(item: $login) { login in
-                AutomatLoginSheet(login: login) { result in
+                PromoStudioLoginSheet(login: login) { result in
                     self.login = nil
                     switch result {
                     case .token(let token, let expiresIn):
@@ -68,7 +68,7 @@ struct AutomatAccountsView: View {
                     }
                 }
             }
-            .alert("Automat", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
+            .alert("Promo Studio", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
                 Button("OK") { error = nil }
             } message: {
                 Text(error ?? "")
@@ -82,7 +82,7 @@ struct AutomatAccountsView: View {
                 let info = try await store.action("loginInfo")
                 guard let url = (info["authorizeURL"] as? String).flatMap(URL.init(string:)),
                       let redirect = info["redirectURI"] as? String else { return }
-                login = AutomatLogin(url: url, redirectURI: redirect)
+                login = PromoStudioLogin(url: url, redirectURI: redirect)
             } catch {
                 self.error = error.localizedDescription
             }
@@ -96,13 +96,13 @@ struct AutomatAccountsView: View {
     }
 }
 
-struct AutomatLogin: Identifiable {
+struct PromoStudioLogin: Identifiable {
     let id = UUID()
     let url: URL
     let redirectURI: String
 }
 
-enum AutomatLoginResult {
+enum PromoStudioLoginResult {
     case token(String, expiresIn: Int?)
     case code(String)
     case cancelled
@@ -110,13 +110,13 @@ enum AutomatLoginResult {
 
 /// Meta's OAuth page in an embedded browser; the token (Facebook) or code
 /// (Instagram) is taken from the redirect and sent to the Mac.
-struct AutomatLoginSheet: View {
-    let login: AutomatLogin
-    var onFinish: (AutomatLoginResult) -> Void
+struct PromoStudioLoginSheet: View {
+    let login: PromoStudioLogin
+    var onFinish: (PromoStudioLoginResult) -> Void
 
     var body: some View {
         NavigationStack {
-            AutomatLoginWebView(login: login, onFinish: onFinish)
+            PromoStudioLoginWebView(login: login, onFinish: onFinish)
                 .ignoresSafeArea(edges: .bottom)
                 .navigationTitle(Text("Sign In"))
                 .navigationBarTitleDisplayMode(.inline)
@@ -127,9 +127,9 @@ struct AutomatLoginSheet: View {
     }
 }
 
-private struct AutomatLoginWebView: UIViewRepresentable {
-    let login: AutomatLogin
-    var onFinish: (AutomatLoginResult) -> Void
+private struct PromoStudioLoginWebView: UIViewRepresentable {
+    let login: PromoStudioLogin
+    var onFinish: (PromoStudioLoginResult) -> Void
 
     func makeCoordinator() -> Coordinator { Coordinator(redirectURI: login.redirectURI, onFinish: onFinish) }
 
@@ -146,10 +146,10 @@ private struct AutomatLoginWebView: UIViewRepresentable {
 
     final class Coordinator: NSObject, WKNavigationDelegate {
         let redirectURI: String
-        let onFinish: (AutomatLoginResult) -> Void
+        let onFinish: (PromoStudioLoginResult) -> Void
         private var finished = false
 
-        init(redirectURI: String, onFinish: @escaping (AutomatLoginResult) -> Void) {
+        init(redirectURI: String, onFinish: @escaping (PromoStudioLoginResult) -> Void) {
             self.redirectURI = redirectURI
             self.onFinish = onFinish
         }

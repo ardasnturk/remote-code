@@ -17,7 +17,7 @@ public struct MacHostService: HostService {
     let macId: String
     let serverVersion: String
     let status: any MacStatusProviding
-    let automatBridge = AutomatBridge()
+    let promoStudioBridge = PromoStudioBridge()
 
     public func weeklySummary(_ request: GetWeeklySummary) async throws -> WeeklySummary {
         await insights.weeklySummary(request)
@@ -37,16 +37,16 @@ public struct MacHostService: HostService {
             macId: macId,
             serverVersion: serverVersion,
             pendingPermissions: await broker.pendingRequests,
-            capabilities: HostCapability.all + [HostCapability.automat]
+            capabilities: HostCapability.all + [HostCapability.promoStudio]
         )
     }
 
-    public func automat(_ request: AutomatRequest) async throws -> AutomatResponse {
-        try await automatBridge.send(request)
+    public func promoStudio(_ request: PromoStudioRequest) async throws -> PromoStudioResponse {
+        try await promoStudioBridge.send(request)
     }
 
-    public func automatEvents() async throws -> AsyncStream<AutomatEvent> {
-        automatBridge.events()
+    public func promoStudioEvents() async throws -> AsyncStream<PromoStudioEvent> {
+        promoStudioBridge.events()
     }
 
     public func macStatus() async -> MacStatus {

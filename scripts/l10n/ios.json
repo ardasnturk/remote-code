@@ -135,10 +135,6 @@
   "de": "Fotos oder Videos anhängen",
   "tr": "Fotoğraf veya video ekle"
  },
- "Automat": {
-  "de": "Automat",
-  "tr": "Automat"
- },
  "Browse your Mac and start a chat where your project lives.": {
   "de": "Durchsuche deinen Mac und starte einen Chat dort, wo dein Projekt liegt.",
   "tr": "Mac'inizde gezinin ve projenizin bulunduğu yerde bir sohbet başlatın."
@@ -971,6 +967,10 @@
   "de": "Projekte",
   "tr": "Projeler"
  },
+ "Promo Studio": {
+  "de": "Promo Studio",
+  "tr": "Promo Studio"
+ },
  "Promo film (directed by Claude)": {
   "de": "Werbefilm (Regie: Claude)",
   "tr": "Promosyon filmi (Claude yönetir)"
@@ -1187,9 +1187,9 @@
   "de": "Geplante oder veröffentlichte Beiträge können nicht überarbeitet werden.",
   "tr": "Zamanlanmış ya da paylaşılmış gönderiler revize edilemez."
  },
- "Scheduled posts go out while Automat is running on your Mac.": {
-  "de": "Geplante Beiträge werden gepostet, solange Automat auf deinem Mac läuft.",
-  "tr": "Zamanlanmış gönderiler, Mac'inde Automat çalışırken paylaşılır."
+ "Scheduled posts go out while Promo Studio is running on your Mac.": {
+  "de": "Geplante Beiträge werden gepostet, solange Promo Studio auf deinem Mac läuft.",
+  "tr": "Zamanlanmış gönderiler, Mac'inde Promo Studio çalışırken paylaşılır."
  },
  "Search": {
   "de": "Suchen",

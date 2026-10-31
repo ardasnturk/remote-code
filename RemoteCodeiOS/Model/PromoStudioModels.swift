@@ -1,32 +1,32 @@
 import Foundation
 
-// Read-only mirrors of the Automat app's state (GET /v1/state, see Automat's
-// docs/CONTROL_API.md). Every field that Automat may omit is optional so the
-// phone keeps working when Automat adds or drops fields.
+// Read-only mirrors of the Promo Studio app's state (GET /v1/state, see Promo Studio's
+// docs/CONTROL_API.md). Every field that Promo Studio may omit is optional so the
+// phone keeps working when Promo Studio adds or drops fields.
 
-struct AutomatState: Decodable {
+struct PromoStudioState: Decodable {
     var revision: Int
-    var projects: [AutomatProject]
-    var posts: [AutomatPost]
-    var accounts: [AutomatAccount]
-    var jobs: [String: AutomatJob]
-    var settings: AutomatSettings
-    var languages: [AutomatOption]
-    var themes: [AutomatOption]
+    var projects: [PromoStudioProject]
+    var posts: [PromoStudioPost]
+    var accounts: [PromoStudioAccount]
+    var jobs: [String: PromoStudioJob]
+    var settings: PromoStudioSettings
+    var languages: [PromoStudioOption]
+    var themes: [PromoStudioOption]
     var alert: String?
 }
 
-struct AutomatOption: Decodable, Hashable, Identifiable {
+struct PromoStudioOption: Decodable, Hashable, Identifiable {
     var id: String
     var label: String
 }
 
-struct AutomatJob: Decodable, Hashable {
+struct PromoStudioJob: Decodable, Hashable {
     var message: String
     var progress: Double?
 }
 
-struct AutomatSettings: Decodable, Hashable {
+struct PromoStudioSettings: Decodable, Hashable {
     var loginMode: String
     var metaAppId: String
     var hasAppSecret: Bool
@@ -35,7 +35,7 @@ struct AutomatSettings: Decodable, Hashable {
     var defaultTheme: String
 }
 
-struct AutomatProject: Decodable, Hashable, Identifiable {
+struct PromoStudioProject: Decodable, Hashable, Identifiable {
     var id: String
     var name: String
     var accountId: String?
@@ -73,7 +73,7 @@ struct AutomatProject: Decodable, Hashable, Identifiable {
     }
 }
 
-struct AutomatAccount: Decodable, Hashable, Identifiable {
+struct PromoStudioAccount: Decodable, Hashable, Identifiable {
     var userId: String
     var username: String
     var name: String?
@@ -83,7 +83,7 @@ struct AutomatAccount: Decodable, Hashable, Identifiable {
     var id: String { userId }
 }
 
-struct AutomatPost: Decodable, Hashable, Identifiable {
+struct PromoStudioPost: Decodable, Hashable, Identifiable {
     var id: String
     var projectId: String
     var title: String
@@ -179,7 +179,7 @@ struct AutomatPost: Decodable, Hashable, Identifiable {
         var cover: String?
     }
 
-    /// The post's text without Automat's *emphasis* markers.
+    /// The post's text without Promo Studio's *emphasis* markers.
     static func plain(_ text: String) -> String { text.replacingOccurrences(of: "*", with: "") }
 
     var hasScript: Bool {

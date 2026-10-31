@@ -1,9 +1,9 @@
 import RemoteCodeKit
 import SwiftUI
 
-/// The Automat tab: projects, scheduled and recent posts of the Automat app on the Mac.
-struct AutomatHomeView: View {
-    let store: AutomatStore
+/// The Promo Studio tab: projects, scheduled and recent posts of the Promo Studio app on the Mac.
+struct PromoStudioHomeView: View {
+    let store: PromoStudioStore
     @State private var showAccounts = false
 
     var body: some View {
@@ -13,7 +13,7 @@ struct AutomatHomeView: View {
                     content(state)
                 } else if let error = store.lastError {
                     ContentUnavailableView {
-                        Label("Automat", systemImage: "sparkles.tv")
+                        Label("Promo Studio", systemImage: "sparkles.tv")
                     } description: {
                         Text(error)
                     } actions: {
@@ -23,7 +23,7 @@ struct AutomatHomeView: View {
                     ProgressView()
                 }
             }
-            .navigationTitle(Text("Automat"))
+            .navigationTitle(Text("Promo Studio"))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { showAccounts = true } label: { Image(systemName: "person.crop.circle") }
@@ -31,26 +31,26 @@ struct AutomatHomeView: View {
                 }
             }
             .refreshable { await store.refresh() }
-            .navigationDestination(for: AutomatRoute.self) { route in
+            .navigationDestination(for: PromoStudioRoute.self) { route in
                 switch route {
-                case .project(let id): AutomatProjectView(store: store, projectId: id)
-                case .post(let id): AutomatPostView(store: store, postId: id)
+                case .project(let id): PromoStudioProjectView(store: store, projectId: id)
+                case .post(let id): PromoStudioPostView(store: store, postId: id)
                 }
             }
-            .sheet(isPresented: $showAccounts) { AutomatAccountsView(store: store) }
-            .automatAlert(store)
+            .sheet(isPresented: $showAccounts) { PromoStudioAccountsView(store: store) }
+            .promoStudioAlert(store)
         }
     }
 
-    @ViewBuilder private func content(_ state: AutomatState) -> some View {
+    @ViewBuilder private func content(_ state: PromoStudioState) -> some View {
         let scheduled = state.posts.filter { $0.status == .scheduled }.sorted { ($0.scheduledAt ?? .distantFuture) < ($1.scheduledAt ?? .distantFuture) }
         let recent = state.posts.filter { $0.status != .scheduled }
         List {
             Section("Projects") {
                 ForEach(state.projects) { project in
-                    NavigationLink(value: AutomatRoute.project(project.id)) {
+                    NavigationLink(value: PromoStudioRoute.project(project.id)) {
                         HStack(spacing: 12) {
-                            AutomatImage(store: store, path: project.logo)
+                            PromoStudioImage(store: store, path: project.logo)
                                 .frame(width: 40, height: 40)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                             VStack(alignment: .leading) {
@@ -74,37 +74,37 @@ struct AutomatHomeView: View {
         }
     }
 
-    private func postLink(_ post: AutomatPost) -> some View {
-        NavigationLink(value: AutomatRoute.post(post.id)) {
-            AutomatPostRow(store: store, post: post)
+    private func postLink(_ post: PromoStudioPost) -> some View {
+        NavigationLink(value: PromoStudioRoute.post(post.id)) {
+            PromoStudioPostRow(store: store, post: post)
         }
     }
 }
 
-enum AutomatRoute: Hashable {
+enum PromoStudioRoute: Hashable {
     case project(String)
     case post(String)
 }
 
-struct AutomatPostRow: View {
-    let store: AutomatStore
-    let post: AutomatPost
+struct PromoStudioPostRow: View {
+    let store: PromoStudioStore
+    let post: PromoStudioPost
 
     var body: some View {
         HStack(spacing: 12) {
-            AutomatImage(store: store, path: post.media.cover)
+            PromoStudioImage(store: store, path: post.media.cover)
                 .frame(width: 44, height: 78)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             VStack(alignment: .leading, spacing: 4) {
                 Text(post.title).font(.subheadline.weight(.semibold)).lineLimit(2)
                 HStack(spacing: 6) {
-                    AutomatStatusPill(status: post.status)
+                    PromoStudioStatusPill(status: post.status)
                     if let project = store.project(post.projectId) {
                         Text(project.name).font(.caption2).foregroundStyle(.secondary)
                     }
                 }
                 if let job = store.job(post.id) {
-                    AutomatJobLine(job: job)
+                    PromoStudioJobLine(job: job)
                 } else if let date = post.scheduledAt, post.status == .scheduled {
                     Label(date.formatted(date: .abbreviated, time: .shortened), systemImage: "clock").font(.caption)
                 }
@@ -113,8 +113,8 @@ struct AutomatPostRow: View {
     }
 }
 
-struct AutomatStatusPill: View {
-    let status: AutomatPost.Status
+struct PromoStudioStatusPill: View {
+    let status: PromoStudioPost.Status
 
     var body: some View {
         label
@@ -148,8 +148,8 @@ struct AutomatStatusPill: View {
     }
 }
 
-struct AutomatJobLine: View {
-    let job: AutomatJob
+struct PromoStudioJobLine: View {
+    let job: PromoStudioJob
 
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
@@ -163,9 +163,9 @@ struct AutomatJobLine: View {
     }
 }
 
-/// An image from the Automat app (logo, cover, project screenshot), loaded over the encrypted channel.
-struct AutomatImage: View {
-    let store: AutomatStore
+/// An image from the Promo Studio app (logo, cover, project screenshot), loaded over the encrypted channel.
+struct PromoStudioImage: View {
+    let store: PromoStudioStore
     let path: String?
     @State private var image: UIImage?
 
@@ -186,8 +186,8 @@ struct AutomatImage: View {
 }
 
 extension View {
-    /// Shows the alerts Automat raises on the Mac (errors and notices) on the phone too.
-    func automatAlert(_ store: AutomatStore) -> some View {
+    /// Shows the alerts Promo Studio raises on the Mac (errors and notices) on the phone too.
+    func promoStudioAlert(_ store: PromoStudioStore) -> some View {
         alert(
             store.alert?.title ?? "",
             isPresented: Binding(get: { store.alert != nil }, set: { if !$0 { store.alert = nil } })

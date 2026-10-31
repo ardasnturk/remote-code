@@ -56,13 +56,13 @@ struct RootView: View {
                     Text(error)
                 }
             } else if model.hasPairedMac {
-                if let automat = model.connection?.automat, automat.isAvailable {
+                if let promoStudio = model.connection?.promoStudio, promoStudio.isAvailable {
                     TabView {
                         Tab("Chats", systemImage: "bubble.left.and.text.bubble.right") {
                             MainSplitView()
                         }
-                        Tab("Automat", systemImage: "sparkles.tv") {
-                            AutomatHomeView(store: automat)
+                        Tab("Promo Studio", systemImage: "sparkles.tv") {
+                            PromoStudioHomeView(store: promoStudio)
                         }
                     }
                 } else {

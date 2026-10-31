@@ -161,9 +161,9 @@ the documented result, `ok`, or `error`.
 | `getUsageLimits` | `{}` — capability `insights` | `usageLimits` |
 | `listCommands` | `{ sessionId }` — capability `commandCatalog` | `commandCatalog` |
 | `updateSessionSettings` | `{ sessionId, model?, effort?, permissionMode? }` — `""` = the agent's default, missing = unchanged; a model or effort change is refused (`invalidRequest`) while a turn runs, a permission mode change is not; `bypassPermissions` needs the Mac setting (`modeNotAllowed`) and allows the chat's open requests at once; capability `sessionSettings` (`permissionMode`: `sessionPermissionMode`) | `sessionUpdated` |
-| `automat` | `{ method: "GET" \| "POST", path: "/v1/…", body?: JSON text, range?: "bytes=a-b" }` — forwarded to the Automat app's local API; capability `automat` | `automatResponse` (`error{automatUnavailable}` when Automat is not running) |
-| `automatSubscribe` | `{}` — capability `automat` | `ok`, then `automatEvent` pushes |
-| `automatUnsubscribe` | `{}` | `ok` |
+| `promoStudio` | `{ method: "GET" \| "POST", path: "/v1/…", body?: JSON text, range?: "bytes=a-b" }` — forwarded to the Promo Studio app's local API; capability `promoStudio` | `promoStudioResponse` (`error{promoStudioUnavailable}` when Promo Studio is not running) |
+| `promoStudioSubscribe` | `{}` — capability `promoStudio` | `ok`, then `promoStudioEvent` pushes |
+| `promoStudioUnsubscribe` | `{}` | `ok` |
 
 `permissionMode` ∈ `default` · `acceptEdits` · `plan` · `bypassPermissions`
 (the last one only if the Mac user enabled it; otherwise `modeNotAllowed`).
@@ -177,8 +177,8 @@ older Macs). A client only sends them when the Mac lists the capability, so
 `getUsageLimits`), `commandCatalog` (`listCommands`) and `sessionSettings`
 (`startSession.effort`, `updateSessionSettings`, `Session.effort`),
 `modelCatalog` (`macStatus.agents[].modelOptions`) and `sessionPermissionMode`
-(`updateSessionSettings.permissionMode`). `automat` (`automat`,
-`automatSubscribe`) is announced only by the real Mac host, not the demo.
+(`updateSessionSettings.permissionMode`). `promoStudio` (`promoStudio`,
+`promoStudioSubscribe`) is announced only by the real Mac host, not the demo.
 
 ### 4.2 Host → client
 
@@ -198,8 +198,8 @@ older Macs). A client only sends them when the Mac lists the capability, so
 | `weeklySummary` | `{ weekStart, weekEnd, projects: [{ path, name, activeSeconds, sessionCount, turnCount, agents: { agent: turns }, filesChanged, linesAdded, linesRemoved, commandsRun, outputTokens, sessionTitles, highlights }], days: [{ day, activeSeconds }], narrative?: { headline, highlights }, narrativeUnavailableReason?, language?, generatedAt }` |
 | `usageLimits` | `{ agents: [{ agent, windows: [{ key, durationMinutes?, usedPercent, resetsAt?, model?, isLimited }], observedAt?, source: live \| lastTurn \| unavailable, plan? }] }` |
 | `commandCatalog` | `{ commands: [{ name, kind: skill \| command, source: personal \| project \| plugin \| builtin, description?, plugin? }] }` |
-| `automatResponse` | `{ status, contentType?, contentRange?, body (base64) }` — Automat's HTTP response; media is fetched in chunks of at most 4 MB with `range` (the Mac adds `bytes=0-4194303` to a media request without one) |
-| `automatEvent` | `{ event: changed \| job \| jobEnded \| alert \| ping, data: JSON text }` — Automat's server-sent events, pushed after `automatSubscribe` until `automatUnsubscribe` or disconnect |
+| `promoStudioResponse` | `{ status, contentType?, contentRange?, body (base64) }` — Promo Studio's HTTP response; media is fetched in chunks of at most 4 MB with `range` (the Mac adds `bytes=0-4194303` to a media request without one) |
+| `promoStudioEvent` | `{ event: changed \| job \| jobEnded \| alert \| ping, data: JSON text }` — Promo Studio's server-sent events, pushed after `promoStudioSubscribe` until `promoStudioUnsubscribe` or disconnect |
 | `error` | `{ code, message }` |
 
 `Session`:
@@ -226,7 +226,7 @@ folder; `message` says which switch to turn on), `notADirectory`,
 `alreadyExists`, `invalidName`, `agentNotInstalled`,
 `claudeNotInstalled`, `sessionClosed`, `modeNotAllowed`, `unauthorized`,
 `deviceRevoked`, `pairingTokenInvalid`, `clockSkew`, `timeout`, `internal`,
-`automatUnavailable` (the Automat app is not running on the Mac).
+`promoStudioUnavailable` (the Promo Studio app is not running on the Mac).
 Codes are open-ended strings; clients must handle unknown codes generically.
 
 ## 5. Session events

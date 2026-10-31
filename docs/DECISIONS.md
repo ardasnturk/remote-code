@@ -937,23 +937,23 @@ the job it loaded at registration. Renaming the executable would leave updated
 Macs with a job that points at a missing file until the next restart, so the
 target is `RemoteCodeHelper` but its product name stays `PilothouseHelper`.
 
-### D-112 — Automat bridge
+### D-112 — Promo Studio bridge
 **Status:** accepted
 
-Automat is the owner's separate macOS app that writes, renders and posts
+Promo Studio is the owner's separate macOS app that writes, renders and posts
 social-media videos with Claude Code. While it runs it serves a small HTTP API
 on 127.0.0.1 with a per-launch bearer token, written to
-`~/Library/Application Support/Automat/control.json` (mode 0600); the API is
-documented in Automat's `docs/CONTROL_API.md`. The Mac forwards the phone's
-`automat` requests to that API verbatim and pushes its server-sent events as
-`automatEvent`, so the protocol does not mirror Automat's endpoints and Automat
+`~/Library/Application Support/Promo Studio/control.json` (mode 0600); the API is
+documented in Promo Studio's `docs/CONTROL_API.md`. The Mac forwards the phone's
+`promoStudio` requests to that API verbatim and pushes its server-sent events as
+`promoStudioEvent`, so the protocol does not mirror Promo Studio's endpoints and Promo Studio
 can grow without protocol changes. The bridge only accepts paths below `/v1/`
 and media travels in chunks of at most 4 MB to stay below the message size
 limit (base64 inside JSON).
 
 The capability is announced only by the real Mac host. The iPhone shows an
-Automat tab only when the capability is present and Automat answered, so
-nothing changes for anyone without Automat. Signing in to Instagram happens on
+Promo Studio tab only when the capability is present and Promo Studio answered, so
+nothing changes for anyone without Promo Studio. Signing in to Instagram happens on
 the phone in an embedded web view (Meta's OAuth redirect is a facebook.com URL,
 which `ASWebAuthenticationSession` cannot capture without an associated
 domain); the token is sent to the Mac and turned into a long-lived one there.

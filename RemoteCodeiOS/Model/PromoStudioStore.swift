@@ -3,24 +3,24 @@ import Foundation
 import Observation
 import RemoteCodeKit
 
-/// The Automat tab's live state: forwards requests to the Automat app on the
-/// Mac (capability `automat`) and follows its events. Owned by `MacConnection`.
+/// The Promo Studio tab's live state: forwards requests to the Promo Studio app on the
+/// Mac (capability `promoStudio`) and follows its events. Owned by `MacConnection`.
 @MainActor
 @Observable
-final class AutomatStore {
-    /// Automat answered on the connected Mac; the tab is shown only then.
+final class PromoStudioStore {
+    /// Promo Studio answered on the connected Mac; the tab is shown only then.
     private(set) var isAvailable = false
-    private(set) var state: AutomatState?
+    private(set) var state: PromoStudioState?
     /// Live job progress by post or project id (from events, newer than `state.jobs`).
-    private(set) var jobs: [String: AutomatJob] = [:]
-    /// Latest alert Automat showed on the Mac.
+    private(set) var jobs: [String: PromoStudioJob] = [:]
+    /// Latest alert Promo Studio showed on the Mac.
     var alert: (title: String, message: String)?
     private(set) var lastError: String?
 
     @ObservationIgnored private weak var connection: MacConnection?
     @ObservationIgnored private var refreshTask: Task<Void, Never>?
     @ObservationIgnored private var subscribed = false
-    /// While connected but Automat is not running, checks again every 10 s so the tab appears when it starts.
+    /// While connected but Promo Studio is not running, checks again every 10 s so the tab appears when it starts.
     @ObservationIgnored private var availabilityTask: Task<Void, Never>?
 
     init() {}
@@ -34,7 +34,7 @@ final class AutomatStore {
     func connected(capabilities: Set<String>) async {
         subscribed = false
         availabilityTask?.cancel()
-        guard capabilities.contains(HostCapability.automat) else {
+        guard capabilities.contains(HostCapability.promoStudio) else {
             isAvailable = false
             return
         }
@@ -55,7 +55,7 @@ final class AutomatStore {
         availabilityTask = nil
     }
 
-    /// Tries again (e.g. after Automat was started on the Mac).
+    /// Tries again (e.g. after Promo Studio was started on the Mac).
     func retry() async {
         await refresh()
         await subscribe()
@@ -63,22 +63,22 @@ final class AutomatStore {
 
     private func subscribe() async {
         guard isAvailable, !subscribed, let client = connection?.client else { return }
-        if (try? await client.request(.automatSubscribe)) != nil { subscribed = true }
+        if (try? await client.request(.promoStudioSubscribe)) != nil { subscribed = true }
     }
 
-    func handle(_ event: AutomatEvent) {
+    func handle(_ event: PromoStudioEvent) {
         let object = (try? JSONSerialization.jsonObject(with: Data(event.data.utf8))) as? [String: Any] ?? [:]
         switch event.event {
         case "changed":
             scheduleRefresh()
         case "job":
             guard let id = object["id"] as? String else { return }
-            jobs[id] = AutomatJob(message: object["message"] as? String ?? "", progress: object["progress"] as? Double)
+            jobs[id] = PromoStudioJob(message: object["message"] as? String ?? "", progress: object["progress"] as? Double)
         case "jobEnded":
             if let id = object["id"] as? String { jobs[id] = nil }
             scheduleRefresh()
         case "alert":
-            alert = (object["title"] as? String ?? "Automat", object["message"] as? String ?? "")
+            alert = (object["title"] as? String ?? "Promo Studio", object["message"] as? String ?? "")
         default:
             break
         }
@@ -98,12 +98,12 @@ final class AutomatStore {
             let data = try await call("GET", "/v1/state")
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            let decoded = try decoder.decode(AutomatState.self, from: data)
+            let decoded = try decoder.decode(PromoStudioState.self, from: data)
             state = decoded
             jobs = decoded.jobs
             isAvailable = true
             lastError = nil
-        } catch let error as ErrorPayload where error.code == .automatUnavailable {
+        } catch let error as ErrorPayload where error.code == .promoStudioUnavailable {
             isAvailable = false
             state = nil
             subscribed = false
@@ -114,26 +114,26 @@ final class AutomatStore {
 
     // MARK: Lookups
 
-    func project(_ id: String) -> AutomatProject? { state?.projects.first { $0.id == id } }
-    func post(_ id: String) -> AutomatPost? { state?.posts.first { $0.id == id } }
-    func posts(for projectId: String) -> [AutomatPost] { state?.posts.filter { $0.projectId == projectId } ?? [] }
-    func account(_ id: String?) -> AutomatAccount? { state?.accounts.first { $0.userId == id } }
-    func job(_ id: String) -> AutomatJob? { jobs[id] }
+    func project(_ id: String) -> PromoStudioProject? { state?.projects.first { $0.id == id } }
+    func post(_ id: String) -> PromoStudioPost? { state?.posts.first { $0.id == id } }
+    func posts(for projectId: String) -> [PromoStudioPost] { state?.posts.filter { $0.projectId == projectId } ?? [] }
+    func account(_ id: String?) -> PromoStudioAccount? { state?.accounts.first { $0.userId == id } }
+    func job(_ id: String) -> PromoStudioJob? { jobs[id] }
 
     // MARK: Requests
 
-    /// Sends one request to Automat's API; non-2xx responses throw Automat's message.
+    /// Sends one request to Promo Studio's API; non-2xx responses throw Promo Studio's message.
     @discardableResult
     func call(_ method: String, _ path: String, body: [String: Any]? = nil, range: String? = nil, timeout: TimeInterval = 60) async throws -> Data {
-        guard let client = connection?.client else { throw AutomatStoreError.notConnected }
+        guard let client = connection?.client else { throw PromoStudioStoreError.notConnected }
         let text = try body.map { String(decoding: try JSONSerialization.data(withJSONObject: $0), as: UTF8.self) }
-        let response = try await client.request(.automat(AutomatRequest(method: method, path: path, body: text, range: range)), timeout: timeout)
-        guard case .automatResponse(let result) = response else {
+        let response = try await client.request(.promoStudio(PromoStudioRequest(method: method, path: path, body: text, range: range)), timeout: timeout)
+        guard case .promoStudioResponse(let result) = response else {
             throw MacClientError.unexpectedResponse(response.typeName)
         }
         guard (200..<300).contains(result.status) else {
             let message = ((try? JSONSerialization.jsonObject(with: result.body)) as? [String: Any])?["error"] as? String
-            throw AutomatStoreError.failed(message ?? "HTTP \(result.status)")
+            throw PromoStudioStoreError.failed(message ?? "HTTP \(result.status)")
         }
         return result.body
     }
@@ -153,12 +153,12 @@ final class AutomatStore {
     /// its local URL. The cache key includes the file size, so a re-rendered
     /// video is fetched again.
     func mediaFile(_ path: String, progress: (@MainActor (Double) -> Void)? = nil) async throws -> URL {
-        let chunk = AutomatRequest.maxChunkBytes
-        guard let client = connection?.client else { throw AutomatStoreError.notConnected }
-        func fetch(_ from: Int) async throws -> AutomatResponse {
-            let response = try await client.request(.automat(AutomatRequest(path: path, range: "bytes=\(from)-\(from + chunk - 1)")), timeout: 90)
-            guard case .automatResponse(let result) = response, (200..<300).contains(result.status) else {
-                throw AutomatStoreError.failed(String(localized: "The file could not be loaded."))
+        let chunk = PromoStudioRequest.maxChunkBytes
+        guard let client = connection?.client else { throw PromoStudioStoreError.notConnected }
+        func fetch(_ from: Int) async throws -> PromoStudioResponse {
+            let response = try await client.request(.promoStudio(PromoStudioRequest(path: path, range: "bytes=\(from)-\(from + chunk - 1)")), timeout: 90)
+            guard case .promoStudioResponse(let result) = response, (200..<300).contains(result.status) else {
+                throw PromoStudioStoreError.failed(String(localized: "The file could not be loaded."))
             }
             return result
         }
@@ -166,7 +166,7 @@ final class AutomatStore {
         let total = first.totalSize ?? first.body.count
         let name = SHA256.hash(data: Data("\(path)#\(total)".utf8)).prefix(12).map { String(format: "%02x", $0) }.joined()
         let ext = (path as NSString).pathExtension
-        let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("Automat", isDirectory: true)
+        let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("Promo Studio", isDirectory: true)
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         let url = dir.appendingPathComponent("\(name).\(ext)")
         if let size = try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize, size == total { return url }
@@ -184,7 +184,7 @@ final class AutomatStore {
     }
 }
 
-enum AutomatStoreError: LocalizedError {
+enum PromoStudioStoreError: LocalizedError {
     case notConnected
     case failed(String)
 

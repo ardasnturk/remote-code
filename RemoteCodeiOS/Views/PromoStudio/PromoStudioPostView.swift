@@ -1,9 +1,9 @@
 import AVKit
 import SwiftUI
 
-/// One Automat post: video, production, storyboard, revisions, caption and sharing.
-struct AutomatPostView: View {
-    let store: AutomatStore
+/// One Promo Studio post: video, production, storyboard, revisions, caption and sharing.
+struct PromoStudioPostView: View {
+    let store: PromoStudioStore
     let postId: String
     @Environment(\.dismiss) private var dismiss
     @State private var section = Section.storyboard
@@ -16,7 +16,7 @@ struct AutomatPostView: View {
         if let post = store.post(postId) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    AutomatVideoPanel(store: store, post: post)
+                    PromoStudioVideoPanel(store: store, post: post)
                     statusArea(post)
                     actions(post)
                     Picker("Section", selection: $section) {
@@ -27,10 +27,10 @@ struct AutomatPostView: View {
                     }
                     .pickerStyle(.segmented)
                     switch section {
-                    case .storyboard: AutomatStoryboardSection(post: post)
-                    case .revise: AutomatReviseSection(store: store, post: post, onError: { error = $0 })
-                    case .caption: AutomatCaptionSection(store: store, post: post, onError: { error = $0 })
-                    case .share: AutomatShareSection(store: store, post: post, onError: { error = $0 })
+                    case .storyboard: PromoStudioStoryboardSection(post: post)
+                    case .revise: PromoStudioReviseSection(store: store, post: post, onError: { error = $0 })
+                    case .caption: PromoStudioCaptionSection(store: store, post: post, onError: { error = $0 })
+                    case .share: PromoStudioShareSection(store: store, post: post, onError: { error = $0 })
                     }
                 }
                 .padding()
@@ -49,7 +49,7 @@ struct AutomatPostView: View {
                     run("deletePost", ["postId": postId]) { dismiss() }
                 }
             }
-            .alert("Automat", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
+            .alert("Promo Studio", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
                 Button("OK") { error = nil }
             } message: {
                 Text(error ?? "")
@@ -60,9 +60,9 @@ struct AutomatPostView: View {
         }
     }
 
-    @ViewBuilder private func statusArea(_ post: AutomatPost) -> some View {
+    @ViewBuilder private func statusArea(_ post: PromoStudioPost) -> some View {
         HStack {
-            AutomatStatusPill(status: post.status)
+            PromoStudioStatusPill(status: post.status)
             if let project = store.project(post.projectId) {
                 Text(project.name).font(.caption).foregroundStyle(.secondary)
             }
@@ -71,7 +71,7 @@ struct AutomatPostView: View {
         }
         if let job = store.job(postId) {
             HStack(alignment: .top) {
-                AutomatJobLine(job: job)
+                PromoStudioJobLine(job: job)
                 Button("Cancel") { run("cancel", ["id": postId]) }
                     .buttonStyle(.bordered).controlSize(.small)
             }
@@ -81,7 +81,7 @@ struct AutomatPostView: View {
         }
     }
 
-    @ViewBuilder private func actions(_ post: AutomatPost) -> some View {
+    @ViewBuilder private func actions(_ post: PromoStudioPost) -> some View {
         let busy = store.job(postId) != nil
         if let directed = post.directed, !directed.produced {
             HStack {
@@ -113,7 +113,7 @@ struct AutomatPostView: View {
         }
     }
 
-    private func duration(_ post: AutomatPost) -> String {
+    private func duration(_ post: PromoStudioPost) -> String {
         let seconds = post.directed.map { $0.storyboard.scenes.reduce(0) { $0 + $1.durationSec } }
             ?? post.spec.scenes.reduce(0) { $0 + ($1.durationSec ?? 3) }
         return "~\(Int(seconds.rounded())) s"
@@ -132,9 +132,9 @@ struct AutomatPostView: View {
 }
 
 /// Cover or video player; the video is downloaded in chunks the first time it is played.
-struct AutomatVideoPanel: View {
-    let store: AutomatStore
-    let post: AutomatPost
+struct PromoStudioVideoPanel: View {
+    let store: PromoStudioStore
+    let post: PromoStudioPost
     @State private var player: AVPlayer?
     @State private var progress: Double?
     @State private var failed = false
@@ -150,7 +150,7 @@ struct AutomatVideoPanel: View {
                     Text("Loading video…").font(.caption).foregroundStyle(.white.opacity(0.7))
                 }
             } else if post.media.video != nil {
-                AutomatImage(store: store, path: post.media.cover)
+                PromoStudioImage(store: store, path: post.media.cover)
                 Button {
                     load()
                 } label: {
@@ -193,8 +193,8 @@ struct AutomatVideoPanel: View {
     }
 }
 
-struct AutomatStoryboardSection: View {
-    let post: AutomatPost
+struct PromoStudioStoryboardSection: View {
+    let post: PromoStudioPost
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -233,7 +233,7 @@ struct AutomatStoryboardSection: View {
                     Label(sfx, systemImage: "speaker.wave.2").font(.caption2).foregroundStyle(.secondary).lineLimit(1)
                 }
             }
-            Text(AutomatPost.plain(text)).font(.body.weight(.semibold))
+            Text(PromoStudioPost.plain(text)).font(.body.weight(.semibold))
             if let detail, !detail.isEmpty {
                 Text(detail).font(.footnote).foregroundStyle(.secondary)
             }
@@ -247,9 +247,9 @@ struct AutomatStoryboardSection: View {
     }
 }
 
-struct AutomatReviseSection: View {
-    let store: AutomatStore
-    let post: AutomatPost
+struct PromoStudioReviseSection: View {
+    let store: PromoStudioStore
+    let post: PromoStudioPost
     var onError: (String) -> Void
     @State private var instruction = ""
     @State private var renderAfter = true
@@ -315,9 +315,9 @@ struct AutomatReviseSection: View {
     }
 }
 
-struct AutomatCaptionSection: View {
-    let store: AutomatStore
-    let post: AutomatPost
+struct PromoStudioCaptionSection: View {
+    let store: PromoStudioStore
+    let post: PromoStudioPost
     var onError: (String) -> Void
     @State private var caption = ""
     @State private var hashtags = ""
@@ -360,7 +360,7 @@ struct AutomatCaptionSection: View {
         .onChange(of: post.hashtags) { load() }
     }
 
-    private func tagText(_ post: AutomatPost) -> String { post.hashtags.map { "#\($0)" }.joined(separator: " ") }
+    private func tagText(_ post: PromoStudioPost) -> String { post.hashtags.map { "#\($0)" }.joined(separator: " ") }
 
     private func load() {
         caption = post.caption
@@ -368,9 +368,9 @@ struct AutomatCaptionSection: View {
     }
 }
 
-struct AutomatShareSection: View {
-    let store: AutomatStore
-    let post: AutomatPost
+struct PromoStudioShareSection: View {
+    let store: PromoStudioStore
+    let post: PromoStudioPost
     var onError: (String) -> Void
     @State private var date = Date().addingTimeInterval(3600)
     @State private var confirmPublish = false
@@ -413,7 +413,7 @@ struct AutomatShareSection: View {
             if let at = post.scheduledAt, post.status == .scheduled {
                 Label(at.formatted(date: .complete, time: .shortened), systemImage: "calendar.badge.clock").font(.footnote)
             }
-            Text("Scheduled posts go out while Automat is running on your Mac.").font(.caption).foregroundStyle(.secondary)
+            Text("Scheduled posts go out while Promo Studio is running on your Mac.").font(.caption).foregroundStyle(.secondary)
 
             if post.status == .published {
                 Divider()
