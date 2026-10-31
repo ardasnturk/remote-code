@@ -6,6 +6,20 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.3.0] — 2026-11-01
+
+### Added
+- A Promo Studio tab on iPhone and iPad (D-112): when Promo Studio runs on the
+  Mac, its projects, prompt-to-video, storyboards, revisions, video playback,
+  captions, posting, scheduling and Instagram sign-in can be used from the
+  phone. The Mac app bridges the `promoStudio` capability to Promo Studio's
+  local, token-protected API; the tab is hidden when Promo Studio is not
+  running.
+
+### Fixed
+- Settings… in the menu now brings the Settings window to the front. Remote
+  Code is a menu bar app, and the window used to open behind the frontmost app.
+
 ## [1.2.0] — 2026-10-25
 
 ### Changed

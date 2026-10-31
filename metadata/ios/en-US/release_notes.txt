@@ -1,3 +1,2 @@
-Pilothouse is now Remote Code: a new name and a new icon. Your pairing and settings stay as they are.
-• Allow everything in a chat: a new button on the permission sheet and a Permissions picker in the chat's menu
-• The weekly summary is written in the language the app is shown in
+New: a Promo Studio tab. If Promo Studio runs on your Mac, create promo videos, approve storyboards, and post or schedule to Instagram from your iPhone.
+• Settings on the Mac opens in front of other windows

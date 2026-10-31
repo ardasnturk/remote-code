@@ -1,3 +1,2 @@
-Pilothouse artık Remote Code: yeni ad, yeni simge. Eşleştirmeniz ve ayarlarınız olduğu gibi kalır.
-• Sohbette her şeye izin verin: izin ekranında yeni bir düğme, sohbet menüsünde İzinler seçicisi
-• Haftalık özet, uygulamanın gösterildiği dilde yazılır
+Yeni: Promo Studio sekmesi. Mac'inizde Promo Studio çalışıyorsa iPhone'dan tanıtım videoları oluşturun, storyboard'ları onaylayın, Instagram'da paylaşın veya zamanlayın.
+• Mac'te Ayarlar artık diğer pencerelerin önünde açılır

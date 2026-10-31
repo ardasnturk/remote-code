@@ -78,8 +78,7 @@ struct MenuBarLabel: View {
                 #if DEBUG
                 if ProcessInfo.processInfo.environment["REMOTECODE_PREVIEW_WINDOWS"] == "1" {
                     openWindow(id: "menu-preview")
-                    openSettings()
-                    NSApp.activate()
+                    SettingsWindow.show(using: openSettings)
                     return
                 }
                 #endif

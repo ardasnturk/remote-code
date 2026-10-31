@@ -7,6 +7,7 @@ import SwiftUI
 struct MenuContentView: View {
     @Environment(AppController.self) private var controller
     @Environment(\.openWindow) private var openWindow
+    @Environment(\.openSettings) private var openSettings
     /// Measured height of the scrollable sections. The menu bar window sizes
     /// itself to the ideal size, and a bare ScrollView has none, so without an
     /// explicit height the sections collapse to nothing.
@@ -343,7 +344,9 @@ struct MenuContentView: View {
 
     private var footer: some View {
         HStack(spacing: 14) {
-            SettingsLink {
+            Button {
+                SettingsWindow.show(using: openSettings)
+            } label: {
                 Label("Settings…", systemImage: "gearshape")
             }
             Button {
