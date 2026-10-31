@@ -1,4 +1,8 @@
 {
+ "#tag": {
+  "de": "#tag",
+  "tr": "#etiket"
+ },
  "%@ does not report its commands to Remote Code.": {
   "de": "%@ meldet seine Befehle nicht an Remote Code.",
   "tr": "%@ komutlarını Remote Code'a bildirmiyor."
@@ -43,6 +47,10 @@
   "de": "Änderungen akzeptieren",
   "tr": "Düzenlemeleri kabul et"
  },
+ "Accounts": {
+  "de": "Konten",
+  "tr": "Hesaplar"
+ },
  "Active": {
   "de": "Aktiv",
   "tr": "Etkin"
@@ -54,6 +62,10 @@
  "Add to Favorites": {
   "de": "Zu Favoriten hinzufügen",
   "tr": "Favorilere Ekle"
+ },
+ "After linking a new Instagram account to one of your Facebook Pages, refresh to add it without signing in again.": {
+  "de": "Nachdem du ein neues Instagram-Konto mit einer deiner Facebook-Seiten verknüpft hast, aktualisiere, um es ohne erneute Anmeldung hinzuzufügen.",
+  "tr": "Facebook Sayfalarından birine yeni bir Instagram hesabı bağladıktan sonra, yeniden giriş yapmadan eklemek için yenile."
  },
  "Agent default": {
   "de": "Agent-Standard",
@@ -79,6 +91,14 @@
   "de": "%@ in dieser Sitzung immer erlauben",
   "tr": "Bu oturumda %@ için hep izin ver"
  },
+ "Analyze Again": {
+  "de": "Erneut analysieren",
+  "tr": "Yeniden Analiz Et"
+ },
+ "Analyze Project": {
+  "de": "Projekt analysieren",
+  "tr": "Projeyi Analiz Et"
+ },
  "Answer to Claude": {
   "de": "Antwort an Claude",
   "tr": "Claude'a verilen cevap"
@@ -86,6 +106,10 @@
  "Appearance": {
   "de": "Darstellung",
   "tr": "Görünüm"
+ },
+ "Approve & Produce": {
+  "de": "Freigeben und produzieren",
+  "tr": "Onayla ve Üret"
  },
  "Approve or deny file edits and commands with one tap.": {
   "de": "Dateiänderungen und Befehle mit einem Tippen erlauben oder ablehnen.",
@@ -111,6 +135,10 @@
   "de": "Fotos oder Videos anhängen",
   "tr": "Fotoğraf veya video ekle"
  },
+ "Automat": {
+  "de": "Automat",
+  "tr": "Automat"
+ },
  "Browse your Mac and start a chat where your project lives.": {
   "de": "Durchsuche deinen Mac und starte einen Chat dort, wo dein Projekt liegt.",
   "tr": "Mac'inizde gezinin ve projenizin bulunduğu yerde bir sohbet başlatın."
@@ -134,6 +162,10 @@
  "Cancelled": {
   "de": "Abgebrochen",
   "tr": "İptal edildi"
+ },
+ "Caption": {
+  "de": "Beschreibung",
+  "tr": "Açıklama"
  },
  "Chats": {
   "de": "Chats",
@@ -163,9 +195,21 @@
   "de": "Claude fragt, bevor Dateien geändert oder Befehle ausgeführt werden.",
   "tr": "Claude dosyaları düzenlemeden veya komut çalıştırmadan önce sorar."
  },
+ "Claude chooses": {
+  "de": "Claude wählt",
+  "tr": "Claude seçsin"
+ },
  "Claude edits and runs commands without asking. Use with care.": {
   "de": "Claude ändert Dateien und führt Befehle ohne Nachfrage aus. Mit Vorsicht verwenden.",
   "tr": "Claude sormadan düzenler ve komut çalıştırır. Dikkatli kullanın."
+ },
+ "Claude first writes a scene-by-scene storyboard. Nothing is rendered until you approve it.": {
+  "de": "Claude schreibt zuerst ein Storyboard Szene für Szene. Gerendert wird erst, wenn du es freigibst.",
+  "tr": "Claude önce sahne sahne bir storyboard yazar. Sen onaylamadan hiçbir şey render edilmez."
+ },
+ "Claude is writing the storyboard…": {
+  "de": "Claude schreibt das Storyboard …",
+  "tr": "Claude storyboard'u yazıyor…"
  },
  "Claude kept working on your Mac while you were away.": {
   "de": "Claude hat auf deinem Mac weitergearbeitet, während du weg warst.",
@@ -186,6 +230,10 @@
  "Claude wants to use %@": {
   "de": "Claude möchte %@ verwenden",
   "tr": "Claude %@ kullanmak istiyor"
+ },
+ "Claude writes a storyboard, you approve or revise it, then Claude produces the video.": {
+  "de": "Claude schreibt ein Storyboard, du gibst es frei oder überarbeitest es, dann produziert Claude das Video.",
+  "tr": "Claude bir storyboard yazar, sen onaylar ya da revize edersin, ardından Claude videoyu üretir."
  },
  "Clear Cache": {
   "de": "Cache leeren",
@@ -219,9 +267,17 @@
   "de": "Befehle · %lld",
   "tr": "Komutlar · %lld"
  },
+ "Comments": {
+  "de": "Kommentare",
+  "tr": "Yorum"
+ },
  "Completed": {
   "de": "Erledigt",
   "tr": "Tamamlandı"
+ },
+ "Concept": {
+  "de": "Konzept",
+  "tr": "Konsept"
  },
  "Connected via": {
   "de": "Verbunden über",
@@ -311,9 +367,17 @@
   "de": "Löschen",
   "tr": "Sil"
  },
+ "Delete Post": {
+  "de": "Beitrag löschen",
+  "tr": "Gönderiyi Sil"
+ },
  "Delete Session": {
   "de": "Sitzung löschen",
   "tr": "Oturumu Sil"
+ },
+ "Delete this post?": {
+  "de": "Diesen Beitrag löschen?",
+  "tr": "Bu gönderi silinsin mi?"
  },
  "Delete this session?": {
   "de": "Diese Sitzung löschen?",
@@ -351,9 +415,21 @@
   "de": "Lade sie von der Website herunter und öffne sie. Oben auf dem Bildschirm erscheint in der Menüleiste ein >_-Symbol.",
   "tr": "Web sitesinden indirip açın. Ekranın üstündeki menü çubuğunda bir >_ simgesi belirir."
  },
+ "Draft": {
+  "de": "Entwurf",
+  "tr": "Taslak"
+ },
+ "Each project posts with its own account. Accounts linked to a Facebook Page you manage are added together.": {
+  "de": "Jedes Projekt postet mit seinem eigenen Konto. Konten, die mit einer von dir verwalteten Facebook-Seite verknüpft sind, werden gemeinsam hinzugefügt.",
+  "tr": "Her proje kendi hesabıyla paylaşır. Yönettiğin bir Facebook Sayfasına bağlı hesaplar birlikte eklenir."
+ },
  "Earlier": {
   "de": "Früher",
   "tr": "Daha önce"
+ },
+ "Earlier Versions": {
+  "de": "Frühere Versionen",
+  "tr": "Önceki Sürümler"
  },
  "Earlier models": {
   "de": "Ältere Modelle",
@@ -394,6 +470,14 @@
  "Favorites": {
   "de": "Favoriten",
   "tr": "Favoriler"
+ },
+ "Feature": {
+  "de": "Funktion",
+  "tr": "Özellik"
+ },
+ "Features": {
+  "de": "Funktionen",
+  "tr": "Özellikler"
  },
  "Fetch": {
   "de": "Abrufen",
@@ -455,6 +539,10 @@
   "de": "Haptisches Feedback",
   "tr": "Dokunsal geri bildirim"
  },
+ "Hashtags": {
+  "de": "Hashtags",
+  "tr": "Hashtag'ler"
+ },
  "Have an agent ready on the Mac": {
   "de": "Einen Agenten auf dem Mac bereithalten",
   "tr": "Mac'te bir ajan hazır olsun"
@@ -471,6 +559,10 @@
   "de": "So richtest du Tailscale ein",
   "tr": "Tailscale Nasıl Kurulur"
  },
+ "Ideas": {
+  "de": "Ideen",
+  "tr": "Fikirler"
+ },
  "If iOS asks for Local Network access, allow it so Remote Code can find your Mac.": {
   "de": "Wenn iOS nach Zugriff auf das lokale Netzwerk fragt, erlaube ihn, damit Remote Code deinen Mac findet.",
   "tr": "iOS Yerel Ağ erişimi isterse izin verin; böylece Remote Code Mac'inizi bulabilir."
@@ -483,6 +575,14 @@
   "de": "Überblick",
   "tr": "Özet"
  },
+ "Instagram Accounts": {
+  "de": "Instagram-Konten",
+  "tr": "Instagram Hesapları"
+ },
+ "Instagram account": {
+  "de": "Instagram-Konto",
+  "tr": "Instagram hesabı"
+ },
  "Install Remote Code on your Mac": {
   "de": "Remote Code auf deinem Mac installieren",
   "tr": "Remote Code'u Mac'inize kurun"
@@ -490,6 +590,10 @@
  "Install Tailscale from the App Store and sign in with the same account.": {
   "de": "Installiere Tailscale aus dem App Store und melde dich mit demselben Konto an.",
   "tr": "App Store'dan Tailscale'i kurun ve aynı hesapla giriş yapın."
+ },
+ "Instruction": {
+  "de": "Anweisung",
+  "tr": "Talimat"
  },
  "Interrupted by user.": {
   "de": "Vom Benutzer unterbrochen.",
@@ -519,6 +623,10 @@
   "de": "Später",
   "tr": "Sonra"
  },
+ "Length: %lld s": {
+  "de": "Länge: %lld s",
+  "tr": "Süre: %lld sn"
+ },
  "Licenses": {
   "de": "Lizenzen",
   "tr": "Lisanslar"
@@ -527,6 +635,10 @@
   "de": "Hell",
   "tr": "Açık"
  },
+ "Likes": {
+  "de": "Likes",
+  "tr": "Beğeni"
+ },
  "Limits": {
   "de": "Limits",
   "tr": "Limitler"
@@ -534,6 +646,10 @@
  "Limits appear after an agent has run on your Mac.": {
   "de": "Limits erscheinen, nachdem ein Agent auf deinem Mac gelaufen ist.",
   "tr": "Limitler, bir ajan Mac'inizde çalıştıktan sonra görünür."
+ },
+ "Loading video…": {
+  "de": "Video wird geladen …",
+  "tr": "Video yükleniyor…"
  },
  "Loading…": {
   "de": "Wird geladen …",
@@ -615,6 +731,14 @@
   "de": "Neuer Ordner",
   "tr": "Yeni Klasör"
  },
+ "New Video": {
+  "de": "Neues Video",
+  "tr": "Yeni Video"
+ },
+ "New Video from a Prompt": {
+  "de": "Neues Video aus einem Prompt",
+  "tr": "Prompt'tan Yeni Video"
+ },
  "New chats": {
   "de": "Neue Chats",
   "tr": "Yeni sohbetler"
@@ -630,6 +754,10 @@
  "No Session Selected": {
   "de": "Keine Sitzung ausgewählt",
   "tr": "Oturum Seçilmedi"
+ },
+ "No Voiceover": {
+  "de": "Ohne Sprecher",
+  "tr": "Seslendirmesiz"
  },
  "No answer": {
   "de": "Keine Antwort",
@@ -663,9 +791,17 @@
   "de": "Keiner",
   "tr": "Yok"
  },
+ "Not connected to your Mac.": {
+  "de": "Nicht mit deinem Mac verbunden.",
+  "tr": "Mac'ine bağlı değil."
+ },
  "Not installed": {
   "de": "Nicht installiert",
   "tr": "Kurulu değil"
+ },
+ "Not rendered yet": {
+  "de": "Noch nicht gerendert",
+  "tr": "Henüz render edilmedi"
  },
  "Not signed in": {
   "de": "Nicht angemeldet",
@@ -719,9 +855,17 @@
   "de": "Einstellungen öffnen",
   "tr": "Ayarları Aç"
  },
+ "Open on Instagram": {
+  "de": "Auf Instagram öffnen",
+  "tr": "Instagram'da Aç"
+ },
  "Open the Remote Code menu → Tailscale → “Set Up with Claude”. Claude installs and checks Tailscale for you; you only sign in.": {
   "de": "Öffne im Remote-Code-Menü → Tailscale → „Automatisch mit Claude einrichten“. Claude installiert und prüft Tailscale für dich; du meldest dich nur an.",
   "tr": "Remote Code menüsünde Tailscale → “Claude ile otomatik kur”u seçin. Claude, Tailscale'i sizin için kurar ve kontrol eder; siz yalnızca giriş yaparsınız."
+ },
+ "Optional direction, e.g. funnier, start with a question": {
+  "de": "Optionale Richtung, z. B. lustiger, mit einer Frage beginnen",
+  "tr": "İsteğe bağlı yönlendirme, ör. daha esprili, soruyla başla"
  },
  "Options": {
   "de": "Optionen",
@@ -791,6 +935,26 @@
   "de": "Nur planen",
   "tr": "Yalnızca plan"
  },
+ "Play": {
+  "de": "Abspielen",
+  "tr": "Oynat"
+ },
+ "Post Now": {
+  "de": "Jetzt posten",
+  "tr": "Şimdi Paylaş"
+ },
+ "Post as Reel Now": {
+  "de": "Jetzt als Reel posten",
+  "tr": "Reels Olarak Şimdi Paylaş"
+ },
+ "Post this video to Instagram now?": {
+  "de": "Dieses Video jetzt auf Instagram posten?",
+  "tr": "Bu video şimdi Instagram'da paylaşılsın mı?"
+ },
+ "Posts": {
+  "de": "Beiträge",
+  "tr": "Gönderiler"
+ },
  "Previous week": {
   "de": "Vorherige Woche",
   "tr": "Önceki hafta"
@@ -803,6 +967,42 @@
   "de": "Projekt",
   "tr": "Proje"
  },
+ "Projects": {
+  "de": "Projekte",
+  "tr": "Projeler"
+ },
+ "Promo film (directed by Claude)": {
+  "de": "Werbefilm (Regie: Claude)",
+  "tr": "Promosyon filmi (Claude yönetir)"
+ },
+ "Prompt": {
+  "de": "Prompt",
+  "tr": "Prompt"
+ },
+ "Prompt…": {
+  "de": "Prompt …",
+  "tr": "Prompt…"
+ },
+ "Published": {
+  "de": "Veröffentlicht",
+  "tr": "Paylaşıldı"
+ },
+ "Publishing": {
+  "de": "Wird veröffentlicht",
+  "tr": "Paylaşılıyor"
+ },
+ "Quick Video": {
+  "de": "Schnelles Video",
+  "tr": "Hızlı Video"
+ },
+ "Quick template (screenshots)": {
+  "de": "Schnelle Vorlage (Screenshots)",
+  "tr": "Hızlı şablon (ekran görüntüleri)"
+ },
+ "Reach": {
+  "de": "Reichweite",
+  "tr": "Erişim"
+ },
  "Read": {
   "de": "Lesen",
   "tr": "Oku"
@@ -814,6 +1014,14 @@
  "Recent": {
   "de": "Zuletzt verwendet",
   "tr": "Son kullanılanlar"
+ },
+ "Refresh Accounts": {
+  "de": "Konten aktualisieren",
+  "tr": "Hesapları Yenile"
+ },
+ "Refresh Statistics": {
+  "de": "Statistiken aktualisieren",
+  "tr": "İstatistikleri Yenile"
  },
  "Remote Access": {
   "de": "Fernzugriff",
@@ -883,13 +1091,57 @@
   "de": "Diesen Mac entfernen?",
   "tr": "Bu Mac kaldırılsın mı?"
  },
+ "Render": {
+  "de": "Rendern",
+  "tr": "Render Et"
+ },
+ "Render Again": {
+  "de": "Erneut rendern",
+  "tr": "Yeniden Render Et"
+ },
+ "Render afterwards": {
+  "de": "Danach rendern",
+  "tr": "Sonra render et"
+ },
+ "Rendering": {
+  "de": "Wird gerendert",
+  "tr": "Render ediliyor"
+ },
+ "Research": {
+  "de": "Recherche",
+  "tr": "Araştırma"
+ },
+ "Research on the web": {
+  "de": "Im Web recherchieren",
+  "tr": "Web'de araştır"
+ },
  "Resets %@ · %@": {
   "de": "Wird %@ zurückgesetzt · %@",
   "tr": "%@ yenilenir · %@"
  },
+ "Restore": {
+  "de": "Wiederherstellen",
+  "tr": "Geri Dön"
+ },
  "Retry": {
   "de": "Erneut versuchen",
   "tr": "Yeniden Dene"
+ },
+ "Revise": {
+  "de": "Überarbeiten",
+  "tr": "Revize"
+ },
+ "Revise with Claude": {
+  "de": "Mit Claude überarbeiten",
+  "tr": "Claude ile Revize Et"
+ },
+ "Rewrite": {
+  "de": "Neu schreiben",
+  "tr": "Yeniden Yaz"
+ },
+ "Rewrite with Claude": {
+  "de": "Mit Claude neu schreiben",
+  "tr": "Claude ile Yeniden Yaz"
  },
  "Run": {
   "de": "Ausführen",
@@ -899,6 +1151,14 @@
   "de": "Läuft",
   "tr": "Çalışıyor"
  },
+ "Save": {
+  "de": "Sichern",
+  "tr": "Kaydet"
+ },
+ "Saves": {
+  "de": "Gespeichert",
+  "tr": "Kaydetme"
+ },
  "Scan the Pairing Code": {
   "de": "Kopplungscode scannen",
   "tr": "Eşleştirme Kodunu Tara"
@@ -907,6 +1167,30 @@
   "de": "Stattdessen QR-Code scannen",
   "tr": "Bunun Yerine QR Kodu Tara"
  },
+ "Scene %lld": {
+  "de": "Szene %lld",
+  "tr": "Sahne %lld"
+ },
+ "Scenes": {
+  "de": "Szenen",
+  "tr": "Sahneler"
+ },
+ "Schedule": {
+  "de": "Planen",
+  "tr": "Zamanla"
+ },
+ "Scheduled": {
+  "de": "Geplant",
+  "tr": "Zamanlananlar"
+ },
+ "Scheduled or published posts cannot be revised.": {
+  "de": "Geplante oder veröffentlichte Beiträge können nicht überarbeitet werden.",
+  "tr": "Zamanlanmış ya da paylaşılmış gönderiler revize edilemez."
+ },
+ "Scheduled posts go out while Automat is running on your Mac.": {
+  "de": "Geplante Beiträge werden gepostet, solange Automat auf deinem Mac läuft.",
+  "tr": "Zamanlanmış gönderiler, Mac'inde Automat çalışırken paylaşılır."
+ },
  "Search": {
   "de": "Suchen",
   "tr": "Ara"
@@ -914,6 +1198,10 @@
  "Search skills and commands": {
   "de": "Skills und Befehle suchen",
   "tr": "Skill ve komut ara"
+ },
+ "Section": {
+  "de": "Bereich",
+  "tr": "Bölüm"
  },
  "Send": {
   "de": "Senden",
@@ -947,6 +1235,14 @@
   "de": "Einstellungen",
   "tr": "Ayarlar"
  },
+ "Share": {
+  "de": "Teilen",
+  "tr": "Paylaş"
+ },
+ "Shares": {
+  "de": "Geteilt",
+  "tr": "Paylaşım"
+ },
  "Show Hidden Files": {
   "de": "Versteckte Dateien anzeigen",
   "tr": "Gizli Dosyaları Göster"
@@ -966,6 +1262,18 @@
  "Shows what the sub-agent is doing": {
   "de": "Zeigt, was der Sub-Agent gerade tut",
   "tr": "Alt ajanın ne yaptığını gösterir"
+ },
+ "Sign In": {
+  "de": "Anmelden",
+  "tr": "Giriş Yap"
+ },
+ "Sign In with Facebook": {
+  "de": "Mit Facebook anmelden",
+  "tr": "Facebook ile Giriş Yap"
+ },
+ "Signed in until %@": {
+  "de": "Angemeldet bis %@",
+  "tr": "%@ tarihine kadar giriş yapılı"
  },
  "Skills": {
   "de": "Skills",
@@ -1027,6 +1335,10 @@
   "de": "Gestoppt",
   "tr": "Durduruldu"
  },
+ "Storyboard": {
+  "de": "Storyboard",
+  "tr": "Storyboard"
+ },
  "Sub-agent": {
   "de": "Sub-Agent",
   "tr": "Alt ajan"
@@ -1067,6 +1379,10 @@
   "de": "Das Gespräch wurde komprimiert, um Kontext freizugeben.",
   "tr": "Bağlam alanı açmak için konuşma sıkıştırıldı."
  },
+ "The file could not be loaded.": {
+  "de": "Die Datei konnte nicht geladen werden.",
+  "tr": "Dosya yüklenemedi."
+ },
  "The folder is created in %@ on your Mac.": {
   "de": "Der Ordner wird auf deinem Mac in %@ erstellt.",
   "tr": "Klasör Mac'inizde %@ içinde oluşturulur."
@@ -1078,6 +1394,10 @@
  "The transcript is removed from your Mac and this device. Files Claude changed are not affected.": {
   "de": "Der Verlauf wird von deinem Mac und diesem Gerät entfernt. Von Claude geänderte Dateien bleiben unberührt.",
   "tr": "Döküm Mac'inizden ve bu cihazdan silinir. Claude'un değiştirdiği dosyalar etkilenmez."
+ },
+ "The video could not be loaded.": {
+  "de": "Das Video konnte nicht geladen werden.",
+  "tr": "Video yüklenemedi."
  },
  "Thinking": {
   "de": "Denkprozess",
@@ -1110,6 +1430,10 @@
  "This is not a valid Remote Code pairing code.": {
   "de": "Das ist kein gültiger Remote-Code-Kopplungscode.",
   "tr": "Bu geçerli bir Remote Code eşleştirme kodu değil."
+ },
+ "This project has no Instagram account. Choose one on the project page.": {
+  "de": "Dieses Projekt hat kein Instagram-Konto. Wähle eines auf der Projektseite.",
+  "tr": "Bu projenin Instagram hesabı yok. Proje sayfasından bir hesap seç."
  },
  "This sub-agent left no transcript.": {
   "de": "Dieser Sub-Agent hat keinen Verlauf hinterlassen.",
@@ -1147,9 +1471,17 @@
   "de": "Erst die Demo ausprobieren",
   "tr": "Önce Demoyu Deneyin"
  },
+ "Type": {
+  "de": "Art",
+  "tr": "Tür"
+ },
  "Ultra": {
   "de": "Ultra",
   "tr": "Ultra"
+ },
+ "Unschedule": {
+  "de": "Planung aufheben",
+  "tr": "Zamanlamayı Kaldır"
  },
  "Use Tailscale": {
   "de": "Tailscale verwenden",
@@ -1166,6 +1498,18 @@
  "Version": {
   "de": "Version",
   "tr": "Sürüm"
+ },
+ "Views": {
+  "de": "Aufrufe",
+  "tr": "İzlenme"
+ },
+ "Voiceover": {
+  "de": "Sprecher",
+  "tr": "Seslendirme"
+ },
+ "Waiting for storyboard approval": {
+  "de": "Wartet auf Freigabe des Storyboards",
+  "tr": "Storyboard onayı bekleniyor"
  },
  "Waiting for the sub-agent…": {
   "de": "Warte auf den Sub-Agent …",
@@ -1186,6 +1530,10 @@
  "Weekly": {
   "de": "Wöchentlich",
   "tr": "Haftalık"
+ },
+ "What should the video be about?": {
+  "de": "Worum soll es im Video gehen?",
+  "tr": "Video ne anlatsın?"
  },
  "Where": {
   "de": "Wo",
@@ -1230,6 +1578,14 @@
  "[Video, %@: the %lld images attached are frames from it, evenly spaced from start to end.]": {
   "de": "[Video, %@: Die %lld angehängten Bilder sind Einzelbilder daraus, gleichmäßig vom Anfang bis zum Ende verteilt.]",
   "tr": "[Video, %@: ekteki %lld görsel, bu videodan baştan sona eşit aralıklarla alınmış karelerdir.]"
+ },
+ "e.g. Make the hook bolder and mention it is free in the last scene": {
+  "de": "z. B. Mach den Einstieg kühner und erwähne in der letzten Szene, dass es kostenlos ist",
+  "tr": "ör. Kancayı daha iddialı yap ve son sahnede ücretsiz olduğunu belirt"
+ },
+ "e.g. The derby is tonight. Make an energetic promo with a countdown and the AI prediction.": {
+  "de": "z. B. Das Derby ist heute Abend. Mach einen energiegeladenen Promo-Clip mit Countdown und KI-Prognose.",
+  "tr": "ör. Derbi bu akşam. Geri sayım ve yapay zekâ tahmini olan enerjik bir tanıtım videosu yap."
  },
  "iOS does not let apps install or configure a VPN for you, so step 2 has to be done by hand.": {
   "de": "iOS erlaubt Apps nicht, ein VPN für dich zu installieren oder zu konfigurieren, daher musst du Schritt 2 selbst ausführen.",

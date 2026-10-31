@@ -56,7 +56,18 @@ struct RootView: View {
                     Text(error)
                 }
             } else if model.hasPairedMac {
-                MainSplitView()
+                if let automat = model.connection?.automat, automat.isAvailable {
+                    TabView {
+                        Tab("Chats", systemImage: "bubble.left.and.text.bubble.right") {
+                            MainSplitView()
+                        }
+                        Tab("Automat", systemImage: "sparkles.tv") {
+                            AutomatHomeView(store: automat)
+                        }
+                    }
+                } else {
+                    MainSplitView()
+                }
             } else {
                 WelcomeView()
             }

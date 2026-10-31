@@ -69,6 +69,9 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case "getUsageLimits": message = .getUsageLimits
         case "listCommands": message = .listCommands(try payload(SessionRef.self))
         case "updateSessionSettings": message = .updateSessionSettings(try payload(UpdateSessionSettings.self))
+        case "automat": message = .automat(try payload(AutomatRequest.self))
+        case "automatSubscribe": message = .automatSubscribe
+        case "automatUnsubscribe": message = .automatUnsubscribe
         default: throw ProtocolError.unknownMessageType(type)
         }
     }
@@ -83,7 +86,9 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case .hello(let payload): try container.encode(payload, forKey: .payload)
         case .listDirectory(let payload): try container.encode(payload, forKey: .payload)
         case .createDirectory(let payload): try container.encode(payload, forKey: .payload)
-        case .listSessions, .macStatus, .getUsageLimits: try container.encode(EmptyPayload(), forKey: .payload)
+        case .listSessions, .macStatus, .getUsageLimits, .automatSubscribe, .automatUnsubscribe:
+            try container.encode(EmptyPayload(), forKey: .payload)
+        case .automat(let payload): try container.encode(payload, forKey: .payload)
         case .getWeeklySummary(let payload): try container.encode(payload, forKey: .payload)
         case .listCommands(let payload): try container.encode(payload, forKey: .payload)
         case .updateSessionSettings(let payload): try container.encode(payload, forKey: .payload)
@@ -145,6 +150,8 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case "weeklySummary": message = .weeklySummary(try payload(WeeklySummary.self))
         case "usageLimits": message = .usageLimits(try payload(UsageLimitsPayload.self))
         case "commandCatalog": message = .commandCatalog(try payload(CommandCatalog.self))
+        case "automatResponse": message = .automatResponse(try payload(AutomatResponse.self))
+        case "automatEvent": message = .automatEvent(try payload(AutomatEvent.self))
         case "error": message = .error(try payload(ErrorPayload.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
@@ -172,6 +179,8 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case .weeklySummary(let payload): try container.encode(payload, forKey: .payload)
         case .usageLimits(let payload): try container.encode(payload, forKey: .payload)
         case .commandCatalog(let payload): try container.encode(payload, forKey: .payload)
+        case .automatResponse(let payload): try container.encode(payload, forKey: .payload)
+        case .automatEvent(let payload): try container.encode(payload, forKey: .payload)
         case .error(let payload): try container.encode(payload, forKey: .payload)
         }
     }

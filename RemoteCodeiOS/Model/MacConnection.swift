@@ -18,6 +18,8 @@ final class MacConnection {
     private(set) var capabilities: Set<String> = []
     /// Set when the app returns to the foreground while sessions were busy.
     var resumedWhileAwayNotice: String?
+    /// The Automat app on the Mac (capability `automat`).
+    let automat = AutomatStore()
 
     @ObservationIgnored let client: MacClient
     @ObservationIgnored private var chats: [String: ChatState] = [:]
@@ -53,6 +55,7 @@ final class MacConnection {
             }
         )
         sessions = cache.sessions(macId: mac.id)
+        automat.attach(self)
     }
 
     var isConnected: Bool { state.isConnected }
@@ -110,7 +113,10 @@ final class MacConnection {
 
     private func stateChanged(_ newState: MacConnectionState) async {
         state = newState
-        guard newState.isConnected else { return }
+        guard newState.isConnected else {
+            automat.disconnected()
+            return
+        }
         await refreshSessions()
         await refreshStatus()
         for sessionId in subscribed {
@@ -129,6 +135,10 @@ final class MacConnection {
         case .helloAck(let ack):
             pendingPermissions = ack.pendingPermissions
             capabilities = Set(ack.capabilities ?? [])
+            let capabilities = self.capabilities
+            Task { await automat.connected(capabilities: capabilities) }
+        case .automatEvent(let event):
+            automat.handle(event)
         case .event(let payload):
             let event = payload.sequencedEvent
             chat(for: payload.sessionId).apply(event)
@@ -154,7 +164,7 @@ final class MacConnection {
             if error.code == .deviceRevoked {
                 state = .failed(message: error.message, code: error.code)
             }
-        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog:
+        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog, .automatResponse:
             break
         }
     }

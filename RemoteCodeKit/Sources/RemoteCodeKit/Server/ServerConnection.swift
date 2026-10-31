@@ -12,6 +12,7 @@ public actor ServerConnection {
     private let log = RemoteCodeLog("ServerConnection")
     private var subscriptions: [String: Task<Void, Never>] = [:]
     private var notificationTask: Task<Void, Never>?
+    private var automatTask: Task<Void, Never>?
     private var didHello = false
     private var isClosed = false
 
@@ -158,6 +159,22 @@ public actor ServerConnection {
         case .permissionResponse(let response):
             try await service.respondToPermission(response, from: client)
             return .ok
+        case .automat(let request):
+            return .automatResponse(try await service.automat(request))
+        case .automatSubscribe:
+            let stream = try await service.automatEvents()
+            automatTask?.cancel()
+            automatTask = Task { [weak self] in
+                for await event in stream {
+                    guard let self else { return }
+                    await self.send(.automatEvent(event))
+                }
+            }
+            return .ok
+        case .automatUnsubscribe:
+            automatTask?.cancel()
+            automatTask = nil
+            return .ok
         }
     }
 
@@ -214,6 +231,8 @@ public actor ServerConnection {
     private func cleanUp() {
         notificationTask?.cancel()
         notificationTask = nil
+        automatTask?.cancel()
+        automatTask = nil
         for task in subscriptions.values { task.cancel() }
         subscriptions.removeAll()
     }

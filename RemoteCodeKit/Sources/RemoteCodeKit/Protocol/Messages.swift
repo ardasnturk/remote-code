@@ -30,6 +30,9 @@ public enum HostCapability {
     public static let modelCatalog = "modelCatalog"
     /// `UpdateSessionSettings.permissionMode`: a chat's permission mode can change.
     public static let sessionPermissionMode = "sessionPermissionMode"
+    /// `automat`, `automatSubscribe`: the Mac forwards requests to the Automat app's local API.
+    /// Not in `all`: only the real Mac host offers it (not the demo).
+    public static let automat = "automat"
     /// Every capability this build of RemoteCodeKit implements.
     public static let all = [
         createDirectory, agents, threads, insights, commandCatalog, sessionSettings, modelCatalog, sessionPermissionMode,
@@ -320,6 +323,9 @@ public enum ClientMessage: Sendable, Hashable {
     case getUsageLimits
     case listCommands(SessionRef)
     case updateSessionSettings(UpdateSessionSettings)
+    case automat(AutomatRequest)
+    case automatSubscribe
+    case automatUnsubscribe
 
     public var typeName: String {
         switch self {
@@ -341,6 +347,9 @@ public enum ClientMessage: Sendable, Hashable {
         case .getUsageLimits: "getUsageLimits"
         case .listCommands: "listCommands"
         case .updateSessionSettings: "updateSessionSettings"
+        case .automat: "automat"
+        case .automatSubscribe: "automatSubscribe"
+        case .automatUnsubscribe: "automatUnsubscribe"
         }
     }
 }
@@ -362,6 +371,8 @@ public enum ServerMessage: Sendable, Hashable {
     case weeklySummary(WeeklySummary)
     case usageLimits(UsageLimitsPayload)
     case commandCatalog(CommandCatalog)
+    case automatResponse(AutomatResponse)
+    case automatEvent(AutomatEvent)
     case error(ErrorPayload)
 
     public var typeName: String {
@@ -381,6 +392,8 @@ public enum ServerMessage: Sendable, Hashable {
         case .weeklySummary: "weeklySummary"
         case .usageLimits: "usageLimits"
         case .commandCatalog: "commandCatalog"
+        case .automatResponse: "automatResponse"
+        case .automatEvent: "automatEvent"
         case .error: "error"
         }
     }

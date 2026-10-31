@@ -29,6 +29,10 @@ import Testing
         .unsubscribe(SessionRef(sessionId: "s1")),
         .permissionResponse(PermissionResponse(requestId: "r1", allow: true, remember: true)),
         .macStatus,
+        .automat(AutomatRequest(method: "POST", path: "/v1/actions/produce", body: "{\"postId\":\"X\"}")),
+        .automat(AutomatRequest(path: "/v1/media/posts/X/video.mp4", range: "bytes=0-99")),
+        .automatSubscribe,
+        .automatUnsubscribe,
     ])
     func clientMessagesRoundTrip(_ message: ClientMessage) throws {
         #expect(try roundTrip(message) == message)
@@ -71,6 +75,16 @@ import Testing
         for message in messages {
             #expect(try roundTrip(message) == message, "\(message.typeName)")
         }
+    }
+
+    @Test func automatMessagesRoundTrip() throws {
+        let response = ServerMessage.automatResponse(
+            AutomatResponse(status: 206, contentType: "video/mp4", contentRange: "bytes 0-2/12093935", body: Data([0, 1, 2]))
+        )
+        #expect(try roundTrip(response) == response)
+        let event = ServerMessage.automatEvent(AutomatEvent(event: "job", data: "{\"progress\":0.5}"))
+        #expect(try roundTrip(event) == event)
+        #expect(AutomatResponse(status: 206, contentRange: "bytes 0-2/12093935").totalSize == 12_093_935)
     }
 
     @Test func envelopeHasDocumentedShape() throws {
