@@ -50,6 +50,9 @@ end-to-end encrypted.
   the phone.
 * **Notifications** — native macOS and, through [ntfy](https://ntfy.sh), on
   your phone when a task finishes or needs approval.
+* **Promo Studio** — if [Promo Studio](https://github.com/ardasnturk/promo-studio)
+  runs on the Mac, a tab on the phone creates promo videos with Claude, shows
+  storyboards to approve and posts or schedules them on Instagram.
 * **Private by design** — Noise IK end-to-end encryption, pinned keys, no
   server; Tailscale for access from anywhere.
 
