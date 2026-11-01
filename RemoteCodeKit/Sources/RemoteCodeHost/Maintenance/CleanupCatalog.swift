@@ -83,6 +83,7 @@ enum DiskSize {
         var info = stat()
         guard lstat(path, &info) == 0 else { return 0 }
         guard (info.st_mode & S_IFMT) == S_IFDIR else { return Int64(info.st_blocks) * 512 }
+        #if canImport(Darwin)
         guard let cPath = strdup(path) else { return 0 }
         defer { free(cPath) }
         var arguments: [UnsafeMutablePointer<CChar>?] = [cPath, nil]
@@ -96,6 +97,18 @@ enum DiskSize {
             }
         }
         return total
+        #else
+        // fts(3) is not visible to Swift on Linux (tests only); walk with FileManager.
+        guard let enumerator = FileManager.default.enumerator(atPath: path) else { return 0 }
+        var total: Int64 = 0
+        while let relative = enumerator.nextObject() as? String {
+            var entry = stat()
+            if lstat(path + "/" + relative, &entry) == 0, (entry.st_mode & S_IFMT) != S_IFDIR {
+                total += Int64(entry.st_blocks) * 512
+            }
+        }
+        return total
+        #endif
     }
 }
 
