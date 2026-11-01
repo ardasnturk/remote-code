@@ -215,7 +215,11 @@ final class AppUpdater {
                 newBundle: stagedApp,
                 backup: backup
             )
-            NSApp.terminate(nil)
+            // Quit from the run loop, not from this main-queue job: `terminate` waits for the
+            // app delegate's reply (`.terminateLater`) in a nested run loop, which cannot run
+            // main-actor work while a main-queue job is still executing, so it would hang and
+            // the swap script would wait forever.
+            RunLoop.main.perform { NSApp.terminate(nil) }
         } catch {
             try? fileManager.removeItem(at: staging)
             state = .failed(Self.installMessage(for: error))

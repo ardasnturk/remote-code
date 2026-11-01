@@ -6,6 +6,16 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.4.2] — 2026-11-01
+
+### Fixed
+- An update could stay at "Installing…" forever: the updater asked the app to
+  quit from inside a main-queue job, while quitting waits for main-actor work
+  (stopping the agents) that cannot run until that job ends. It now quits from
+  the run loop. Updating from 1.4.1 or earlier still hits the old code once:
+  if it stays at "Installing…", force quit Remote Code (⌥⌘⎋) within two
+  minutes and the update finishes by itself.
+
 ## [1.4.1] — 2026-11-01
 
 ### Fixed
