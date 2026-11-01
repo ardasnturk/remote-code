@@ -113,6 +113,8 @@
  "Lid-closed mode": "Modalità coperchio chiuso",
  "Lid-closed mode is on. Keep your Mac ventilated; it can get warm in a bag.": "La modalità coperchio chiuso è attiva. Tieni il Mac ventilato; in una borsa può scaldarsi.",
  "Local network": "Rete locale",
+ "Low disk space": "Spazio su disco quasi esaurito",
+ "Low disk space · %@ free": "Spazio su disco quasi esaurito · %@ liberi",
  "Mac ID": "ID del Mac",
  "Mac stays awake": "Il Mac resta attivo",
  "Mac: %@": "Mac: %@",

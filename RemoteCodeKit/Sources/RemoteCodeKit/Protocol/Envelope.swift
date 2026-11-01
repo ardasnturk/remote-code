@@ -73,6 +73,9 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case "promoStudioSubscribe": message = .promoStudioSubscribe
         case "promoStudioUnsubscribe": message = .promoStudioUnsubscribe
         case "setPower": message = .setPower(try payload(SetPower.self))
+        case "getStorage": message = .getStorage
+        case "scanCleanup": message = .scanCleanup
+        case "runCleanup": message = .runCleanup(try payload(RunCleanup.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
     }
@@ -87,10 +90,11 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case .hello(let payload): try container.encode(payload, forKey: .payload)
         case .listDirectory(let payload): try container.encode(payload, forKey: .payload)
         case .createDirectory(let payload): try container.encode(payload, forKey: .payload)
-        case .listSessions, .macStatus, .getUsageLimits, .promoStudioSubscribe, .promoStudioUnsubscribe:
+        case .listSessions, .macStatus, .getUsageLimits, .promoStudioSubscribe, .promoStudioUnsubscribe, .getStorage, .scanCleanup:
             try container.encode(EmptyPayload(), forKey: .payload)
         case .promoStudio(let payload): try container.encode(payload, forKey: .payload)
         case .setPower(let payload): try container.encode(payload, forKey: .payload)
+        case .runCleanup(let payload): try container.encode(payload, forKey: .payload)
         case .getWeeklySummary(let payload): try container.encode(payload, forKey: .payload)
         case .listCommands(let payload): try container.encode(payload, forKey: .payload)
         case .updateSessionSettings(let payload): try container.encode(payload, forKey: .payload)
@@ -154,6 +158,9 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case "commandCatalog": message = .commandCatalog(try payload(CommandCatalog.self))
         case "promoStudioResponse": message = .promoStudioResponse(try payload(PromoStudioResponse.self))
         case "promoStudioEvent": message = .promoStudioEvent(try payload(PromoStudioEvent.self))
+        case "storage": message = .storage(try payload(StorageOverview.self))
+        case "cleanupScan": message = .cleanupScan(try payload(CleanupScan.self))
+        case "cleanupResult": message = .cleanupResult(try payload(CleanupResult.self))
         case "error": message = .error(try payload(ErrorPayload.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
@@ -183,6 +190,9 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case .commandCatalog(let payload): try container.encode(payload, forKey: .payload)
         case .promoStudioResponse(let payload): try container.encode(payload, forKey: .payload)
         case .promoStudioEvent(let payload): try container.encode(payload, forKey: .payload)
+        case .storage(let payload): try container.encode(payload, forKey: .payload)
+        case .cleanupScan(let payload): try container.encode(payload, forKey: .payload)
+        case .cleanupResult(let payload): try container.encode(payload, forKey: .payload)
         case .error(let payload): try container.encode(payload, forKey: .payload)
         }
     }

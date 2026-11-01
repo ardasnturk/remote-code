@@ -113,6 +113,8 @@
  "Lid-closed mode": "クラムシェルモード",
  "Lid-closed mode is on. Keep your Mac ventilated; it can get warm in a bag.": "クラムシェルモードがオンです。Macの通気を確保してください。バッグの中では熱くなることがあります。",
  "Local network": "ローカルネットワーク",
+ "Low disk space": "ディスクの空き容量不足",
+ "Low disk space · %@ free": "ディスクの空き容量不足 · 空き %@",
  "Mac ID": "MacのID",
  "Mac stays awake": "Macはスリープしません",
  "Mac: %@": "Mac：%@",

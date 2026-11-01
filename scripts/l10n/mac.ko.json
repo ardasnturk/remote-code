@@ -113,6 +113,8 @@
  "Lid-closed mode": "덮개 닫힘 모드",
  "Lid-closed mode is on. Keep your Mac ventilated; it can get warm in a bag.": "덮개 닫힘 모드가 켜져 있습니다. Mac의 통풍을 유지하십시오. 가방 안에서는 뜨거워질 수 있습니다.",
  "Local network": "로컬 네트워크",
+ "Low disk space": "디스크 공간 부족",
+ "Low disk space · %@ free": "디스크 공간 부족 · %@ 사용 가능",
  "Mac ID": "Mac ID",
  "Mac stays awake": "Mac이 깨어 있음",
  "Mac: %@": "Mac: %@",

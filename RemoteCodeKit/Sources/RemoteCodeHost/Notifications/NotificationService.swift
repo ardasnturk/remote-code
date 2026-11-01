@@ -24,6 +24,9 @@ public struct HostAlert: Sendable, Hashable {
         case promoFailed
         /// Promo Studio posted a video to Instagram (also scheduled posts).
         case promoPublished
+        /// The startup volume runs low on space (D-115). `folderName` is the
+        /// free space, already formatted; `detail` the Mac's name.
+        case lowDiskSpace
 
         /// Kinds that come from Promo Studio rather than an agent session.
         public static let promoStudio: [Kind] = [.promoVideoReady, .promoStoryboardReady, .promoFailed, .promoPublished]
@@ -72,6 +75,7 @@ public struct AlertContent: Sendable, Hashable {
         case .promoStoryboardReady: "Storyboard ready · \(alert.folderName)"
         case .promoFailed: "Video failed · \(alert.folderName)"
         case .promoPublished: "Posted to Instagram · \(alert.folderName)"
+        case .lowDiskSpace: "Low disk space · \(alert.folderName) free"
         }
         return AlertContent(title: "Remote Code", body: body(headline, detail: includeDetail ? alert.detail : nil))
     }

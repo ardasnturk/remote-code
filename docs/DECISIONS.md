@@ -1003,3 +1003,34 @@ Every change is pushed to all connected phones as `macStatus`. A paired phone
 can already run commands through Claude, so these switches add no new trust;
 Perch's sudoers rule was not taken over, the helper stays the only privileged
 code. Disk cleanup and memory tools from Perch are later phases.
+
+### D-115 — Storage and cleanup from the phone
+**Status:** accepted
+
+A Mac that runs out of space breaks builds and agent sessions, and the user
+is often away from it. With capability `storage` the phone shows the free
+space of the startup volume (`volumeAvailableCapacityForImportantUsage`, what
+Finder shows) and runs a cleanup adapted from Perch's `Cleaner` (MIT, see
+NOTICE): app caches (Apple's `com.apple.*` caches are skipped), logs, Xcode
+DerivedData / device support / previews, developer package caches (npm, pnpm,
+yarn, bun, Gradle, Cargo, CocoaPods, pip, Homebrew, …), installers in
+Downloads and the Trash. Sizes are allocated blocks, measured with `fts(3)`.
+
+* **The phone never sends a path.** A scan gives every item a random id that
+  only the Mac can map back to its path; `runCleanup` names ids or whole
+  categories of that scan. Each path is checked again right before deletion:
+  strictly inside the home folder, no `..`, still present. A scan can be used
+  once, because sizes and contents change.
+* Moving to the Trash is the default; "Delete Permanently" asks separately.
+  Trash items are always deleted for good.
+* Folders blocked by macOS privacy settings are reported as unavailable instead
+  of failing the scan. Mail downloads (another app's container) are left out
+  so no privacy prompt appears on an unattended Mac.
+* **Low space warning:** every 5 minutes the host compares free space with
+  10 GB and posts a `lowDiskSpace` alert once per dip (again only after it
+  recovered to 15 GB). It is a regular notification kind (macOS, ntfy, on by
+  default); the ntfy tap link `pilothouse://storage?mac=<fingerprint>` opens
+  the storage screen.
+
+Large-file browsing and the app uninstaller from Perch are not part of this;
+an uninstaller is too risky to drive from a phone.

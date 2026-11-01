@@ -63,6 +63,12 @@ public protocol HostService: Sendable {
     func promoStudioEvents() async throws -> AsyncStream<PromoStudioEvent>
     /// Changes power settings and returns the new status (capability `power`).
     func setPower(_ request: SetPower) async throws -> MacStatus
+    /// Free space of the startup volume (capability `storage`).
+    func storageOverview() async throws -> StorageOverview
+    /// Looks for files that are safe to delete.
+    func scanCleanup() async throws -> CleanupScan
+    /// Deletes items of the latest scan.
+    func runCleanup(_ request: RunCleanup) async throws -> CleanupResult
 }
 
 extension HostService {
@@ -76,6 +82,18 @@ extension HostService {
 
     public func setPower(_ request: SetPower) async throws -> MacStatus {
         throw ErrorPayload(code: .powerUnavailable, message: "This Mac cannot change its power settings remotely.")
+    }
+
+    public func storageOverview() async throws -> StorageOverview {
+        throw ErrorPayload(code: .storageUnavailable, message: "This Mac cannot report its storage.")
+    }
+
+    public func scanCleanup() async throws -> CleanupScan {
+        throw ErrorPayload(code: .storageUnavailable, message: "This Mac cannot clean up storage remotely.")
+    }
+
+    public func runCleanup(_ request: RunCleanup) async throws -> CleanupResult {
+        throw ErrorPayload(code: .storageUnavailable, message: "This Mac cannot clean up storage remotely.")
     }
 }
 

@@ -7,9 +7,21 @@
   "de": "%@ meldet seine Befehle nicht an Remote Code.",
   "tr": "%@ komutlarını Remote Code'a bildirmiyor."
  },
+ "%@ free": {
+  "de": "%@ frei",
+  "tr": "%@ boş"
+ },
+ "%@ freed.": {
+  "de": "%@ freigegeben.",
+  "tr": "%@ boşaltıldı."
+ },
  "%@ is not signed in on your Mac. Run it once in Terminal there.": {
   "de": "%@ ist auf deinem Mac nicht angemeldet. Starte es dort einmal im Terminal.",
   "tr": "%@ Mac'inizde oturum açmamış. Orada Terminal'de bir kez çalıştırın."
+ },
+ "%@ moved to the Trash.": {
+  "de": "%@ in den Papierkorb gelegt.",
+  "tr": "%@ Çöp Kutusu'na taşındı."
  },
  "%@ runs on your Mac. You'll see every step here.": {
   "de": "%@ läuft auf deinem Mac. Du siehst hier jeden Schritt.",
@@ -30,6 +42,14 @@
  "%lld image(s)": {
   "de": "%lld Bild(er)",
   "tr": "%lld görsel"
+ },
+ "%lld items": {
+  "de": "%lld Objekte",
+  "tr": "%lld öğe"
+ },
+ "%lld items were skipped because they are in use or protected.": {
+  "de": "%lld Objekte wurden übersprungen, weil sie verwendet werden oder geschützt sind.",
+  "tr": "Kullanımda veya korumalı oldukları için %lld öğe atlandı."
  },
  "(no output)": {
   "de": "(keine Ausgabe)",
@@ -115,9 +135,17 @@
   "de": "Projekt analysieren",
   "tr": "Projeyi Analiz Et"
  },
+ "And %lld smaller items": {
+  "de": "Und %lld kleinere Objekte",
+  "tr": "Ve %lld küçük öğe daha"
+ },
  "Answer to Claude": {
   "de": "Antwort an Claude",
   "tr": "Claude'a verilen cevap"
+ },
+ "App caches": {
+  "de": "App-Caches",
+  "tr": "Uygulama önbellekleri"
  },
  "Appearance": {
   "de": "Darstellung",
@@ -246,6 +274,14 @@
  "Claude writes a storyboard, you approve or revise it, then Claude produces the video.": {
   "de": "Claude schreibt ein Storyboard, du gibst es frei oder überarbeitest es, dann produziert Claude das Video.",
   "tr": "Claude bir storyboard yazar, sen onaylar ya da revize edersin, ardından Claude videoyu üretir."
+ },
+ "Clean Up %@": {
+  "de": "%@ bereinigen",
+  "tr": "%@ Temizle"
+ },
+ "Clean up %@?": {
+  "de": "%@ bereinigen?",
+  "tr": "%@ temizlensin mi?"
  },
  "Clear Cache": {
   "de": "Cache leeren",
@@ -383,6 +419,10 @@
   "de": "Löschen",
   "tr": "Sil"
  },
+ "Delete Permanently": {
+  "de": "Endgültig löschen",
+  "tr": "Kalıcı Olarak Sil"
+ },
  "Delete Post": {
   "de": "Beitrag löschen",
   "tr": "Gönderiyi Sil"
@@ -419,6 +459,10 @@
   "de": "Ablehnen",
   "tr": "Reddet"
  },
+ "Developer package caches": {
+  "de": "Paket-Caches für Entwickler",
+  "tr": "Geliştirici paket önbellekleri"
+ },
  "Done": {
   "de": "Fertig",
   "tr": "Bitti"
@@ -430,6 +474,10 @@
  "Download it from the website and open it. A >_ icon appears in the menu bar at the top of the screen.": {
   "de": "Lade sie von der Website herunter und öffne sie. Oben auf dem Bildschirm erscheint in der Menüleiste ein >_-Symbol.",
   "tr": "Web sitesinden indirip açın. Ekranın üstündeki menü çubuğunda bir >_ simgesi belirir."
+ },
+ "Downloaded installers": {
+  "de": "Geladene Installationsprogramme",
+  "tr": "İndirilen yükleyiciler"
  },
  "Draft": {
   "de": "Entwurf",
@@ -518,6 +566,10 @@
  "Filter this folder": {
   "de": "Diesen Ordner filtern",
   "tr": "Bu klasörde filtrele"
+ },
+ "Find Files to Clean Up": {
+  "de": "Dateien zum Bereinigen suchen",
+  "tr": "Temizlenecek Dosyaları Bul"
  },
  "Find files": {
   "de": "Dateien finden",
@@ -687,6 +739,14 @@
   "de": "Lokales Netzwerk",
   "tr": "Yerel ağ"
  },
+ "Logs and crash reports": {
+  "de": "Protokolle und Absturzberichte",
+  "tr": "Günlükler ve çökme raporları"
+ },
+ "Looks for caches, logs, Xcode build data, package caches, downloaded installers and the Trash. Apps create these again when they need them. Scanning large folders can take a minute.": {
+  "de": "Sucht Caches, Protokolle, Xcode-Build-Daten, Paket-Caches, geladene Installationsprogramme und den Papierkorb. Apps erstellen diese bei Bedarf neu. Große Ordner zu durchsuchen kann eine Minute dauern.",
+  "tr": "Önbellekleri, günlükleri, Xcode derleme verilerini, paket önbelleklerini, indirilen yükleyicileri ve Çöp Kutusu'nu arar. Uygulamalar bunları gerektiğinde yeniden oluşturur. Büyük klasörleri taramak bir dakika sürebilir."
+ },
  "Low": {
   "de": "Niedrig",
   "tr": "Düşük"
@@ -742,6 +802,14 @@
  "Mostly %@": {
   "de": "Meist %@",
   "tr": "Çoğunlukla %@"
+ },
+ "Move to Trash": {
+  "de": "In den Papierkorb legen",
+  "tr": "Çöp Kutusu'na Taşı"
+ },
+ "Moving to the Trash frees the space only after the Trash is emptied. Items in the Trash itself are always deleted permanently.": {
+  "de": "Beim Verschieben in den Papierkorb wird Platz erst frei, wenn der Papierkorb entleert wird. Objekte im Papierkorb selbst werden immer endgültig gelöscht.",
+  "tr": "Çöp Kutusu'na taşımak alanı ancak Çöp Kutusu boşaltıldığında boşaltır. Çöp Kutusu'ndaki öğeler her zaman kalıcı olarak silinir."
  },
  "Name": {
   "de": "Name",
@@ -834,6 +902,10 @@
  "Not signed in": {
   "de": "Nicht angemeldet",
   "tr": "Oturum açılmamış"
+ },
+ "Nothing to clean up": {
+  "de": "Nichts zu bereinigen",
+  "tr": "Temizlenecek bir şey yok"
  },
  "OK": {
   "de": "OK",
@@ -1211,6 +1283,10 @@
   "de": "Gespeichert",
   "tr": "Kaydetme"
  },
+ "Scan Again": {
+  "de": "Erneut suchen",
+  "tr": "Yeniden Tara"
+ },
  "Scan the Pairing Code": {
   "de": "Kopplungscode scannen",
   "tr": "Eşleştirme Kodunu Tara"
@@ -1254,6 +1330,10 @@
  "Section": {
   "de": "Bereich",
   "tr": "Bölüm"
+ },
+ "See how much space is left on your Mac and clean up caches and build data.": {
+  "de": "Sieh, wie viel Platz auf deinem Mac frei ist, und bereinige Caches und Build-Daten.",
+  "tr": "Mac'inizde ne kadar alan kaldığını görün; önbellekleri ve derleme verilerini temizleyin."
  },
  "Send": {
   "de": "Senden",
@@ -1391,6 +1471,10 @@
   "de": "Gestoppt",
   "tr": "Durduruldu"
  },
+ "Storage": {
+  "de": "Speicher",
+  "tr": "Depolama"
+ },
  "Storyboard": {
   "de": "Storyboard",
   "tr": "Storyboard"
@@ -1519,6 +1603,10 @@
   "de": "Verläufe bleiben auf deinem Mac und werden beim Öffnen einer Sitzung erneut geladen.",
   "tr": "Dökümler Mac'inizde kalır ve bir oturumu açtığınızda yeniden indirilir."
  },
+ "Trash": {
+  "de": "Papierkorb",
+  "tr": "Çöp Kutusu"
+ },
  "Try Again": {
   "de": "Erneut versuchen",
   "tr": "Tekrar Dene"
@@ -1615,6 +1703,10 @@
   "de": "Schreiben",
   "tr": "Yaz"
  },
+ "Xcode leftovers": {
+  "de": "Xcode-Reste",
+  "tr": "Xcode artıkları"
+ },
  "Yes": {
   "de": "Ja",
   "tr": "Evet"
@@ -1630,6 +1722,10 @@
  "Your Mac always stays awake while Remote Code runs; the display may still turn off. A closed MacBook that stays awake can get warm and drain its battery.": {
   "de": "Dein Mac bleibt immer wach, solange Remote Code läuft; der Bildschirm kann sich trotzdem ausschalten. Ein zugeklapptes, waches MacBook kann warm werden und den Akku leeren.",
   "tr": "Remote Code çalışırken Mac'iniz her zaman uyanık kalır; ekran yine de kapanabilir. Kapağı kapalı ve uyanık bir MacBook ısınabilir ve pilini tüketebilir."
+ },
+ "Your Mac is running out of space. Agents may fail to build or save files.": {
+  "de": "Auf deinem Mac wird der Platz knapp. Agents können dann eventuell nicht bauen oder Dateien sichern.",
+  "tr": "Mac'inizde yer azalıyor. Ajanlar derleme yapamayabilir veya dosya kaydedemeyebilir."
  },
  "Your Mac is summarising the week…": {
   "de": "Dein Mac fasst die Woche zusammen …",
@@ -1658,6 +1754,10 @@
  "iOS does not let apps install or configure a VPN for you, so step 2 has to be done by hand.": {
   "de": "iOS erlaubt Apps nicht, ein VPN für dich zu installieren oder zu konfigurieren, daher musst du Schritt 2 selbst ausführen.",
   "tr": "iOS, uygulamaların sizin için VPN kurmasına veya yapılandırmasına izin vermez; bu yüzden 2. adım elle yapılmalıdır."
+ },
+ "of %@": {
+  "de": "von %@",
+  "tr": "toplam %@"
  },
  "pilothouse://pair?d=…": {
   "de": "pilothouse://pair?d=…",

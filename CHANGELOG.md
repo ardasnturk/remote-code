@@ -12,6 +12,10 @@ All notable changes to Remote Code are recorded here. The format follows
 - The built-in screen is darkened while the lid is closed in lid-closed mode,
   so it no longer stays lit behind the lid (on by default; adapted from Perch).
 - "Keep the display on" in the Mac's settings.
+- Storage on the iPhone (Settings → Storage): free space on the Mac and a
+  cleanup of caches, logs, Xcode build data, package caches, downloaded
+  installers and the Trash. Items go to the Trash unless you choose otherwise.
+- A "Low disk space" notification when less than 10 GB is left on the Mac.
 
 ## [1.4.2] — 2026-11-01
 

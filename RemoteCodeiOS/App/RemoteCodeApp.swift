@@ -17,6 +17,8 @@ struct RemoteCodeApp: App {
                         Task { await model.open(link) }
                     } else if let link = PromoStudioLink(url: url) {
                         Task { await model.open(link) }
+                    } else if let link = StorageLink(url: url) {
+                        Task { await model.open(link) }
                     } else if url.scheme == PairingPayload.scheme {
                         model.incomingPairingLink = url.absoluteString
                         model.isPresentingPairing = true

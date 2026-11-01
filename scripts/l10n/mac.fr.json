@@ -113,6 +113,8 @@
  "Lid-closed mode": "Mode écran rabattu",
  "Lid-closed mode is on. Keep your Mac ventilated; it can get warm in a bag.": "Le mode écran rabattu est activé. Gardez votre Mac ventilé ; il peut chauffer dans un sac.",
  "Local network": "Réseau local",
+ "Low disk space": "Espace disque faible",
+ "Low disk space · %@ free": "Espace disque faible · %@ disponibles",
  "Mac ID": "ID du Mac",
  "Mac stays awake": "Le Mac reste éveillé",
  "Mac: %@": "Mac : %@",

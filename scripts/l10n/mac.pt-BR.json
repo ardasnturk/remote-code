@@ -113,6 +113,8 @@
  "Lid-closed mode": "Modo de tampa fechada",
  "Lid-closed mode is on. Keep your Mac ventilated; it can get warm in a bag.": "O modo de tampa fechada está ativado. Mantenha o Mac ventilado; ele pode esquentar dentro de uma bolsa.",
  "Local network": "Rede local",
+ "Low disk space": "Pouco espaço em disco",
+ "Low disk space · %@ free": "Pouco espaço em disco · %@ livres",
  "Mac ID": "ID do Mac",
  "Mac stays awake": "O Mac fica acordado",
  "Mac: %@": "Mac: %@",

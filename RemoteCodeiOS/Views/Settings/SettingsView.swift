@@ -30,6 +30,18 @@ struct SettingsView: View {
                 macsSection
                 if let connection = model.connection, let status = connection.status, connection.isConnected {
                     statusSection(status)
+                    if connection.capabilities.contains(HostCapability.storage) {
+                        Section {
+                            NavigationLink {
+                                StorageView(connection: connection)
+                            } label: {
+                                Label("Storage", systemImage: "internaldrive")
+                            }
+                            .accessibilityIdentifier("storageLink")
+                        } footer: {
+                            Text("See how much space is left on your Mac and clean up caches and build data.")
+                        }
+                    }
                     if connection.capabilities.contains(HostCapability.power), let power = status.power {
                         PowerSection(connection: connection, power: power)
                     }

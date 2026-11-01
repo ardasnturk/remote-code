@@ -164,7 +164,8 @@ final class MacConnection {
             if error.code == .deviceRevoked {
                 state = .failed(message: error.message, code: error.code)
             }
-        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog, .promoStudioResponse:
+        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog, .promoStudioResponse,
+            .storage, .cleanupScan, .cleanupResult:
             break
         }
     }
@@ -272,6 +273,32 @@ final class MacConnection {
             throw MacClientError.unexpectedResponse(response.typeName)
         }
         return catalog.commands
+    }
+
+    /// Free space on the Mac (capability `storage`).
+    func storageOverview() async throws -> StorageOverview {
+        let response = try await client.request(.getStorage)
+        guard case .storage(let overview) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        return overview
+    }
+
+    /// Looks for files that are safe to delete; large folders take a while.
+    func scanCleanup() async throws -> CleanupScan {
+        let response = try await client.request(.scanCleanup, timeout: 300)
+        guard case .cleanupScan(let scan) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        return scan
+    }
+
+    func runCleanup(_ request: RunCleanup) async throws -> CleanupResult {
+        let response = try await client.request(.runCleanup(request), timeout: 300)
+        guard case .cleanupResult(let result) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        return result
     }
 
     /// Changes the Mac's power settings (capability `power`).

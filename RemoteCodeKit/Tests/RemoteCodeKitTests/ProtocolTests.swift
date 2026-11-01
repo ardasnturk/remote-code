@@ -35,6 +35,9 @@ import Testing
         .promoStudioUnsubscribe,
         .setPower(SetPower(keepDisplayOn: true, displayOnDuration: 3_600)),
         .setPower(SetPower(lidClosedMode: false, pauseLidModeOnBattery: true, dimDisplayWhenLidClosed: true)),
+        .getStorage,
+        .scanCleanup,
+        .runCleanup(RunCleanup(scanId: "scan", itemIds: ["a", "b"], categoryIds: ["logs"], permanently: true)),
     ])
     func clientMessagesRoundTrip(_ message: ClientMessage) throws {
         #expect(try roundTrip(message) == message)
@@ -96,6 +99,27 @@ import Testing
         let event = ServerMessage.promoStudioEvent(PromoStudioEvent(event: "job", data: "{\"progress\":0.5}"))
         #expect(try roundTrip(event) == event)
         #expect(PromoStudioResponse(status: 206, contentRange: "bytes 0-2/12093935").totalSize == 12_093_935)
+    }
+
+    @Test func storageMessagesRoundTrip() throws {
+        let storage = StorageOverview(totalBytes: 500, availableBytes: 20, lowSpaceThresholdBytes: 50)
+        #expect(storage.isLow && storage.usedBytes == 480)
+        let category = CleanupCategory(
+            id: "caches", title: "App caches", items: [CleanupItem(id: "i", name: "com.x", location: "~/Library/Caches", sizeBytes: 9)],
+            itemCount: 4, totalBytes: 20, selectedByDefault: true, unavailableReason: "blocked"
+        )
+        let messages: [ServerMessage] = [
+            .storage(storage),
+            .cleanupScan(CleanupScan(scanId: "s", scannedAt: Date(timeIntervalSince1970: 1_792_800_000), categories: [category], storage: storage)),
+            .cleanupResult(CleanupResult(freedBytes: 9, removedCount: 1, failedCount: 2, movedToTrash: true, storage: storage)),
+        ]
+        for message in messages {
+            #expect(try roundTrip(message) == message, "\(message.typeName)")
+        }
+        let link = StorageLink(macId: "abc")
+        #expect(link.url.absoluteString == "pilothouse://storage?mac=abc")
+        #expect(StorageLink(url: link.url) == link)
+        #expect(StorageLink(url: URL(string: "pilothouse://session/x")!) == nil)
     }
 
     @Test func envelopeHasDocumentedShape() throws {

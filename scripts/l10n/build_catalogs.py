@@ -43,6 +43,7 @@ INTEGER_EXPRESSIONS = {
     "remaining / 60", "remaining", "minutes / 1_440", "minutes / 60", "skills.count", "plainCommands.count", "Int((window?.usedPercent ?? 0).rounded())", "number", "devices", "sessions", "settings.retentionDays",
     "lines.count", "attachments", "payloads.count", "item.number ?? index + 1", "DiffBuilder.stats(of: diff).added", "status",
     "DiffBuilder.stats(of: diff).removed", "count", "seconds", "index + 1", "rounded", "minutes",
+    "category.itemCount", "category.itemCount - category.items.count", "result.failedCount",
 }
 DOUBLE_EXPRESSIONS = set()
 

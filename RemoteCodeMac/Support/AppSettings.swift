@@ -26,6 +26,8 @@ final class AppSettings {
         static let notificationKinds = "notificationKinds"
         /// Set once the Promo Studio kinds (1.4) were added to an existing selection.
         static let promoStudioKindsAdded = "promoStudioKindsAdded"
+        /// Set once the low-disk-space kind (D-115) was added to an existing selection.
+        static let lowDiskSpaceKindAdded = "lowDiskSpaceKindAdded"
         static let notificationIncludesSummary = "notificationIncludesSummary"
         static let ntfyServer = "ntfyServer"
         static let ntfyTopic = "ntfyTopic"
@@ -166,6 +168,11 @@ final class AppSettings {
             defaults.set(kinds.map(\.rawValue).sorted(), forKey: Key.notificationKinds)
             defaults.set(true, forKey: Key.promoStudioKindsAdded)
         }
+        if !defaults.bool(forKey: Key.lowDiskSpaceKindAdded) {
+            kinds.insert(.lowDiskSpace)
+            defaults.set(kinds.map(\.rawValue).sorted(), forKey: Key.notificationKinds)
+            defaults.set(true, forKey: Key.lowDiskSpaceKindAdded)
+        }
         notificationKinds = kinds
         notificationIncludesSummary = defaults.bool(forKey: Key.notificationIncludesSummary)
         ntfyServer = defaults.string(forKey: Key.ntfyServer) ?? NtfyConfiguration.defaultServer
@@ -180,7 +187,7 @@ final class AppSettings {
 
     /// Events offered in Settings.
     static let notificationKindsInSettings: [HostAlert.Kind] = [.turnFinished, .permissionRequested, .subagentFinished, .sessionFailed]
-        + HostAlert.Kind.promoStudio
+        + HostAlert.Kind.promoStudio + [.lowDiskSpace]
 
     /// Model aliases offered in pickers (free text is accepted too).
     static let modelSuggestions = ["", "fable", "opus", "sonnet", "haiku"]

@@ -40,6 +40,8 @@ final class AppModel {
     var promoStudioPostToOpen: String?
     var isPresentingNewChat = false
     var isPresentingSettings = false
+    /// The storage screen, opened by a low-space notification (D-115).
+    var isPresentingStorage = false
     var isPresentingInsights = false
     var isPresentingPairing = false
     /// A `pilothouse://pair` link opened from outside (Camera app, paste).
@@ -144,6 +146,18 @@ final class AppModel {
         }
         selectedTab = .promoStudio
         promoStudioPostToOpen = link.postId
+    }
+
+    /// Opens the storage screen for a `pilothouse://storage` link (a tapped
+    /// low-space notification, D-115).
+    func open(_ link: StorageLink) async {
+        guard hasPairedMac else { return }
+        isPresentingNewChat = false
+        isPresentingSettings = false
+        if let macId = link.macId, macId != activeMac?.id, store.mac(id: macId) != nil {
+            await switchToMac(macId)
+        }
+        isPresentingStorage = true
     }
 
     func scenePhaseChanged(_ phase: ScenePhase) {

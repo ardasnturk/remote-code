@@ -311,6 +311,40 @@ enum DemoContent {
         )
     }
 
+    /// What the demo Mac's cleanup scan finds (D-115).
+    static func cleanupCategories() -> [CleanupCategory] {
+        func category(_ id: String, _ title: String, _ selected: Bool, permanent: Bool = false, _ items: [(String, String, Int64)]) -> CleanupCategory {
+            let list = items.map { CleanupItem(id: "\(id)-\($0.0)", name: $0.0, location: $0.1, sizeBytes: $0.2) }
+            return CleanupCategory(
+                id: id, title: title, items: list, itemCount: list.count, totalBytes: list.reduce(0) { $0 + $1.sizeBytes },
+                selectedByDefault: selected, alwaysPermanent: permanent
+            )
+        }
+        return [
+            category(CleanupCategory.Kind.caches, "App caches", true, [
+                ("com.google.Chrome", "~/Library/Caches", 2_310_000_000), ("com.spotify.client", "~/Library/Caches", 1_180_000_000),
+                ("com.tinyspeck.slackmacgap", "~/Library/Caches", 412_000_000),
+            ]),
+            category(CleanupCategory.Kind.logs, "Logs and crash reports", true, [
+                ("DiagnosticReports", "~/Library/Logs", 96_000_000), ("JetBrains", "~/Library/Logs", 41_000_000),
+            ]),
+            category(CleanupCategory.Kind.xcode, "Xcode leftovers", true, [
+                ("WeatherApp-bxkqzjhd", "~/Library/Developer/Xcode/DerivedData", 6_740_000_000),
+                ("iPhone17,1 26.1 (23B85)", "~/Library/Developer/Xcode/iOS DeviceSupport", 4_920_000_000),
+                ("PomodoroTimer-fwyrhcca", "~/Library/Developer/Xcode/DerivedData", 1_870_000_000),
+            ]),
+            category(CleanupCategory.Kind.developer, "Developer package caches", true, [
+                ("_cacache", "~/.npm", 3_150_000_000), ("caches", "~/.gradle", 2_040_000_000), ("store", "~/Library/pnpm", 1_260_000_000),
+            ]),
+            category(CleanupCategory.Kind.installers, "Downloaded installers", false, [
+                ("Xcode_26.1.xip", "~/Downloads", 3_980_000_000), ("Docker.dmg", "~/Downloads", 612_000_000),
+            ]),
+            category(CleanupCategory.Kind.trash, "Trash", false, permanent: true, [
+                ("old-screenshots", "~/.Trash", 845_000_000),
+            ]),
+        ]
+    }
+
     static func usageLimits(now: Date) -> [UsageLimits] {
         [
             UsageLimits(agent: .claude, windows: [

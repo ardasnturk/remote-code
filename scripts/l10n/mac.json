@@ -455,6 +455,14 @@
   "de": "Lokales Netzwerk",
   "tr": "Yerel ağ"
  },
+ "Low disk space": {
+  "de": "Wenig Speicherplatz",
+  "tr": "Disk alanı azaldı"
+ },
+ "Low disk space · %@ free": {
+  "de": "Wenig Speicherplatz · %@ frei",
+  "tr": "Disk alanı azaldı · %@ boş"
+ },
  "Mac ID": {
   "de": "Mac-ID",
   "tr": "Mac kimliği"

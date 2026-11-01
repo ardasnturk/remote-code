@@ -23,6 +23,8 @@ public actor DemoHostService: HostService {
         keepsDisplayOn: false, lidClosedModeEnabled: false, lidMode: .off,
         pauseLidModeOnBattery: true, dimsDisplayWhenLidClosed: true, onBattery: false, lidClosed: false
     )
+    private var storage = StorageOverview(totalBytes: 494_384_795_648, availableBytes: 8_214_000_000, lowSpaceThresholdBytes: 10_000_000_000)
+    private var cleanupScanResult: CleanupScan?
     private let now: Date
 
     public init(pace: Double = 1, now: Date = Date()) {
@@ -149,6 +151,32 @@ public actor DemoHostService: HostService {
 
     public func usageLimits() async -> [UsageLimits] {
         DemoContent.usageLimits(now: now)
+    }
+
+    public func storageOverview() async throws -> StorageOverview {
+        storage
+    }
+
+    public func scanCleanup() async throws -> CleanupScan {
+        try? await Task.sleep(for: .seconds(1.5 * pace))
+        let scan = CleanupScan(scanId: UUID().uuidString, scannedAt: Date(), categories: DemoContent.cleanupCategories(), storage: storage)
+        cleanupScanResult = scan
+        return scan
+    }
+
+    public func runCleanup(_ request: RunCleanup) async throws -> CleanupResult {
+        guard let scan = cleanupScanResult, scan.scanId == request.scanId else {
+            throw ErrorPayload(code: .scanExpired, message: "The list is out of date. Scan again.")
+        }
+        cleanupScanResult = nil
+        let ids = Set(request.itemIds)
+        let categories = Set(request.categoryIds)
+        let chosen = scan.categories.flatMap { category in
+            category.items.filter { categories.contains(category.id) || ids.contains($0.id) }
+        }
+        let freed = chosen.reduce(0) { $0 + $1.sizeBytes }
+        storage.availableBytes = min(storage.totalBytes, storage.availableBytes + freed)
+        return CleanupResult(freedBytes: freed, removedCount: chosen.count, failedCount: 0, movedToTrash: !request.permanently, storage: storage)
     }
 
     public func setPower(_ request: SetPower) async throws -> MacStatus {

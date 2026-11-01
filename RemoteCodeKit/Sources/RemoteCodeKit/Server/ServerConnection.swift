@@ -177,6 +177,12 @@ public actor ServerConnection {
             return .ok
         case .setPower(let request):
             return .macStatus(try await service.setPower(request))
+        case .getStorage:
+            return .storage(try await service.storageOverview())
+        case .scanCleanup:
+            return .cleanupScan(try await service.scanCleanup())
+        case .runCleanup(let request):
+            return .cleanupResult(try await service.runCleanup(request))
         }
     }
 

@@ -85,6 +85,25 @@ import Testing
         await client.stop()
     }
 
+    @Test func cleanupFreesTheChosenCategories() async throws {
+        let (client, _) = try await connectedClient()
+        guard case .cleanupScan(let scan) = try await client.request(.scanCleanup) else {
+            Issue.record("Expected cleanupScan")
+            return
+        }
+        let xcode = try #require(scan.categories.first { $0.id == CleanupCategory.Kind.xcode })
+        guard case .cleanupResult(let result) = try await client.request(.runCleanup(RunCleanup(scanId: scan.scanId, categoryIds: [xcode.id]))) else {
+            Issue.record("Expected cleanupResult")
+            return
+        }
+        #expect(result.freedBytes == xcode.totalBytes)
+        #expect(result.storage.availableBytes == scan.storage.availableBytes + xcode.totalBytes)
+        await #expect(throws: ErrorPayload.self) {
+            try await client.request(.runCleanup(RunCleanup(scanId: scan.scanId, categoryIds: [xcode.id])))
+        }
+        await client.stop()
+    }
+
     @Test func subscribeReplaysBacklogFromSequence() async throws {
         let (client, _) = try await connectedClient()
         let pushes = client.pushes

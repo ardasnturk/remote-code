@@ -26,6 +26,7 @@ public struct MacHostService: HostService {
     let serverVersion: String
     let status: any MacStatusProviding
     let promoStudioBridge = PromoStudioBridge()
+    let cleanup: CleanupService
 
     public func weeklySummary(_ request: GetWeeklySummary) async throws -> WeeklySummary {
         await insights.weeklySummary(request)
@@ -63,6 +64,18 @@ public struct MacHostService: HostService {
 
     public func setPower(_ request: SetPower) async throws -> MacStatus {
         try await status.setPower(request)
+    }
+
+    public func storageOverview() async throws -> StorageOverview {
+        await cleanup.storageOverview()
+    }
+
+    public func scanCleanup() async throws -> CleanupScan {
+        await cleanup.scan()
+    }
+
+    public func runCleanup(_ request: RunCleanup) async throws -> CleanupResult {
+        try await cleanup.run(request)
     }
 
     public func listDirectory(_ request: ListDirectory) async throws -> DirectoryListing {
@@ -143,6 +156,10 @@ public final class HostRuntime: Sendable {
     let promoStudioNotifier: PromoStudioNotifier
     /// Weekly summaries and usage limits (D-096, D-097); configured by the app.
     public let insights: InsightsService
+    /// Safe-to-delete files (D-115).
+    public let cleanup: CleanupService
+    /// Warns when the startup volume runs low on space (D-115).
+    let storageMonitor: StorageMonitor
     private let mcpServer: LoopbackHTTPServer
 
     public convenience init(
@@ -190,9 +207,10 @@ public final class HostRuntime: Sendable {
             try await sessions.subscribe(id, fromSeq: fromSeq)
         }
         let insights = InsightsService(sessions: sessions, dataDirectory: configuration.dataDirectory)
+        let cleanup = CleanupService(homeDirectory: configuration.homeDirectory)
         let service = MacHostService(
             sessions: sessions, broker: broker, hub: hub, notifications: notifications, insights: insights, fileBrowser: fileBrowser,
-            macId: identity.fingerprint, serverVersion: serverVersion, status: status
+            macId: identity.fingerprint, serverVersion: serverVersion, status: status, cleanup: cleanup
         )
         let mcpEndpoint = MCPPermissionEndpoint(
             serverVersion: serverVersion,
@@ -223,6 +241,8 @@ public final class HostRuntime: Sendable {
         self.notifications = notifications
         promoStudioNotifier = PromoStudioNotifier(bridge: PromoStudioBridge(), notifications: notifications)
         self.insights = insights
+        self.cleanup = cleanup
+        storageMonitor = StorageMonitor(home: configuration.homeDirectory, notifications: notifications, macName: macName)
         endpoint = ServerEndpoint(identity: identity, macName: macName, authorizer: devices, service: service)
     }
 
@@ -235,6 +255,7 @@ public final class HostRuntime: Sendable {
         await sessions.setUsageSink { limits in await limitStore.update(limits) }
         await notifications.start()
         await promoStudioNotifier.start()
+        await storageMonitor.start()
         await sessions.setPermissionServerPort(mcpServer.port)
         await sessions.bootstrap()
     }
@@ -245,6 +266,7 @@ public final class HostRuntime: Sendable {
         await sessions.shutdown()
         await notifications.stop()
         await promoStudioNotifier.stop()
+        await storageMonitor.stop()
         mcpServer.stop()
     }
 

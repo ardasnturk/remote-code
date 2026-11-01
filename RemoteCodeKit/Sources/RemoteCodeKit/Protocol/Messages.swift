@@ -35,10 +35,12 @@ public enum HostCapability {
     public static let promoStudio = "promoStudio"
     /// `setPower` and `MacStatus.power`: display, lid-closed mode and screen dimming (D-114).
     public static let power = "power"
+    /// `getStorage`, `scanCleanup`, `runCleanup`: free space and safe cleanup (D-115).
+    public static let storage = "storage"
     /// Every capability this build of RemoteCodeKit implements.
     public static let all = [
         createDirectory, agents, threads, insights, commandCatalog, sessionSettings, modelCatalog, sessionPermissionMode,
-        power,
+        power, storage,
     ]
 }
 
@@ -330,6 +332,9 @@ public enum ClientMessage: Sendable, Hashable {
     case promoStudioSubscribe
     case promoStudioUnsubscribe
     case setPower(SetPower)
+    case getStorage
+    case scanCleanup
+    case runCleanup(RunCleanup)
 
     public var typeName: String {
         switch self {
@@ -355,6 +360,9 @@ public enum ClientMessage: Sendable, Hashable {
         case .promoStudioSubscribe: "promoStudioSubscribe"
         case .promoStudioUnsubscribe: "promoStudioUnsubscribe"
         case .setPower: "setPower"
+        case .getStorage: "getStorage"
+        case .scanCleanup: "scanCleanup"
+        case .runCleanup: "runCleanup"
         }
     }
 }
@@ -378,6 +386,9 @@ public enum ServerMessage: Sendable, Hashable {
     case commandCatalog(CommandCatalog)
     case promoStudioResponse(PromoStudioResponse)
     case promoStudioEvent(PromoStudioEvent)
+    case storage(StorageOverview)
+    case cleanupScan(CleanupScan)
+    case cleanupResult(CleanupResult)
     case error(ErrorPayload)
 
     public var typeName: String {
@@ -399,6 +410,9 @@ public enum ServerMessage: Sendable, Hashable {
         case .commandCatalog: "commandCatalog"
         case .promoStudioResponse: "promoStudioResponse"
         case .promoStudioEvent: "promoStudioEvent"
+        case .storage: "storage"
+        case .cleanupScan: "cleanupScan"
+        case .cleanupResult: "cleanupResult"
         case .error: "error"
         }
     }

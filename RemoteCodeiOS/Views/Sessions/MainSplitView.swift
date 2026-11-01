@@ -35,6 +35,18 @@ struct MainSplitView: View {
         .sheet(isPresented: $model.isPresentingSettings) {
             SettingsView()
         }
+        .sheet(isPresented: $model.isPresentingStorage) {
+            if let connection = model.connection {
+                NavigationStack {
+                    StorageView(connection: connection)
+                        .toolbar {
+                            ToolbarItem(placement: .confirmationAction) {
+                                Button("Done") { model.isPresentingStorage = false }
+                            }
+                        }
+                }
+            }
+        }
         .sheet(isPresented: $model.isPresentingInsights) {
             if let connection = model.connection {
                 InsightsView(connection: connection)

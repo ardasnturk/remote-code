@@ -113,6 +113,8 @@
  "Lid-closed mode": "合盖模式",
  "Lid-closed mode is on. Keep your Mac ventilated; it can get warm in a bag.": "合盖模式已打开。请保持 Mac 通风；放在包中可能会发热。",
  "Local network": "本地网络",
+ "Low disk space": "磁盘空间不足",
+ "Low disk space · %@ free": "磁盘空间不足 · 可用 %@",
  "Mac ID": "Mac ID",
  "Mac stays awake": "Mac 保持唤醒",
  "Mac: %@": "Mac：%@",
