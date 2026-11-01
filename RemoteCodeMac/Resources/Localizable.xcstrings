@@ -3771,6 +3771,64 @@
         }
       }
     },
+    "Darken the built-in screen while the lid is closed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eingebauten Bildschirm bei geschlossenem Deckel abdunkeln"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oscurecer la pantalla integrada con la tapa cerrada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assombrir l’écran intégré quand l’écran est rabattu"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oscura lo schermo integrato a coperchio chiuso"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "蓋を閉じている間は内蔵ディスプレイを暗くする"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "덮개가 닫혀 있는 동안 내장 화면 어둡게 하기"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escurecer a tela integrada com a tampa fechada"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapak kapalıyken dahili ekranı karart"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖时调暗内建屏幕"
+          }
+        }
+      }
+    },
     "Default model": {
       "localizations": {
         "de": {
@@ -6203,6 +6261,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "保留会话日志 %lld 天"
+          }
+        }
+      }
+    },
+    "Keep the display on": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildschirm eingeschaltet lassen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantener la pantalla encendida"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Garder l’écran allumé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantieni lo schermo acceso"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ディスプレイをオンのままにする"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "디스플레이 켜 두기"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manter a tela ligada"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekranı açık tut"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持显示器开启"
           }
         }
       }
@@ -9799,6 +9915,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "Remote Code"
+          }
+        }
+      }
+    },
+    "Remote Code always keeps your Mac awake while it runs; this keeps the screen on too. You can also switch it from your iPhone.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code hält deinen Mac immer wach, solange es läuft; damit bleibt auch der Bildschirm an. Du kannst es auch auf deinem iPhone umschalten."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code siempre mantiene tu Mac activo mientras se ejecuta; esto mantiene también la pantalla encendida. También puedes cambiarlo desde tu iPhone."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code garde toujours votre Mac éveillé pendant son exécution ; cette option garde aussi l’écran allumé. Vous pouvez aussi la changer depuis votre iPhone."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code tiene sempre attivo il Mac mentre è in esecuzione; questa opzione mantiene acceso anche lo schermo. Puoi cambiarla anche dall’iPhone."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code は実行中、常に Mac をスリープさせません。この設定では画面もオンのままにします。iPhone からも切り替えられます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code는 실행 중에 항상 Mac을 깨어 있게 유지합니다. 이 옵션은 화면도 켜 둡니다. iPhone에서도 전환할 수 있습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code sempre mantém o Mac ativo enquanto está em execução; isto mantém a tela ligada também. Você também pode alterar isso pelo iPhone."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code çalışırken Mac'inizi her zaman uyanık tutar; bu seçenek ekranı da açık tutar. iPhone'unuzdan da açıp kapatabilirsiniz."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 运行时始终让 Mac 保持唤醒；此选项还会让屏幕保持开启。你也可以在 iPhone 上切换。"
           }
         }
       }

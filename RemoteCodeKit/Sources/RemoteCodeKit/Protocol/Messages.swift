@@ -33,9 +33,12 @@ public enum HostCapability {
     /// `promoStudio`, `promoStudioSubscribe`: the Mac forwards requests to the Promo Studio app's local API.
     /// Not in `all`: only the real Mac host offers it (not the demo).
     public static let promoStudio = "promoStudio"
+    /// `setPower` and `MacStatus.power`: display, lid-closed mode and screen dimming (D-114).
+    public static let power = "power"
     /// Every capability this build of RemoteCodeKit implements.
     public static let all = [
         createDirectory, agents, threads, insights, commandCatalog, sessionSettings, modelCatalog, sessionPermissionMode,
+        power,
     ]
 }
 
@@ -326,6 +329,7 @@ public enum ClientMessage: Sendable, Hashable {
     case promoStudio(PromoStudioRequest)
     case promoStudioSubscribe
     case promoStudioUnsubscribe
+    case setPower(SetPower)
 
     public var typeName: String {
         switch self {
@@ -350,6 +354,7 @@ public enum ClientMessage: Sendable, Hashable {
         case .promoStudio: "promoStudio"
         case .promoStudioSubscribe: "promoStudioSubscribe"
         case .promoStudioUnsubscribe: "promoStudioUnsubscribe"
+        case .setPower: "setPower"
         }
     }
 }

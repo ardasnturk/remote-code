@@ -4,6 +4,14 @@ import RemoteCodeKit
 /// Supplies the Mac-specific parts of `MacStatus` (sleep, Tailscale, …).
 public protocol MacStatusProviding: Sendable {
     func macStatus() async -> MacStatus
+    /// Applies power settings from a phone (capability `power`).
+    func setPower(_ request: SetPower) async throws -> MacStatus
+}
+
+extension MacStatusProviding {
+    public func setPower(_ request: SetPower) async throws -> MacStatus {
+        throw ErrorPayload(code: .powerUnavailable, message: "This Mac cannot change its power settings remotely.")
+    }
 }
 
 /// `HostService` backed by the real session manager and file system.
@@ -51,6 +59,10 @@ public struct MacHostService: HostService {
 
     public func macStatus() async -> MacStatus {
         await status.macStatus()
+    }
+
+    public func setPower(_ request: SetPower) async throws -> MacStatus {
+        try await status.setPower(request)
     }
 
     public func listDirectory(_ request: ListDirectory) async throws -> DirectoryListing {

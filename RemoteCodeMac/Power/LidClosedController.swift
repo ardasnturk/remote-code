@@ -23,8 +23,14 @@ final class LidClosedController {
         case failed(String)
     }
 
-    private(set) var state: State = .off
-    private(set) var isOnBattery = false
+    private(set) var state: State = .off {
+        didSet { if state != oldValue { onStateChange?() } }
+    }
+    private(set) var isOnBattery = false {
+        didSet { if isOnBattery != oldValue { onStateChange?() } }
+    }
+    /// Called when `state` or `isOnBattery` changes, e.g. to update the phones.
+    @ObservationIgnored var onStateChange: (() -> Void)?
 
     @ObservationIgnored private var connection: NSXPCConnection?
     @ObservationIgnored private var batteryTask: Task<Void, Never>?

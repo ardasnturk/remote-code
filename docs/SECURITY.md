@@ -35,7 +35,7 @@ network traffic it creates is between your own devices.
 | A local process abuses the permission endpoint | The MCP permission server listens on `127.0.0.1` only, requires a random per-session bearer token (32 bytes, constant-time compare), rejects requests carrying an `Origin` header (DNS-rebinding defence) and checks the `Host` header. A local process could at most *ask* for a permission — it cannot answer one. |
 | Claude runs something dangerous | Claude Code's own permission system stays in charge. In the default mode every action that needs approval is forwarded to the phone and must be accepted explicitly; unanswered requests are **denied** after 10 minutes. `bypassPermissions` must be enabled in the Mac settings first and is shown in red. |
 | Malicious QR code | The phone only connects to the addresses inside it and only completes the handshake with the key inside it; it cannot be tricked into talking to another Mac than the one whose key it scanned. |
-| Privileged helper abuse (lid-closed mode) | The helper is installed via `SMAppService.daemon`, accepts XPC connections only from code signed by team `5JMD3VSD7N` with the app's bundle identifier, and exposes exactly one operation: set `disablesleep` to 0 or 1. It never runs any other command. |
+| Privileged helper abuse (lid-closed mode) | The helper is installed via `SMAppService.daemon`, accepts XPC connections only from code signed by team `5JMD3VSD7N` with the app's bundle identifier, and exposes exactly one operation: set `disablesleep` to 0 or 1. It never runs any other command. Paired phones may switch lid-closed mode (D-114); that only toggles the same setting. |
 
 ## 3. Cryptographic details
 

@@ -67,6 +67,24 @@ import Testing
         await client.stop()
     }
 
+    @Test func setPowerReturnsAndPushesTheNewStatus() async throws {
+        let (client, _) = try await connectedClient()
+        guard case .macStatus(let before) = try await client.request(.macStatus) else {
+            Issue.record("Expected macStatus")
+            return
+        }
+        #expect(before.power?.keepsDisplayOn == false)
+        guard case .macStatus(let after) = try await client.request(.setPower(SetPower(keepDisplayOn: true, displayOnDuration: 900, lidClosedMode: true))) else {
+            Issue.record("Expected macStatus")
+            return
+        }
+        #expect(after.power?.keepsDisplayOn == true)
+        #expect(after.power?.displayOnUntil != nil)
+        #expect(after.power?.lidMode == .active)
+        #expect(after.power?.dimsDisplayWhenLidClosed == true)
+        await client.stop()
+    }
+
     @Test func subscribeReplaysBacklogFromSequence() async throws {
         let (client, _) = try await connectedClient()
         let pushes = client.pushes

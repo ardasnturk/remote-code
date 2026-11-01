@@ -61,6 +61,8 @@ public protocol HostService: Sendable {
     func promoStudio(_ request: PromoStudioRequest) async throws -> PromoStudioResponse
     /// Promo Studio's server-sent events until the stream is cancelled.
     func promoStudioEvents() async throws -> AsyncStream<PromoStudioEvent>
+    /// Changes power settings and returns the new status (capability `power`).
+    func setPower(_ request: SetPower) async throws -> MacStatus
 }
 
 extension HostService {
@@ -70,6 +72,10 @@ extension HostService {
 
     public func promoStudioEvents() async throws -> AsyncStream<PromoStudioEvent> {
         throw ErrorPayload(code: .promoStudioUnavailable, message: "Promo Studio is not available on this Mac.")
+    }
+
+    public func setPower(_ request: SetPower) async throws -> MacStatus {
+        throw ErrorPayload(code: .powerUnavailable, message: "This Mac cannot change its power settings remotely.")
     }
 }
 

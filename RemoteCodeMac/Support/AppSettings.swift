@@ -10,6 +10,7 @@ final class AppSettings {
     private enum Key {
         static let keepAwakeWithLidClosed = "keepAwakeWithLidClosed"
         static let pauseLidModeOnBattery = "pauseLidModeOnBattery"
+        static let dimDisplayWhenLidClosed = "dimDisplayWhenLidClosed"
         static let retentionDays = "retentionDays"
         static let allowBypassPermissions = "allowBypassPermissions"
         static let defaultModel = "defaultModel"
@@ -41,6 +42,11 @@ final class AppSettings {
     /// Suspend the lid-closed mode while running on battery (default on).
     var pauseLidModeOnBattery: Bool {
         didSet { defaults.set(pauseLidModeOnBattery, forKey: Key.pauseLidModeOnBattery) }
+    }
+
+    /// Darken the built-in display while the lid is closed in lid-closed mode (default on, D-114).
+    var dimDisplayWhenLidClosed: Bool {
+        didSet { defaults.set(dimDisplayWhenLidClosed, forKey: Key.dimDisplayWhenLidClosed) }
     }
 
     /// Session logs untouched for longer are deleted.
@@ -127,6 +133,7 @@ final class AppSettings {
         self.defaults = defaults
         defaults.register(defaults: [
             Key.pauseLidModeOnBattery: true,
+            Key.dimDisplayWhenLidClosed: true,
             Key.retentionDays: 30,
             Key.preferredPort: RemoteCodeProtocol.defaultPort,
             Key.defaultPermissionMode: PermissionMode.default.rawValue,
@@ -139,6 +146,7 @@ final class AppSettings {
         ])
         keepAwakeWithLidClosed = defaults.bool(forKey: Key.keepAwakeWithLidClosed)
         pauseLidModeOnBattery = defaults.bool(forKey: Key.pauseLidModeOnBattery)
+        dimDisplayWhenLidClosed = defaults.bool(forKey: Key.dimDisplayWhenLidClosed)
         retentionDays = max(1, defaults.integer(forKey: Key.retentionDays))
         allowBypassPermissions = defaults.bool(forKey: Key.allowBypassPermissions)
         defaultModel = defaults.string(forKey: Key.defaultModel) ?? ""

@@ -164,6 +164,7 @@ the documented result, `ok`, or `error`.
 | `promoStudio` | `{ method: "GET" \| "POST", path: "/v1/…", body?: JSON text, range?: "bytes=a-b" }` — forwarded to the Promo Studio app's local API; capability `promoStudio` | `promoStudioResponse` (`error{promoStudioUnavailable}` when Promo Studio is not running) |
 | `promoStudioSubscribe` | `{}` — capability `promoStudio` | `ok`, then `promoStudioEvent` pushes |
 | `promoStudioUnsubscribe` | `{}` | `ok` |
+| `setPower` | `{ keepDisplayOn?, displayOnDuration? (seconds, 0 = until turned off), lidClosedMode?, pauseLidModeOnBattery?, dimDisplayWhenLidClosed? }` — fields left out stay unchanged; capability `power` | `macStatus` (also pushed to every other phone) |
 
 `permissionMode` ∈ `default` · `acceptEdits` · `plan` · `bypassPermissions`
 (the last one only if the Mac user enabled it; otherwise `modeNotAllowed`).
@@ -179,6 +180,7 @@ older Macs). A client only sends them when the Mac lists the capability, so
 `modelCatalog` (`macStatus.agents[].modelOptions`) and `sessionPermissionMode`
 (`updateSessionSettings.permissionMode`). `promoStudio` (`promoStudio`,
 `promoStudioSubscribe`) is announced only by the real Mac host, not the demo.
+`power` (`setPower`, `macStatus.power`) controls the display and lid-closed mode.
 
 ### 4.2 Host → client
 
@@ -186,7 +188,7 @@ older Macs). A client only sends them when the Mac lists the capability, so
 |---|---|
 | `helloAck` | `{ protocolVersion, macName, macId, serverVersion, pendingPermissions: [PermissionRequest], capabilities?: [String] }` |
 | `ok` | `{}` |
-| `macStatus` | `{ macName, sleepPrevented, lidClosedModeEnabled, claude: { installed, path?, version? }, tailscale: { installed, running, backendState?, ipv4?, ipv6?, magicDNSName?, tailnetName?, magicDNSEnabled }, addresses: [{ host, kind }], port, activeSessionCount, bypassPermissionsAllowed, defaultModel?, agents?: [{ kind, installed, path?, version?, loggedIn?, models, delegationEnabled, modelOptions?: [{ id, displayName, description?, resolvedModel?, effortLevels, defaultEffort?, isDefault }] }] }` — `modelOptions` with capability `modelCatalog` |
+| `macStatus` | `{ macName, sleepPrevented, lidClosedModeEnabled, claude: { installed, path?, version? }, tailscale: { installed, running, backendState?, ipv4?, ipv6?, magicDNSName?, tailnetName?, magicDNSEnabled }, addresses: [{ host, kind }], port, activeSessionCount, bypassPermissionsAllowed, defaultModel?, agents?: [{ kind, installed, path?, version?, loggedIn?, models, delegationEnabled, modelOptions?: [{ id, displayName, description?, resolvedModel?, effortLevels, defaultEffort?, isDefault }] }], power?: { keepsDisplayOn, displayOnUntil?, lidClosedModeEnabled, lidMode: off \| needsApproval \| active \| pausedOnBattery \| failed, lidError?, pauseLidModeOnBattery, dimsDisplayWhenLidClosed, onBattery, lidClosed? } }` — `modelOptions` with capability `modelCatalog`, `power` with capability `power` |
 | `directoryListing` | `{ path, homePath, parentPath?, isGitRepository, truncated, entries: [{ name, path, isDirectory, isHidden, isSymbolicLink, isGitRepository, size?, modifiedAt? }] }` |
 | `sessionList` | `{ sessions: [Session] }` |
 | `sessionStarted` / `sessionUpdated` | `{ session: Session }` |
@@ -226,7 +228,8 @@ folder; `message` says which switch to turn on), `notADirectory`,
 `alreadyExists`, `invalidName`, `agentNotInstalled`,
 `claudeNotInstalled`, `sessionClosed`, `modeNotAllowed`, `unauthorized`,
 `deviceRevoked`, `pairingTokenInvalid`, `clockSkew`, `timeout`, `internal`,
-`promoStudioUnavailable` (the Promo Studio app is not running on the Mac).
+`promoStudioUnavailable` (the Promo Studio app is not running on the Mac),
+`powerUnavailable` (the host cannot change power settings).
 Codes are open-ended strings; clients must handle unknown codes generically.
 
 ## 5. Session events

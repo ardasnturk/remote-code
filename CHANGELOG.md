@@ -6,6 +6,13 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added
+- Power controls on the iPhone (Settings → Power): keep the Mac's display on
+  for a chosen time, switch lid-closed mode and "pause while on battery".
+- The built-in screen is darkened while the lid is closed in lid-closed mode,
+  so it no longer stays lit behind the lid (on by default; adapted from Perch).
+- "Keep the display on" in the Mac's settings.
+
 ## [1.4.2] — 2026-11-01
 
 ### Fixed

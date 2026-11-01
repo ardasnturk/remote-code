@@ -80,7 +80,9 @@
 		D406A54534441D6640D5BEA2 /* RemoteCodeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6F8D366FE2DAD04E0776E303 /* RemoteCodeKit */; };
 		E01A690CE5DB2EE753270CF7 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D05038B9A877E8EC1A2714 /* NewChatView.swift */; };
 		E1D1A625B2957135D74563BB /* TailscaleGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C3A712D83E548F44D8555 /* TailscaleGuideView.swift */; };
+		F2D5686A9CDCABB8B8471367 /* PowerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1FA95239F0368DE184248C /* PowerSection.swift */; };
 		F548B2EDD54FA8CE53DADD56 /* PromoStudioModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F8BD1185702F19243E42EF /* PromoStudioModels.swift */; };
+		FEA72CCA07947726FC5E5C9A /* ClosedLidDimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCD3B07CE7D6E7842E16230 /* ClosedLidDimmer.swift */; };
 		FEEE70D01EDA51C369879843 /* RemoteCodeHelper in Embed Dependencies */ = {isa = PBXBuildFile; fileRef = 0FE23741044C6A782D26411C /* RemoteCodeHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -132,6 +134,7 @@
 		0712F7EA816A8171D5A38B84 /* SessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
 		09A97B36EF53F03495341EF7 /* RemoteCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCodeUITests.swift; sourceTree = "<group>"; };
 		0C6AF551759E7EB2453A178A /* LidClosedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LidClosedController.swift; sourceTree = "<group>"; };
+		0D1FA95239F0368DE184248C /* PowerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerSection.swift; sourceTree = "<group>"; };
 		0FE23741044C6A782D26411C /* RemoteCodeHelper */ = {isa = PBXFileReference; includeInIndex = 0; path = RemoteCodeHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		109FEEDEAB04834A5777CCA5 /* SessionMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMonitorView.swift; sourceTree = "<group>"; };
 		12FD5439B015D1820BE6135A /* AppUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdater.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 		E1F211BA1258C2B77BD6FBFC /* HelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperProtocol.swift; sourceTree = "<group>"; };
 		E7F2A7C854D1E4B48F8664AA /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		E84C3C562274E220856E2916 /* RemoteCodeiOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RemoteCodeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBCD3B07CE7D6E7842E16230 /* ClosedLidDimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedLidDimmer.swift; sourceTree = "<group>"; };
 		EC7C9641C59B897C73D3EF8C /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
 		ECC7A4A2F71683B6B3F385BA /* PairedMacStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairedMacStore.swift; sourceTree = "<group>"; };
 		ED8AE93E6091959646870AF6 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 		1F3A2BCF9C8AC3B9F7C44C96 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				0D1FA95239F0368DE184248C /* PowerSection.swift */,
 				7F76C81C6F23433B7A640905 /* SettingsView.swift */,
 			);
 			path = Settings;
@@ -293,6 +298,7 @@
 		329EE402DBA35F3C4875DE76 /* Power */ = {
 			isa = PBXGroup;
 			children = (
+				EBCD3B07CE7D6E7842E16230 /* ClosedLidDimmer.swift */,
 				0C6AF551759E7EB2453A178A /* LidClosedController.swift */,
 				011EE00379097FD6B3C87C71 /* SleepAssertion.swift */,
 			);
@@ -712,6 +718,7 @@
 				83F52F94E3DB1CD7C4A57870 /* AppSettings.swift in Sources */,
 				1AA92474203122351303B7BE /* AppUpdater.swift in Sources */,
 				241CC28073903DD586D5FC23 /* ClaudeSetupView.swift in Sources */,
+				FEA72CCA07947726FC5E5C9A /* ClosedLidDimmer.swift in Sources */,
 				B0EF4F158F3B8D8DA1F6AB10 /* Formatting.swift in Sources */,
 				32450B966CD71E23FB01064F /* GetIPhoneAppView.swift in Sources */,
 				627AFF6BBDF6D8F6110CA80B /* HelperProtocol.swift in Sources */,
@@ -774,6 +781,7 @@
 				25B0DEFF2FCCCC4157FB5EBD /* PairedMacStore.swift in Sources */,
 				0E5E1934A85155AF1A1B98E4 /* PairingFlowView.swift in Sources */,
 				A303E32E76AECF9CFC78171B /* PermissionRequestSheet.swift in Sources */,
+				F2D5686A9CDCABB8B8471367 /* PowerSection.swift in Sources */,
 				6ED31F7FDCEEA42C8DB7AE39 /* PromoStudioAccountsView.swift in Sources */,
 				2415F32E09EC8BA119B36CAA /* PromoStudioHomeView.swift in Sources */,
 				F548B2EDD54FA8CE53DADD56 /* PromoStudioModels.swift in Sources */,

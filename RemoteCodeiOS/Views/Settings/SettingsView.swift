@@ -28,8 +28,11 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 macsSection
-                if let status = model.connection?.status, model.connection?.isConnected == true {
+                if let connection = model.connection, let status = connection.status, connection.isConnected {
                     statusSection(status)
+                    if connection.capabilities.contains(HostCapability.power), let power = status.power {
+                        PowerSection(connection: connection, power: power)
+                    }
                 }
                 Section {
                     Toggle("Use Tailscale when away", isOn: $preferences.usesTailscale)

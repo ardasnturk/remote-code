@@ -175,6 +175,8 @@ public actor ServerConnection {
             promoStudioTask?.cancel()
             promoStudioTask = nil
             return .ok
+        case .setPower(let request):
+            return .macStatus(try await service.setPower(request))
         }
     }
 

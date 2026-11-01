@@ -19,6 +19,10 @@ public actor DemoHostService: HostService {
     private var turnCounter = 0
     /// Folders created in the demo, by parent path (the scripted tree is immutable).
     private var createdFolders: [String: [String]] = [:]
+    private var power = PowerStatus(
+        keepsDisplayOn: false, lidClosedModeEnabled: false, lidMode: .off,
+        pauseLidModeOnBattery: true, dimsDisplayWhenLidClosed: true, onBattery: false, lidClosed: false
+    )
     private let now: Date
 
     public init(pace: Double = 1, now: Date = Date()) {
@@ -48,7 +52,7 @@ public actor DemoHostService: HostService {
         MacStatus(
             macName: DemoContent.macName,
             sleepPrevented: true,
-            lidClosedModeEnabled: false,
+            lidClosedModeEnabled: power.lidMode == .active,
             claude: ClaudeCLIStatus(installed: true, path: "/Users/demo/.local/bin/claude", version: "2.1.310 (Claude Code)"),
             tailscale: TailscaleStatus(
                 installed: true, running: true, backendState: "Running", ipv4: "100.101.102.103",
@@ -69,7 +73,8 @@ public actor DemoHostService: HostService {
                     models: DemoContent.codexModels.map(\.id), delegationEnabled: true, modelOptions: DemoContent.codexModels
                 ),
                 AgentStatus(kind: .gemini, installed: true, version: "0.24.0", delegationEnabled: true),
-            ]
+            ],
+            power: power
         )
     }
 
@@ -144,6 +149,23 @@ public actor DemoHostService: HostService {
 
     public func usageLimits() async -> [UsageLimits] {
         DemoContent.usageLimits(now: now)
+    }
+
+    public func setPower(_ request: SetPower) async throws -> MacStatus {
+        if let on = request.keepDisplayOn {
+            power.keepsDisplayOn = on
+            let duration = request.displayOnDuration ?? 0
+            power.displayOnUntil = on && duration > 0 ? Date().addingTimeInterval(duration) : nil
+        }
+        if let pause = request.pauseLidModeOnBattery { power.pauseLidModeOnBattery = pause }
+        if let dim = request.dimDisplayWhenLidClosed { power.dimsDisplayWhenLidClosed = dim }
+        if let lid = request.lidClosedMode {
+            power.lidClosedModeEnabled = lid
+            power.lidMode = lid ? .active : .off
+        }
+        let status = await macStatus()
+        broadcast(.macStatus(status))
+        return status
     }
 
     public func listSessions() async -> [SessionSummary] {

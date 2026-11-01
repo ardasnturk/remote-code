@@ -274,6 +274,15 @@ final class MacConnection {
         return catalog.commands
     }
 
+    /// Changes the Mac's power settings (capability `power`).
+    func setPower(_ request: SetPower) async throws {
+        let response = try await client.request(.setPower(request))
+        guard case .macStatus(let newStatus) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        apply(newStatus)
+    }
+
     func usageLimits() async throws -> [UsageLimits] {
         let response = try await client.request(.getUsageLimits, timeout: 30)
         guard case .usageLimits(let payload) = response else {

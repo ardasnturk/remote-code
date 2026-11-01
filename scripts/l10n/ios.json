@@ -95,6 +95,10 @@
   "de": "In diesem Chat alles erlauben",
   "tr": "Bu sohbette her şeye izin ver"
  },
+ "Allow the Remote Code helper on your Mac: System Settings → General → Login Items.": {
+  "de": "Erlaube den Remote Code-Helfer auf deinem Mac: Systemeinstellungen → Allgemein → Anmeldeobjekte.",
+  "tr": "Mac'inizde Remote Code yardımcısına izin verin: Sistem Ayarları → Genel → Giriş Öğeleri."
+ },
  "Almost done…": {
   "de": "Fast fertig …",
   "tr": "Neredeyse bitti…"
@@ -367,6 +371,10 @@
   "de": "Dunkel",
   "tr": "Koyu"
  },
+ "Darken the built-in screen while the lid is closed": {
+  "de": "Eingebauten Bildschirm bei geschlossenem Deckel abdunkeln",
+  "tr": "Kapak kapalıyken dahili ekranı karart"
+ },
  "Default model": {
   "de": "Standardmodell",
   "tr": "Varsayılan model"
@@ -426,6 +434,10 @@
  "Draft": {
   "de": "Entwurf",
   "tr": "Taslak"
+ },
+ "Duration": {
+  "de": "Dauer",
+  "tr": "Süre"
  },
  "Each project posts with its own account. Accounts linked to a Facebook Page you manage are added together.": {
   "de": "Jedes Projekt postet mit seinem eigenen Konto. Konten, die mit einer von dir verwalteten Facebook-Seite verknüpft sind, werden gemeinsam hinzugefügt.",
@@ -615,6 +627,10 @@
   "de": "Er stimmt mit dem Code im Kopplungsfenster auf deinem Mac überein.",
   "tr": "Mac'inizdeki eşleştirme penceresindeki kodla aynıdır."
  },
+ "Keep the display on": {
+  "de": "Bildschirm eingeschaltet lassen",
+  "tr": "Ekranı açık tut"
+ },
  "Keeps Mac awake": {
   "de": "Hält den Mac wach",
   "tr": "Mac'i uyanık tutuyor"
@@ -638,6 +654,10 @@
  "Licenses": {
   "de": "Lizenzen",
   "tr": "Lisanslar"
+ },
+ "Lid-closed mode could not be turned on.": {
+  "de": "Der Modus bei geschlossenem Deckel konnte nicht aktiviert werden.",
+  "tr": "Kapak kapalı modu açılamadı."
  },
  "Light": {
   "de": "Hell",
@@ -835,6 +855,10 @@
   "de": "Offline – der gespeicherte Verlauf wird angezeigt. Claude arbeitet auf deinem Mac weiter.",
   "tr": "Çevrimdışı — kayıtlı döküm gösteriliyor. Claude Mac'inizde çalışmaya devam ediyor."
  },
+ "On": {
+  "de": "Ein",
+  "tr": "Açık"
+ },
  "On the Mac, click the >_ icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.": {
   "de": "Klicke auf dem Mac auf das >_-Symbol, wähle „iPhone oder iPad koppeln …“, tippe dann unten auf die Taste und scanne den Code.",
   "tr": "Mac'te >_ simgesine tıklayın, “iPhone veya iPad Eşleştir…” öğesini seçin, ardından aşağıdaki düğmeye dokunup kodu tarayın."
@@ -850,6 +874,10 @@
  "On your Mac, click “Copy Link” in the pairing window and paste it here (for example via Universal Clipboard).": {
   "de": "Klicke auf deinem Mac im Kopplungsfenster auf „Link kopieren“ und füge ihn hier ein (zum Beispiel über die universelle Zwischenablage).",
   "tr": "Mac'inizde eşleştirme penceresindeki “Bağlantıyı Kopyala”ya tıklayın ve buraya yapıştırın (örneğin Evrensel Pano ile)."
+ },
+ "On · the lid is closed": {
+  "de": "Ein · Deckel geschlossen",
+  "tr": "Açık · kapak kapalı"
  },
  "Only the first entries are shown.": {
   "de": "Es werden nur die ersten Einträge angezeigt.",
@@ -911,6 +939,14 @@
   "de": "Stattdessen Kopplungslink einfügen",
   "tr": "Bunun Yerine Eşleştirme Bağlantısı Yapıştır"
  },
+ "Pause while on battery": {
+  "de": "Im Akkubetrieb pausieren",
+  "tr": "Pildeyken duraklat"
+ },
+ "Paused while on battery. It resumes on power.": {
+  "de": "Im Akkubetrieb pausiert. Wird am Netzteil fortgesetzt.",
+  "tr": "Pildeyken duraklatıldı. Güce bağlanınca devam eder."
+ },
  "Pending": {
   "de": "Ausstehend",
   "tr": "Bekliyor"
@@ -962,6 +998,10 @@
  "Posts": {
   "de": "Beiträge",
   "tr": "Gönderiler"
+ },
+ "Power": {
+  "de": "Energie",
+  "tr": "Güç"
  },
  "Previous week": {
   "de": "Vorherige Woche",
@@ -1335,6 +1375,10 @@
   "de": "Startet",
   "tr": "Başlatılıyor"
  },
+ "Stay awake with the lid closed": {
+  "de": "Bei geschlossenem Deckel wach bleiben",
+  "tr": "Kapak kapalıyken de açık kal"
+ },
  "Stay in control": {
   "de": "Behalte die Kontrolle",
   "tr": "Kontrol sizde"
@@ -1483,6 +1527,10 @@
   "de": "Erst die Demo ausprobieren",
   "tr": "Önce Demoyu Deneyin"
  },
+ "Turns off at": {
+  "de": "Schaltet sich aus um",
+  "tr": "Kapanma saati"
+ },
  "Type": {
   "de": "Art",
   "tr": "Tür"
@@ -1494,6 +1542,10 @@
  "Unschedule": {
   "de": "Planung aufheben",
   "tr": "Zamanlamayı Kaldır"
+ },
+ "Until turned off": {
+  "de": "Bis zum Ausschalten",
+  "tr": "Kapatılana kadar"
  },
  "Use Tailscale": {
   "de": "Tailscale verwenden",
@@ -1574,6 +1626,10 @@
  "You: %@": {
   "de": "Du: %@",
   "tr": "Siz: %@"
+ },
+ "Your Mac always stays awake while Remote Code runs; the display may still turn off. A closed MacBook that stays awake can get warm and drain its battery.": {
+  "de": "Dein Mac bleibt immer wach, solange Remote Code läuft; der Bildschirm kann sich trotzdem ausschalten. Ein zugeklapptes, waches MacBook kann warm werden und den Akku leeren.",
+  "tr": "Remote Code çalışırken Mac'iniz her zaman uyanık kalır; ekran yine de kapanabilir. Kapağı kapalı ve uyanık bir MacBook ısınabilir ve pilini tüketebilir."
  },
  "Your Mac is summarising the week…": {
   "de": "Dein Mac fasst die Woche zusammen …",

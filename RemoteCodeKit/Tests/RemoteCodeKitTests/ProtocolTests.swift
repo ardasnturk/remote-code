@@ -33,6 +33,8 @@ import Testing
         .promoStudio(PromoStudioRequest(path: "/v1/media/posts/X/video.mp4", range: "bytes=0-99")),
         .promoStudioSubscribe,
         .promoStudioUnsubscribe,
+        .setPower(SetPower(keepDisplayOn: true, displayOnDuration: 3_600)),
+        .setPower(SetPower(lidClosedMode: false, pauseLidModeOnBattery: true, dimDisplayWhenLidClosed: true)),
     ])
     func clientMessagesRoundTrip(_ message: ClientMessage) throws {
         #expect(try roundTrip(message) == message)
@@ -69,6 +71,15 @@ import Testing
                 tailscale: TailscaleStatus(installed: true, running: true, ipv4: "100.64.0.1"),
                 addresses: [HostAddress(host: "192.168.1.2", kind: .local)], port: 47823, activeSessionCount: 1,
                 bypassPermissionsAllowed: false
+            )),
+            .macStatus(MacStatus(
+                macName: "Mac", sleepPrevented: true, lidClosedModeEnabled: true,
+                claude: ClaudeCLIStatus(installed: false), tailscale: .notInstalled, addresses: [], port: 47823,
+                activeSessionCount: 0, bypassPermissionsAllowed: false,
+                power: PowerStatus(
+                    keepsDisplayOn: true, displayOnUntil: date, lidClosedModeEnabled: true, lidMode: .failed, lidError: "pmset failed",
+                    pauseLidModeOnBattery: true, dimsDisplayWhenLidClosed: false, onBattery: true, lidClosed: true
+                )
             )),
             .error(ErrorPayload(code: .notFound, message: "Nope")),
         ]

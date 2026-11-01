@@ -259,6 +259,10 @@
   "de": "Erstellt ein neues zufälliges Thema. Telefone, die das alte abonniert haben, erhalten keine Mitteilungen mehr.",
   "tr": "Yeni bir rastgele konu oluşturur. Eski konuya abone olan telefonlara artık bildirim gelmez."
  },
+ "Darken the built-in screen while the lid is closed": {
+  "de": "Eingebauten Bildschirm bei geschlossenem Deckel abdunkeln",
+  "tr": "Kapak kapalıyken dahili ekranı karart"
+ },
  "Default model": {
   "de": "Standardmodell",
   "tr": "Varsayılan model"
@@ -426,6 +430,10 @@
  "Keep session logs for %lld days": {
   "de": "Sitzungsprotokolle %lld Tage aufbewahren",
   "tr": "Oturum günlüklerini %lld gün sakla"
+ },
+ "Keep the display on": {
+  "de": "Bildschirm eingeschaltet lassen",
+  "tr": "Ekranı açık tut"
  },
  "Last seen %@ ago": {
   "de": "Zuletzt gesehen vor %@",
@@ -674,6 +682,10 @@
  "Remote Code": {
   "de": "Remote Code",
   "tr": "Remote Code"
+ },
+ "Remote Code always keeps your Mac awake while it runs; this keeps the screen on too. You can also switch it from your iPhone.": {
+  "de": "Remote Code hält deinen Mac immer wach, solange es läuft; damit bleibt auch der Bildschirm an. Du kannst es auch auf deinem iPhone umschalten.",
+  "tr": "Remote Code çalışırken Mac'inizi her zaman uyanık tutar; bu seçenek ekranı da açık tutar. iPhone'unuzdan da açıp kapatabilirsiniz."
  },
  "Remote Code can't replace itself in its current location. The download page has been opened in your browser.": {
   "de": "Remote Code kann sich an seinem aktuellen Ort nicht selbst ersetzen. Die Download-Seite wurde in deinem Browser geöffnet.",

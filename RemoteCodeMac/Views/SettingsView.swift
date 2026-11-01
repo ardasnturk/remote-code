@@ -249,8 +249,18 @@ private struct GeneralSettings: View {
                 }
             }
             Section {
+                Toggle("Keep the display on", isOn: Binding(
+                    get: { controller.keepsDisplayOn },
+                    set: { controller.setKeepDisplayOn($0) }
+                ))
+            } footer: {
+                Text("Remote Code always keeps your Mac awake while it runs; this keeps the screen on too. You can also switch it from your iPhone.")
+            }
+            Section {
                 Toggle("Stay awake with the lid closed", isOn: $settings.keepAwakeWithLidClosed)
                 Toggle("Pause while on battery", isOn: $settings.pauseLidModeOnBattery)
+                    .disabled(!settings.keepAwakeWithLidClosed)
+                Toggle("Darken the built-in screen while the lid is closed", isOn: $settings.dimDisplayWhenLidClosed)
                     .disabled(!settings.keepAwakeWithLidClosed)
             } header: {
                 Text("Lid-closed mode")
@@ -278,6 +288,7 @@ private struct GeneralSettings: View {
         .formStyle(.grouped)
         .onChange(of: settings.keepAwakeWithLidClosed) { _, _ in Task { await controller.applySettings() } }
         .onChange(of: settings.pauseLidModeOnBattery) { _, _ in Task { await controller.applySettings() } }
+        .onChange(of: settings.dimDisplayWhenLidClosed) { _, _ in Task { await controller.applySettings() } }
         .onChange(of: settings.retentionDays) { _, _ in Task { await controller.applySettings() } }
         .onAppear { controller.refreshLaunchAtLogin() }
         .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in

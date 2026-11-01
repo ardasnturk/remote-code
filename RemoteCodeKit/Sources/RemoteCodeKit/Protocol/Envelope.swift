@@ -72,6 +72,7 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case "promoStudio": message = .promoStudio(try payload(PromoStudioRequest.self))
         case "promoStudioSubscribe": message = .promoStudioSubscribe
         case "promoStudioUnsubscribe": message = .promoStudioUnsubscribe
+        case "setPower": message = .setPower(try payload(SetPower.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
     }
@@ -89,6 +90,7 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case .listSessions, .macStatus, .getUsageLimits, .promoStudioSubscribe, .promoStudioUnsubscribe:
             try container.encode(EmptyPayload(), forKey: .payload)
         case .promoStudio(let payload): try container.encode(payload, forKey: .payload)
+        case .setPower(let payload): try container.encode(payload, forKey: .payload)
         case .getWeeklySummary(let payload): try container.encode(payload, forKey: .payload)
         case .listCommands(let payload): try container.encode(payload, forKey: .payload)
         case .updateSessionSettings(let payload): try container.encode(payload, forKey: .payload)

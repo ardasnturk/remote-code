@@ -975,3 +975,31 @@ Jobs carry `kind`, `startedAt` and `estimatedEnd`. Promo Studio computes the
 estimate (render progress rate, or the median of the last durations of the same
 kind on that Mac); the phone only shows it, so there is no protocol change.
 
+### D-114 — Power controls from the phone
+**Status:** accepted
+
+Remote Code already kept the system awake while it runs and offered lid-closed
+mode through the privileged helper, but the phone could only show that. With
+capability `power` the phone sends `setPower` and reads `macStatus.power`:
+
+* **Keep display on** — a second power assertion
+  (`PreventUserIdleDisplaySleep`) on top of the permanent system one, for a
+  chosen time (15 min … 8 h) or until turned off. It is not persisted: a
+  restart of Remote Code turns it off.
+* **Lid-closed mode and "pause on battery"** change the same Mac settings as
+  the Mac's own switches and go through the existing helper. Approving the
+  helper in Login Items can only happen on the Mac; the phone shows
+  `needsApproval` with that hint.
+* **Darken the built-in screen while the lid is closed** (default on). With
+  `disablesleep 1` the panel stays lit behind a closed lid, which drains the
+  battery and warms the Mac. `ClosedLidDimmer` holds the built-in display's
+  brightness at 0 while the lid is closed and lid-closed mode is active, and
+  restores it when the lid opens. It uses the private DisplayServices
+  framework (fine outside the Mac App Store) and persists the saved value so a
+  crash cannot leave the screen dark. Adapted from Perch's `LidDimmer`
+  (MIT, see NOTICE).
+
+Every change is pushed to all connected phones as `macStatus`. A paired phone
+can already run commands through Claude, so these switches add no new trust;
+Perch's sudoers rule was not taken over, the helper stays the only privileged
+code. Disk cleanup and memory tools from Perch are later phases.

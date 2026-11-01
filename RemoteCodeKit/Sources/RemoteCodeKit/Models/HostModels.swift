@@ -174,11 +174,13 @@ public struct MacStatus: Sendable, Hashable, Codable {
     public var defaultModel: String?
     /// Every agent CLI the Mac looked for; `nil` on Macs without capability `agents`.
     public var agents: [AgentStatus]?
+    /// Power settings; `nil` on Macs without capability `power`.
+    public var power: PowerStatus?
 
     public init(
         macName: String, sleepPrevented: Bool, lidClosedModeEnabled: Bool, claude: ClaudeCLIStatus,
         tailscale: TailscaleStatus, addresses: [HostAddress], port: Int, activeSessionCount: Int,
-        bypassPermissionsAllowed: Bool, defaultModel: String? = nil, agents: [AgentStatus]? = nil
+        bypassPermissionsAllowed: Bool, defaultModel: String? = nil, agents: [AgentStatus]? = nil, power: PowerStatus? = nil
     ) {
         self.macName = macName
         self.sleepPrevented = sleepPrevented
@@ -191,6 +193,7 @@ public struct MacStatus: Sendable, Hashable, Codable {
         self.bypassPermissionsAllowed = bypassPermissionsAllowed
         self.defaultModel = defaultModel
         self.agents = agents
+        self.power = power
     }
 
     /// Agents a new session can use: the reported list, or Claude Code alone.

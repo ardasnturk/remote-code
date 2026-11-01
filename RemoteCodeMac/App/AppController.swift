@@ -32,6 +32,9 @@ final class AppController: MacStatusProviding {
     @ObservationIgnored private(set) lazy var updater = AppUpdater(settings: settings)
     let lidClosed = LidClosedController()
     let sleepAssertion = SleepAssertion()
+    /// "Keep display on", from the phone or Settings (D-114).
+    let displayAssertion = SleepAssertion(.display)
+    let lidDimmer = ClosedLidDimmer()
 
     private(set) var phase: Phase = .starting
     private(set) var macName = Host.current().localizedName ?? "Mac"
@@ -60,6 +63,9 @@ final class AppController: MacStatusProviding {
     private(set) var launchAtLoginNeedsApproval = LaunchAtLogin.requiresApproval
     private(set) var launchAtLoginError: String?
     private(set) var notificationTest: NotificationTestStatus?
+    private(set) var keepsDisplayOn = false
+    /// When "keep display on" turns itself off; `nil` = until turned off.
+    private(set) var displayOnUntil: Date?
     var alert: String?
 
     enum NotificationTestStatus: Equatable {
@@ -76,6 +82,7 @@ final class AppController: MacStatusProviding {
     @ObservationIgnored private let macNameBox = MacNameBox()
     @ObservationIgnored private let secrets = KeychainSecretStore(service: "com.ardasenturk.Pilothouse.Mac.secrets")
     @ObservationIgnored private var started = false
+    @ObservationIgnored private var displayOnTimer: Task<Void, Never>?
 
     static let apiKeyAccount = "anthropic-api-key"
     static let ntfyTokenAccount = "ntfy-token"
@@ -101,6 +108,12 @@ final class AppController: MacStatusProviding {
         guard !started else { return }
         started = true
         sleepAssertion.acquire()
+        lidClosed.onStateChange = { [weak self] in
+            self?.applyLidDimming()
+            self?.broadcastStatus()
+        }
+        lidDimmer.onLidChange = { [weak self] in self?.broadcastStatus() }
+        lidDimmer.start()
         macNameBox.set(macName)
         updater.startAutomaticChecks()
 
@@ -155,6 +168,9 @@ final class AppController: MacStatusProviding {
         listener.stop()
         await runtime?.shutdown()
         await lidClosed.restore()
+        lidDimmer.stop()
+        displayOnTimer?.cancel()
+        displayAssertion.release()
         sleepAssertion.release()
     }
 
@@ -241,8 +257,81 @@ final class AppController: MacStatusProviding {
             activeSessionCount: activeSessions.count,
             bypassPermissionsAllowed: settings.allowBypassPermissions,
             defaultModel: settings.defaultModel.isEmpty ? nil : settings.defaultModel,
-            agents: agents
+            agents: agents,
+            power: powerStatus
         )
+    }
+
+    // MARK: Power
+
+    private var powerStatus: PowerStatus {
+        let (mode, error): (PowerStatus.LidMode, String?) = switch lidClosed.state {
+        case .off: (.off, nil)
+        case .needsApproval: (.needsApproval, nil)
+        case .active: (.active, nil)
+        case .pausedOnBattery: (.pausedOnBattery, nil)
+        case .failed(let message): (.failed, message)
+        }
+        return PowerStatus(
+            keepsDisplayOn: keepsDisplayOn,
+            displayOnUntil: displayOnUntil,
+            lidClosedModeEnabled: settings.keepAwakeWithLidClosed,
+            lidMode: mode,
+            lidError: error,
+            pauseLidModeOnBattery: settings.pauseLidModeOnBattery,
+            dimsDisplayWhenLidClosed: settings.dimDisplayWhenLidClosed,
+            onBattery: lidClosed.isOnBattery,
+            lidClosed: lidDimmer.isLidClosed
+        )
+    }
+
+    /// Power settings changed from a phone (capability `power`, D-114).
+    func setPower(_ request: SetPower) async throws -> MacStatus {
+        if let on = request.keepDisplayOn {
+            setKeepDisplayOn(on, duration: request.displayOnDuration ?? 0, broadcast: false)
+        }
+        if let pause = request.pauseLidModeOnBattery { settings.pauseLidModeOnBattery = pause }
+        if let dim = request.dimDisplayWhenLidClosed { settings.dimDisplayWhenLidClosed = dim }
+        if let lid = request.lidClosedMode { settings.keepAwakeWithLidClosed = lid }
+        if request.lidClosedMode != nil || request.pauseLidModeOnBattery != nil {
+            await lidClosed.apply(enabled: settings.keepAwakeWithLidClosed, pauseOnBattery: settings.pauseLidModeOnBattery)
+        }
+        applyLidDimming()
+        let status = await macStatus()
+        if let runtime { await runtime.hub.post(.macStatus(status)) }
+        return status
+    }
+
+    /// Keeps the display on, for `duration` seconds or (0) until turned off.
+    func setKeepDisplayOn(_ on: Bool, duration: TimeInterval = 0, broadcast: Bool = true) {
+        displayOnTimer?.cancel()
+        displayOnTimer = nil
+        if on {
+            keepsDisplayOn = displayAssertion.acquire()
+            displayOnUntil = keepsDisplayOn && duration > 0 ? Date().addingTimeInterval(duration) : nil
+            if keepsDisplayOn, duration > 0 {
+                displayOnTimer = Task { [weak self] in
+                    try? await Task.sleep(for: .seconds(duration))
+                    guard !Task.isCancelled else { return }
+                    self?.setKeepDisplayOn(false)
+                }
+            }
+        } else {
+            displayAssertion.release()
+            keepsDisplayOn = false
+            displayOnUntil = nil
+        }
+        if broadcast { broadcastStatus() }
+    }
+
+    /// The built-in screen is darkened only while lid-closed mode is really on.
+    private func applyLidDimming() {
+        lidDimmer.setEnabled(settings.dimDisplayWhenLidClosed && lidClosed.state == .active)
+    }
+
+    private func broadcastStatus() {
+        guard let runtime else { return }
+        Task { await runtime.hub.post(.macStatus(await macStatus())) }
     }
 
     func refreshNetwork(broadcast: Bool = true) async {
@@ -426,6 +515,7 @@ final class AppController: MacStatusProviding {
         await configureInsights()
         await applyNotificationSettings()
         await lidClosed.apply(enabled: settings.keepAwakeWithLidClosed, pauseOnBattery: settings.pauseLidModeOnBattery)
+        applyLidDimming()
         if let runtime { await runtime.hub.post(.macStatus(await macStatus())) }
     }
 

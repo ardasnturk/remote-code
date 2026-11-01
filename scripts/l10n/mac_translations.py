@@ -299,5 +299,8 @@ T = {
 "Video failed": ("Video başarısız", "Video fehlgeschlagen"),
 "Posted to Instagram": ("Instagram'da paylaşıldı", "Auf Instagram veröffentlicht"),
 "When Promo Studio runs on this Mac: videos started from the phone or the Mac, also while the phone app is closed. Tapping a notification opens the video in Remote Code.": ("Promo Studio bu Mac'te çalışırken: telefondan ya da Mac'ten başlatılan videolar için, telefon uygulaması kapalıyken de. Bildirime dokunmak videoyu Remote Code'da açar.", "Wenn Promo Studio auf diesem Mac läuft: für Videos, die du vom iPhone oder vom Mac startest – auch wenn die iPhone-App geschlossen ist. Ein Tipp auf die Mitteilung öffnet das Video in Remote Code."),
+"Keep the display on": ("Ekranı açık tut", "Bildschirm eingeschaltet lassen"),
+"Darken the built-in screen while the lid is closed": ("Kapak kapalıyken dahili ekranı karart", "Eingebauten Bildschirm bei geschlossenem Deckel abdunkeln"),
+"Remote Code always keeps your Mac awake while it runs; this keeps the screen on too. You can also switch it from your iPhone.": ("Remote Code çalışırken Mac'inizi her zaman uyanık tutar; bu seçenek ekranı da açık tutar. iPhone'unuzdan da açıp kapatabilirsiniz.", "Remote Code hält deinen Mac immer wach, solange es läuft; damit bleibt auch der Bildschirm an. Du kannst es auch auf deinem iPhone umschalten."),
 }
 json.dump({k: {"tr": v[0], "de": v[1]} for k, v in T.items()}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mac.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, sort_keys=True)
