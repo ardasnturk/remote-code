@@ -5,8 +5,8 @@
 #
 # `version` and `sha256` are updated by scripts/prepare-release.sh.
 cask "remote-code" do
-  version "1.4.2"
-  sha256 "3c94fc4bc0d86b2b48a8ccdd3eea5aa49f3b85656cfaec9666fab908438c3bda"
+  version "1.5.0"
+  sha256 "4fb8151f227098cc740b54da7980beed8bb18fb4a9dc4a141cda4ca7cb3952ab"
 
   url "https://github.com/ardasnturk/remote-code/releases/download/v#{version}/RemoteCode-#{version}.dmg"
   name "Remote Code"
