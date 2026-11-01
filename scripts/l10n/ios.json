@@ -279,6 +279,10 @@
   "de": "Claude hat auf deinem Mac weitergearbeitet, während du weg warst.",
   "tr": "Siz yokken Claude Mac'inizde çalışmaya devam etti."
  },
+ "Claude makes exactly the video you describe, without advertising the app; the app appears only where your prompt asks for it. Nothing is rendered until you approve the storyboard.": {
+  "de": "Claude dreht genau das Video, das du beschreibst, ohne für die App zu werben; die App erscheint nur dort, wo dein Prompt es verlangt. Gerendert wird erst, wenn du das Storyboard freigibst.",
+  "tr": "Claude, tarif ettiğin videoyu uygulamanın reklamını yapmadan birebir yapar; uygulama yalnızca isteğinde geçtiği yerde görünür. Sen storyboard’u onaylamadan hiçbir şey render edilmez."
+ },
  "Claude only reads and plans; it does not change anything.": {
   "de": "Claude liest und plant nur; es wird nichts verändert.",
   "tr": "Claude yalnızca okur ve plan yapar; hiçbir şeyi değiştirmez."
@@ -622,6 +626,10 @@
  "Free space, memory and CPU of your Mac. Clean up caches or quit an app that slows it down.": {
   "de": "Freier Speicherplatz, Arbeitsspeicher und CPU deines Macs. Bereinige Caches oder beende eine App, die ihn bremst.",
   "tr": "Mac'inizin boş alanı, belleği ve işlemcisi. Önbellekleri temizleyin veya Mac'i yavaşlatan bir uygulamayı kapatın."
+ },
+ "Free-form video (directed by Claude)": {
+  "de": "Freies Video (Regie: Claude)",
+  "tr": "Serbest video (Claude yönetir)"
  },
  "Get Remote Code for Mac": {
   "de": "Remote Code für den Mac laden",

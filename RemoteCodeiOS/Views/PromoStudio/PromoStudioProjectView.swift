@@ -139,7 +139,7 @@ struct PromoStudioComposerRequest: Identifiable {
     let featureId: String?
 }
 
-/// New video from the user's own prompt: a promo film directed by Claude, or a quick screenshot template.
+/// New video from the user's own prompt: a promo film or free-form video directed by Claude, or a quick screenshot template.
 struct PromoStudioComposerView: View {
     let store: PromoStudioStore
     let request: PromoStudioComposerRequest
@@ -147,7 +147,7 @@ struct PromoStudioComposerView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var prompt = ""
-    @State private var directed = true
+    @State private var kind: Kind = .promo
     @State private var research = true
     @State private var voiceover = true
     @State private var seconds = 20
@@ -166,12 +166,13 @@ struct PromoStudioComposerView: View {
                     Text("What should the video be about?")
                 }
                 Section {
-                    Picker("Type", selection: $directed) {
-                        Text("Promo film (directed by Claude)").tag(true)
-                        Text("Quick template (screenshots)").tag(false)
+                    Picker("Type", selection: $kind) {
+                        Text("Promo film (directed by Claude)").tag(Kind.promo)
+                        Text("Free-form video (directed by Claude)").tag(Kind.freeform)
+                        Text("Quick template (screenshots)").tag(Kind.template)
                     }
                     Toggle("Research on the web", isOn: $research)
-                    if let features = store.project(request.projectId)?.analysis?.features {
+                    if kind != .freeform, let features = store.project(request.projectId)?.analysis?.features {
                         Picker("Feature", selection: $featureId) {
                             Text("Claude chooses").tag("")
                             ForEach(features) { Text(verbatim: "\($0.emoji) \($0.name)").tag($0.id) }
@@ -187,7 +188,9 @@ struct PromoStudioComposerView: View {
                         Toggle("Voiceover", isOn: $voiceover)
                     }
                 } footer: {
-                    if directed {
+                    if kind == .freeform {
+                        Text("Claude makes exactly the video you describe, without advertising the app; the app appears only where your prompt asks for it. Nothing is rendered until you approve the storyboard.")
+                    } else if directed {
                         Text("Claude first writes a scene-by-scene storyboard. Nothing is rendered until you approve it.")
                     }
                 }
@@ -212,14 +215,20 @@ struct PromoStudioComposerView: View {
         }
     }
 
+    private enum Kind { case promo, freeform, template }
+
+    /// Claude writes a storyboard and codes the video (promo film or free-form video)
+    private var directed: Bool { kind != .template }
+
     private func create() {
         sending = true
         var body: [String: Any] = [
             "projectId": request.projectId, "prompt": prompt, "research": research,
             "seconds": seconds, "language": language,
         ]
-        if !featureId.isEmpty { body["featureId"] = featureId }
+        if kind != .freeform, !featureId.isEmpty { body["featureId"] = featureId }
         if directed { body["voiceover"] = voiceover }
+        if kind == .freeform { body["style"] = "freeform" }
         Task {
             do {
                 let result = try await store.action(directed ? "createDirectedPost" : "createScriptPost", body)

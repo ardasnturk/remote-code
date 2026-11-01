@@ -344,6 +344,8 @@ T = {
 "Posts": ("Gönderiler", "Beiträge"),
 "Projects": ("Projeler", "Projekte"),
 "Promo film (directed by Claude)": ("Promosyon filmi (Claude yönetir)", "Werbefilm (Regie: Claude)"),
+"Free-form video (directed by Claude)": ("Serbest video (Claude yönetir)", "Freies Video (Regie: Claude)"),
+"Claude makes exactly the video you describe, without advertising the app; the app appears only where your prompt asks for it. Nothing is rendered until you approve the storyboard.": ("Claude, tarif ettiğin videoyu uygulamanın reklamını yapmadan birebir yapar; uygulama yalnızca isteğinde geçtiği yerde görünür. Sen storyboard’u onaylamadan hiçbir şey render edilmez.", "Claude dreht genau das Video, das du beschreibst, ohne für die App zu werben; die App erscheint nur dort, wo dein Prompt es verlangt. Gerendert wird erst, wenn du das Storyboard freigibst."),
 "Prompt": ("Prompt", "Prompt"),
 "Prompt…": ("Prompt…", "Prompt …"),
 "Quick Video": ("Hızlı Video", "Schnelles Video"),

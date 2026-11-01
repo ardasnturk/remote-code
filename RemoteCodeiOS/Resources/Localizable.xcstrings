@@ -4061,6 +4061,64 @@
         }
       }
     },
+    "Claude makes exactly the video you describe, without advertising the app; the app appears only where your prompt asks for it. Nothing is rendered until you approve the storyboard.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude dreht genau das Video, das du beschreibst, ohne für die App zu werben; die App erscheint nur dort, wo dein Prompt es verlangt. Gerendert wird erst, wenn du das Storyboard freigibst."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude hace exactamente el vídeo que describes, sin anunciar la app; la app solo aparece donde tu petición lo pide. No se renderiza nada hasta que apruebes el guion gráfico."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude réalise exactement la vidéo que tu décris, sans faire la promotion de l’app ; l’app n’apparaît que là où ta demande le précise. Rien n’est rendu avant que tu valides le storyboard."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude realizza esattamente il video che descrivi, senza pubblicizzare l’app; l’app compare solo dove lo chiede la tua richiesta. Non viene renderizzato nulla finché non approvi lo storyboard."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claudeは説明どおりの動画をアプリの宣伝なしで制作します。アプリはリクエストで求めた箇所にのみ登場します。絵コンテを承認するまで何もレンダリングされません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude가 설명한 그대로의 영상을 앱 광고 없이 만듭니다. 앱은 요청한 곳에만 나옵니다. 스토리보드를 승인하기 전에는 아무것도 렌더링되지 않습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Claude faz exatamente o vídeo que você descreve, sem anunciar o app; o app só aparece onde o seu pedido pedir. Nada é renderizado até você aprovar o storyboard."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude, tarif ettiğin videoyu uygulamanın reklamını yapmadan birebir yapar; uygulama yalnızca isteğinde geçtiği yerde görünür. Sen storyboard’u onaylamadan hiçbir şey render edilmez."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude 会完全按照你的描述制作视频，不为 App 做广告；App 只在你的请求提到的地方出现。在你批准分镜脚本之前不会渲染任何内容。"
+          }
+        }
+      }
+    },
     "Claude only reads and plans; it does not change anything.": {
       "localizations": {
         "de": {
@@ -9045,6 +9103,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mac 的可用空间、内存和 CPU。清理缓存，或退出拖慢 Mac 的 App。"
+          }
+        }
+      }
+    },
+    "Free-form video (directed by Claude)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freies Video (Regie: Claude)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vídeo libre (dirigido por Claude)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vidéo libre (réalisée par Claude)"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video libero (diretto da Claude)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自由形式の動画（Claudeが演出）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "자유 형식 영상(Claude 연출)"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vídeo livre (dirigido pelo Claude)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serbest video (Claude yönetir)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自由视频（由 Claude 执导）"
           }
         }
       }
