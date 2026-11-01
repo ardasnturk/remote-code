@@ -6,6 +6,15 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.4.1] — 2026-11-01
+
+### Fixed
+- Installing an update from the Mac app failed with "The update's code
+  signature is invalid". The designed DMG window set Finder's "hide extension"
+  flag on the app, which `codesign --strict` rejects. The DMG no longer sets it,
+  the updater ignores that Finder metadata on its own copy, and the release
+  script now checks the app inside the DMG the way the updater does.
+
 ## [1.4.0] — 2026-11-01
 
 ### Added

@@ -69,6 +69,14 @@ else
 fi
 codesign --sign "Developer ID Application" --timestamp "$DMG"
 
+echo "▸ Checking the app inside the DMG the way the in-app updater does"
+CHECK="$BUILD/dmg-check"
+rm -rf "$CHECK" && mkdir -p "$CHECK"
+MOUNT=$(hdiutil attach -nobrowse -readonly -noautoopen "$DMG" | tail -1 | awk -F'\t' '{print $NF}')
+ditto "$MOUNT/Remote Code.app" "$CHECK/Remote Code.app"
+hdiutil detach "$MOUNT" -quiet
+codesign --verify --deep --strict "$CHECK/Remote Code.app"
+
 echo "▸ Notarizing the DMG"
 xcrun notarytool submit "$DMG" --keychain-profile "$NOTARY_PROFILE" --wait
 xcrun stapler staple "$DMG"

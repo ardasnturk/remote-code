@@ -11,7 +11,8 @@ format = "UDZO"
 filesystem = "HFS+"
 files = [application]
 symlinks = {"Applications": "/Applications"}
-hide_extensions = [appname]
+# No hide_extensions: it sets com.apple.FinderInfo on the app, which fails the
+# updater's `codesign --verify --strict` (Finder hides .app extensions anyway).
 icon = None
 
 background = os.path.join("scripts", "dmg", "background.png")

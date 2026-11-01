@@ -122,6 +122,9 @@ enum UpdateInstaller {
             let target = staging.appendingPathComponent("\(appName).app")
             let copy = try await run("/usr/bin/ditto", [source.path, target.path])
             guard copy.status == 0 else { throw Failure.copyFailed(copy.errorText) }
+            // Finder metadata on the bundle (e.g. "hide extension" set by a designed DMG) is
+            // not part of the signature but fails `codesign --strict`; drop it from our copy.
+            _ = try? await run("/usr/bin/xattr", ["-d", "com.apple.FinderInfo", target.path])
             result = .success(target)
         } catch {
             result = .failure(error)
