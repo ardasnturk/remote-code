@@ -6,6 +6,8 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.5.0] — 2026-11-01
+
 ### Added
 - Power controls on the iPhone (Settings → Power): keep the Mac's display on
   for a chosen time, switch lid-closed mode and "pause while on battery".

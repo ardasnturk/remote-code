@@ -1,2 +1,6 @@
-Promo Studio: video hazır olduğunda, storyboard onay beklediğinde ya da paylaşım yapıldığında bildirim alın — uygulama kapalıyken de. Bildirime dokunmak videoyu açar.
-• Üretimdeki videolar kalan süreyi gösterir
+Mac'inize telefonunuzdan bakın:
+• Depolama: boş alanı görün; önbellekleri, günlükleri, Xcode verilerini ve Çöp Kutusu'nu temizleyin
+• Bellek ve İşlemci: Mac'i neyin yavaşlattığını görün, bir uygulamayı kapatın
+• Güç: ekranı açık tutun, kapak kapalı modunu açıp kapatın
+• Disk alanı veya bellek azaldığında bildirim
+Mac'te Remote Code 1.5 gerekir.

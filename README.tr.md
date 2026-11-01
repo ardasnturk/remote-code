@@ -54,6 +54,10 @@ uca şifrelenmiş şekilde konuşan kendi cihazlarınız vardır.
   çalışıyorsa telefondaki bir sekmeyle Claude'a tanıtım videoları yaptırın,
   storyboard'ları onaylayın, Instagram'da paylaşın ya da zamanlayın; video
   hazır olunca uygulama kapalıyken de bildirim alın.
+* **Mac'in bakımı** — boş alan ve güvenli temizlik (önbellekler, günlükler,
+  Xcode verileri, paket önbellekleri, Çöp Kutusu), bellek ve işlemci ile
+  uygulama kapatma, ekranı açık tutma ve kapak kapalı modu; disk alanı veya
+  bellek azaldığında bildirim.
 * **Tasarımı gereği gizli** — Noise IK uçtan uca şifreleme, sabitlenmiş
   anahtarlar, sunucu yok; her yerden erişim için Tailscale.
 

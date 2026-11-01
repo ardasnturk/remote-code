@@ -1,2 +1,6 @@
-Promo Studio: get notified when a video is ready, a storyboard waits for approval or a post went out — also while the app is closed. Tapping the notification opens the video.
-• Videos in production show the remaining time
+Look after your Mac from your phone:
+• Storage: see free space and clean up caches, logs, Xcode data and the Trash
+• Memory and CPU: see what slows the Mac down and quit an app
+• Power: keep the display on, switch lid-closed mode
+• Notifications when disk space or memory runs low
+Needs Remote Code 1.5 on the Mac.

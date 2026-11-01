@@ -1,2 +1,6 @@
-Promo Studio: Lass dich benachrichtigen, wenn ein Video fertig ist, ein Storyboard auf Freigabe wartet oder ein Beitrag veröffentlicht wurde – auch wenn die App geschlossen ist. Ein Tipp auf die Mitteilung öffnet das Video.
-• Videos in Produktion zeigen die verbleibende Zeit
+Kümmere dich vom iPhone aus um deinen Mac:
+• Speicher: freien Platz sehen und Caches, Protokolle, Xcode-Daten und den Papierkorb bereinigen
+• Arbeitsspeicher und CPU: sehen, was den Mac bremst, und eine App beenden
+• Energie: Bildschirm eingeschaltet lassen, Modus bei geschlossenem Deckel umschalten
+• Mitteilungen bei wenig Speicherplatz oder Arbeitsspeicher
+Erfordert Remote Code 1.5 auf dem Mac.
