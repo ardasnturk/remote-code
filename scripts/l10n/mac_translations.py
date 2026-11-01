@@ -290,5 +290,14 @@ T = {
 "macOS Gatekeeper rejected the update. Nothing was installed.": ("macOS Gatekeeper güncellemeyi reddetti. Hiçbir şey kurulmadı.", "macOS Gatekeeper hat das Update abgelehnt. Es wurde nichts installiert."),
 "open chats": ("açık sohbet", "offene Chats"),
 "working": ("çalışıyor", "aktiv"),
+"Video ready · %@": ("Video hazır · %@", "Video fertig · %@"),
+"Storyboard ready · %@": ("Storyboard hazır · %@", "Storyboard fertig · %@"),
+"Video failed · %@": ("Video başarısız · %@", "Video fehlgeschlagen · %@"),
+"Posted to Instagram · %@": ("Instagram'da paylaşıldı · %@", "Auf Instagram veröffentlicht · %@"),
+"Video ready": ("Video hazır", "Video fertig"),
+"Storyboard ready for approval": ("Storyboard onay bekliyor", "Storyboard wartet auf Freigabe"),
+"Video failed": ("Video başarısız", "Video fehlgeschlagen"),
+"Posted to Instagram": ("Instagram'da paylaşıldı", "Auf Instagram veröffentlicht"),
+"When Promo Studio runs on this Mac: videos started from the phone or the Mac, also while the phone app is closed. Tapping a notification opens the video in Remote Code.": ("Promo Studio bu Mac'te çalışırken: telefondan ya da Mac'ten başlatılan videolar için, telefon uygulaması kapalıyken de. Bildirime dokunmak videoyu Remote Code'da açar.", "Wenn Promo Studio auf diesem Mac läuft: für Videos, die du vom iPhone oder vom Mac startest – auch wenn die iPhone-App geschlossen ist. Ein Tipp auf die Mitteilung öffnet das Video in Remote Code."),
 }
 json.dump({k: {"tr": v[0], "de": v[1]} for k, v in T.items()}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mac.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, sort_keys=True)

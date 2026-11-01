@@ -73,8 +73,15 @@ final class PromoStudioStore {
             scheduleRefresh()
         case "job":
             guard let id = object["id"] as? String else { return }
-            jobs[id] = PromoStudioJob(message: object["message"] as? String ?? "", progress: object["progress"] as? Double)
+            jobs[id] = PromoStudioJob(
+                message: object["message"] as? String ?? "",
+                progress: object["progress"] as? Double,
+                estimatedEnd: (object["estimatedEnd"] as? String).flatMap { try? Date($0, strategy: .iso8601) }
+            )
         case "jobEnded":
+            if let id = object["id"] as? String { jobs[id] = nil }
+            scheduleRefresh()
+        case "finished":
             if let id = object["id"] as? String { jobs[id] = nil }
             scheduleRefresh()
         case "alert":

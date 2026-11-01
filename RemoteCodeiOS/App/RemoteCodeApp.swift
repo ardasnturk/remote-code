@@ -15,6 +15,8 @@ struct RemoteCodeApp: App {
                 .onOpenURL { url in
                     if let link = SessionLink(url: url) {
                         Task { await model.open(link) }
+                    } else if let link = PromoStudioLink(url: url) {
+                        Task { await model.open(link) }
                     } else if url.scheme == PairingPayload.scheme {
                         model.incomingPairingLink = url.absoluteString
                         model.isPresentingPairing = true
@@ -57,11 +59,11 @@ struct RootView: View {
                 }
             } else if model.hasPairedMac {
                 if let promoStudio = model.connection?.promoStudio, promoStudio.isAvailable {
-                    TabView {
-                        Tab("Chats", systemImage: "bubble.left.and.text.bubble.right") {
+                    TabView(selection: $model.selectedTab) {
+                        Tab("Chats", systemImage: "bubble.left.and.text.bubble.right", value: RootTab.chats) {
                             MainSplitView()
                         }
-                        Tab("Promo Studio", systemImage: "sparkles.tv") {
+                        Tab("Promo Studio", systemImage: "sparkles.tv", value: RootTab.promoStudio) {
                             PromoStudioHomeView(store: promoStudio)
                         }
                     }

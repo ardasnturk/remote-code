@@ -52,7 +52,8 @@ end-to-end encrypted.
   your phone when a task finishes or needs approval.
 * **Promo Studio** — if [Promo Studio](https://github.com/ardasnturk/promo-studio)
   runs on the Mac, a tab on the phone creates promo videos with Claude, shows
-  storyboards to approve and posts or schedules them on Instagram.
+  storyboards to approve and posts or schedules them on Instagram; you get
+  notified when a video is ready, also with the app closed.
 * **Private by design** — Noise IK end-to-end encryption, pinned keys, no
   server; Tailscale for access from anywhere.
 

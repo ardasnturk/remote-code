@@ -401,5 +401,8 @@ T = {
 "Storyboard": ("Storyboard", "Storyboard"),
 "The video could not be loaded.": ("Video yüklenemedi.", "Das Video konnte nicht geladen werden."),
 "Waiting for storyboard approval": ("Storyboard onayı bekleniyor", "Wartet auf Freigabe des Storyboards"),
+"About %lld min left": ("Yaklaşık %lld dk kaldı", "Noch etwa %lld Min."),
+"About %lld s left": ("Yaklaşık %lld sn kaldı", "Noch etwa %lld Sek."),
+"Almost done…": ("Neredeyse bitti…", "Fast fertig …"),
 }
 json.dump({k: {"tr": v[0], "de": v[1]} for k, v in T.items()}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "ios.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, sort_keys=True)

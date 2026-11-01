@@ -6,6 +6,17 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.4.0] — 2026-11-01
+
+### Added
+- Promo Studio notifications (D-113): when Promo Studio runs on the Mac, Remote
+  Code announces a finished video, a storyboard that waits for approval, a post
+  that went out and a failed job — on the Mac and, through ntfy, on the phone,
+  also while the phone app is closed. Tapping one opens the post in the Promo
+  Studio tab (`pilothouse://promostudio/post/<id>`). New toggles in Settings →
+  Notifications → Promo Studio, on by default.
+- Remaining time for Promo Studio jobs on the phone ("About 3 min left").
+
 ## [1.3.0] — 2026-11-01
 
 ### Added

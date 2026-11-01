@@ -127,6 +127,8 @@ public final class HostRuntime: Sendable {
     public let fileBrowser: FileBrowser
     /// Native and ntfy notifications; configured by the app (D-095).
     public let notifications: NotificationService
+    /// Announces finished Promo Studio videos through `notifications` (D-113).
+    let promoStudioNotifier: PromoStudioNotifier
     /// Weekly summaries and usage limits (D-096, D-097); configured by the app.
     public let insights: InsightsService
     private let mcpServer: LoopbackHTTPServer
@@ -207,6 +209,7 @@ public final class HostRuntime: Sendable {
         self.devices = devices
         self.fileBrowser = fileBrowser
         self.notifications = notifications
+        promoStudioNotifier = PromoStudioNotifier(bridge: PromoStudioBridge(), notifications: notifications)
         self.insights = insights
         endpoint = ServerEndpoint(identity: identity, macName: macName, authorizer: devices, service: service)
     }
@@ -219,6 +222,7 @@ public final class HostRuntime: Sendable {
         let limitStore = insights.limits
         await sessions.setUsageSink { limits in await limitStore.update(limits) }
         await notifications.start()
+        await promoStudioNotifier.start()
         await sessions.setPermissionServerPort(mcpServer.port)
         await sessions.bootstrap()
     }
@@ -228,6 +232,7 @@ public final class HostRuntime: Sendable {
         await endpoint.disconnectAll(reason: ErrorPayload(code: .internalError, message: "Remote Code on the Mac is quitting."))
         await sessions.shutdown()
         await notifications.stop()
+        await promoStudioNotifier.stop()
         mcpServer.stop()
     }
 

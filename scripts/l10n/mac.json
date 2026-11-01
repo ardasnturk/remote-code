@@ -631,6 +631,14 @@
   "de": "Port",
   "tr": "Port"
  },
+ "Posted to Instagram": {
+  "de": "Auf Instagram veröffentlicht",
+  "tr": "Instagram'da paylaşıldı"
+ },
+ "Posted to Instagram · %@": {
+  "de": "Auf Instagram veröffentlicht · %@",
+  "tr": "Instagram'da paylaşıldı · %@"
+ },
  "Preferred port": {
   "de": "Bevorzugter Port",
   "tr": "Tercih edilen port"
@@ -847,6 +855,14 @@
   "de": "Im Schlüsselbund gespeichert",
   "tr": "Anahtar Zinciri'nde saklanıyor"
  },
+ "Storyboard ready for approval": {
+  "de": "Storyboard wartet auf Freigabe",
+  "tr": "Storyboard onay bekliyor"
+ },
+ "Storyboard ready · %@": {
+  "de": "Storyboard fertig · %@",
+  "tr": "Storyboard hazır · %@"
+ },
  "Sub-agent finished · %@": {
   "de": "Sub-Agent fertig · %@",
   "tr": "Alt ajan bitti · %@"
@@ -1039,6 +1055,22 @@
   "de": "Version %@ ist verfügbar",
   "tr": "%@ sürümü mevcut"
  },
+ "Video failed": {
+  "de": "Video fehlgeschlagen",
+  "tr": "Video başarısız"
+ },
+ "Video failed · %@": {
+  "de": "Video fehlgeschlagen · %@",
+  "tr": "Video başarısız · %@"
+ },
+ "Video ready": {
+  "de": "Video fertig",
+  "tr": "Video hazır"
+ },
+ "Video ready · %@": {
+  "de": "Video fertig · %@",
+  "tr": "Video hazır · %@"
+ },
  "Waiting for approval": {
   "de": "Wartet auf Freigabe",
   "tr": "Onay bekleniyor"
@@ -1054,6 +1086,10 @@
  "What's new": {
   "de": "Neuigkeiten",
   "tr": "Yenilikler"
+ },
+ "When Promo Studio runs on this Mac: videos started from the phone or the Mac, also while the phone app is closed. Tapping a notification opens the video in Remote Code.": {
+  "de": "Wenn Promo Studio auf diesem Mac läuft: für Videos, die du vom iPhone oder vom Mac startest – auch wenn die iPhone-App geschlossen ist. Ein Tipp auf die Mitteilung öffnet das Video in Remote Code.",
+  "tr": "Promo Studio bu Mac'te çalışırken: telefondan ya da Mac'ten başlatılan videolar için, telefon uygulaması kapalıyken de. Bildirime dokunmak videoyu Remote Code'da açar."
  },
  "When allowed, a paired device can start chats, or switch running ones, in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": {
   "de": "Wenn erlaubt, kann ein gekoppeltes Gerät Chats starten oder laufende umstellen, in denen Claude ohne Nachfrage Dateien bearbeitet und Befehle ausführt. Aktiviere das nur, wenn du das Risiko verstehst.",

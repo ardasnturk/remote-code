@@ -23,6 +23,8 @@ final class AppSettings {
         static let notifyOnMac = "notifyOnMac"
         static let notifyViaNtfy = "notifyViaNtfy"
         static let notificationKinds = "notificationKinds"
+        /// Set once the Promo Studio kinds (1.4) were added to an existing selection.
+        static let promoStudioKindsAdded = "promoStudioKindsAdded"
         static let notificationIncludesSummary = "notificationIncludesSummary"
         static let ntfyServer = "ntfyServer"
         static let ntfyTopic = "ntfyTopic"
@@ -149,7 +151,14 @@ final class AppSettings {
         notificationsEnabled = defaults.bool(forKey: Key.notificationsEnabled)
         notifyOnMac = defaults.bool(forKey: Key.notifyOnMac)
         notifyViaNtfy = defaults.bool(forKey: Key.notifyViaNtfy)
-        notificationKinds = Set((defaults.stringArray(forKey: Key.notificationKinds) ?? []).compactMap(HostAlert.Kind.init(rawValue:)))
+        var kinds = Set((defaults.stringArray(forKey: Key.notificationKinds) ?? []).compactMap(HostAlert.Kind.init(rawValue:)))
+        // Selections saved before 1.4 don't know the Promo Studio events; turn them on once.
+        if !defaults.bool(forKey: Key.promoStudioKindsAdded) {
+            kinds.formUnion(HostAlert.Kind.promoStudio)
+            defaults.set(kinds.map(\.rawValue).sorted(), forKey: Key.notificationKinds)
+            defaults.set(true, forKey: Key.promoStudioKindsAdded)
+        }
+        notificationKinds = kinds
         notificationIncludesSummary = defaults.bool(forKey: Key.notificationIncludesSummary)
         ntfyServer = defaults.string(forKey: Key.ntfyServer) ?? NtfyConfiguration.defaultServer
         automaticallyChecksForUpdates = defaults.bool(forKey: Key.automaticallyChecksForUpdates)
@@ -163,6 +172,7 @@ final class AppSettings {
 
     /// Events offered in Settings.
     static let notificationKindsInSettings: [HostAlert.Kind] = [.turnFinished, .permissionRequested, .subagentFinished, .sessionFailed]
+        + HostAlert.Kind.promoStudio
 
     /// Model aliases offered in pickers (free text is accepted too).
     static let modelSuggestions = ["", "fable", "opus", "sonnet", "haiku"]

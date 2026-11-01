@@ -34,6 +34,10 @@ final class AppModel {
     private(set) var connection: MacConnection?
     private(set) var identityError: String?
     var selectedSessionId: String?
+    /// The tab shown while Promo Studio is available on the Mac.
+    var selectedTab: RootTab = .chats
+    /// A Promo Studio post to open (a tapped notification); the Promo Studio tab consumes it.
+    var promoStudioPostToOpen: String?
     var isPresentingNewChat = false
     var isPresentingSettings = false
     var isPresentingInsights = false
@@ -129,6 +133,19 @@ final class AppModel {
         selectedSessionId = link.sessionId
     }
 
+    /// Opens the post of a `pilothouse://promostudio/post/<id>` link in the
+    /// Promo Studio tab (a tapped notification, D-113).
+    func open(_ link: PromoStudioLink) async {
+        guard hasPairedMac else { return }
+        isPresentingNewChat = false
+        isPresentingSettings = false
+        if let macId = link.macId, macId != activeMac?.id, store.mac(id: macId) != nil {
+            await switchToMac(macId)
+        }
+        selectedTab = .promoStudio
+        promoStudioPostToOpen = link.postId
+    }
+
     func scenePhaseChanged(_ phase: ScenePhase) {
         switch phase {
         case .active:
@@ -190,4 +207,9 @@ final class AppModel {
     func simulateNetworkDrop() async {
         await demoConnector?.simulateNetworkDrop()
     }
+}
+
+/// Tabs of the root view when Promo Studio is available.
+enum RootTab: Hashable {
+    case chats, promoStudio
 }

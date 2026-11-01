@@ -15,6 +15,19 @@ public struct HostAlert: Sendable, Hashable {
         /// A sub-agent of a session has finished (`delegate_to_agent`), posted
         /// by `HostRuntime` when the delegation returns.
         case subagentFinished
+        /// Promo Studio finished a video (D-113). For these four kinds
+        /// `sessionId` is the Promo Studio post ID and `folderName` its title.
+        case promoVideoReady
+        /// Promo Studio's storyboard (or script) waits for approval.
+        case promoStoryboardReady
+        /// A Promo Studio job failed; `detail` is the error.
+        case promoFailed
+        /// Promo Studio posted a video to Instagram (also scheduled posts).
+        case promoPublished
+
+        /// Kinds that come from Promo Studio rather than an agent session.
+        public static let promoStudio: [Kind] = [.promoVideoReady, .promoStoryboardReady, .promoFailed, .promoPublished]
+        public var isPromoStudio: Bool { Self.promoStudio.contains(self) }
     }
 
     public var kind: Kind
@@ -55,6 +68,10 @@ public struct AlertContent: Sendable, Hashable {
         case .permissionRequested: "Approval needed · \(alert.folderName)"
         case .sessionFailed: "Session failed · \(alert.folderName)"
         case .subagentFinished: "Sub-agent finished · \(alert.folderName)"
+        case .promoVideoReady: "Video ready · \(alert.folderName)"
+        case .promoStoryboardReady: "Storyboard ready · \(alert.folderName)"
+        case .promoFailed: "Video failed · \(alert.folderName)"
+        case .promoPublished: "Posted to Instagram · \(alert.folderName)"
         }
         return AlertContent(title: "Remote Code", body: body(headline, detail: includeDetail ? alert.detail : nil))
     }

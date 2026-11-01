@@ -958,3 +958,20 @@ the phone in an embedded web view (Meta's OAuth redirect is a facebook.com URL,
 which `ASWebAuthenticationSession` cannot capture without an associated
 domain); the token is sent to the Mac and turned into a long-lived one there.
 
+### D-113 — Promo Studio notifications and remaining time
+**Status:** accepted
+
+Promo Studio sends a `finished` event when a job ends, with a `notice`
+(`videoReady`, `storyboardReady`, `published`, `failed`) when there is something
+to tell. The Mac host listens to Promo Studio's events for as long as Remote Code
+runs (`PromoStudioNotifier`, independent of any phone connection) and posts
+them through the existing `NotificationService` as four new `HostAlert` kinds,
+so they follow the same preferences and destinations (macOS, ntfy). For these
+kinds `sessionId` carries the Promo Studio post ID and the tap link is
+`pilothouse://promostudio/post/<id>?mac=<fingerprint>`, which opens the post in the
+Promo Studio tab. Existing notification selections get the new kinds once.
+
+Jobs carry `kind`, `startedAt` and `estimatedEnd`. Promo Studio computes the
+estimate (render progress rate, or the median of the last durations of the same
+kind on that Mac); the phone only shows it, so there is no protocol change.
+

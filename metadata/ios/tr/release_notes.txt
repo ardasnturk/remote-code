@@ -1,2 +1,2 @@
-Yeni: Promo Studio sekmesi. Mac'inizde Promo Studio çalışıyorsa iPhone'dan tanıtım videoları oluşturun, storyboard'ları onaylayın, Instagram'da paylaşın veya zamanlayın.
-• Mac'te Ayarlar artık diğer pencerelerin önünde açılır
+Promo Studio: video hazır olduğunda, storyboard onay beklediğinde ya da paylaşım yapıldığında bildirim alın — uygulama kapalıyken de. Bildirime dokunmak videoyu açar.
+• Üretimdeki videolar kalan süreyi gösterir

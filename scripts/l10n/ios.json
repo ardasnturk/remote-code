@@ -43,6 +43,14 @@
   "de": "Über",
   "tr": "Hakkında"
  },
+ "About %lld min left": {
+  "de": "Noch etwa %lld Min.",
+  "tr": "Yaklaşık %lld dk kaldı"
+ },
+ "About %lld s left": {
+  "de": "Noch etwa %lld Sek.",
+  "tr": "Yaklaşık %lld sn kaldı"
+ },
  "Accept edits": {
   "de": "Änderungen akzeptieren",
   "tr": "Düzenlemeleri kabul et"
@@ -86,6 +94,10 @@
  "Allow everything in this chat": {
   "de": "In diesem Chat alles erlauben",
   "tr": "Bu sohbette her şeye izin ver"
+ },
+ "Almost done…": {
+  "de": "Fast fertig …",
+  "tr": "Neredeyse bitti…"
  },
  "Always allow %@ in this session": {
   "de": "%@ in dieser Sitzung immer erlauben",

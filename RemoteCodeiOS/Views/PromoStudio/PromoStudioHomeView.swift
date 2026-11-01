@@ -4,10 +4,12 @@ import SwiftUI
 /// The Promo Studio tab: projects, scheduled and recent posts of the Promo Studio app on the Mac.
 struct PromoStudioHomeView: View {
     let store: PromoStudioStore
+    @Environment(AppModel.self) private var model
     @State private var showAccounts = false
+    @State private var path: [PromoStudioRoute] = []
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Group {
                 if let state = store.state {
                     content(state)
@@ -38,6 +40,12 @@ struct PromoStudioHomeView: View {
                 }
             }
             .sheet(isPresented: $showAccounts) { PromoStudioAccountsView(store: store) }
+            // A tapped notification opens its post (D-113)
+            .onChange(of: model.promoStudioPostToOpen, initial: true) { _, postId in
+                guard let postId else { return }
+                path = [.post(postId)]
+                model.promoStudioPostToOpen = nil
+            }
             .promoStudioAlert(store)
         }
     }
@@ -153,7 +161,15 @@ struct PromoStudioJobLine: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(job.message).font(.caption).foregroundStyle(.secondary).lineLimit(2)
+            HStack(alignment: .firstTextBaseline) {
+                Text(job.message).font(.caption).foregroundStyle(.secondary).lineLimit(2)
+                Spacer(minLength: 6)
+                TimelineView(.periodic(from: .now, by: 1)) { context in
+                    if let text = job.remainingText(now: context.date) {
+                        Text(text).font(.caption.monospacedDigit()).foregroundStyle(.secondary).lineLimit(1)
+                    }
+                }
+            }
             if let progress = job.progress {
                 ProgressView(value: progress).tint(.orange)
             } else {

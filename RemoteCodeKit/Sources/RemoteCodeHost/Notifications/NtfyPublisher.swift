@@ -115,14 +115,21 @@ public struct NtfyPublisher: AlertSink {
         case .permissionRequested: (4, "raised_hand")
         case .sessionFailed: (4, "x")
         case .subagentFinished: (2, "robot")
+        case .promoVideoReady: (3, "clapper")
+        case .promoStoryboardReady: (3, "memo")
+        case .promoFailed: (4, "x")
+        case .promoPublished: (3, "rocket")
         }
+        let link = alert.kind.isPromoStudio
+            ? PromoStudioLink(postId: alert.sessionId, macId: macId).url
+            : SessionLink(sessionId: alert.sessionId, macId: macId).url
         return NtfyMessage(
             topic: configuration.topic,
             title: content.title,
             message: content.body,
             priority: priority,
             tags: [tag],
-            click: SessionLink(sessionId: alert.sessionId, macId: macId).url.absoluteString
+            click: link.absoluteString
         )
     }
 

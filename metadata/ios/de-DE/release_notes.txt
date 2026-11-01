@@ -1,2 +1,2 @@
-Neu: ein Promo-Studio-Tab. Läuft Promo Studio auf deinem Mac, erstellst du Promovideos, gibst Storyboards frei und veröffentlichst oder planst Beiträge auf Instagram – direkt vom iPhone.
-• Die Einstellungen auf dem Mac öffnen sich jetzt vor anderen Fenstern
+Promo Studio: Lass dich benachrichtigen, wenn ein Video fertig ist, ein Storyboard auf Freigabe wartet oder ein Beitrag veröffentlicht wurde – auch wenn die App geschlossen ist. Ein Tipp auf die Mitteilung öffnet das Video.
+• Videos in Produktion zeigen die verbleibende Zeit

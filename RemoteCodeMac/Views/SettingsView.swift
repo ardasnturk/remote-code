@@ -506,6 +506,17 @@ private struct NotificationSettings: View {
             }
             .disabled(!settings.notificationsEnabled)
             Section {
+                Toggle("Video ready", isOn: kind(.promoVideoReady))
+                Toggle("Storyboard ready for approval", isOn: kind(.promoStoryboardReady))
+                Toggle("Video failed", isOn: kind(.promoFailed))
+                Toggle("Posted to Instagram", isOn: kind(.promoPublished))
+            } header: {
+                Text(verbatim: "Promo Studio")
+            } footer: {
+                Text("When Promo Studio runs on this Mac: videos started from the phone or the Mac, also while the phone app is closed. Tapping a notification opens the video in Remote Code.")
+            }
+            .disabled(!settings.notificationsEnabled)
+            Section {
                 Toggle("Show on this Mac", isOn: $settings.notifyOnMac)
                 Toggle("Send to your iPhone with ntfy", isOn: $settings.notifyViaNtfy)
             } header: {

@@ -52,7 +52,8 @@ uca şifrelenmiş şekilde konuşan kendi cihazlarınız vardır.
   bir görev bittiğinde ya da onay beklediğinde.
 * **Promo Studio** — Mac'te [Promo Studio](https://github.com/ardasnturk/promo-studio)
   çalışıyorsa telefondaki bir sekmeyle Claude'a tanıtım videoları yaptırın,
-  storyboard'ları onaylayın, Instagram'da paylaşın ya da zamanlayın.
+  storyboard'ları onaylayın, Instagram'da paylaşın ya da zamanlayın; video
+  hazır olunca uygulama kapalıyken de bildirim alın.
 * **Tasarımı gereği gizli** — Noise IK uçtan uca şifreleme, sabitlenmiş
   anahtarlar, sunucu yok; her yerden erişim için Tailscale.
 
