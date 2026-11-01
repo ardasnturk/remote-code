@@ -22,6 +22,8 @@ All notable changes to Remote Code are recorded here. The format follows
   CPU load and the apps using the most, with helpers grouped into their app,
   and a Quit / Force Quit button.
 - A "Memory almost full" notification that names the app using the most memory.
+- Promo Studio: free-form videos from the phone, next to the promo film and
+  the quick template (needs Promo Studio 1.2.0).
 
 ## [1.4.2] — 2026-11-01
 
