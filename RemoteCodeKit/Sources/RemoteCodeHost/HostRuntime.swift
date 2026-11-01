@@ -6,11 +6,22 @@ public protocol MacStatusProviding: Sendable {
     func macStatus() async -> MacStatus
     /// Applies power settings from a phone (capability `power`).
     func setPower(_ request: SetPower) async throws -> MacStatus
+    /// Memory, CPU and running apps (capability `activity`); needs AppKit, so the app supplies it.
+    func activity() async throws -> ActivitySnapshot
+    func quitApp(_ request: QuitApp) async throws
 }
 
 extension MacStatusProviding {
     public func setPower(_ request: SetPower) async throws -> MacStatus {
         throw ErrorPayload(code: .powerUnavailable, message: "This Mac cannot change its power settings remotely.")
+    }
+
+    public func activity() async throws -> ActivitySnapshot {
+        throw ErrorPayload(code: .activityUnavailable, message: "This Mac cannot report its activity.")
+    }
+
+    public func quitApp(_ request: QuitApp) async throws {
+        throw ErrorPayload(code: .activityUnavailable, message: "This Mac cannot quit apps remotely.")
     }
 }
 
@@ -76,6 +87,14 @@ public struct MacHostService: HostService {
 
     public func runCleanup(_ request: RunCleanup) async throws -> CleanupResult {
         try await cleanup.run(request)
+    }
+
+    public func activity() async throws -> ActivitySnapshot {
+        try await status.activity()
+    }
+
+    public func quitApp(_ request: QuitApp) async throws {
+        try await status.quitApp(request)
     }
 
     public func listDirectory(_ request: ListDirectory) async throws -> DirectoryListing {
@@ -160,6 +179,10 @@ public final class HostRuntime: Sendable {
     public let cleanup: CleanupService
     /// Warns when the startup volume runs low on space (D-115).
     let storageMonitor: StorageMonitor
+    #if canImport(Darwin)
+    /// Warns when memory is almost full (D-116).
+    let memoryMonitor: MemoryMonitor
+    #endif
     private let mcpServer: LoopbackHTTPServer
 
     public convenience init(
@@ -243,6 +266,9 @@ public final class HostRuntime: Sendable {
         self.insights = insights
         self.cleanup = cleanup
         storageMonitor = StorageMonitor(home: configuration.homeDirectory, notifications: notifications, macName: macName)
+        #if canImport(Darwin)
+        memoryMonitor = MemoryMonitor(notifications: notifications, macName: macName)
+        #endif
         endpoint = ServerEndpoint(identity: identity, macName: macName, authorizer: devices, service: service)
     }
 
@@ -256,6 +282,9 @@ public final class HostRuntime: Sendable {
         await notifications.start()
         await promoStudioNotifier.start()
         await storageMonitor.start()
+        #if canImport(Darwin)
+        await memoryMonitor.start()
+        #endif
         await sessions.setPermissionServerPort(mcpServer.port)
         await sessions.bootstrap()
     }
@@ -267,6 +296,9 @@ public final class HostRuntime: Sendable {
         await notifications.stop()
         await promoStudioNotifier.stop()
         await storageMonitor.stop()
+        #if canImport(Darwin)
+        await memoryMonitor.stop()
+        #endif
         mcpServer.stop()
     }
 

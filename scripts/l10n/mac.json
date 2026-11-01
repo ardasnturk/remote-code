@@ -491,6 +491,14 @@
   "de": "MagicDNS-Name",
   "tr": "MagicDNS adı"
  },
+ "Memory almost full": {
+  "de": "Arbeitsspeicher fast voll",
+  "tr": "Bellek dolmak üzere"
+ },
+ "Memory almost full · %@": {
+  "de": "Arbeitsspeicher fast voll · %@",
+  "tr": "Bellek dolmak üzere · %@"
+ },
  "Never connected": {
   "de": "Nie verbunden",
   "tr": "Hiç bağlanmadı"
@@ -895,6 +903,10 @@
   "de": "Auf dem iPhone abonnieren",
   "tr": "iPhone'unuzda abone olun"
  },
+ "System and background": {
+  "de": "System und Hintergrund",
+  "tr": "Sistem ve arka plan"
+ },
  "Tailscale": {
   "de": "Tailscale",
   "tr": "Tailscale"
@@ -942,6 +954,10 @@
  "The access token could not be saved: %@": {
   "de": "Das Zugriffstoken konnte nicht gespeichert werden: %@",
   "tr": "Erişim token'ı kaydedilemedi: %@"
+ },
+ "The app is no longer running.": {
+  "de": "Die App läuft nicht mehr.",
+  "tr": "Uygulama artık çalışmıyor."
  },
  "The device is disconnected immediately and has to pair again to reconnect.": {
   "de": "Das Gerät wird sofort getrennt und muss erneut gekoppelt werden, um sich zu verbinden.",
@@ -1010,6 +1026,10 @@
  "This Mac does not support Apple Intelligence, so the summary shows numbers only.": {
   "de": "Dieser Mac unterstützt Apple Intelligence nicht, daher zeigt der Rückblick nur Zahlen.",
   "tr": "Bu Mac Apple Intelligence'ı desteklemiyor; özet yalnızca sayıları gösterir."
+ },
+ "This app can't be quit from your iPhone. Refresh the list and try again.": {
+  "de": "Diese App kann nicht vom iPhone aus beendet werden. Aktualisiere die Liste und versuche es erneut.",
+  "tr": "Bu uygulama iPhone'unuzdan kapatılamaz. Listeyi yenileyip tekrar deneyin."
  },
  "This copy of Remote Code isn't signed with a Developer ID, so it can't update itself.": {
   "de": "Diese Kopie von Remote Code ist nicht mit einer Developer ID signiert und kann sich daher nicht selbst aktualisieren.",

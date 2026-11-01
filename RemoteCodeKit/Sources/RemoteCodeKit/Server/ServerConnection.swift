@@ -183,6 +183,11 @@ public actor ServerConnection {
             return .cleanupScan(try await service.scanCleanup())
         case .runCleanup(let request):
             return .cleanupResult(try await service.runCleanup(request))
+        case .getActivity:
+            return .activity(try await service.activity())
+        case .quitApp(let request):
+            try await service.quitApp(request)
+            return .ok
         }
     }
 

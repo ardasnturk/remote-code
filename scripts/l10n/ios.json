@@ -23,9 +23,21 @@
   "de": "%@ in den Papierkorb gelegt.",
   "tr": "%@ Çöp Kutusu'na taşındı."
  },
+ "%@ of %@": {
+  "de": "%@ von %@",
+  "tr": "%@ / %@"
+ },
  "%@ runs on your Mac. You'll see every step here.": {
   "de": "%@ läuft auf deinem Mac. Du siehst hier jeden Schritt.",
   "tr": "%@ Mac'inizde çalışır. Her adımı burada görürsünüz."
+ },
+ "%@ uses %@ of the processor.": {
+  "de": "%@ nutzt %@ des Prozessors.",
+  "tr": "%@ işlemcinin %@ kadarını kullanıyor."
+ },
+ "%@ uses the most (%@). Quitting it frees memory right away.": {
+  "de": "%@ belegt am meisten (%@). Beendest du es, wird sofort Speicher frei.",
+  "tr": "En çok %@ kullanıyor (%@). Kapatırsanız bellek hemen boşalır."
  },
  "%@: %lld percent used": {
   "de": "%@: %lld Prozent verbraucht",
@@ -50,6 +62,10 @@
  "%lld items were skipped because they are in use or protected.": {
   "de": "%lld Objekte wurden übersprungen, weil sie verwendet werden oder geschützt sind.",
   "tr": "Kullanımda veya korumalı oldukları için %lld öğe atlandı."
+ },
+ "%lld processes": {
+  "de": "%lld Prozesse",
+  "tr": "%lld işlem"
  },
  "(no output)": {
   "de": "(keine Ausgabe)",
@@ -106,6 +122,10 @@
  "All": {
   "de": "Alle",
   "tr": "Tümü"
+ },
+ "All good": {
+  "de": "Alles in Ordnung",
+  "tr": "Her şey yolunda"
  },
  "Allow": {
   "de": "Erlauben",
@@ -190,6 +210,10 @@
  "Bypass permissions": {
   "de": "Berechtigungen umgehen",
   "tr": "İzinleri atla"
+ },
+ "CPU": {
+  "de": "CPU",
+  "tr": "İşlemci"
  },
  "Camera viewfinder for the pairing QR code": {
   "de": "Kamerasucher für den Kopplungs-QR-Code",
@@ -591,6 +615,14 @@
   "de": "Live mitverfolgen",
   "tr": "Canlı takip edin"
  },
+ "Force Quit": {
+  "de": "Sofort beenden",
+  "tr": "Zorla Kapat"
+ },
+ "Free space, memory and CPU of your Mac. Clean up caches or quit an app that slows it down.": {
+  "de": "Freier Speicherplatz, Arbeitsspeicher und CPU deines Macs. Bereinige Caches oder beende eine App, die ihn bremst.",
+  "tr": "Mac'inizin boş alanı, belleği ve işlemcisi. Önbellekleri temizleyin veya Mac'i yavaşlatan bir uygulamayı kapatın."
+ },
  "Get Remote Code for Mac": {
   "de": "Remote Code für den Mac laden",
   "tr": "Mac için Remote Code'u edinin"
@@ -618,6 +650,10 @@
  "Have an agent ready on the Mac": {
   "de": "Einen Agenten auf dem Mac bereithalten",
   "tr": "Mac'te bir ajan hazır olsun"
+ },
+ "Helper processes are counted with their app. Swipe left on an app to quit it.": {
+  "de": "Hilfsprozesse werden ihrer App zugerechnet. Wische auf einer App nach links, um sie zu beenden.",
+  "tr": "Yardımcı işlemler kendi uygulamalarıyla birlikte sayılır. Bir uygulamayı kapatmak için sola kaydırın."
  },
  "High": {
   "de": "Hoch",
@@ -774,6 +810,22 @@
  "Medium": {
   "de": "Mittel",
   "tr": "Orta"
+ },
+ "Memory": {
+  "de": "Arbeitsspeicher",
+  "tr": "Bellek"
+ },
+ "Memory almost full": {
+  "de": "Arbeitsspeicher fast voll",
+  "tr": "Bellek dolmak üzere"
+ },
+ "Memory and CPU": {
+  "de": "Arbeitsspeicher und CPU",
+  "tr": "Bellek ve İşlemci"
+ },
+ "Memory under pressure": {
+  "de": "Arbeitsspeicher unter Druck",
+  "tr": "Bellek zorlanıyor"
  },
  "Message %@…": {
   "de": "Nachricht an %@ …",
@@ -1083,6 +1135,10 @@
   "de": "Privat by Design",
   "tr": "Tasarımdan gizli"
  },
+ "Processor very busy": {
+  "de": "Prozessor stark ausgelastet",
+  "tr": "İşlemci çok yoğun"
+ },
  "Project": {
   "de": "Projekt",
   "tr": "Proje"
@@ -1122,6 +1178,14 @@
  "Quick template (screenshots)": {
   "de": "Schnelle Vorlage (Screenshots)",
   "tr": "Hızlı şablon (ekran görüntüleri)"
+ },
+ "Quit": {
+  "de": "Beenden",
+  "tr": "Kapat"
+ },
+ "Quit %@?": {
+  "de": "%@ beenden?",
+  "tr": "%@ kapatılsın mı?"
  },
  "Reach": {
   "de": "Reichweite",
@@ -1331,10 +1395,6 @@
   "de": "Bereich",
   "tr": "Bölüm"
  },
- "See how much space is left on your Mac and clean up caches and build data.": {
-  "de": "Sieh, wie viel Platz auf deinem Mac frei ist, und bereinige Caches und Build-Daten.",
-  "tr": "Mac'inizde ne kadar alan kaldığını görün; önbellekleri ve derleme verilerini temizleyin."
- },
  "Send": {
   "de": "Senden",
   "tr": "Gönder"
@@ -1491,6 +1551,10 @@
   "de": "System",
   "tr": "Sistem"
  },
+ "System and background": {
+  "de": "System und Hintergrund",
+  "tr": "Sistem ve arka plan"
+ },
  "Tailscale": {
   "de": "Tailscale",
   "tr": "Tailscale"
@@ -1510,6 +1574,10 @@
  "That's the most images one message can carry.": {
   "de": "Mehr Bilder passen nicht in eine Nachricht.",
   "tr": "Bir mesaj en fazla bu kadar görsel taşıyabilir."
+ },
+ "The app is asked to quit, so it can save your work. Force Quit stops it right away; unsaved changes are lost.": {
+  "de": "Die App wird gebeten, sich zu beenden, damit sie deine Arbeit sichern kann. „Sofort beenden“ stoppt sie sofort; ungesicherte Änderungen gehen verloren.",
+  "tr": "Uygulamadan kapanması istenir, böylece çalışmanızı kaydedebilir. Zorla Kapat onu hemen durdurur; kaydedilmemiş değişiklikler kaybolur."
  },
  "The camera is only used to read the pairing code.": {
   "de": "Die Kamera wird nur zum Lesen des Kopplungscodes verwendet.",
@@ -1723,6 +1791,10 @@
   "de": "Dein Mac bleibt immer wach, solange Remote Code läuft; der Bildschirm kann sich trotzdem ausschalten. Ein zugeklapptes, waches MacBook kann warm werden und den Akku leeren.",
   "tr": "Remote Code çalışırken Mac'iniz her zaman uyanık kalır; ekran yine de kapanabilir. Kapağı kapalı ve uyanık bir MacBook ısınabilir ve pilini tüketebilir."
  },
+ "Your Mac has room to work. Processor %@, memory %@ of %@.": {
+  "de": "Dein Mac hat Luft. Prozessor %@, Arbeitsspeicher %@ von %@.",
+  "tr": "Mac'iniz rahat çalışıyor. İşlemci %@, bellek %@ / %@."
+ },
  "Your Mac is running out of space. Agents may fail to build or save files.": {
   "de": "Auf deinem Mac wird der Platz knapp. Agents können dann eventuell nicht bauen oder Dateien sichern.",
   "tr": "Mac'inizde yer azalıyor. Ajanlar derleme yapamayabilir veya dosya kaydedemeyebilir."
@@ -1730,6 +1802,10 @@
  "Your Mac is summarising the week…": {
   "de": "Dein Mac fasst die Woche zusammen …",
   "tr": "Mac'iniz haftayı özetliyor…"
+ },
+ "Your Mac may slow down. %@ uses the most (%@).": {
+  "de": "Dein Mac könnte langsamer werden. %@ belegt am meisten (%@).",
+  "tr": "Mac'iniz yavaşlayabilir. En çok %@ kullanıyor (%@)."
  },
  "Your coding agents run on your Mac. Remote Code lets you talk to them, follow every step and approve changes from your iPhone or iPad.": {
   "de": "Deine Coding-Agenten laufen auf deinem Mac. Mit Remote Code sprichst du von deinem iPhone oder iPad aus mit ihnen, verfolgst jeden Schritt und bestätigst Änderungen.",

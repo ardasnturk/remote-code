@@ -16,6 +16,10 @@ All notable changes to Remote Code are recorded here. The format follows
   cleanup of caches, logs, Xcode build data, package caches, downloaded
   installers and the Trash. Items go to the Trash unless you choose otherwise.
 - A "Low disk space" notification when less than 10 GB is left on the Mac.
+- Memory and CPU on the iPhone (Settings → Memory and CPU): memory pressure,
+  CPU load and the apps using the most, with helpers grouped into their app,
+  and a Quit / Force Quit button.
+- A "Memory almost full" notification that names the app using the most memory.
 
 ## [1.4.2] — 2026-11-01
 

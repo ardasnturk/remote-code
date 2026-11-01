@@ -105,12 +105,18 @@ public enum StorageProbe {
     public static let lowSpaceThreshold: Int64 = 10 * 1_000_000_000
 
     public static func overview(path: String) -> StorageOverview {
+        #if canImport(Darwin)
         let values = try? URL(fileURLWithPath: path).resourceValues(forKeys: [
             .volumeTotalCapacityKey, .volumeAvailableCapacityForImportantUsageKey, .volumeAvailableCapacityKey,
         ])
         let total = Int64(values?.volumeTotalCapacity ?? 0)
         let important = values?.volumeAvailableCapacityForImportantUsage ?? 0
         let available = important > 0 ? important : Int64(values?.volumeAvailableCapacity ?? 0)
+        #else
+        let attributes = try? FileManager.default.attributesOfFileSystem(forPath: path)
+        let total = (attributes?[.systemSize] as? NSNumber)?.int64Value ?? 0
+        let available = (attributes?[.systemFreeSize] as? NSNumber)?.int64Value ?? 0
+        #endif
         return StorageOverview(totalBytes: total, availableBytes: available, lowSpaceThresholdBytes: lowSpaceThreshold)
     }
 }

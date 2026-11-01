@@ -510,6 +510,7 @@ private struct NotificationSettings: View {
                 Toggle("Approval needed", isOn: kind(.permissionRequested))
                 Toggle("Session failed", isOn: kind(.sessionFailed))
                 Toggle("Low disk space", isOn: kind(.lowDiskSpace))
+                Toggle("Memory almost full", isOn: kind(.memoryPressure))
                 Toggle("Include a short summary", isOn: $settings.notificationIncludesSummary)
             } header: {
                 Text("Events")

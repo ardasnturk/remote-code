@@ -1030,7 +1030,34 @@ Downloads and the Trash. Sizes are allocated blocks, measured with `fts(3)`.
   10 GB and posts a `lowDiskSpace` alert once per dip (again only after it
   recovered to 15 GB). It is a regular notification kind (macOS, ntfy, on by
   default); the ntfy tap link `pilothouse://storage?mac=<fingerprint>` opens
-  the storage screen.
+  the storage screen (`MacScreenLink`, shared with D-116).
 
 Large-file browsing and the app uninstaller from Perch are not part of this;
 an uninstaller is too risky to drive from a phone.
+
+### D-116 — Memory and CPU from the phone
+**Status:** accepted
+
+When memory runs out the Mac crawls and agent sessions stall; the user needs
+to see who is responsible and quit it without walking to the Mac. With
+capability `activity` the phone shows CPU load, Activity Monitor's "Memory
+Used", the kernel's memory pressure level and the running apps, adapted from
+Perch's Activity view (MIT, see NOTICE):
+
+* `ProcessSampler` (RemoteCodeHost, Darwin only) reads every readable process
+  with libproc and rolls helpers into their outermost `.app` bundle, so Chrome
+  with 38 helper processes is one row. CPU needs two samples; when the last one
+  is older than 10 seconds the Mac takes a short first sample, waits a second,
+  then answers. Nothing is sampled while no phone asks.
+* Apps with a Dock icon are listed (largest 20 by memory); everything else is a
+  single "system and background" row that cannot be quit. The AppKit part
+  (Dock apps, quitting) lives in the Mac app behind `MacStatusProviding`.
+* `quitApp` names an app id of the latest snapshot; the Mac maps it back to the
+  bundle and calls `terminate()` (the app can save or ask) or, on request,
+  `forceTerminate()`. Remote Code itself, Finder, Dock and loginwindow are never
+  offered.
+* **Memory warning:** every minute the host reads
+  `kern.memorystatus_vm_pressure_level` and posts a `memoryPressure` alert once
+  when it becomes critical, naming the app that uses the most memory; it stays
+  quiet until pressure is back to normal. Its tap link
+  `pilothouse://activity?mac=<fingerprint>` opens the screen.

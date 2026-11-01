@@ -120,9 +120,12 @@ public struct NtfyPublisher: AlertSink {
         case .promoFailed: (4, "x")
         case .promoPublished: (3, "rocket")
         case .lowDiskSpace: (4, "floppy_disk")
+        case .memoryPressure: (4, "warning")
         }
         let link = if alert.kind == .lowDiskSpace {
-            StorageLink(macId: macId).url
+            MacScreenLink(.storage, macId: macId).url
+        } else if alert.kind == .memoryPressure {
+            MacScreenLink(.activity, macId: macId).url
         } else if alert.kind.isPromoStudio {
             PromoStudioLink(postId: alert.sessionId, macId: macId).url
         } else {

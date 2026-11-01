@@ -30,16 +30,26 @@ struct SettingsView: View {
                 macsSection
                 if let connection = model.connection, let status = connection.status, connection.isConnected {
                     statusSection(status)
-                    if connection.capabilities.contains(HostCapability.storage) {
+                    if connection.capabilities.contains(HostCapability.storage) || connection.capabilities.contains(HostCapability.activity) {
                         Section {
-                            NavigationLink {
-                                StorageView(connection: connection)
-                            } label: {
-                                Label("Storage", systemImage: "internaldrive")
+                            if connection.capabilities.contains(HostCapability.storage) {
+                                NavigationLink {
+                                    StorageView(connection: connection)
+                                } label: {
+                                    Label("Storage", systemImage: "internaldrive")
+                                }
+                                .accessibilityIdentifier("storageLink")
                             }
-                            .accessibilityIdentifier("storageLink")
+                            if connection.capabilities.contains(HostCapability.activity) {
+                                NavigationLink {
+                                    ActivityView(connection: connection)
+                                } label: {
+                                    Label("Memory and CPU", systemImage: "memorychip")
+                                }
+                                .accessibilityIdentifier("activityLink")
+                            }
                         } footer: {
-                            Text("See how much space is left on your Mac and clean up caches and build data.")
+                            Text("Free space, memory and CPU of your Mac. Clean up caches or quit an app that slows it down.")
                         }
                     }
                     if connection.capabilities.contains(HostCapability.power), let power = status.power {

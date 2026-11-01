@@ -104,6 +104,32 @@ import Testing
         await client.stop()
     }
 
+    @Test func quittingAnAppRemovesItFromActivity() async throws {
+        let (client, _) = try await connectedClient()
+        guard case .activity(let before) = try await client.request(.getActivity) else {
+            Issue.record("Expected activity")
+            return
+        }
+        #expect(before.pressure == .warning)
+        let chrome = try #require(before.apps.first)
+        #expect(chrome.canQuit)
+        guard case .ok = try await client.request(.quitApp(QuitApp(appId: chrome.id))) else {
+            Issue.record("Expected ok")
+            return
+        }
+        guard case .activity(let after) = try await client.request(.getActivity) else {
+            Issue.record("Expected activity")
+            return
+        }
+        #expect(!after.apps.contains { $0.id == chrome.id })
+        #expect(after.pressure == .normal)
+        let protected = try #require(after.apps.first { !$0.canQuit })
+        await #expect(throws: ErrorPayload.self) {
+            try await client.request(.quitApp(QuitApp(appId: protected.id)))
+        }
+        await client.stop()
+    }
+
     @Test func subscribeReplaysBacklogFromSequence() async throws {
         let (client, _) = try await connectedClient()
         let pushes = client.pushes

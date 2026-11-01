@@ -37,10 +37,12 @@ public enum HostCapability {
     public static let power = "power"
     /// `getStorage`, `scanCleanup`, `runCleanup`: free space and safe cleanup (D-115).
     public static let storage = "storage"
+    /// `getActivity`, `quitApp`: memory pressure, CPU and the apps behind them (D-116).
+    public static let activity = "activity"
     /// Every capability this build of RemoteCodeKit implements.
     public static let all = [
         createDirectory, agents, threads, insights, commandCatalog, sessionSettings, modelCatalog, sessionPermissionMode,
-        power, storage,
+        power, storage, activity,
     ]
 }
 
@@ -335,6 +337,8 @@ public enum ClientMessage: Sendable, Hashable {
     case getStorage
     case scanCleanup
     case runCleanup(RunCleanup)
+    case getActivity
+    case quitApp(QuitApp)
 
     public var typeName: String {
         switch self {
@@ -363,6 +367,8 @@ public enum ClientMessage: Sendable, Hashable {
         case .getStorage: "getStorage"
         case .scanCleanup: "scanCleanup"
         case .runCleanup: "runCleanup"
+        case .getActivity: "getActivity"
+        case .quitApp: "quitApp"
         }
     }
 }
@@ -389,6 +395,7 @@ public enum ServerMessage: Sendable, Hashable {
     case storage(StorageOverview)
     case cleanupScan(CleanupScan)
     case cleanupResult(CleanupResult)
+    case activity(ActivitySnapshot)
     case error(ErrorPayload)
 
     public var typeName: String {
@@ -413,6 +420,7 @@ public enum ServerMessage: Sendable, Hashable {
         case .storage: "storage"
         case .cleanupScan: "cleanupScan"
         case .cleanupResult: "cleanupResult"
+        case .activity: "activity"
         case .error: "error"
         }
     }

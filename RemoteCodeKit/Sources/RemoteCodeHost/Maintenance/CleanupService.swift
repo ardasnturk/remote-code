@@ -29,8 +29,17 @@ public actor CleanupService {
     private var latest: Scan?
     private var running: Task<CleanupScan, Never>?
 
-    public init(homeDirectory: String, trash: @escaping Trash = { try FileManager.default.trashItem(at: $0, resultingItemURL: nil) }) {
+    public init(homeDirectory: String, trash: @escaping Trash = CleanupService.moveToTrash) {
         self.init(homeDirectory: homeDirectory, definitions: CleanupDefinition.all, trash: trash)
+    }
+
+    /// The Finder's Trash on macOS; elsewhere (Linux tests) items are deleted.
+    public static let moveToTrash: Trash = { url in
+        #if canImport(Darwin)
+        try FileManager.default.trashItem(at: url, resultingItemURL: nil)
+        #else
+        try FileManager.default.removeItem(at: url)
+        #endif
     }
 
     init(homeDirectory: String, definitions: [CleanupDefinition], trash: @escaping Trash) {

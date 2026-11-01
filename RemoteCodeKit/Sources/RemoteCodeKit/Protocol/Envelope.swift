@@ -76,6 +76,8 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case "getStorage": message = .getStorage
         case "scanCleanup": message = .scanCleanup
         case "runCleanup": message = .runCleanup(try payload(RunCleanup.self))
+        case "getActivity": message = .getActivity
+        case "quitApp": message = .quitApp(try payload(QuitApp.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
     }
@@ -90,11 +92,13 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case .hello(let payload): try container.encode(payload, forKey: .payload)
         case .listDirectory(let payload): try container.encode(payload, forKey: .payload)
         case .createDirectory(let payload): try container.encode(payload, forKey: .payload)
-        case .listSessions, .macStatus, .getUsageLimits, .promoStudioSubscribe, .promoStudioUnsubscribe, .getStorage, .scanCleanup:
+        case .listSessions, .macStatus, .getUsageLimits, .promoStudioSubscribe, .promoStudioUnsubscribe, .getStorage, .scanCleanup,
+            .getActivity:
             try container.encode(EmptyPayload(), forKey: .payload)
         case .promoStudio(let payload): try container.encode(payload, forKey: .payload)
         case .setPower(let payload): try container.encode(payload, forKey: .payload)
         case .runCleanup(let payload): try container.encode(payload, forKey: .payload)
+        case .quitApp(let payload): try container.encode(payload, forKey: .payload)
         case .getWeeklySummary(let payload): try container.encode(payload, forKey: .payload)
         case .listCommands(let payload): try container.encode(payload, forKey: .payload)
         case .updateSessionSettings(let payload): try container.encode(payload, forKey: .payload)
@@ -161,6 +165,7 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case "storage": message = .storage(try payload(StorageOverview.self))
         case "cleanupScan": message = .cleanupScan(try payload(CleanupScan.self))
         case "cleanupResult": message = .cleanupResult(try payload(CleanupResult.self))
+        case "activity": message = .activity(try payload(ActivitySnapshot.self))
         case "error": message = .error(try payload(ErrorPayload.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
@@ -193,6 +198,7 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case .storage(let payload): try container.encode(payload, forKey: .payload)
         case .cleanupScan(let payload): try container.encode(payload, forKey: .payload)
         case .cleanupResult(let payload): try container.encode(payload, forKey: .payload)
+        case .activity(let payload): try container.encode(payload, forKey: .payload)
         case .error(let payload): try container.encode(payload, forKey: .payload)
         }
     }

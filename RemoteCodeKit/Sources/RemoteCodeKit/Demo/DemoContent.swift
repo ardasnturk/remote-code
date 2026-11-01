@@ -311,6 +311,18 @@ enum DemoContent {
         )
     }
 
+    /// Apps running on the demo Mac (D-116); together they put memory under pressure.
+    static func activityApps() -> [AppActivity] {
+        [
+            AppActivity(id: "com.google.Chrome", name: "Google Chrome", bundleIdentifier: "com.google.Chrome", cpuPercent: 11.4, memoryBytes: 9_870_000_000, processCount: 38, canQuit: true),
+            AppActivity(id: "com.apple.dt.Xcode", name: "Xcode", bundleIdentifier: "com.apple.dt.Xcode", cpuPercent: 23.8, memoryBytes: 6_420_000_000, processCount: 9, canQuit: true),
+            AppActivity(id: "com.apple.iphonesimulator", name: "Simulator", bundleIdentifier: "com.apple.iphonesimulator", cpuPercent: 7.9, memoryBytes: 3_150_000_000, processCount: 41, canQuit: true),
+            AppActivity(id: "com.tinyspeck.slackmacgap", name: "Slack", bundleIdentifier: "com.tinyspeck.slackmacgap", cpuPercent: 1.2, memoryBytes: 1_240_000_000, processCount: 6, canQuit: true),
+            AppActivity(id: "com.spotify.client", name: "Spotify", bundleIdentifier: "com.spotify.client", cpuPercent: 0.8, memoryBytes: 610_000_000, processCount: 5, canQuit: true),
+            AppActivity(id: "com.ardasenturk.Pilothouse.Mac", name: "Remote Code", bundleIdentifier: "com.ardasenturk.Pilothouse.Mac", cpuPercent: 0.3, memoryBytes: 180_000_000, processCount: 1, canQuit: false),
+        ]
+    }
+
     /// What the demo Mac's cleanup scan finds (D-115).
     static func cleanupCategories() -> [CleanupCategory] {
         func category(_ id: String, _ title: String, _ selected: Bool, permanent: Bool = false, _ items: [(String, String, Int64)]) -> CleanupCategory {

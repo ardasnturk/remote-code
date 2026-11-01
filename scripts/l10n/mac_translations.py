@@ -304,5 +304,10 @@ T = {
 "Remote Code always keeps your Mac awake while it runs; this keeps the screen on too. You can also switch it from your iPhone.": ("Remote Code çalışırken Mac'inizi her zaman uyanık tutar; bu seçenek ekranı da açık tutar. iPhone'unuzdan da açıp kapatabilirsiniz.", "Remote Code hält deinen Mac immer wach, solange es läuft; damit bleibt auch der Bildschirm an. Du kannst es auch auf deinem iPhone umschalten."),
 "Low disk space": ("Disk alanı azaldı", "Wenig Speicherplatz"),
 "Low disk space · %@ free": ("Disk alanı azaldı · %@ boş", "Wenig Speicherplatz · %@ frei"),
+"Memory almost full": ("Bellek dolmak üzere", "Arbeitsspeicher fast voll"),
+"Memory almost full · %@": ("Bellek dolmak üzere · %@", "Arbeitsspeicher fast voll · %@"),
+"System and background": ("Sistem ve arka plan", "System und Hintergrund"),
+"The app is no longer running.": ("Uygulama artık çalışmıyor.", "Die App läuft nicht mehr."),
+"This app can't be quit from your iPhone. Refresh the list and try again.": ("Bu uygulama iPhone'unuzdan kapatılamaz. Listeyi yenileyip tekrar deneyin.", "Diese App kann nicht vom iPhone aus beendet werden. Aktualisiere die Liste und versuche es erneut."),
 }
 json.dump({k: {"tr": v[0], "de": v[1]} for k, v in T.items()}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mac.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, sort_keys=True)

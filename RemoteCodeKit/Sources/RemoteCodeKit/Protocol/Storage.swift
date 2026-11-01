@@ -140,30 +140,3 @@ extension ErrorCode {
     /// The host has no storage tools (e.g. a test host).
     public static let storageUnavailable = ErrorCode("storageUnavailable")
 }
-
-/// `pilothouse://storage?mac=<fingerprint>`: opens the storage screen (a tapped
-/// low-space notification, D-115).
-public struct StorageLink: Sendable, Hashable {
-    public static let host = "storage"
-
-    public var macId: String?
-
-    public init(macId: String? = nil) {
-        self.macId = macId
-    }
-
-    public init?(url: URL) {
-        guard url.scheme?.lowercased() == PairingPayload.scheme, url.host?.lowercased() == Self.host else { return nil }
-        macId = URLComponents(url: url, resolvingAgainstBaseURL: false)?
-            .queryItems?.first(where: { $0.name == "mac" })?.value
-            .flatMap { $0.isEmpty ? nil : $0 }
-    }
-
-    public var url: URL {
-        var components = URLComponents()
-        components.scheme = PairingPayload.scheme
-        components.host = Self.host
-        if let macId { components.queryItems = [URLQueryItem(name: "mac", value: macId)] }
-        return components.url ?? URL(string: "\(PairingPayload.scheme)://\(Self.host)")!
-    }
-}

@@ -35,6 +35,7 @@ final class AppController: MacStatusProviding {
     /// "Keep display on", from the phone or Settings (D-114).
     let displayAssertion = SleepAssertion(.display)
     let lidDimmer = ClosedLidDimmer()
+    @ObservationIgnored private let activityController = ActivityController()
 
     private(set) var phase: Phase = .starting
     private(set) var macName = Host.current().localizedName ?? "Mac"
@@ -300,6 +301,16 @@ final class AppController: MacStatusProviding {
         let status = await macStatus()
         if let runtime { await runtime.hub.post(.macStatus(status)) }
         return status
+    }
+
+    // MARK: Activity
+
+    func activity() async throws -> ActivitySnapshot {
+        await activityController.snapshot()
+    }
+
+    func quitApp(_ request: QuitApp) async throws {
+        try activityController.quit(request)
     }
 
     /// Keeps the display on, for `duration` seconds or (0) until turned off.

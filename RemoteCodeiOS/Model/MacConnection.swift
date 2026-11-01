@@ -165,7 +165,7 @@ final class MacConnection {
                 state = .failed(message: error.message, code: error.code)
             }
         case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog, .promoStudioResponse,
-            .storage, .cleanupScan, .cleanupResult:
+            .storage, .cleanupScan, .cleanupResult, .activity:
             break
         }
     }
@@ -299,6 +299,19 @@ final class MacConnection {
             throw MacClientError.unexpectedResponse(response.typeName)
         }
         return result
+    }
+
+    /// Memory, CPU and running apps (capability `activity`).
+    func activity() async throws -> ActivitySnapshot {
+        let response = try await client.request(.getActivity)
+        guard case .activity(let snapshot) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        return snapshot
+    }
+
+    func quitApp(_ id: String, force: Bool) async throws {
+        _ = try await client.request(.quitApp(QuitApp(appId: id, force: force)))
     }
 
     /// Changes the Mac's power settings (capability `power`).

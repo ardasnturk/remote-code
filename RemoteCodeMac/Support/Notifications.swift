@@ -17,6 +17,7 @@ enum AlertText {
         case .promoFailed: String(localized: "Video failed · \(folder)")
         case .promoPublished: String(localized: "Posted to Instagram · \(folder)")
         case .lowDiskSpace: String(localized: "Low disk space · \(folder) free")
+        case .memoryPressure: String(localized: "Memory almost full · \(folder)")
         }
         guard includeDetail, let detail = alert.detail else { return (headline, nil) }
         if alert.kind == .permissionRequested {

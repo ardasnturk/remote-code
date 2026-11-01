@@ -69,6 +69,10 @@ public protocol HostService: Sendable {
     func scanCleanup() async throws -> CleanupScan
     /// Deletes items of the latest scan.
     func runCleanup(_ request: RunCleanup) async throws -> CleanupResult
+    /// Memory, CPU and the apps behind them (capability `activity`).
+    func activity() async throws -> ActivitySnapshot
+    /// Quits an app of the latest snapshot.
+    func quitApp(_ request: QuitApp) async throws
 }
 
 extension HostService {
@@ -94,6 +98,14 @@ extension HostService {
 
     public func runCleanup(_ request: RunCleanup) async throws -> CleanupResult {
         throw ErrorPayload(code: .storageUnavailable, message: "This Mac cannot clean up storage remotely.")
+    }
+
+    public func activity() async throws -> ActivitySnapshot {
+        throw ErrorPayload(code: .activityUnavailable, message: "This Mac cannot report its activity.")
+    }
+
+    public func quitApp(_ request: QuitApp) async throws {
+        throw ErrorPayload(code: .activityUnavailable, message: "This Mac cannot quit apps remotely.")
     }
 }
 

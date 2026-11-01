@@ -2,7 +2,8 @@ Remote Code includes code adapted from the following project.
 
 Perch — https://github.com/mfrkankaya/perch
 Used in: RemoteCodeMac/Power/ClosedLidDimmer.swift,
-         RemoteCodeKit/Sources/RemoteCodeHost/Maintenance/CleanupCatalog.swift
+         RemoteCodeKit/Sources/RemoteCodeHost/Maintenance/CleanupCatalog.swift,
+         RemoteCodeKit/Sources/RemoteCodeHost/Maintenance/ProcessSampler.swift
 
 MIT License
 

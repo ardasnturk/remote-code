@@ -40,8 +40,8 @@ final class AppModel {
     var promoStudioPostToOpen: String?
     var isPresentingNewChat = false
     var isPresentingSettings = false
-    /// The storage screen, opened by a low-space notification (D-115).
-    var isPresentingStorage = false
+    /// A Mac screen opened by a notification (storage D-115, activity D-116).
+    var presentedMacScreen: MacScreenLink.Screen?
     var isPresentingInsights = false
     var isPresentingPairing = false
     /// A `pilothouse://pair` link opened from outside (Camera app, paste).
@@ -148,16 +148,16 @@ final class AppModel {
         promoStudioPostToOpen = link.postId
     }
 
-    /// Opens the storage screen for a `pilothouse://storage` link (a tapped
-    /// low-space notification, D-115).
-    func open(_ link: StorageLink) async {
+    /// Opens the storage or activity screen for a `pilothouse://storage` or
+    /// `pilothouse://activity` link (a tapped notification, D-115, D-116).
+    func open(_ link: MacScreenLink) async {
         guard hasPairedMac else { return }
         isPresentingNewChat = false
         isPresentingSettings = false
         if let macId = link.macId, macId != activeMac?.id, store.mac(id: macId) != nil {
             await switchToMac(macId)
         }
-        isPresentingStorage = true
+        presentedMacScreen = link.screen
     }
 
     func scenePhaseChanged(_ phase: ScenePhase) {

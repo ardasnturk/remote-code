@@ -167,6 +167,8 @@ the documented result, `ok`, or `error`.
 | `getStorage` | `{}` — capability `storage` | `storage` |
 | `scanCleanup` | `{}` — looks for safe-to-delete files; can take a minute | `cleanupScan` |
 | `runCleanup` | `{ scanId, itemIds: [id], categoryIds: [id], permanently }` — items and whole categories of that scan; a scan can be used once | `cleanupResult` (`error{scanExpired}` for an unknown or used scan) |
+| `getActivity` | `{}` — capability `activity` | `activity` |
+| `quitApp` | `{ appId, force }` — an app of the latest `activity` with `canQuit` | `ok` (`error{notFound}` if it is not quittable or no longer runs) |
 | `setPower` | `{ keepDisplayOn?, displayOnDuration? (seconds, 0 = until turned off), lidClosedMode?, pauseLidModeOnBattery?, dimDisplayWhenLidClosed? }` — fields left out stay unchanged; capability `power` | `macStatus` (also pushed to every other phone) |
 
 `permissionMode` ∈ `default` · `acceptEdits` · `plan` · `bypassPermissions`
@@ -185,6 +187,7 @@ older Macs). A client only sends them when the Mac lists the capability, so
 `promoStudioSubscribe`) is announced only by the real Mac host, not the demo.
 `power` (`setPower`, `macStatus.power`) controls the display and lid-closed mode.
 `storage` (`getStorage`, `scanCleanup`, `runCleanup`) reports free space and cleans up.
+`activity` (`getActivity`, `quitApp`) reports memory pressure, CPU and running apps.
 
 ### 4.2 Host → client
 
@@ -207,6 +210,7 @@ older Macs). A client only sends them when the Mac lists the capability, so
 | `promoStudioResponse` | `{ status, contentType?, contentRange?, body (base64) }` — Promo Studio's HTTP response; media is fetched in chunks of at most 4 MB with `range` (the Mac adds `bytes=0-4194303` to a media request without one) |
 | `storage` | `{ totalBytes, availableBytes, lowSpaceThresholdBytes }` |
 | `cleanupScan` | `{ scanId, scannedAt, storage, categories: [{ id: caches \| logs \| xcode \| developer \| installers \| trash, title, items: [{ id, name, location, sizeBytes }] (largest 50), itemCount, totalBytes, selectedByDefault, alwaysPermanent, unavailableReason? }] }` |
+| `activity` | `{ sampledAt, cpuPercent (0–100), memoryUsedBytes, memoryTotalBytes, pressure: normal \| warning \| critical (open-ended), apps: [{ id, name, bundleIdentifier?, cpuPercent, memoryBytes, processCount, canQuit }] (largest 20 by memory), background?: same shape }` |
 | `cleanupResult` | `{ freedBytes, removedCount, failedCount, movedToTrash, storage }` |
 | `promoStudioEvent` | `{ event: changed \| job \| jobEnded \| alert \| ping, data: JSON text }` — Promo Studio's server-sent events, pushed after `promoStudioSubscribe` until `promoStudioUnsubscribe` or disconnect |
 | `error` | `{ code, message }` |
@@ -237,7 +241,7 @@ folder; `message` says which switch to turn on), `notADirectory`,
 `deviceRevoked`, `pairingTokenInvalid`, `clockSkew`, `timeout`, `internal`,
 `promoStudioUnavailable` (the Promo Studio app is not running on the Mac),
 `powerUnavailable` (the host cannot change power settings),
-`storageUnavailable`, `scanExpired` (`runCleanup` for a scan the Mac no longer has).
+`storageUnavailable`, `activityUnavailable`, `scanExpired` (`runCleanup` for a scan the Mac no longer has).
 Codes are open-ended strings; clients must handle unknown codes generically.
 
 ## 5. Session events

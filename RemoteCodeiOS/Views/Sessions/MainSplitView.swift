@@ -35,15 +35,20 @@ struct MainSplitView: View {
         .sheet(isPresented: $model.isPresentingSettings) {
             SettingsView()
         }
-        .sheet(isPresented: $model.isPresentingStorage) {
+        .sheet(item: $model.presentedMacScreen) { screen in
             if let connection = model.connection {
                 NavigationStack {
-                    StorageView(connection: connection)
-                        .toolbar {
-                            ToolbarItem(placement: .confirmationAction) {
-                                Button("Done") { model.isPresentingStorage = false }
-                            }
+                    Group {
+                        switch screen {
+                        case .storage: StorageView(connection: connection)
+                        case .activity: ActivityView(connection: connection)
                         }
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") { model.presentedMacScreen = nil }
+                        }
+                    }
                 }
             }
         }

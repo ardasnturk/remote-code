@@ -38,6 +38,8 @@ import Testing
         .getStorage,
         .scanCleanup,
         .runCleanup(RunCleanup(scanId: "scan", itemIds: ["a", "b"], categoryIds: ["logs"], permanently: true)),
+        .getActivity,
+        .quitApp(QuitApp(appId: "com.google.Chrome", force: true)),
     ])
     func clientMessagesRoundTrip(_ message: ClientMessage) throws {
         #expect(try roundTrip(message) == message)
@@ -116,10 +118,22 @@ import Testing
         for message in messages {
             #expect(try roundTrip(message) == message, "\(message.typeName)")
         }
-        let link = StorageLink(macId: "abc")
+        let link = MacScreenLink(.storage, macId: "abc")
         #expect(link.url.absoluteString == "pilothouse://storage?mac=abc")
-        #expect(StorageLink(url: link.url) == link)
-        #expect(StorageLink(url: URL(string: "pilothouse://session/x")!) == nil)
+        #expect(MacScreenLink(url: link.url) == link)
+        #expect(MacScreenLink(url: URL(string: "pilothouse://activity")!) == MacScreenLink(.activity))
+        #expect(MacScreenLink(url: URL(string: "pilothouse://session/x")!) == nil)
+    }
+
+    @Test func activityRoundTripsAndToleratesNewPressureLevels() throws {
+        let app = AppActivity(id: "com.x", name: "X", bundleIdentifier: "com.x", cpuPercent: 12.5, memoryBytes: 1_000, processCount: 3, canQuit: true)
+        let snapshot = ActivitySnapshot(
+            sampledAt: Date(timeIntervalSince1970: 1_792_800_000), cpuPercent: 40, memoryUsedBytes: 10, memoryTotalBytes: 20,
+            pressure: .warning, apps: [app], background: nil
+        )
+        #expect(try roundTrip(ServerMessage.activity(snapshot)) == .activity(snapshot))
+        let future = try RemoteCodeJSON.decode(MemoryPressure.self, from: Data("\"extreme\"".utf8))
+        #expect(future.rawValue == "extreme")
     }
 
     @Test func envelopeHasDocumentedShape() throws {

@@ -25,6 +25,7 @@ public actor DemoHostService: HostService {
     )
     private var storage = StorageOverview(totalBytes: 494_384_795_648, availableBytes: 8_214_000_000, lowSpaceThresholdBytes: 10_000_000_000)
     private var cleanupScanResult: CleanupScan?
+    private var demoApps = DemoContent.activityApps()
     private let now: Date
 
     public init(pace: Double = 1, now: Date = Date()) {
@@ -177,6 +178,26 @@ public actor DemoHostService: HostService {
         let freed = chosen.reduce(0) { $0 + $1.sizeBytes }
         storage.availableBytes = min(storage.totalBytes, storage.availableBytes + freed)
         return CleanupResult(freedBytes: freed, removedCount: chosen.count, failedCount: 0, movedToTrash: !request.permanently, storage: storage)
+    }
+
+    public func activity() async throws -> ActivitySnapshot {
+        let total: Int64 = 34_359_738_368
+        let used = min(total, demoApps.reduce(0) { $0 + $1.memoryBytes } + 6_100_000_000)
+        let pressure: MemoryPressure = used > total * 9 / 10 ? .critical : (used > total * 3 / 4 ? .warning : .normal)
+        let background = AppActivity(
+            id: "background", name: "System and background", cpuPercent: 4.2, memoryBytes: 6_100_000_000, processCount: 412, canQuit: false
+        )
+        return ActivitySnapshot(
+            sampledAt: Date(), cpuPercent: demoApps.reduce(4.2) { $0 + $1.cpuPercent }, memoryUsedBytes: used, memoryTotalBytes: total,
+            pressure: pressure, apps: demoApps.sorted { $0.memoryBytes > $1.memoryBytes }, background: background
+        )
+    }
+
+    public func quitApp(_ request: QuitApp) async throws {
+        guard demoApps.contains(where: { $0.id == request.appId && $0.canQuit }) else {
+            throw ErrorPayload(code: .notFound, message: "The app is no longer running.")
+        }
+        demoApps.removeAll { $0.id == request.appId }
     }
 
     public func setPower(_ request: SetPower) async throws -> MacStatus {
