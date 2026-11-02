@@ -26,6 +26,9 @@ All notable changes to Remote Code are recorded here. The format follows
   the quick template (needs Promo Studio 1.2.0).
 - Promo Studio: choose a post's cover frame from the phone; it is also the
   Reel's cover on Instagram (needs Promo Studio 1.2.2).
+- Promo Studio: a Templates section for the Mac's template libraries (Promo
+  Templates): run a video template, research trend ideas and see the videos
+  made from the library (needs Promo Studio 1.2.4).
 
 ## [1.4.2] — 2026-11-01
 
