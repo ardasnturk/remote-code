@@ -121,11 +121,13 @@ final class PromoStudioStore {
 
     // MARK: Lookups
 
-    func project(_ id: String) -> PromoStudioProject? { state?.projects.first { $0.id == id } }
+    func project(_ id: String?) -> PromoStudioProject? { id.flatMap { id in state?.projects.first { $0.id == id } } }
     func library(_ id: String) -> PromoStudioLibrary? { state?.libraries?.first { $0.id == id } }
     func post(_ id: String) -> PromoStudioPost? { state?.posts.first { $0.id == id } }
     func posts(for projectId: String) -> [PromoStudioPost] { state?.posts.filter { $0.projectId == projectId } ?? [] }
-    func account(_ id: String?) -> PromoStudioAccount? { state?.accounts.first { $0.userId == id } }
+    func account(_ id: String?) -> PromoStudioAccount? { id.flatMap { id in state?.accounts.first { $0.userId == id } } }
+    /// The account a post goes to: its own, else its project's
+    func account(for post: PromoStudioPost) -> PromoStudioAccount? { account(post.accountId) ?? account(project(post.projectId)?.accountId) }
     func job(_ id: String) -> PromoStudioJob? { jobs[id] }
 
     // MARK: Requests

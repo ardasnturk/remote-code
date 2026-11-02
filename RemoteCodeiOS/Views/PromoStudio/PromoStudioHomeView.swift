@@ -6,6 +6,7 @@ struct PromoStudioHomeView: View {
     let store: PromoStudioStore
     @Environment(AppModel.self) private var model
     @State private var showAccounts = false
+    @State private var newVideo: PromoStudioNewVideoRequest?
     @State private var path: [PromoStudioRoute] = []
 
     var body: some View {
@@ -31,6 +32,11 @@ struct PromoStudioHomeView: View {
                     Button { showAccounts = true } label: { Image(systemName: "person.crop.circle") }
                         .accessibilityLabel(Text("Instagram Accounts"))
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { newVideo = PromoStudioNewVideoRequest() } label: { Image(systemName: "plus") }
+                        .accessibilityLabel(Text("New Video"))
+                        .disabled(store.state == nil)
+                }
             }
             .refreshable { await store.refresh() }
             .navigationDestination(for: PromoStudioRoute.self) { route in
@@ -41,6 +47,9 @@ struct PromoStudioHomeView: View {
                 }
             }
             .sheet(isPresented: $showAccounts) { PromoStudioAccountsView(store: store) }
+            .sheet(item: $newVideo) { request in
+                PromoStudioNewVideoView(store: store, request: request) { path = [.post($0)] }
+            }
             // A tapped notification opens its post (D-113)
             .onChange(of: model.promoStudioPostToOpen, initial: true) { _, postId in
                 guard let postId else { return }

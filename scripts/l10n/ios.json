@@ -135,6 +135,10 @@
   "de": "Erlauben",
   "tr": "İzin Ver"
  },
+ "Allow Remote Code to add to Photos in Settings to save videos.": {
+  "de": "Erlaube Remote Code in den Einstellungen, zu Fotos hinzuzufügen, um Videos zu sichern.",
+  "tr": "Video kaydetmek için Ayarlar'da Remote Code'un Fotoğraflar'a eklemesine izin verin."
+ },
  "Allow everything in this chat": {
   "de": "In diesem Chat alles erlauben",
   "tr": "Bu sohbette her şeye izin ver"
@@ -203,6 +207,10 @@
   "de": "Fotos oder Videos anhängen",
   "tr": "Fotoğraf veya video ekle"
  },
+ "Both are optional. Without a project the video isn’t about any app; without an account you can save the video and post it yourself.": {
+  "de": "Beides ist optional. Ohne Projekt handelt das Video von keiner App; ohne Konto kannst du das Video speichern und selbst posten.",
+  "tr": "İkisi de isteğe bağlı. Proje seçmezseniz video bir uygulamayla ilgili olmaz; hesap seçmezseniz videoyu kaydedip kendiniz paylaşabilirsiniz."
+ },
  "Browse your Mac and start a chat where your project lives.": {
   "de": "Durchsuche deinen Mac und starte einen Chat dort, wo dein Projekt liegt.",
   "tr": "Mac'inizde gezinin ve projenizin bulunduğu yerde bir sohbet başlatın."
@@ -247,9 +255,17 @@
   "de": "Cover wählen …",
   "tr": "Kapak Seç…"
  },
+ "Choose an account to post, or save the video and post it yourself.": {
+  "de": "Wähle ein Konto zum Posten oder sichere das Video und poste es selbst.",
+  "tr": "Paylaşmak için bir hesap seçin ya da videoyu kaydedip kendiniz paylaşın."
+ },
  "Claude Code": {
   "de": "Claude Code",
   "tr": "Claude Code"
+ },
+ "Claude Code adds a new video template to the library on the Mac: a skill and a reference video, following the library’s rules. When it’s done, the template appears in the list. This may take several minutes.": {
+  "de": "Claude Code fügt der Bibliothek auf dem Mac nach ihren Regeln eine neue Videovorlage hinzu: einen Skill und ein Referenzvideo. Danach erscheint die Vorlage in der Liste. Das kann einige Minuten dauern.",
+  "tr": "Claude Code, Mac'teki kütüphaneye kurallarına uygun yeni bir video kalıbı ekler: bir skill ve örnek bir video. Bitince kalıp listede görünür. Birkaç dakika sürebilir."
  },
  "Claude Code could not find the earlier conversation. Your next message starts a fresh one in this session.": {
   "de": "Claude Code konnte das frühere Gespräch nicht finden. Deine nächste Nachricht startet in dieser Sitzung ein neues.",
@@ -309,7 +325,7 @@
  },
  "Claude researches what's trending and suggests videos you can make with these templates.": {
   "de": "Claude recherchiert, was gerade angesagt ist, und schlägt Videos vor, die du mit diesen Vorlagen machen kannst.",
-  "tr": "Claude neyin trend olduğunu araştırır ve bu kalıplarla yapabileceğin videolar önerir."
+  "tr": "Claude neyin trend olduğunu araştırır ve bu kalıplarla yapabileceğiniz videolar önerir."
  },
  "Claude runs on your Mac with Claude Code. You'll see every step here.": {
   "de": "Claude läuft mit Claude Code auf deinem Mac. Hier siehst du jeden Schritt.",
@@ -511,6 +527,10 @@
   "de": "Ablehnen",
   "tr": "Reddet"
  },
+ "Describe the new template": {
+  "de": "Beschreibe die neue Vorlage",
+  "tr": "Yeni kalıbı anlatın"
+ },
  "Developer package caches": {
   "de": "Paket-Caches für Entwickler",
   "tr": "Geliştirici paket önbellekleri"
@@ -663,13 +683,13 @@
   "de": "Freier Speicherplatz, Arbeitsspeicher und CPU deines Macs. Bereinige Caches oder beende eine App, die ihn bremst.",
   "tr": "Mac'inizin boş alanı, belleği ve işlemcisi. Önbellekleri temizleyin veya Mac'i yavaşlatan bir uygulamayı kapatın."
  },
+ "Free-form video": {
+  "de": "Freies Video",
+  "tr": "Serbest video"
+ },
  "Free-form video (directed by Claude)": {
   "de": "Freies Video (Regie: Claude)",
   "tr": "Serbest video (Claude yönetir)"
- },
- "Generate": {
-  "de": "Erstellen",
-  "tr": "Üret"
  },
  "Generate This": {
   "de": "Das erstellen",
@@ -943,6 +963,14 @@
   "de": "Neuer Ordner",
   "tr": "Yeni Klasör"
  },
+ "New Template": {
+  "de": "Neue Vorlage",
+  "tr": "Yeni Kalıp"
+ },
+ "New Template…": {
+  "de": "Neue Vorlage …",
+  "tr": "Yeni Kalıp…"
+ },
  "New Video": {
   "de": "Neues Video",
   "tr": "Yeni Video"
@@ -1002,6 +1030,10 @@
  "None": {
   "de": "Keiner",
   "tr": "Yok"
+ },
+ "None: Claude directs it from scratch": {
+  "de": "Keine: Claude inszeniert es von Grund auf",
+  "tr": "Yok: Claude sıfırdan yönetsin"
  },
  "Not connected to your Mac.": {
   "de": "Nicht mit deinem Mac verbunden.",
@@ -1211,6 +1243,10 @@
   "de": "Projekte",
   "tr": "Projeler"
  },
+ "Project’s account (@%@)": {
+  "de": "Konto des Projekts (@%@)",
+  "tr": "Projenin hesabı (@%@)"
+ },
  "Promo Studio": {
   "de": "Promo Studio",
   "tr": "Promo Studio"
@@ -1218,6 +1254,10 @@
  "Promo film (directed by Claude)": {
   "de": "Werbefilm (Regie: Claude)",
   "tr": "Promosyon filmi (Claude yönetir)"
+ },
+ "Promo film for the app": {
+  "de": "Werbefilm für die App",
+  "tr": "Uygulama için tanıtım filmi"
  },
  "Prompt": {
   "de": "Prompt",
@@ -1410,6 +1450,14 @@
  "Save": {
   "de": "Sichern",
   "tr": "Kaydet"
+ },
+ "Save to Photos": {
+  "de": "In Fotos sichern",
+  "tr": "Fotoğraflara Kaydet"
+ },
+ "Saved to Photos": {
+  "de": "In Fotos gesichert",
+  "tr": "Fotoğraflara kaydedildi"
  },
  "Saves": {
   "de": "Gespeichert",
@@ -1639,6 +1687,10 @@
   "de": "Aufgaben",
   "tr": "Görevler"
  },
+ "Template": {
+  "de": "Vorlage",
+  "tr": "Kalıp"
+ },
  "Templates": {
   "de": "Vorlagen",
   "tr": "Şablonlar"
@@ -1714,10 +1766,6 @@
  "This is not a valid Remote Code pairing code.": {
   "de": "Das ist kein gültiger Remote-Code-Kopplungscode.",
   "tr": "Bu geçerli bir Remote Code eşleştirme kodu değil."
- },
- "This project has no Instagram account. Choose one on the project page.": {
-  "de": "Dieses Projekt hat kein Instagram-Konto. Wähle eines auf der Projektseite.",
-  "tr": "Bu projenin Instagram hesabı yok. Proje sayfasından bir hesap seç."
  },
  "This sub-agent left no transcript.": {
   "de": "Dieser Sub-Agent hat keinen Verlauf hinterlassen.",
@@ -1839,10 +1887,6 @@
   "de": "Worum soll es im Video gehen?",
   "tr": "Video ne anlatsın?"
  },
- "What should the video show?": {
-  "de": "Was soll das Video zeigen?",
-  "tr": "Video neyi göstersin?"
- },
  "Where": {
   "de": "Wo",
   "tr": "Nerede"
@@ -1907,6 +1951,10 @@
   "de": "[Video, %@: Die %lld angehängten Bilder sind Einzelbilder daraus, gleichmäßig vom Anfang bis zum Ende verteilt.]",
   "tr": "[Video, %@: ekteki %lld görsel, bu videodan baştan sona eşit aralıklarla alınmış karelerdir.]"
  },
+ "e.g. A wordless video where colored marbles race down a spiral track; the winner’s color is a guess for the comments.": {
+  "de": "z. B. Ein Video ohne Worte, in dem bunte Murmeln eine Spiralbahn hinabrasen; die Siegerfarbe wird in den Kommentaren geraten.",
+  "tr": "ör. Renkli bilyelerin spiral bir pistte yarıştığı sözsüz bir video; kazanan renk yorumlarda tahmin edilsin."
+ },
  "e.g. Make the hook bolder and mention it is free in the last scene": {
   "de": "z. B. Mach den Einstieg kühner und erwähne in der letzten Szene, dass es kostenlos ist",
   "tr": "ör. Kancayı daha iddialı yap ve son sahnede ücretsiz olduğunu belirt"
@@ -1914,6 +1962,10 @@
  "e.g. The derby is tonight. Make an energetic promo with a countdown and the AI prediction.": {
   "de": "z. B. Das Derby ist heute Abend. Mach einen energiegeladenen Promo-Clip mit Countdown und KI-Prognose.",
   "tr": "ör. Derbi bu akşam. Geri sayım ve yapay zekâ tahmini olan enerjik bir tanıtım videosu yap."
+ },
+ "e.g. Tonight’s derby in 20 seconds: the key stats, the lineups and a prediction.": {
+  "de": "z. B. Das Derby heute Abend in 20 Sekunden: die wichtigsten Zahlen, die Aufstellungen und ein Tipp.",
+  "tr": "ör. Bu akşamki derbi 20 saniyede: önemli istatistikler, kadrolar ve bir tahmin."
  },
  "iOS does not let apps install or configure a VPN for you, so step 2 has to be done by hand.": {
   "de": "iOS erlaubt Apps nicht, ein VPN für dich zu installieren oder zu konfigurieren, daher musst du Schritt 2 selbst ausführen.",

@@ -398,16 +398,37 @@ struct PromoStudioShareSection: View {
                 }
                 Divider()
             }
-            let account = store.project(post.projectId).flatMap { store.account($0.accountId) }
-            if let account {
+            if post.media.video != nil {
+                PromoStudioSaveVideo(store: store, post: post, onError: onError)
+                Divider()
+            }
+            let account = store.account(for: post)
+            if post.status == .published, let account {
                 Label {
                     Text(verbatim: "@\(account.username)")
                 } icon: {
                     Image(systemName: "camera.circle")
                 }
             } else {
-                Label("This project has no Instagram account. Choose one on the project page.", systemImage: "exclamationmark.triangle")
-                    .foregroundStyle(.orange).font(.footnote)
+                let projectAccount = store.account(store.project(post.projectId)?.accountId)
+                Picker(selection: Binding(
+                    get: { post.accountId ?? "" },
+                    set: { run("updatePost", ["postId": post.id, "accountId": $0]) }
+                )) {
+                    if let projectAccount {
+                        Text("Project’s account (@\(projectAccount.username))").tag("")
+                    } else {
+                        Text("None").tag("")
+                    }
+                    ForEach(store.state?.accounts ?? []) { Text(verbatim: "@\($0.username)").tag($0.userId) }
+                } label: {
+                    Label("Instagram account", systemImage: "camera.circle")
+                }
+                .disabled(post.status == .scheduled || post.status == .publishing)
+                if account == nil {
+                    Text("Choose an account to post, or save the video and post it yourself.")
+                        .foregroundStyle(.secondary).font(.footnote)
+                }
             }
             let canShare = post.media.video != nil && account != nil && post.status != .published && store.job(post.id) == nil
             Button {

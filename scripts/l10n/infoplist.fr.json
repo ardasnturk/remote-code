@@ -2,7 +2,8 @@
   "ios": {
     "CFBundleDisplayName": "Remote Code",
     "NSCameraUsageDescription": "Remote Code utilise l’appareil photo pour scanner le code de jumelage affiché sur votre Mac et, si vous le souhaitez, pour prendre des photos à envoyer à votre agent.",
-    "NSLocalNetworkUsageDescription": "Remote Code se connecte à votre Mac sur le réseau local pour contrôler vos sessions Claude Code."
+    "NSLocalNetworkUsageDescription": "Remote Code se connecte à votre Mac sur le réseau local pour contrôler vos sessions Claude Code.",
+    "NSPhotoLibraryAddUsageDescription": "Remote Code enregistre dans votre photothèque les vidéos créées avec Promo Studio lorsque vous choisissez Enregistrer dans Photos."
   },
   "mac": {
     "CFBundleDisplayName": "Remote Code",

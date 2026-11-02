@@ -2,7 +2,8 @@
   "ios": {
     "CFBundleDisplayName": "Remote Code",
     "NSCameraUsageDescription": "Remote Code는 카메라를 사용하여 Mac에 표시된 페어링 코드를 스캔하고, 사용자가 원하는 경우 에이전트에게 보낼 사진을 찍습니다.",
-    "NSLocalNetworkUsageDescription": "Remote Code는 로컬 네트워크에서 Mac에 연결하여 Claude Code 세션을 제어합니다."
+    "NSLocalNetworkUsageDescription": "Remote Code는 로컬 네트워크에서 Mac에 연결하여 Claude Code 세션을 제어합니다.",
+    "NSPhotoLibraryAddUsageDescription": "사진에 저장을 선택하면 Remote Code가 Promo Studio로 만든 동영상을 사진 보관함에 저장합니다."
   },
   "mac": {
     "CFBundleDisplayName": "Remote Code",

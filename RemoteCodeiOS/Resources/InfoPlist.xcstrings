@@ -195,6 +195,71 @@
           }
         }
       }
+    },
+    "NSPhotoLibraryAddUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code sichert die Videos, die du mit Promo Studio erstellst, in deiner Fotomediathek, wenn du „In Fotos sichern“ wählst."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code saves the videos you make with Promo Studio to your photo library when you choose Save to Photos."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code guarda en tu fototeca los vídeos que haces con Promo Studio cuando eliges Guardar en Fotos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code enregistre dans votre photothèque les vidéos créées avec Promo Studio lorsque vous choisissez Enregistrer dans Photos."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code salva nella libreria foto i video creati con Promo Studio quando scegli Salva in Foto."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "「写真に保存」を選ぶと、Remote Code は Promo Studio で作った動画を写真ライブラリに保存します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사진에 저장을 선택하면 Remote Code가 Promo Studio로 만든 동영상을 사진 보관함에 저장합니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code salva na sua fototeca os vídeos feitos com o Promo Studio quando você escolhe Salvar em Fotos."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code, Fotoğraflara Kaydet'i seçtiğinizde Promo Studio ile ürettiğiniz videoları fotoğraf arşivinize kaydeder."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当你选择“存储到照片”时，Remote Code 会将你用 Promo Studio 制作的视频存储到照片图库。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

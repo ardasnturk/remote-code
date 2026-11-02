@@ -2,7 +2,8 @@
   "ios": {
     "CFBundleDisplayName": "Remote Code",
     "NSCameraUsageDescription": "Remote Code usa la cámara para escanear el código de vinculación que aparece en tu Mac y, si quieres, para hacer fotos y enviarlas a tu agente.",
-    "NSLocalNetworkUsageDescription": "Remote Code se conecta a tu Mac en la red local para controlar tus sesiones de Claude Code."
+    "NSLocalNetworkUsageDescription": "Remote Code se conecta a tu Mac en la red local para controlar tus sesiones de Claude Code.",
+    "NSPhotoLibraryAddUsageDescription": "Remote Code guarda en tu fototeca los vídeos que haces con Promo Studio cuando eliges Guardar en Fotos."
   },
   "mac": {
     "CFBundleDisplayName": "Remote Code",

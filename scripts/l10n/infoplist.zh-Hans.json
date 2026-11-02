@@ -2,7 +2,8 @@
   "ios": {
     "CFBundleDisplayName": "Remote Code",
     "NSCameraUsageDescription": "Remote Code 使用相机扫描你 Mac 上显示的配对代码，并在你选择时拍摄照片发送给你的代理。",
-    "NSLocalNetworkUsageDescription": "Remote Code 通过本地网络连接你的 Mac，以控制你的 Claude Code 会话。"
+    "NSLocalNetworkUsageDescription": "Remote Code 通过本地网络连接你的 Mac，以控制你的 Claude Code 会话。",
+    "NSPhotoLibraryAddUsageDescription": "当你选择“存储到照片”时，Remote Code 会将你用 Promo Studio 制作的视频存储到照片图库。"
   },
   "mac": {
     "CFBundleDisplayName": "Remote Code",

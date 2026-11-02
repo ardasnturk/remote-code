@@ -130,7 +130,10 @@ struct PromoStudioAccount: Decodable, Hashable, Identifiable {
 
 struct PromoStudioPost: Decodable, Hashable, Identifiable {
     var id: String
-    var projectId: String
+    /// nil: a standalone video that belongs to no project
+    var projectId: String?
+    /// Instagram account chosen for this post (overrides the project's); once published, the account it went to
+    var accountId: String?
     var title: String
     var language: String?
     var status: Status

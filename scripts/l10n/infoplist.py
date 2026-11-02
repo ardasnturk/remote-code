@@ -12,6 +12,11 @@ IOS = {
         "Remote Code, kamerayı Mac'inizde gösterilen eşleştirme kodunu taramak ve isterseniz ajanınıza göndermek üzere fotoğraf çekmek için kullanır.",
         "Remote Code verwendet die Kamera, um den auf deinem Mac angezeigten Kopplungscode zu scannen und, wenn du möchtest, Fotos aufzunehmen, die du an deinen Agenten sendest.",
     ),
+    "NSPhotoLibraryAddUsageDescription": (
+        "Remote Code saves the videos you make with Promo Studio to your photo library when you choose Save to Photos.",
+        "Remote Code, Fotoğraflara Kaydet'i seçtiğinizde Promo Studio ile ürettiğiniz videoları fotoğraf arşivinize kaydeder.",
+        "Remote Code sichert die Videos, die du mit Promo Studio erstellst, in deiner Fotomediathek, wenn du „In Fotos sichern“ wählst.",
+    ),
     "NSLocalNetworkUsageDescription": (
         "Remote Code connects to your Mac on the local network to control your Claude Code sessions.",
         "Remote Code, Claude Code oturumlarınızı yönetmek için yerel ağdaki Mac'inize bağlanır.",

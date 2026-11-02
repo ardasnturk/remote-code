@@ -39,6 +39,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Remote Code uses the camera to scan the pairing code shown on your Mac and, if you choose, to take photos to send to your agent.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Remote Code saves the videos you make with Promo Studio to your photo library when you choose Save to Photos.</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Remote Code connects to your Mac on the local network to control your Claude Code sessions.</string>
 	<key>NSBonjourServices</key>

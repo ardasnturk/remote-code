@@ -4,7 +4,8 @@ import SwiftUI
 struct PromoStudioLibraryView: View {
     let store: PromoStudioStore
     let libraryId: String
-    @State private var generate: PromoStudioGenerateRequest?
+    @State private var generate: PromoStudioNewVideoRequest?
+    @State private var newTemplate = false
     @State private var focus = ""
     @State private var openedPost: String?
     @State private var error: String?
@@ -30,7 +31,7 @@ struct PromoStudioLibraryView: View {
                             Text(idea.why).font(.caption).foregroundStyle(.secondary)
                             Text(verbatim: "/\(idea.skill) · \(idea.difficulty)").font(.caption2.monospaced()).foregroundStyle(.tertiary)
                             Button("Generate This") {
-                                generate = PromoStudioGenerateRequest(skill: idea.skill, request: idea.request)
+                                generate = PromoStudioNewVideoRequest(template: PromoStudioTemplateRef(libraryId: libraryId, skill: idea.skill), prompt: idea.request)
                             }
                             .buttonStyle(.bordered)
                             .controlSize(.small)
@@ -44,11 +45,17 @@ struct PromoStudioLibraryView: View {
                 }
 
                 Section("Video Templates") {
-                    ForEach(library.skills) { skill in
+                    Button {
+                        newTemplate = true
+                    } label: {
+                        Label("New Template…", systemImage: "wand.and.stars")
+                    }
+                    .disabled(store.job(libraryId) != nil)
+                    ForEach(PromoStudioNewVideoView.videoSkills(library)) { skill in
                         VStack(alignment: .leading, spacing: 4) {
                             Text(verbatim: "/\(skill.name)").font(.headline.monospaced())
                             Text(skill.description).font(.caption).foregroundStyle(.secondary).lineLimit(4)
-                            Button("Generate…") { generate = PromoStudioGenerateRequest(skill: skill.name, request: "") }
+                            Button("Generate…") { generate = PromoStudioNewVideoRequest(template: PromoStudioTemplateRef(libraryId: libraryId, skill: skill.name)) }
                                 .buttonStyle(.borderedProminent)
                                 .controlSize(.small)
                         }
@@ -70,8 +77,9 @@ struct PromoStudioLibraryView: View {
             .navigationTitle(library.name)
             .navigationBarTitleDisplayMode(.inline)
             .sheet(item: $generate) { request in
-                PromoStudioGenerateView(store: store, library: library, request: request) { openedPost = $0 }
+                PromoStudioNewVideoView(store: store, request: request) { openedPost = $0 }
             }
+            .sheet(isPresented: $newTemplate) { PromoStudioNewTemplateView(store: store, libraryId: libraryId) }
             .navigationDestination(item: $openedPost) { PromoStudioPostView(store: store, postId: $0) }
             .alert("Promo Studio", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
                 Button("OK") { error = nil }
@@ -88,80 +96,6 @@ struct PromoStudioLibraryView: View {
     private func run(_ action: String, _ body: [String: Any]) {
         Task {
             do { try await store.action(action, body) } catch { self.error = error.localizedDescription }
-        }
-    }
-}
-
-struct PromoStudioGenerateRequest: Identifiable {
-    let id = UUID()
-    let skill: String
-    let request: String
-}
-
-/// Runs one of the library's video templates: Claude Code writes, checks and renders the video on the Mac.
-struct PromoStudioGenerateView: View {
-    let store: PromoStudioStore
-    let library: PromoStudioLibrary
-    let request: PromoStudioGenerateRequest
-    var onCreated: (String) -> Void
-    @Environment(\.dismiss) private var dismiss
-
-    @State private var text = ""
-    @State private var projectId = ""
-    @State private var sending = false
-    @State private var error: String?
-
-    var body: some View {
-        let skill = library.skills.first { $0.name == request.skill }
-        NavigationStack {
-            Form {
-                Section {
-                    TextField(skill?.argumentHint.flatMap { $0.isEmpty ? nil : $0 } ?? String(localized: "What should the video show?"), text: $text, axis: .vertical)
-                        .lineLimit(3...8)
-                } header: {
-                    Text(verbatim: "/\(request.skill)")
-                } footer: {
-                    if let description = skill?.description { Text(description) }
-                }
-                Section {
-                    Picker("Project", selection: $projectId) {
-                        ForEach(store.state?.projects ?? []) { Text($0.name).tag($0.id) }
-                    }
-                } footer: {
-                    Text("Claude Code runs the template on the Mac in the background: it writes, checks and renders the video. This may take a few minutes.")
-                }
-                if let error {
-                    Section { Text(error).foregroundStyle(.red) }
-                }
-            }
-            .navigationTitle(Text("New Video"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Generate") { create() }
-                        .disabled(sending || projectId.isEmpty)
-                }
-            }
-            .onAppear {
-                text = request.request
-                projectId = skill?.suggestedProjectId ?? store.state?.projects.first?.id ?? ""
-            }
-        }
-    }
-
-    private func create() {
-        sending = true
-        let body: [String: Any] = ["libraryId": library.id, "skill": request.skill, "request": text, "projectId": projectId]
-        Task {
-            do {
-                let result = try await store.action("generateFromSkill", body)
-                dismiss()
-                if let id = result["postId"] as? String { onCreated(id) }
-            } catch {
-                self.error = error.localizedDescription
-                sending = false
-            }
         }
     }
 }
