@@ -3,5 +3,5 @@ Mac'inize telefonunuzdan bakın:
 • Bellek ve İşlemci: Mac'i neyin yavaşlattığını görün, bir uygulamayı kapatın
 • Güç: ekranı açık tutun, kapak kapalı modunu açıp kapatın
 • Disk alanı veya bellek azaldığında bildirim
-• Promo Studio: tam tarif ettiğiniz gibi serbest videolar
+• Promo Studio: tam tarif ettiğiniz gibi serbest videolar ve kapak karesi seçimi
 Mac özellikleri için Mac'te Remote Code 1.5 gerekir.

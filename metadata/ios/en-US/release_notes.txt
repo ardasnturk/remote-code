@@ -3,5 +3,5 @@ Look after your Mac from your phone:
 • Memory and CPU: see what slows the Mac down and quit an app
 • Power: keep the display on, switch lid-closed mode
 • Notifications when disk space or memory runs low
-• Promo Studio: free-form videos, exactly as you describe them
+• Promo Studio: free-form videos, exactly as you describe them, and choosing the cover frame
 The Mac features need Remote Code 1.5 on the Mac.

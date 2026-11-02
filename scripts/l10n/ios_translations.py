@@ -464,5 +464,11 @@ T = {
 "Your Mac has room to work. Processor %@, memory %@ of %@.": ("Mac'iniz rahat çalışıyor. İşlemci %@, bellek %@ / %@.", "Dein Mac hat Luft. Prozessor %@, Arbeitsspeicher %@ von %@."),
 "Your Mac may slow down. %@ uses the most (%@).": ("Mac'iniz yavaşlayabilir. En çok %@ kullanıyor (%@).", "Dein Mac könnte langsamer werden. %@ belegt am meisten (%@)."),
 "System and background": ("Sistem ve arka plan", "System und Hintergrund"),
+"Cover": ("Kapak", "Cover"),
+"Frame at %@ s": ("%@. saniyedeki kare", "Bild bei %@ s"),
+"Choose Cover…": ("Kapak Seç…", "Cover wählen …"),
+"Choose Cover": ("Kapak Seç", "Cover wählen"),
+"This frame becomes the cover in Promo Studio and on Instagram.": ("Bu kare hem Promo Studio'da hem Instagram'da kapak olur.", "Dieses Bild wird in Promo Studio und auf Instagram zum Cover."),
+"Use as Cover": ("Kapak Yap", "Als Cover verwenden"),
 }
 json.dump({k: {"tr": v[0], "de": v[1]} for k, v in T.items()}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "ios.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, sort_keys=True)

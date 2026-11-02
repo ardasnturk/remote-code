@@ -235,6 +235,14 @@
   "de": "Chats",
   "tr": "Sohbetler"
  },
+ "Choose Cover": {
+  "de": "Cover wählen",
+  "tr": "Kapak Seç"
+ },
+ "Choose Cover…": {
+  "de": "Cover wählen …",
+  "tr": "Kapak Seç…"
+ },
  "Claude Code": {
   "de": "Claude Code",
   "tr": "Claude Code"
@@ -418,6 +426,10 @@
  "Could not start the session": {
   "de": "Die Sitzung konnte nicht gestartet werden",
   "tr": "Oturum başlatılamadı"
+ },
+ "Cover": {
+  "de": "Cover",
+  "tr": "Kapak"
  },
  "Create": {
   "de": "Erstellen",
@@ -622,6 +634,10 @@
  "Force Quit": {
   "de": "Sofort beenden",
   "tr": "Zorla Kapat"
+ },
+ "Frame at %@ s": {
+  "de": "Bild bei %@ s",
+  "tr": "%@. saniyedeki kare"
  },
  "Free space, memory and CPU of your Mac. Clean up caches or quit an app that slows it down.": {
   "de": "Freier Speicherplatz, Arbeitsspeicher und CPU deines Macs. Bereinige Caches oder beende eine App, die ihn bremst.",
@@ -1643,6 +1659,10 @@
   "de": "Dieser Ordner ist leer.",
   "tr": "Bu klasör boş."
  },
+ "This frame becomes the cover in Promo Studio and on Instagram.": {
+  "de": "Dieses Bild wird in Promo Studio und auf Instagram zum Cover.",
+  "tr": "Bu kare hem Promo Studio'da hem Instagram'da kapak olur."
+ },
  "This is not a valid Remote Code pairing code.": {
   "de": "Das ist kein gültiger Remote-Code-Kopplungscode.",
   "tr": "Bu geçerli bir Remote Code eşleştirme kodu değil."
@@ -1718,6 +1738,10 @@
  "Use Tailscale when away": {
   "de": "Unterwegs Tailscale verwenden",
   "tr": "Uzaktayken Tailscale kullan"
+ },
+ "Use as Cover": {
+  "de": "Als Cover verwenden",
+  "tr": "Kapak Yap"
  },
  "Verification code": {
   "de": "Bestätigungscode",

@@ -374,9 +374,30 @@ struct PromoStudioShareSection: View {
     var onError: (String) -> Void
     @State private var date = Date().addingTimeInterval(3600)
     @State private var confirmPublish = false
+    @State private var pickingCover = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
+            if post.media.video != nil {
+                HStack(spacing: 12) {
+                    PromoStudioImage(store: store, path: post.media.cover)
+                        .frame(width: 54, height: 96)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Cover").font(.headline)
+                        if let sec = post.coverSec {
+                            Text("Frame at \(String(format: "%.1f", sec)) s").font(.caption).foregroundStyle(.secondary)
+                        }
+                        Button("Choose Cover…") { pickingCover = true }
+                            .buttonStyle(.bordered).controlSize(.small)
+                            .disabled(post.status == .published || store.job(post.id) != nil)
+                    }
+                }
+                .sheet(isPresented: $pickingCover) {
+                    PromoStudioCoverPicker(store: store, post: post, onError: onError)
+                }
+                Divider()
+            }
             let account = store.project(post.projectId).flatMap { store.account($0.accountId) }
             if let account {
                 Label {
@@ -442,6 +463,98 @@ struct PromoStudioShareSection: View {
     private func run(_ action: String, _ body: [String: Any]) {
         Task {
             do { try await store.action(action, body) } catch { onError(error.localizedDescription) }
+        }
+    }
+}
+
+/// Picks the cover frame from the rendered video; Promo Studio sends the same moment to Instagram.
+struct PromoStudioCoverPicker: View {
+    let store: PromoStudioStore
+    let post: PromoStudioPost
+    var onError: (String) -> Void
+    @Environment(\.dismiss) private var dismiss
+    @State private var videoURL: URL?
+    @State private var duration: Double = 0
+    @State private var sec: Double = 0
+    @State private var frame: UIImage?
+    @State private var loading: Double? = 0
+    @State private var saving = false
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 16) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 14).fill(.black)
+                    if let frame {
+                        Image(uiImage: frame).resizable().aspectRatio(contentMode: .fit)
+                    } else if let loading {
+                        VStack(spacing: 10) {
+                            ProgressView(value: loading).tint(.white).frame(width: 140)
+                            Text("Loading video…").font(.caption).foregroundStyle(.white.opacity(0.7))
+                        }
+                    }
+                }
+                .aspectRatio(9 / 16, contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+                Slider(value: $sec, in: 0...max(duration, 0.1)).disabled(duration == 0)
+                Text(verbatim: String(format: "%.1f s", sec)).font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+                Text("This frame becomes the cover in Promo Studio and on Instagram.")
+                    .font(.caption).foregroundStyle(.secondary).multilineTextAlignment(.center)
+            }
+            .padding()
+            .navigationTitle(Text("Choose Cover"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Use as Cover") { save() }.disabled(duration == 0 || saving)
+                }
+            }
+        }
+        .task { await prepare() }
+        .task(id: sec) { await loadFrame() }
+    }
+
+    private func prepare() async {
+        guard let path = post.media.video else { return }
+        do {
+            let url = try await store.mediaFile(path) { loading = $0 }
+            videoURL = url
+            duration = (try? await AVURLAsset(url: url).load(.duration).seconds) ?? 0
+            sec = min(post.coverSec ?? 1.2, duration)
+            loading = nil
+            await loadFrame()
+        } catch {
+            onError(error.localizedDescription)
+            dismiss()
+        }
+    }
+
+    private func loadFrame() async {
+        guard let videoURL else { return }
+        if let image = await Self.image(videoURL, at: sec) { frame = image }
+    }
+
+    /// The exact frame at `sec` (a generator per call: it isn't Sendable, so it can't live in view state).
+    nonisolated private static func image(_ url: URL, at sec: Double) async -> UIImage? {
+        let gen = AVAssetImageGenerator(asset: AVURLAsset(url: url))
+        gen.appliesPreferredTrackTransform = true
+        gen.requestedTimeToleranceBefore = .zero
+        gen.requestedTimeToleranceAfter = .zero
+        gen.maximumSize = CGSize(width: 540, height: 960)
+        return (try? await gen.image(at: CMTime(seconds: sec, preferredTimescale: 600)).image).map(UIImage.init(cgImage:))
+    }
+
+    private func save() {
+        saving = true
+        Task {
+            do {
+                try await store.action("setCover", ["postId": post.id, "sec": sec])
+                dismiss()
+            } catch {
+                onError(error.localizedDescription)
+                saving = false
+            }
         }
     }
 }

@@ -3,5 +3,5 @@ Kümmere dich vom iPhone aus um deinen Mac:
 • Arbeitsspeicher und CPU: sehen, was den Mac bremst, und eine App beenden
 • Energie: Bildschirm eingeschaltet lassen, Modus bei geschlossenem Deckel umschalten
 • Mitteilungen bei wenig Speicherplatz oder Arbeitsspeicher
-• Promo Studio: freie Videos, genau wie du sie beschreibst
+• Promo Studio: freie Videos, genau wie du sie beschreibst, und Auswahl des Coverbilds
 Die Mac-Funktionen erfordern Remote Code 1.5 auf dem Mac.

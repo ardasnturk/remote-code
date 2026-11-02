@@ -120,6 +120,8 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     var spec: Spec
     var external: External?
     var media: Media
+    /// Second of the video the cover comes from (also the Reel's cover on Instagram); missing before Promo Studio 1.2.2
+    var coverSec: Double?
 
     enum Status: String, Decodable, Hashable {
         case draft, rendering, ready, scheduled, publishing, published, failed

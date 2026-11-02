@@ -24,6 +24,8 @@ All notable changes to Remote Code are recorded here. The format follows
 - A "Memory almost full" notification that names the app using the most memory.
 - Promo Studio: free-form videos from the phone, next to the promo film and
   the quick template (needs Promo Studio 1.2.0).
+- Promo Studio: choose a post's cover frame from the phone; it is also the
+  Reel's cover on Instagram (needs Promo Studio 1.2.2).
 
 ## [1.4.2] — 2026-11-01
 
