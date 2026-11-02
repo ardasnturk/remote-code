@@ -6,15 +6,6 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
-### Added
-- Promo Studio: New Video (+) makes a video from a prompt or a library
-  template without a project; the project and the Instagram account are
-  optional.
-- Promo Studio: choose a post's Instagram account, and Save to Photos or
-  Share any rendered video.
-- Promo Studio: New Template… adds a video template to a library on the Mac.
-  Needs Promo Studio 1.3.0.
-
 ## [1.5.0] — 2026-11-01
 
 ### Added
@@ -38,6 +29,13 @@ All notable changes to Remote Code are recorded here. The format follows
 - Promo Studio: a Templates section for the Mac's template libraries (Promo
   Templates): run a video template, research trend ideas and see the videos
   made from the library (needs Promo Studio 1.2.4).
+- Promo Studio: New Video (+) makes a video from a prompt or a library
+  template without a project; the project and the Instagram account are
+  optional.
+- Promo Studio: choose a post's Instagram account, and Save to Photos or
+  Share any rendered video.
+- Promo Studio: New Template… adds a video template to a library on the Mac.
+  Needs Promo Studio 1.3.0 for these three.
 
 ## [1.4.2] — 2026-11-01
 
