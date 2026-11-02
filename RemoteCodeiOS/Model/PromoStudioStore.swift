@@ -122,6 +122,7 @@ final class PromoStudioStore {
     // MARK: Lookups
 
     func project(_ id: String) -> PromoStudioProject? { state?.projects.first { $0.id == id } }
+    func library(_ id: String) -> PromoStudioLibrary? { state?.libraries?.first { $0.id == id } }
     func post(_ id: String) -> PromoStudioPost? { state?.posts.first { $0.id == id } }
     func posts(for projectId: String) -> [PromoStudioPost] { state?.posts.filter { $0.projectId == projectId } ?? [] }
     func account(_ id: String?) -> PromoStudioAccount? { state?.accounts.first { $0.userId == id } }

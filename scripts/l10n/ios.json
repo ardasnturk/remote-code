@@ -67,6 +67,10 @@
   "de": "%lld Prozesse",
   "tr": "%lld işlem"
  },
+ "%lld video templates": {
+  "de": "%lld Videovorlagen",
+  "tr": "%lld video kalıbı"
+ },
  "(no output)": {
   "de": "(keine Ausgabe)",
   "tr": "(çıktı yok)"
@@ -259,6 +263,10 @@
   "de": "Claude Code ist auf diesem Mac nicht angemeldet. Öffne das Terminal, führe `claude` aus, melde dich an und versuche es erneut.",
   "tr": "Bu Mac'te Claude Code'a giriş yapılmamış. Terminal'i açın, `claude` komutunu çalıştırıp giriş yapın ve tekrar deneyin."
  },
+ "Claude Code runs the template on the Mac in the background: it writes, checks and renders the video. This may take a few minutes.": {
+  "de": "Claude Code führt die Vorlage im Hintergrund auf dem Mac aus: Es schreibt, prüft und rendert das Video. Das kann ein paar Minuten dauern.",
+  "tr": "Claude Code kalıbı Mac'te arka planda çalıştırır: videoyu yazar, kontrol eder ve render eder. Birkaç dakika sürebilir."
+ },
  "Claude Code, Codex or Gemini CLI, installed and signed in once in Terminal. The Mac app tells you if something is missing.": {
   "de": "Claude Code, Codex oder Gemini CLI, installiert und einmal im Terminal angemeldet. Die Mac-App sagt dir, wenn etwas fehlt.",
   "tr": "Claude Code, Codex veya Gemini CLI; kurulu ve Terminal'de bir kez oturum açılmış olmalı. Bir şey eksikse Mac uygulaması size söyler."
@@ -298,6 +306,10 @@
  "Claude reports its limits with every turn, so they are as fresh as the last answer. Codex limits are read from your Mac when you open this screen. Gemini does not report limits.": {
   "de": "Claude meldet seine Limits mit jeder Antwort, sie sind also so aktuell wie die letzte Antwort. Codex-Limits werden beim Öffnen dieses Bildschirms von deinem Mac gelesen. Gemini meldet keine Limits.",
   "tr": "Claude limitlerini her turda bildirir; yani son cevap kadar günceldir. Codex limitleri bu ekranı açtığınızda Mac'inizden okunur. Gemini limit bildirmez."
+ },
+ "Claude researches what's trending and suggests videos you can make with these templates.": {
+  "de": "Claude recherchiert, was gerade angesagt ist, und schlägt Videos vor, die du mit diesen Vorlagen machen kannst.",
+  "tr": "Claude neyin trend olduğunu araştırır ve bu kalıplarla yapabileceğin videolar önerir."
  },
  "Claude runs on your Mac with Claude Code. You'll see every step here.": {
   "de": "Claude läuft mit Claude Code auf deinem Mac. Hier siehst du jeden Schritt.",
@@ -611,6 +623,10 @@
   "de": "Dateien zum Bereinigen suchen",
   "tr": "Temizlenecek Dosyaları Bul"
  },
+ "Find Ideas": {
+  "de": "Ideen finden",
+  "tr": "Fikir bul"
+ },
  "Find files": {
   "de": "Dateien finden",
   "tr": "Dosya bul"
@@ -618,6 +634,10 @@
  "First message (optional)": {
   "de": "Erste Nachricht (optional)",
   "tr": "İlk mesaj (isteğe bağlı)"
+ },
+ "Focus (optional), e.g. football, finance apps": {
+  "de": "Schwerpunkt (optional), z. B. Fußball, Finanz-Apps",
+  "tr": "Odak (isteğe bağlı), ör. futbol, finans uygulamaları"
  },
  "Folders": {
   "de": "Ordner",
@@ -646,6 +666,22 @@
  "Free-form video (directed by Claude)": {
   "de": "Freies Video (Regie: Claude)",
   "tr": "Serbest video (Claude yönetir)"
+ },
+ "Generate": {
+  "de": "Erstellen",
+  "tr": "Üret"
+ },
+ "Generate This": {
+  "de": "Das erstellen",
+  "tr": "Bunu üret"
+ },
+ "Generated from This Library": {
+  "de": "Aus dieser Bibliothek erstellt",
+  "tr": "Bu kütüphaneden üretilenler"
+ },
+ "Generate…": {
+  "de": "Erstellen …",
+  "tr": "Üret…"
  },
  "Get Remote Code for Mac": {
   "de": "Remote Code für den Mac laden",
@@ -762,6 +798,10 @@
  "Length: %lld s": {
   "de": "Länge: %lld s",
   "tr": "Süre: %lld sn"
+ },
+ "Library not found": {
+  "de": "Bibliothek nicht gefunden",
+  "tr": "Kütüphane bulunamadı"
  },
  "Licenses": {
   "de": "Lizenzen",
@@ -1323,6 +1363,10 @@
   "de": "Recherche",
   "tr": "Araştırma"
  },
+ "Research Trends": {
+  "de": "Trends recherchieren",
+  "tr": "Trendleri araştır"
+ },
  "Research on the web": {
   "de": "Im Web recherchieren",
   "tr": "Web'de araştır"
@@ -1595,6 +1639,10 @@
   "de": "Aufgaben",
   "tr": "Görevler"
  },
+ "Templates": {
+  "de": "Vorlagen",
+  "tr": "Şablonlar"
+ },
  "That's the most images one message can carry.": {
   "de": "Mehr Bilder passen nicht in eine Nachricht.",
   "tr": "Bir mesaj en fazla bu kadar görsel taşıyabilir."
@@ -1751,6 +1799,10 @@
   "de": "Version",
   "tr": "Sürüm"
  },
+ "Video Templates": {
+  "de": "Videovorlagen",
+  "tr": "Video kalıpları"
+ },
  "Views": {
   "de": "Aufrufe",
   "tr": "İzlenme"
@@ -1786,6 +1838,10 @@
  "What should the video be about?": {
   "de": "Worum soll es im Video gehen?",
   "tr": "Video ne anlatsın?"
+ },
+ "What should the video show?": {
+  "de": "Was soll das Video zeigen?",
+  "tr": "Video neyi göstersin?"
  },
  "Where": {
   "de": "Wo",

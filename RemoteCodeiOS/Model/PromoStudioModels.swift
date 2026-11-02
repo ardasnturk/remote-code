@@ -13,7 +13,37 @@ struct PromoStudioState: Decodable {
     var settings: PromoStudioSettings
     var languages: [PromoStudioOption]
     var themes: [PromoStudioOption]
+    var libraries: [PromoStudioLibrary]?
     var alert: String?
+}
+
+/// A template library on the Mac (e.g. Promo Templates): Claude Code skills that make ready-made videos.
+struct PromoStudioLibrary: Decodable, Hashable, Identifiable {
+    var id: String
+    var name: String
+    var compositions: Int?
+    var skills: [Skill]
+    var ideas: [Idea]?
+    var ideaSources: [String]?
+
+    struct Skill: Decodable, Hashable, Identifiable {
+        var id: String { name }
+        var name: String
+        var description: String
+        var argumentHint: String?
+        var suggestedProjectId: String?
+    }
+
+    struct Idea: Decodable, Hashable, Identifiable {
+        var id: String { title }
+        var title: String
+        var hook: String
+        var flow: String
+        var why: String
+        var skill: String
+        var difficulty: String
+        var request: String
+    }
 }
 
 struct PromoStudioOption: Decodable, Hashable, Identifiable {
@@ -187,6 +217,7 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     }
 
     struct External: Decodable, Hashable {
+        var libraryId: String?
         var skill: String?
         var summary: String?
     }

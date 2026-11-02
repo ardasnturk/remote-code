@@ -36,6 +36,7 @@ struct PromoStudioHomeView: View {
             .navigationDestination(for: PromoStudioRoute.self) { route in
                 switch route {
                 case .project(let id): PromoStudioProjectView(store: store, projectId: id)
+                case .library(let id): PromoStudioLibraryView(store: store, libraryId: id)
                 case .post(let id): PromoStudioPostView(store: store, postId: id)
                 }
             }
@@ -71,6 +72,31 @@ struct PromoStudioHomeView: View {
                     }
                 }
             }
+            if let libraries = state.libraries, !libraries.isEmpty {
+                Section {
+                    ForEach(libraries) { library in
+                        NavigationLink(value: PromoStudioRoute.library(library.id)) {
+                            HStack(spacing: 12) {
+                                Image(systemName: "square.stack.3d.up.fill")
+                                    .font(.title3)
+                                    .foregroundStyle(.white)
+                                    .frame(width: 40, height: 40)
+                                    .background(LinearGradient(colors: [.purple, .pink], startPoint: .topLeading, endPoint: .bottomTrailing), in: RoundedRectangle(cornerRadius: 10))
+                                VStack(alignment: .leading) {
+                                    Text(library.name).font(.headline)
+                                    Text("\(library.skills.count) video templates").font(.caption).foregroundStyle(.secondary)
+                                }
+                                if let job = store.job(library.id) {
+                                    Spacer()
+                                    ProgressView().accessibilityLabel(Text(job.message))
+                                }
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Templates")
+                }
+            }
             if !scheduled.isEmpty {
                 Section("Scheduled") {
                     ForEach(scheduled) { post in postLink(post) }
@@ -91,6 +117,7 @@ struct PromoStudioHomeView: View {
 
 enum PromoStudioRoute: Hashable {
     case project(String)
+    case library(String)
     case post(String)
 }
 
