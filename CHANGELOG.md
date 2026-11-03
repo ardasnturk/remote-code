@@ -6,6 +6,13 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.5.2] — 2026-11-03 (iOS)
+
+### Added
+- Promo Studio: share as a Reel, a story, a photo post or a carousel; swipe
+  through a carousel and save or share all its slides; choose the number of
+  slides for a new image post. Needs Promo Studio 1.5.0.
+
 ## [1.5.1] — 2026-11-03
 
 ### Added

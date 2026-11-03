@@ -1,7 +1,6 @@
-Telefonunuzdan Promo Studio (Mac'te Promo Studio 1.4 ile):
-• Hatalar anlaşılır dille ve çözen bir butonla: tekrar dene, Claude videoyu düzeltsin, Instagram'ı yeniden bağla
-• Mac Durumu: Mac'teki Promo Studio'nun nelere ihtiyacı olduğunu görün
-• Arşivinizden fotoğraf ekleyin, Claude videoyu onların etrafında kursun
-• 4:5, 1:1 veya 9:16 görsel gönderileri, Fotoğraflar'a kaydedin
-• Videodaki kişilerin gerçek fotoğrafları; orijinali veya düzenlenmiş halini seçin
-1.5'te ayrıca: depolama temizliği, bellek ve işlemci, güç kontrolleri ve disk ya da bellek azaldığında bildirim (Mac'te Remote Code 1.5).
+Telefonunuzdan Promo Studio (Mac'te Promo Studio 1.5 ile):
+• Reels, hikâye, fotoğraf gönderisi veya karusel olarak paylaşın
+• 2 ila 10 slaytlık karuseller: kaydırarak bakın, hepsini kaydedin veya paylaşın
+• Yeni görsel gönderisi için slayt sayısını seçin
+• Anlaşılır hatalar ve onları çözen bir buton, Mac Durumu
+• Arşivinizden fotoğraf ekleyin; videodaki kişilerin gerçek fotoğrafları

@@ -1,7 +1,6 @@
-Promo Studio vom iPhone aus, mit Promo Studio 1.4 auf dem Mac:
-• Fehler verständlich erklärt, mit einer Taste, die sie behebt: erneut versuchen, Claude das Video reparieren lassen, Instagram neu verbinden
-• Mac-Status: sehen, was Promo Studio auf dem Mac braucht
-• Fotos aus deiner Mediathek hinzufügen, Claude baut das Video darum herum
-• Bildbeiträge in 4:5, 1:1 oder 9:16, in Fotos sichern
-• Echte Fotos der Personen im Video; Original oder Bearbeitung wählen
-Ebenfalls neu in 1.5: Speicher bereinigen, Arbeitsspeicher und CPU, Energieoptionen und Mitteilungen bei wenig Speicher (Remote Code 1.5 auf dem Mac).
+Promo Studio vom iPhone aus, mit Promo Studio 1.5 auf dem Mac:
+• Als Reel, Story, Fotobeitrag oder Karussell teilen
+• Karussells mit 2 bis 10 Folien: durchwischen, alle sichern oder teilen
+• Die Anzahl der Folien für einen neuen Bildbeitrag wählen
+• Fehler verständlich erklärt, mit einer Taste, die sie behebt, und Mac-Status
+• Fotos aus deiner Mediathek hinzufügen; echte Fotos der Personen im Video
