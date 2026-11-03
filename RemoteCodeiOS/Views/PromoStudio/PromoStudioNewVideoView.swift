@@ -40,6 +40,12 @@ struct PromoStudioNewVideoView: View {
     /// Images for Claude to look at and use, with a thumbnail to show here
     @State private var photos: [(id: UUID, data: Data, thumbnail: UIImage)] = []
     @State private var status: String?
+    /// Make it later instead of now
+    @State private var planned = false
+    @State private var runAt = Date().addingTimeInterval(3600)
+    @State private var autoApprove = false
+    @State private var autoPublish = false
+    @State private var story = false
 
     var body: some View {
         let skill = template.flatMap { t in store.library(t.libraryId)?.skills.first { $0.name == t.skill } }
@@ -161,6 +167,9 @@ struct PromoStudioNewVideoView: View {
                         Text("Claude Code runs the template on the Mac in the background: it writes, checks and renders the video. This may take a few minutes.")
                     }
                 }
+                if store.state?.settings.canPlan == true {
+                    planSection
+                }
                 if let status {
                     Section { Label { Text(status) } icon: { ProgressView() } }
                 }
@@ -173,8 +182,8 @@ struct PromoStudioNewVideoView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Create") { create() }
-                        .disabled(sending || (template == nil && trimmed.isEmpty && photos.isEmpty))
+                    Button { create() } label: { planned ? Text("Plan") : Text("Create") }
+                        .disabled(sending || (template == nil && trimmed.isEmpty && photos.isEmpty) || (planned && runAt <= .now))
                 }
             }
             .onAppear {
@@ -187,6 +196,37 @@ struct PromoStudioNewVideoView: View {
     }
 
     private var trimmed: String { prompt.trimmingCharacters(in: .whitespacesAndNewlines) }
+
+    private var hasAccount: Bool {
+        store.account(accountId.isEmpty ? nil : accountId) != nil || store.account(store.project(projectId.isEmpty ? nil : projectId)?.accountId) != nil
+    }
+
+    @ViewBuilder private var planSection: some View {
+        Section {
+            Toggle("Make it later", isOn: $planned)
+            if planned {
+                DatePicker("Start at", selection: $runAt, in: Date()...)
+                if template == nil {
+                    Toggle(isOn: $autoApprove) {
+                        image ? Text("Approve the design automatically") : Text("Approve the storyboard automatically")
+                    }
+                }
+                Toggle("Post automatically when it’s ready", isOn: $autoPublish)
+                    .disabled(!hasAccount)
+                if autoPublish, hasAccount, !(image && size == "story") {
+                    Picker("Share as", selection: $story) {
+                        (image ? (slides > 1 ? Text("Carousel") : Text("Post")) : Text("Reel")).tag(false)
+                        Text("Story").tag(true)
+                    }
+                    .pickerStyle(.segmented)
+                }
+            }
+        } footer: {
+            if planned {
+                PromoStudioPlanFootnote(needsAccount: !hasAccount, autoPublish: autoPublish, autoApprove: autoApprove || template != nil)
+            }
+        }
+    }
 
     /// Templates that make a video (an idea-research skill doesn't)
     static func videoSkills(_ library: PromoStudioLibrary) -> [PromoStudioLibrary.Skill] {
@@ -211,6 +251,11 @@ struct PromoStudioNewVideoView: View {
         error = nil
         var body: [String: Any] = ["accountId": accountId]
         if !projectId.isEmpty { body["projectId"] = projectId }
+        if planned {
+            let publish = autoPublish && hasAccount
+            body["plan"] = ["runAt": ISO8601DateFormatter().string(from: runAt), "autoApprove": autoApprove && template == nil, "autoPublish": publish]
+            if publish, story { body["placement"] = "story" }
+        }
         let action: String
         if let template {
             action = "generateFromSkill"

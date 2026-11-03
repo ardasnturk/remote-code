@@ -26,6 +26,7 @@ PATTERNS = [
     r'(?<![A-Za-z])Label\(\s*' + STRING,
     r'(?<![A-Za-z])Toggle\(\s*' + STRING,
     r'(?<![A-Za-z])Picker\(\s*' + STRING,
+    r'(?<![A-Za-z])DatePicker\(\s*' + STRING,
     r'(?<![A-Za-z])LabeledContent\(\s*' + STRING,
     r'(?<![A-Za-z])SecureField\(\s*' + STRING,
     r'(?<![A-Za-z])TextField\(\s*' + STRING,

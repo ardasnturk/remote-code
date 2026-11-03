@@ -138,6 +138,8 @@ struct PromoStudioSettings: Decodable, Hashable {
     var editPhotos: Bool?
     /// cloudflared is installed, so pictures can be posted (Promo Studio 1.5.0+)
     var canPostPictures: Bool?
+    /// Posts can be planned for later (Promo Studio 1.6.0+); an older Mac would start them right away
+    var canPlan: Bool?
 }
 
 struct PromoStudioProject: Decodable, Hashable, Identifiable {
@@ -225,9 +227,20 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     var placement: String?
     /// False for a 9:16 image, which can only be a story
     var canPostToFeed: Bool?
+    /// Set when the post is made later (Promo Studio 1.6.0+)
+    var plan: Plan?
 
     enum Status: String, Decodable, Hashable {
         case draft, rendering, ready, scheduled, publishing, published, failed
+    }
+
+    struct Plan: Decodable, Hashable {
+        var runAt: Date
+        var autoApprove: Bool?
+        var autoPublish: Bool?
+        var startedAt: Date?
+        /// It started over an hour late, so it wasn't posted automatically
+        var startedLate: Bool?
     }
 
     struct Metrics: Decodable, Hashable {
@@ -259,6 +272,8 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
         var produced: Bool
         /// Size of an image post: portrait, square or story
         var size: String?
+        /// Slides of a carousel; missing or 1 is a single image
+        var slides: Int?
         var muted: Bool?
         var summary: String?
         var notes: String?
@@ -306,6 +321,7 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     struct External: Decodable, Hashable {
         var libraryId: String?
         var skill: String?
+        var request: String?
         var summary: String?
     }
 
@@ -327,9 +343,11 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     }
 
     var isImage: Bool { format == "image" }
+    /// The request is waiting for its time; nothing has been made yet
+    var isPlanned: Bool { plan != nil && plan?.startedAt == nil }
     /// Pictures of an image post: a carousel's slides, else the one image
     var pictures: [String] { media.slides.flatMap { $0.isEmpty ? nil : $0 } ?? media.image.map { [$0] } ?? [] }
-    var isCarousel: Bool { pictures.count > 1 }
+    var isCarousel: Bool { pictures.count > 1 || (directed?.slides ?? 1) > 1 }
     var isStory: Bool { placement == "story" || canPostToFeed == false }
 
     /// The post's text without Promo Studio's *emphasis* markers.

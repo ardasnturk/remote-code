@@ -1,6 +1,6 @@
-Telefonunuzdan Promo Studio (Mac'te Promo Studio 1.5 ile):
+Telefonunuzdan Promo Studio (Mac'te Promo Studio 1.6 ile):
+• Gönderiyi sonraya planlayın: isteği şimdi yazın, seçtiğiniz saatte oluşturulsun
+• Storyboard'u otomatik onaylayın ve otomatik paylaşın ya da sizi beklesin
+• Planlı gönderiyi değiştirin veya hemen başlatın
 • Reels, hikâye, fotoğraf gönderisi veya karusel olarak paylaşın
 • 2 ila 10 slaytlık karuseller: kaydırarak bakın, hepsini kaydedin veya paylaşın
-• Yeni görsel gönderisi için slayt sayısını seçin
-• Anlaşılır hatalar ve onları çözen bir buton, Mac Durumu
-• Arşivinizden fotoğraf ekleyin; videodaki kişilerin gerçek fotoğrafları

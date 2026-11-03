@@ -18,6 +18,9 @@ struct PromoStudioPostView: View {
                 VStack(alignment: .leading, spacing: 16) {
                     PromoStudioVideoPanel(store: store, post: post)
                     statusArea(post)
+                    if post.isPlanned {
+                        PromoStudioPlanSection(store: store, post: post, onError: { error = $0 })
+                    } else {
                     actions(post)
                     Picker("Section", selection: $section) {
                         (post.directed != nil ? Text("Storyboard") : Text("Scenes")).tag(Section.storyboard)
@@ -35,6 +38,7 @@ struct PromoStudioPostView: View {
                     case .revise: PromoStudioReviseSection(store: store, post: post, onError: { error = $0 })
                     case .caption: PromoStudioCaptionSection(store: store, post: post, onError: { error = $0 })
                     case .share: PromoStudioShareSection(store: store, post: post, onError: { error = $0 })
+                    }
                     }
                 }
                 .padding()
@@ -66,12 +70,24 @@ struct PromoStudioPostView: View {
 
     @ViewBuilder private func statusArea(_ post: PromoStudioPost) -> some View {
         HStack {
-            PromoStudioStatusPill(status: post.status)
+            PromoStudioStatusPill(status: post.status, planned: post.isPlanned)
             if let project = store.project(post.projectId) {
                 Text(project.name).font(.caption).foregroundStyle(.secondary)
             }
             Spacer()
             Text(verbatim: duration(post)).font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+        }
+        if let plan = post.plan, !post.isPlanned {
+            if plan.startedLate == true {
+                Label("It started over an hour late, so it wasn’t posted automatically. Check it and post it yourself.", systemImage: "clock.badge.exclamationmark")
+                    .font(.caption).foregroundStyle(.orange)
+            } else if plan.autoPublish == true {
+                Label("Planned: it posts automatically when it’s ready.", systemImage: "calendar.badge.clock")
+                    .font(.caption).foregroundStyle(.secondary)
+            } else if plan.autoApprove == true {
+                Label("Planned: the storyboard is approved automatically.", systemImage: "calendar.badge.clock")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
         }
         if let job = store.job(postId) {
             HStack(alignment: .top) {
@@ -164,7 +180,14 @@ struct PromoStudioVideoPanel: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 18).fill(.black)
-            if post.isImage, post.isCarousel, post.status != .rendering {
+            if post.isPlanned, let plan = post.plan {
+                VStack(spacing: 8) {
+                    Image(systemName: "calendar.badge.clock").font(.largeTitle)
+                    Text(plan.runAt.formatted(date: .abbreviated, time: .shortened)).font(.footnote)
+                    Text("Nothing is made until then.").font(.caption)
+                }
+                .foregroundStyle(.white.opacity(0.7))
+            } else if post.isImage, post.isCarousel, post.status != .rendering {
                 TabView {
                     ForEach(post.pictures, id: \.self) { PromoStudioImage(store: store, path: $0, contentMode: .fit) }
                 }

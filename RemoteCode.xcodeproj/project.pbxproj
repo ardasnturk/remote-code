@@ -14,6 +14,7 @@
 		05716DC827E02DFA7E023EDB /* PromoStudioPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3867FB06DC3D219CDB087 /* PromoStudioPostView.swift */; };
 		07BF8298B66350596A17F881 /* UITestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF1B2E333CF8386A52CC24 /* UITestSupport.swift */; };
 		08CDBEF338E3CC02F9C88334 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76DC70559CFF82A6E5088A3 /* AppModel.swift */; };
+		0AFC48EF4B373D37D08D1759 /* PromoStudioPlanSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14F3263BF39BEB84694D77 /* PromoStudioPlanSection.swift */; };
 		0B55716584F1F6BE924C8FD1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 75CED5B459ABE6A8F080C21B /* Localizable.xcstrings */; };
 		0E5E1934A85155AF1A1B98E4 /* PairingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6125977D876C6CDFCFBC3 /* PairingFlowView.swift */; };
 		10FCDBFE22E12A47F2A0D25E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6BCE0B24D7668F977B01DE93 /* PrivacyInfo.xcprivacy */; };
@@ -142,6 +143,7 @@
 		09A97B36EF53F03495341EF7 /* RemoteCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCodeUITests.swift; sourceTree = "<group>"; };
 		0C6AF551759E7EB2453A178A /* LidClosedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LidClosedController.swift; sourceTree = "<group>"; };
 		0D1FA95239F0368DE184248C /* PowerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerSection.swift; sourceTree = "<group>"; };
+		0F14F3263BF39BEB84694D77 /* PromoStudioPlanSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoStudioPlanSection.swift; sourceTree = "<group>"; };
 		0FE23741044C6A782D26411C /* RemoteCodeHelper */ = {isa = PBXFileReference; includeInIndex = 0; path = RemoteCodeHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		109FEEDEAB04834A5777CCA5 /* SessionMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMonitorView.swift; sourceTree = "<group>"; };
 		12FD5439B015D1820BE6135A /* AppUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdater.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				76CCAB96162C76356EC6DCF3 /* PromoStudioLibraryView.swift */,
 				82F051E1E2D8E10BF5B2F8E7 /* PromoStudioNewVideoView.swift */,
 				6658EF8638B573BA83909F51 /* PromoStudioPeopleSection.swift */,
+				0F14F3263BF39BEB84694D77 /* PromoStudioPlanSection.swift */,
 				16C3867FB06DC3D219CDB087 /* PromoStudioPostView.swift */,
 				9E133E8043533A2147047F21 /* PromoStudioProblemView.swift */,
 				16E240E89B7E9FF4AF52023A /* PromoStudioProjectView.swift */,
@@ -835,6 +838,7 @@
 				F548B2EDD54FA8CE53DADD56 /* PromoStudioModels.swift in Sources */,
 				2F7CF4BDF1C652966C37296B /* PromoStudioNewVideoView.swift in Sources */,
 				468DDEE3B60A08EC85BA918D /* PromoStudioPeopleSection.swift in Sources */,
+				0AFC48EF4B373D37D08D1759 /* PromoStudioPlanSection.swift in Sources */,
 				05716DC827E02DFA7E023EDB /* PromoStudioPostView.swift in Sources */,
 				984B213A436A47E6BA9C83A2 /* PromoStudioProblemView.swift in Sources */,
 				5AC00709098C51BFB4588F28 /* PromoStudioProjectView.swift in Sources */,
@@ -1042,7 +1046,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 5JMD3VSD7N;
@@ -1066,7 +1070,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.5.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1138,7 +1142,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5JMD3VSD7N;
@@ -1156,7 +1160,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.5.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

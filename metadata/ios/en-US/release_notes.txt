@@ -1,6 +1,6 @@
-Promo Studio from your phone, with Promo Studio 1.5 on the Mac:
+Promo Studio from your phone, with Promo Studio 1.6 on the Mac:
+• Plan a post for later: write the request now and it's made at the time you pick
+• Approve the storyboard and post automatically, or let it wait for you
+• Change a planned post, or start it now
 • Share as a Reel, a story, a photo post or a carousel
 • Carousels of 2 to 10 slides: swipe through them, save or share them all
-• Choose the number of slides for a new image post
-• Errors explained, with a button that fixes them, and Mac Status
-• Add photos from your library; real photos of the people in a video

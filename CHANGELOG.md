@@ -6,6 +6,16 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.5.3] — 2026-11-04 (iOS)
+
+### Added
+- Promo Studio: plan a post for later from the phone, with automatic approval
+  and posting as options; change it or start it now until its time comes.
+  Needs Promo Studio 1.6.0.
+
+### Fixed
+- The "Post at" label was not translated.
+
 ## [1.5.2] — 2026-11-03 (iOS)
 
 ### Added

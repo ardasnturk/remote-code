@@ -69,7 +69,8 @@ struct PromoStudioHomeView: View {
 
     @ViewBuilder private func content(_ state: PromoStudioState) -> some View {
         let scheduled = state.posts.filter { $0.status == .scheduled }.sorted { ($0.scheduledAt ?? .distantFuture) < ($1.scheduledAt ?? .distantFuture) }
-        let recent = state.posts.filter { $0.status != .scheduled }
+        let planned = state.posts.filter(\.isPlanned).sorted { ($0.plan?.runAt ?? .distantFuture) < ($1.plan?.runAt ?? .distantFuture) }
+        let recent = state.posts.filter { $0.status != .scheduled && !$0.isPlanned }
         let attention = (state.health ?? []).filter(\.needsAttention)
         List {
             if !attention.isEmpty {
@@ -128,6 +129,11 @@ struct PromoStudioHomeView: View {
                     Text("Templates")
                 }
             }
+            if !planned.isEmpty {
+                Section("Planned") {
+                    ForEach(planned) { post in postLink(post) }
+                }
+            }
             if !scheduled.isEmpty {
                 Section("Scheduled") {
                     ForEach(scheduled) { post in postLink(post) }
@@ -172,13 +178,15 @@ struct PromoStudioPostRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(post.title).font(.subheadline.weight(.semibold)).lineLimit(2)
                 HStack(spacing: 6) {
-                    PromoStudioStatusPill(status: post.status)
+                    PromoStudioStatusPill(status: post.status, planned: post.isPlanned)
                     if let project = store.project(post.projectId) {
                         Text(project.name).font(.caption2).foregroundStyle(.secondary)
                     }
                 }
                 if let job = store.job(post.id) {
                     PromoStudioJobLine(job: job)
+                } else if post.isPlanned, let date = post.plan?.runAt {
+                    Label(date.formatted(date: .abbreviated, time: .shortened), systemImage: "calendar.badge.clock").font(.caption)
                 } else if let date = post.scheduledAt, post.status == .scheduled {
                     Label(date.formatted(date: .abbreviated, time: .shortened), systemImage: "clock").font(.caption)
                 }
@@ -189,6 +197,7 @@ struct PromoStudioPostRow: View {
 
 struct PromoStudioStatusPill: View {
     let status: PromoStudioPost.Status
+    var planned = false
 
     var body: some View {
         label
@@ -199,7 +208,8 @@ struct PromoStudioStatusPill: View {
     }
 
     private var label: Text {
-        switch status {
+        if planned { return Text("Planned") }
+        return switch status {
         case .draft: Text("Draft")
         case .rendering: Text("Rendering")
         case .ready: Text("Ready")
@@ -211,7 +221,8 @@ struct PromoStudioStatusPill: View {
     }
 
     private var color: Color {
-        switch status {
+        if planned { return .purple }
+        return switch status {
         case .draft: .gray
         case .rendering, .publishing: .orange
         case .ready: .blue
