@@ -22,6 +22,10 @@ All notable changes to Remote Code are recorded here. The format follows
 - Promo Studio: clearer messages when Promo Studio isn't open on the Mac or is
   too old for a feature.
 
+### Fixed
+- Promo Studio: Save to Photos closed the app (iOS build 18). Share now opens
+  the share sheet with one tap.
+
 ## [1.5.0] — 2026-11-01
 
 ### Added

@@ -305,6 +305,8 @@ struct PromoStudioSaveVideo: View {
     @State private var progress: Double?
     @State private var file: URL?
     @State private var saved = false
+    /// The share sheet opens as soon as the file is downloaded (one tap)
+    @State private var sharing: SharedFile?
 
     var body: some View {
         HStack {
@@ -322,20 +324,20 @@ struct PromoStudioSaveVideo: View {
             .buttonStyle(.bordered)
             .disabled(progress != nil)
             Spacer()
-            if let file {
-                ShareLink(item: file) { Label("Share", systemImage: "square.and.arrow.up") }
-                    .buttonStyle(.bordered)
-            } else {
-                Button {
-                    Task { _ = await download() }
-                } label: {
-                    Label("Share", systemImage: "square.and.arrow.up")
-                }
-                .buttonStyle(.bordered)
-                .disabled(progress != nil)
+            Button {
+                Task { sharing = await download().map(SharedFile.init) }
+            } label: {
+                Label("Share", systemImage: "square.and.arrow.up")
             }
+            .buttonStyle(.bordered)
+            .disabled(progress != nil)
         }
         .controlSize(.small)
+        .sheet(item: $sharing) { shared in
+            PromoStudioShareSheet(items: [shared.url]).presentationDetents([.medium, .large])
+        }
+        // A re-rendered video or image is a new file
+        .onChange(of: post.isImage ? post.media.image : post.media.video) { file = nil; saved = false }
     }
 
     /// The file under a readable name (the cache file is named by a hash)
@@ -365,16 +367,38 @@ struct PromoStudioSaveVideo: View {
             return
         }
         do {
-            try await PHPhotoLibrary.shared().performChanges {
-                if post.isImage {
-                    PHAssetCreationRequest.creationRequestForAssetFromImage(atFileURL: url)
-                } else {
-                    PHAssetCreationRequest.creationRequestForAssetFromVideo(atFileURL: url)
-                }
-            }
+            try await Self.addToPhotos(url, isImage: post.isImage)
             saved = true
         } catch {
             onError(error.localizedDescription)
         }
     }
+
+    /// Photos runs the change block on its own queue. Written inside the view, the block would be
+    /// main-actor isolated and Swift's isolation check would stop the app there; here it is not.
+    nonisolated private static func addToPhotos(_ url: URL, isImage: Bool) async throws {
+        try await PHPhotoLibrary.shared().performChanges {
+            if isImage {
+                PHAssetCreationRequest.creationRequestForAssetFromImage(atFileURL: url)
+            } else {
+                PHAssetCreationRequest.creationRequestForAssetFromVideo(atFileURL: url)
+            }
+        }
+    }
+}
+
+/// The system share sheet (Files, AirDrop, Messages, Instagram…)
+struct PromoStudioShareSheet: UIViewControllerRepresentable {
+    let items: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: items, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ controller: UIActivityViewController, context: Context) {}
+}
+
+struct SharedFile: Identifiable {
+    let id = UUID()
+    let url: URL
 }
