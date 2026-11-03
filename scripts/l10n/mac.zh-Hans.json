@@ -91,6 +91,7 @@
  "How it works": "工作原理",
  "Identity": "身份",
  "Idle": "空闲",
+ "Image ready · %@": "图片已就绪 · %@",
  "In the Tailscale admin console under DNS, enable MagicDNS so your Mac gets a stable name.": "在 Tailscale 管理控制台的 DNS 下启用 MagicDNS，让你的 Mac 获得固定名称。",
  "Include a short summary": "包含简短摘要",
  "Install Claude Code": "安装 Claude Code",

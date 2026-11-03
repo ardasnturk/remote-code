@@ -27,7 +27,11 @@ struct PromoStudioPostView: View {
                     }
                     .pickerStyle(.segmented)
                     switch section {
-                    case .storyboard: PromoStudioStoryboardSection(post: post)
+                    case .storyboard:
+                        if post.directed?.storyboard.people?.isEmpty == false {
+                            PromoStudioPeopleSection(store: store, post: post, onError: { error = $0 })
+                        }
+                        PromoStudioStoryboardSection(post: post)
                     case .revise: PromoStudioReviseSection(store: store, post: post, onError: { error = $0 })
                     case .caption: PromoStudioCaptionSection(store: store, post: post, onError: { error = $0 })
                     case .share: PromoStudioShareSection(store: store, post: post, onError: { error = $0 })
@@ -76,7 +80,9 @@ struct PromoStudioPostView: View {
                     .buttonStyle(.bordered).controlSize(.small)
             }
         }
-        if let message = post.lastError {
+        if let problem = post.problem {
+            PromoStudioProblemCard(store: store, problem: problem, postId: postId) { error = $0 }
+        } else if let message = post.lastError {
             Text(message).font(.caption).foregroundStyle(.red)
         }
     }
@@ -86,13 +92,22 @@ struct PromoStudioPostView: View {
         if let directed = post.directed, !directed.produced {
             HStack {
                 Button {
-                    run("produce", ["postId": postId, "voiceover": true])
+                    run("produce", ["postId": postId, "voiceover": !post.isImage])
                 } label: {
-                    Label("Approve & Produce", systemImage: "film.stack").frame(maxWidth: .infinity)
+                    Group {
+                        if post.isImage {
+                            Label("Approve & Create Image", systemImage: "photo")
+                        } else {
+                            Label("Approve & Produce", systemImage: "film.stack")
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
-                Button("No Voiceover") { run("produce", ["postId": postId, "voiceover": false]) }
-                    .buttonStyle(.bordered)
+                if !post.isImage {
+                    Button("No Voiceover") { run("produce", ["postId": postId, "voiceover": false]) }
+                        .buttonStyle(.bordered)
+                }
             }
             .disabled(busy || directed.storyboard.scenes.isEmpty)
         } else if post.external == nil {
@@ -100,7 +115,7 @@ struct PromoStudioPostView: View {
                 run("render", ["postId": postId])
             } label: {
                 Group {
-                    if post.media.video == nil {
+                    if post.media.video == nil && post.media.image == nil {
                         Label("Render", systemImage: "play.rectangle")
                     } else {
                         Label("Render Again", systemImage: "play.rectangle")
@@ -114,6 +129,13 @@ struct PromoStudioPostView: View {
     }
 
     private func duration(_ post: PromoStudioPost) -> String {
+        if post.isImage {
+            return switch post.directed?.size {
+            case "square": "1080×1080"
+            case "story": "1080×1920"
+            default: "1080×1350"
+            }
+        }
         let seconds = post.directed.map { $0.storyboard.scenes.reduce(0) { $0 + $1.durationSec } }
             ?? post.spec.scenes.reduce(0) { $0 + ($1.durationSec ?? 3) }
         return "~\(Int(seconds.rounded())) s"
@@ -142,7 +164,16 @@ struct PromoStudioVideoPanel: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 18).fill(.black)
-            if let player {
+            if post.isImage, let image = post.media.image, post.status != .rendering {
+                PromoStudioImage(store: store, path: image, contentMode: .fit)
+            } else if post.isImage {
+                VStack(spacing: 8) {
+                    Image(systemName: post.directed?.produced == false ? "rectangle.stack" : "photo").font(.largeTitle)
+                    (post.directed?.produced == false ? Text("Waiting for design approval") : Text("Not rendered yet"))
+                        .font(.footnote)
+                }
+                .foregroundStyle(.white.opacity(0.7))
+            } else if let player {
                 VideoPlayer(player: player)
             } else if let progress {
                 VStack(spacing: 10) {
@@ -378,6 +409,36 @@ struct PromoStudioShareSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
+            if post.usesEditedPhotos {
+                aiNote
+            }
+            if post.isImage {
+                if post.media.image != nil {
+                    PromoStudioSaveVideo(store: store, post: post, onError: onError)
+                }
+                Text("Instagram’s API can publish a picture only from a public web address, which Promo Studio doesn’t have. Save the image and post it from Instagram with the caption.")
+                    .font(.footnote).foregroundStyle(.secondary)
+            } else {
+                videoSharing
+            }
+        }
+        .onAppear { if let at = post.scheduledAt { date = at } }
+    }
+
+    /// Instagram asks for realistic AI-made content to be labeled
+    private var aiNote: some View {
+        let note = String(localized: "📸 Photos edited with AI.")
+        return VStack(alignment: .leading, spacing: 6) {
+            Label("This post uses photos edited with AI. Add a note to the caption, or turn on the AI label when you post from Instagram.", systemImage: "sparkles")
+                .font(.footnote).foregroundStyle(.secondary)
+            Button("Add AI Note to Caption") { run("updatePost", ["postId": post.id, "caption": post.caption + "\n\n" + note]) }
+                .buttonStyle(.bordered).controlSize(.small)
+                .disabled(post.caption.contains(note) || post.status == .published)
+        }
+    }
+
+    @ViewBuilder private var videoSharing: some View {
+        VStack(alignment: .leading, spacing: 12) {
             if post.media.video != nil {
                 HStack(spacing: 12) {
                     PromoStudioImage(store: store, path: post.media.cover)
@@ -471,7 +532,6 @@ struct PromoStudioShareSection: View {
                 Button("Refresh Statistics") { run("refreshMetrics", [:]) }.buttonStyle(.bordered)
             }
         }
-        .onAppear { if let at = post.scheduledAt { date = at } }
     }
 
     private func metric(_ title: Text, _ value: Int?) -> some View {

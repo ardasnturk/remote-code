@@ -91,6 +91,7 @@
  "How it works": "Come funziona",
  "Identity": "Identità",
  "Idle": "Inattiva",
+ "Image ready · %@": "Immagine pronta · %@",
  "In the Tailscale admin console under DNS, enable MagicDNS so your Mac gets a stable name.": "Nella console di amministrazione di Tailscale, in DNS, attiva MagicDNS affinché il tuo Mac abbia un nome stabile.",
  "Include a short summary": "Includi un breve riepilogo",
  "Install Claude Code": "Installa Claude Code",

@@ -1,5 +1,6 @@
 import CryptoKit
 import Foundation
+import ImageIO
 import Observation
 import RemoteCodeKit
 
@@ -13,8 +14,10 @@ final class PromoStudioStore {
     private(set) var state: PromoStudioState?
     /// Live job progress by post or project id (from events, newer than `state.jobs`).
     private(set) var jobs: [String: PromoStudioJob] = [:]
-    /// Latest alert Promo Studio showed on the Mac.
-    var alert: (title: String, message: String)?
+    /// Latest alert Promo Studio showed on the Mac; `problem` when it is a failure Promo Studio explained.
+    var alert: (title: String, message: String, problem: PromoStudioProblem?)?
+    /// A fix asked for the accounts screen (reconnect an Instagram account); the home view opens it.
+    var accountsRequested = false
     private(set) var lastError: String?
 
     @ObservationIgnored private weak var connection: MacConnection?
@@ -85,7 +88,9 @@ final class PromoStudioStore {
             if let id = object["id"] as? String { jobs[id] = nil }
             scheduleRefresh()
         case "alert":
-            alert = (object["title"] as? String ?? "Promo Studio", object["message"] as? String ?? "")
+            let problem = (object["problem"] as? [String: Any]).flatMap { try? JSONSerialization.data(withJSONObject: $0) }
+                .flatMap { try? JSONDecoder().decode(PromoStudioProblem.self, from: $0) }
+            alert = (object["title"] as? String ?? "Promo Studio", object["message"] as? String ?? "", problem)
         default:
             break
         }
@@ -111,6 +116,7 @@ final class PromoStudioStore {
             isAvailable = true
             lastError = nil
         } catch let error as ErrorPayload where error.code == .promoStudioUnavailable {
+            lastError = String(localized: "Promo Studio isn’t open on your Mac. Open it there and try again.")
             isAvailable = false
             state = nil
             subscribed = false
@@ -143,6 +149,10 @@ final class PromoStudioStore {
         }
         guard (200..<300).contains(result.status) else {
             let message = ((try? JSONSerialization.jsonObject(with: result.body)) as? [String: Any])?["error"] as? String
+            // An older Promo Studio doesn't know the newer actions the phone sends
+            if result.status == 400, message?.hasPrefix("Unknown action") == true || message?.hasPrefix("Bilinmeyen") == true {
+                throw PromoStudioStoreError.outdated
+            }
             throw PromoStudioStoreError.failed(message ?? "HTTP \(result.status)")
         }
         return result.body
@@ -155,6 +165,38 @@ final class PromoStudioStore {
         let result = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
         scheduleRefresh()
         return result
+    }
+
+    /// Runs a problem's fix that Promo Studio does on the Mac (retry, repair, without voiceover).
+    func fix(_ fix: PromoStudioProblem.Fix, postId: String) async throws {
+        try await action("fix", ["postId": postId, "fix": fix.rawValue])
+    }
+
+    /// Sends an image for a new post ahead of it; returns the ID createDirectedPost takes in `uploads`.
+    /// The image is made upright, at most 2048 px and JPEG, so one request stays under the relay's 4 MB message.
+    func uploadImage(_ data: Data) async throws -> String {
+        guard let jpeg = Self.prepared(data) else { throw PromoStudioStoreError.failed(String(localized: "This image can’t be read.")) }
+        let result = try await action("uploadImage", ["data": jpeg.base64EncodedString()])
+        guard let id = result["uploadId"] as? String else { throw PromoStudioStoreError.outdated }
+        return id
+    }
+
+    nonisolated static func prepared(_ data: Data) -> Data? {
+        guard let source = CGImageSourceCreateWithData(data as CFData, nil) else { return nil }
+        for side in [2048, 1600, 1200] {
+            guard let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+                kCGImageSourceCreateThumbnailFromImageAlways: true,
+                kCGImageSourceCreateThumbnailWithTransform: true,
+                kCGImageSourceThumbnailMaxPixelSize: side,
+            ] as CFDictionary) else { return nil }
+            let out = NSMutableData()
+            guard let dest = CGImageDestinationCreateWithData(out, "public.jpeg" as CFString, 1, nil) else { return nil }
+            CGImageDestinationAddImage(dest, image, [kCGImageDestinationLossyCompressionQuality: 0.85] as CFDictionary)
+            guard CGImageDestinationFinalize(dest) else { return nil }
+            // Base64 grows it by a third
+            if out.length < 2_800_000 { return out as Data }
+        }
+        return nil
     }
 
     // MARK: Media
@@ -196,11 +238,13 @@ final class PromoStudioStore {
 
 enum PromoStudioStoreError: LocalizedError {
     case notConnected
+    case outdated
     case failed(String)
 
     var errorDescription: String? {
         switch self {
         case .notConnected: String(localized: "Not connected to your Mac.")
+        case .outdated: String(localized: "Promo Studio on your Mac is too old for this. Update it to the latest version and try again.")
         case .failed(let message): message
         }
     }

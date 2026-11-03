@@ -1,4 +1,5 @@
 import Photos
+import PhotosUI
 import SwiftUI
 
 /// A library video template (skill) picked for a new video.
@@ -32,6 +33,12 @@ struct PromoStudioNewVideoView: View {
     @State private var research = true
     @State private var sending = false
     @State private var error: String?
+    @State private var image = false
+    @State private var size = "portrait"
+    @State private var picked: [PhotosPickerItem] = []
+    /// Images for Claude to look at and use, with a thumbnail to show here
+    @State private var photos: [(id: UUID, data: Data, thumbnail: UIImage)] = []
+    @State private var status: String?
 
     var body: some View {
         let skill = template.flatMap { t in store.library(t.libraryId)?.skills.first { $0.name == t.skill } }
@@ -39,8 +46,17 @@ struct PromoStudioNewVideoView: View {
         NavigationStack {
             Form {
                 Section {
+                    Picker("Make", selection: $image) {
+                        Text("Video").tag(false)
+                        Text("Image").tag(true)
+                    }
+                    .pickerStyle(.segmented)
+                    .onChange(of: image) { if image { template = nil } }
+                }
+                Section {
                     TextField(skill?.argumentHint.flatMap { $0.isEmpty ? nil : $0 } ?? String(localized: "e.g. Tonight’s derby in 20 seconds: the key stats, the lineups and a prediction."), text: $prompt, axis: .vertical)
                         .lineLimit(4...10)
+                    if !image {
                     Picker("Template", selection: $template) {
                         Text("None: Claude directs it from scratch").tag(PromoStudioTemplateRef?.none)
                         ForEach(store.state?.libraries ?? []) { library in
@@ -51,12 +67,40 @@ struct PromoStudioNewVideoView: View {
                             }
                         }
                     }
+                    }
                 } header: {
-                    Text("What should the video be about?")
+                    image ? Text("What should the image show?") : Text("What should the video be about?")
                 } footer: {
                     if let skill {
                         Text(skill.description)
                     }
+                }
+                if template == nil {
+                    Section {
+                        if !photos.isEmpty {
+                            ScrollView(.horizontal) {
+                                HStack(spacing: 8) {
+                                    ForEach(photos, id: \.id) { photo in
+                                        Image(uiImage: photo.thumbnail).resizable().scaledToFill()
+                                            .frame(width: 72, height: 72)
+                                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                                            .overlay(alignment: .topTrailing) {
+                                                Button { photos.removeAll { $0.id == photo.id } } label: { Image(systemName: "xmark.circle.fill") }
+                                                    .foregroundStyle(.white, .black.opacity(0.6)).padding(3)
+                                            }
+                                    }
+                                }
+                            }
+                        }
+                        PhotosPicker(selection: $picked, maxSelectionCount: 6, matching: .images) {
+                            Label("Add Photos", systemImage: "photo.badge.plus")
+                        }
+                    } header: {
+                        Text("Your Images")
+                    } footer: {
+                        Text("Optional. Claude looks at them and builds the \(image ? String(localized: "image") : String(localized: "video")) around them; people and objects in them are also cut out of their background.")
+                    }
+                    .onChange(of: picked) { _, items in load(items) }
                 }
                 Section {
                     Picker("Project", selection: $projectId) {
@@ -74,7 +118,21 @@ struct PromoStudioNewVideoView: View {
                 } footer: {
                     Text("Both are optional. Without a project the video isn’t about any app; without an account you can save the video and post it yourself.")
                 }
-                if template == nil {
+                if template == nil, image {
+                    Section {
+                        Picker("Size", selection: $size) {
+                            Text("Portrait 4:5").tag("portrait")
+                            Text("Square 1:1").tag("square")
+                            Text("Story 9:16").tag("story")
+                        }
+                        Picker("Language", selection: $language) {
+                            ForEach(store.state?.languages ?? []) { Text($0.label).tag($0.id) }
+                        }
+                        Toggle("Research on the web", isOn: $research)
+                    } footer: {
+                        Text("Claude first writes a design brief. Nothing is rendered until you approve it.")
+                    }
+                } else if template == nil {
                     Section {
                         if !projectId.isEmpty {
                             Picker("Type", selection: $promo) {
@@ -99,17 +157,20 @@ struct PromoStudioNewVideoView: View {
                         Text("Claude Code runs the template on the Mac in the background: it writes, checks and renders the video. This may take a few minutes.")
                     }
                 }
+                if let status {
+                    Section { Label { Text(status) } icon: { ProgressView() } }
+                }
                 if let error {
                     Section { Text(error).foregroundStyle(.red) }
                 }
             }
-            .navigationTitle(Text("New Video"))
+            .navigationTitle(image ? Text("New Image") : Text("New Video"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Create") { create() }
-                        .disabled(sending || (template == nil && trimmed.isEmpty))
+                        .disabled(sending || (template == nil && trimmed.isEmpty && photos.isEmpty))
                 }
             }
             .onAppear {
@@ -128,8 +189,22 @@ struct PromoStudioNewVideoView: View {
         library.skills.filter { !$0.name.contains("idea") && !$0.name.contains("fikir") }
     }
 
+    /// Reads the picked photos (their thumbnails show in the form; the full image is sent on Create)
+    private func load(_ items: [PhotosPickerItem]) {
+        guard !items.isEmpty else { return }
+        picked = []
+        Task {
+            for item in items {
+                guard let data = try? await item.loadTransferable(type: Data.self),
+                      let thumbnail = UIImage(data: data)?.preparingThumbnail(of: CGSize(width: 200, height: 200)) else { continue }
+                photos.append((UUID(), data, thumbnail))
+            }
+        }
+    }
+
     private func create() {
         sending = true
+        error = nil
         var body: [String: Any] = ["accountId": accountId]
         if !projectId.isEmpty { body["projectId"] = projectId }
         let action: String
@@ -144,16 +219,30 @@ struct PromoStudioNewVideoView: View {
             body["research"] = research
             body["seconds"] = seconds
             body["language"] = language
-            body["voiceover"] = voiceover
+            body["voiceover"] = voiceover && !image
             body["style"] = promo && !projectId.isEmpty ? "promo" : "freeform"
+            if image {
+                body["format"] = "image"
+                body["size"] = size
+            }
         }
+        let uploads = template == nil ? photos.map(\.data) : []
         Task {
             do {
+                // One request per photo, sent ahead of the post
+                var ids: [String] = []
+                for (i, data) in uploads.enumerated() {
+                    status = String(localized: "Sending photo \(i + 1) of \(uploads.count)…")
+                    ids.append(try await store.uploadImage(data))
+                }
+                status = nil
+                if !ids.isEmpty { body["uploads"] = ids }
                 let result = try await store.action(action, body)
                 dismiss()
                 if let id = result["postId"] as? String { onCreated(id) }
             } catch {
                 self.error = error.localizedDescription
+                status = nil
                 sending = false
             }
         }
@@ -208,7 +297,7 @@ struct PromoStudioNewTemplateView: View {
     }
 }
 
-/// Downloads the post's video from the Mac and saves it to Photos, or shares it (Files, AirDrop, other apps).
+/// Downloads the post's video (or an image post's picture) from the Mac and saves it to Photos, or shares it (Files, AirDrop, other apps).
 struct PromoStudioSaveVideo: View {
     let store: PromoStudioStore
     let post: PromoStudioPost
@@ -249,16 +338,16 @@ struct PromoStudioSaveVideo: View {
         .controlSize(.small)
     }
 
-    /// The video under a readable name (the cache file is named by a hash)
+    /// The file under a readable name (the cache file is named by a hash)
     private func download() async -> URL? {
         if let file { return file }
-        guard let path = post.media.video else { return nil }
+        guard let path = post.isImage ? post.media.image : post.media.video else { return nil }
         progress = 0
         defer { progress = nil }
         do {
             let cached = try await store.mediaFile(path) { progress = $0 }
             let name = post.title.components(separatedBy: CharacterSet(charactersIn: "/\\:?*\"<>|")).joined().trimmingCharacters(in: .whitespaces)
-            let named = FileManager.default.temporaryDirectory.appendingPathComponent((name.isEmpty ? "Promo Studio" : String(name.prefix(60))) + ".mp4")
+            let named = FileManager.default.temporaryDirectory.appendingPathComponent((name.isEmpty ? "Promo Studio" : String(name.prefix(60))) + "." + cached.pathExtension)
             try? FileManager.default.removeItem(at: named)
             try FileManager.default.copyItem(at: cached, to: named)
             file = named
@@ -277,7 +366,11 @@ struct PromoStudioSaveVideo: View {
         }
         do {
             try await PHPhotoLibrary.shared().performChanges {
-                PHAssetCreationRequest.creationRequestForAssetFromVideo(atFileURL: url)
+                if post.isImage {
+                    PHAssetCreationRequest.creationRequestForAssetFromImage(atFileURL: url)
+                } else {
+                    PHAssetCreationRequest.creationRequestForAssetFromVideo(atFileURL: url)
+                }
             }
             saved = true
         } catch {

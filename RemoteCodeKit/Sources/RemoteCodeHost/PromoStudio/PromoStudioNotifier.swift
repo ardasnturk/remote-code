@@ -41,6 +41,7 @@ public actor PromoStudioNotifier {
         let kind: HostAlert.Kind
         switch notice {
         case "videoReady": kind = .promoVideoReady
+        case "imageReady": kind = .promoImageReady
         case "storyboardReady": kind = .promoStoryboardReady
         case "failed": kind = .promoFailed
         case "published": kind = .promoPublished

@@ -107,6 +107,14 @@
   "de": "Aktive Zeit",
   "tr": "Aktif süre"
  },
+ "Add AI Note to Caption": {
+  "de": "KI-Hinweis zur Bildunterschrift hinzufügen",
+  "tr": "Açıklamaya Yapay Zekâ Notu Ekle"
+ },
+ "Add Photos": {
+  "de": "Fotos hinzufügen",
+  "tr": "Fotoğraf Ekle"
+ },
  "Add to Favorites": {
   "de": "Zu Favoriten hinzufügen",
   "tr": "Favorilere Ekle"
@@ -179,6 +187,10 @@
   "de": "Darstellung",
   "tr": "Görünüm"
  },
+ "Approve & Create Image": {
+  "de": "Freigeben & Bild erstellen",
+  "tr": "Onayla ve Görseli Oluştur"
+ },
  "Approve & Produce": {
   "de": "Freigeben und produzieren",
   "tr": "Onayla ve Üret"
@@ -247,6 +259,10 @@
   "de": "Chats",
   "tr": "Sohbetler"
  },
+ "Check Again": {
+  "de": "Erneut prüfen",
+  "tr": "Yeniden Kontrol Et"
+ },
  "Choose Cover": {
   "de": "Cover wählen",
   "tr": "Kapak Seç"
@@ -298,6 +314,10 @@
  "Claude edits and runs commands without asking. Use with care.": {
   "de": "Claude ändert Dateien und führt Befehle ohne Nachfrage aus. Mit Vorsicht verwenden.",
   "tr": "Claude sormadan düzenler ve komut çalıştırır. Dikkatli kullanın."
+ },
+ "Claude first writes a design brief. Nothing is rendered until you approve it.": {
+  "de": "Claude schreibt zuerst ein Design-Briefing. Gerendert wird erst, wenn du es freigibst.",
+  "tr": "Claude önce bir tasarım özeti yazar. Siz onaylayana kadar hiçbir şey render edilmez."
  },
  "Claude first writes a scene-by-scene storyboard. Nothing is rendered until you approve it.": {
   "de": "Claude schreibt zuerst ein Storyboard Szene für Szene. Gerendert wird erst, wenn du es freigibst.",
@@ -583,6 +603,10 @@
   "de": "Notebook bearbeiten",
   "tr": "Not defterini düzenle"
  },
+ "Edited": {
+  "de": "Bearbeitet",
+  "tr": "Düzenlenmiş"
+ },
  "Effort": {
   "de": "Aufwand",
   "tr": "Efor"
@@ -743,6 +767,10 @@
   "de": "Wie",
   "tr": "Nasıl"
  },
+ "How Codex should change the photo": {
+  "de": "Wie Codex das Foto ändern soll",
+  "tr": "Codex fotoğrafı nasıl değiştirsin"
+ },
  "How to Set Up Tailscale": {
   "de": "So richtest du Tailscale ein",
   "tr": "Tailscale Nasıl Kurulur"
@@ -754,6 +782,10 @@
  "If iOS asks for Local Network access, allow it so Remote Code can find your Mac.": {
   "de": "Wenn iOS nach Zugriff auf das lokale Netzwerk fragt, erlaube ihn, damit Remote Code deinen Mac findet.",
   "tr": "iOS Yerel Ağ erişimi isterse izin verin; böylece Remote Code Mac'inizi bulabilir."
+ },
+ "Image": {
+  "de": "Bild",
+  "tr": "Görsel"
  },
  "In progress": {
   "de": "In Arbeit",
@@ -770,6 +802,10 @@
  "Instagram account": {
   "de": "Instagram-Konto",
   "tr": "Instagram hesabı"
+ },
+ "Instagram’s API can publish a picture only from a public web address, which Promo Studio doesn’t have. Save the image and post it from Instagram with the caption.": {
+  "de": "Die Instagram-API kann ein Bild nur von einer öffentlichen Webadresse veröffentlichen, die Promo Studio nicht hat. Sichere das Bild und poste es mit der Bildunterschrift in Instagram.",
+  "tr": "Instagram'ın API'si bir resmi yalnızca herkese açık bir web adresinden yayınlayabiliyor; Promo Studio'nun böyle bir adresi yok. Görseli kaydedin ve açıklamasıyla Instagram'dan paylaşın."
  },
  "Install Remote Code on your Mac": {
   "de": "Remote Code auf deinem Mac installieren",
@@ -871,6 +907,10 @@
   "de": "Niedrig",
   "tr": "Düşük"
  },
+ "Mac Status": {
+  "de": "Mac-Status",
+  "tr": "Mac Durumu"
+ },
  "Mac default": {
   "de": "Mac-Standard",
   "tr": "Mac varsayılanı"
@@ -878,6 +918,10 @@
  "Macs": {
   "de": "Macs",
   "tr": "Mac'ler"
+ },
+ "Make": {
+  "de": "Erstellen",
+  "tr": "Oluştur"
  },
  "Make sure Remote Code is running on your Mac and both devices are on the same Wi-Fi.": {
   "de": "Achte darauf, dass Remote Code auf deinem Mac läuft und beide Geräte im selben WLAN sind.",
@@ -963,6 +1007,10 @@
   "de": "Neuer Ordner",
   "tr": "Yeni Klasör"
  },
+ "New Image": {
+  "de": "Neues Bild",
+  "tr": "Yeni Görsel"
+ },
  "New Template": {
   "de": "Neue Vorlage",
   "tr": "Yeni Kalıp"
@@ -1014,6 +1062,10 @@
  "No matches.": {
   "de": "Keine Treffer.",
   "tr": "Eşleşme yok."
+ },
+ "No photo found; the video shows the name instead.": {
+  "de": "Kein Foto gefunden; das Video zeigt stattdessen den Namen.",
+  "tr": "Fotoğraf bulunamadı; video bunun yerine ismi gösterir."
  },
  "No sessions yet": {
   "de": "Noch keine Sitzungen",
@@ -1123,9 +1175,17 @@
   "de": "Optionale Richtung, z. B. lustiger, mit einer Frage beginnen",
   "tr": "İsteğe bağlı yönlendirme, ör. daha esprili, soruyla başla"
  },
+ "Optional. Claude looks at them and builds the %@ around them; people and objects in them are also cut out of their background.": {
+  "de": "Optional. Claude sieht sie sich an und baut das %@ darum herum; Personen und Objekte darin werden auch freigestellt.",
+  "tr": "İsteğe bağlı. Claude onlara bakar ve %@ onların etrafında kurgular; içlerindeki kişi ve nesneler arka plandan da dekupe edilir."
+ },
  "Options": {
   "de": "Optionen",
   "tr": "Seçenekler"
+ },
+ "Original": {
+  "de": "Original",
+  "tr": "Orijinal"
  },
  "Pair": {
   "de": "Koppeln",
@@ -1171,6 +1231,10 @@
   "de": "Ausstehend",
   "tr": "Bekliyor"
  },
+ "People": {
+  "de": "Personen",
+  "tr": "Kişiler"
+ },
  "Permissions": {
   "de": "Berechtigungen",
   "tr": "İzinler"
@@ -1182,6 +1246,10 @@
  "Photos and Videos": {
   "de": "Fotos und Videos",
   "tr": "Fotoğraflar ve Videolar"
+ },
+ "Photos edited with AI: label the post as AI-made on Instagram, and don’t present the edit as a real moment.": {
+  "de": "Fotos mit KI bearbeitet: Kennzeichne den Beitrag auf Instagram als KI-generiert und gib die Bearbeitung nicht als echten Moment aus.",
+  "tr": "Fotoğraflar yapay zekâ ile düzenlendi: gönderiyi Instagram'da yapay zekâ ile yapıldı olarak etiketleyin ve düzenlemeyi gerçek bir an gibi sunmayın."
  },
  "Pick a folder on your Mac and tell Claude, Codex or Gemini what to do. It works on your Mac; you follow and approve every step here.": {
   "de": "Wähle einen Ordner auf deinem Mac und sag Claude, Codex oder Gemini, was zu tun ist. Die Arbeit läuft auf deinem Mac; du verfolgst und bestätigst hier jeden Schritt.",
@@ -1202,6 +1270,10 @@
  "Play": {
   "de": "Abspielen",
   "tr": "Oynat"
+ },
+ "Portrait 4:5": {
+  "de": "Hochformat 4:5",
+  "tr": "Dikey 4:5"
  },
  "Post Now": {
   "de": "Jetzt posten",
@@ -1250,6 +1322,14 @@
  "Promo Studio": {
   "de": "Promo Studio",
   "tr": "Promo Studio"
+ },
+ "Promo Studio isn’t open on your Mac. Open it there and try again.": {
+  "de": "Promo Studio ist auf deinem Mac nicht geöffnet. Öffne es dort und versuche es noch einmal.",
+  "tr": "Promo Studio Mac'inizde açık değil. Orada açıp tekrar deneyin."
+ },
+ "Promo Studio on your Mac is too old for this. Update it to the latest version and try again.": {
+  "de": "Promo Studio auf deinem Mac ist dafür zu alt. Aktualisiere es auf die neueste Version und versuche es noch einmal.",
+  "tr": "Mac'inizdeki Promo Studio bunun için çok eski. En son sürüme güncelleyip tekrar deneyin."
  },
  "Promo film (directed by Claude)": {
   "de": "Werbefilm (Regie: Claude)",
@@ -1306,6 +1386,10 @@
  "Recent": {
   "de": "Zuletzt verwendet",
   "tr": "Son kullanılanlar"
+ },
+ "Reconnect Account": {
+  "de": "Konto neu verbinden",
+  "tr": "Hesabı Yeniden Bağla"
  },
  "Refresh Accounts": {
   "de": "Konten aktualisieren",
@@ -1515,6 +1599,10 @@
   "de": "Senden",
   "tr": "Gönder"
  },
+ "Sending photo %lld of %lld…": {
+  "de": "Foto %lld von %lld wird gesendet …",
+  "tr": "Fotoğraf gönderiliyor (%lld/%lld)…"
+ },
  "Session": {
   "de": "Sitzung",
   "tr": "Oturum"
@@ -1583,6 +1671,10 @@
   "de": "Angemeldet bis %@",
   "tr": "%@ tarihine kadar giriş yapılı"
  },
+ "Size": {
+  "de": "Größe",
+  "tr": "Boyut"
+ },
  "Skills": {
   "de": "Skills",
   "tr": "Skill'ler"
@@ -1614,6 +1706,10 @@
  "Source Code on GitHub": {
   "de": "Quellcode auf GitHub",
   "tr": "GitHub'da Kaynak Kod"
+ },
+ "Square 1:1": {
+  "de": "Quadrat 1:1",
+  "tr": "Kare 1:1"
  },
  "Start Using Remote Code": {
   "de": "Remote Code verwenden",
@@ -1650,6 +1746,10 @@
  "Storage": {
   "de": "Speicher",
   "tr": "Depolama"
+ },
+ "Story 9:16": {
+  "de": "Story 9:16",
+  "tr": "Hikâye 9:16"
  },
  "Storyboard": {
   "de": "Storyboard",
@@ -1763,9 +1863,17 @@
   "de": "Dieses Bild wird in Promo Studio und auf Instagram zum Cover.",
   "tr": "Bu kare hem Promo Studio'da hem Instagram'da kapak olur."
  },
+ "This image can’t be read.": {
+  "de": "Dieses Bild kann nicht gelesen werden.",
+  "tr": "Bu görsel okunamıyor."
+ },
  "This is not a valid Remote Code pairing code.": {
   "de": "Das ist kein gültiger Remote-Code-Kopplungscode.",
   "tr": "Bu geçerli bir Remote Code eşleştirme kodu değil."
+ },
+ "This post uses photos edited with AI. Add a note to the caption, or turn on the AI label when you post from Instagram.": {
+  "de": "Dieser Beitrag verwendet mit KI bearbeitete Fotos. Füge der Bildunterschrift einen Hinweis hinzu oder aktiviere beim Posten in Instagram die KI-Kennzeichnung.",
+  "tr": "Bu gönderi yapay zekâ ile düzenlenmiş fotoğraflar kullanıyor. Açıklamaya bir not ekleyin ya da Instagram'dan paylaşırken yapay zekâ etiketini açın."
  },
  "This sub-agent left no transcript.": {
   "de": "Dieser Sub-Agent hat keinen Verlauf hinterlassen.",
@@ -1827,6 +1935,10 @@
   "de": "Bis zum Ausschalten",
   "tr": "Kapatılana kadar"
  },
+ "Update Promo Studio on your Mac to see its status here.": {
+  "de": "Aktualisiere Promo Studio auf deinem Mac, um seinen Status hier zu sehen.",
+  "tr": "Durumunu burada görmek için Mac'inizdeki Promo Studio'yu güncelleyin."
+ },
  "Use Tailscale": {
   "de": "Tailscale verwenden",
   "tr": "Tailscale Kullan"
@@ -1847,6 +1959,10 @@
   "de": "Version",
   "tr": "Sürüm"
  },
+ "Video": {
+  "de": "Video",
+  "tr": "Video"
+ },
  "Video Templates": {
   "de": "Videovorlagen",
   "tr": "Video kalıpları"
@@ -1858,6 +1974,10 @@
  "Voiceover": {
   "de": "Sprecher",
   "tr": "Seslendirme"
+ },
+ "Waiting for design approval": {
+  "de": "Wartet auf Freigabe des Entwurfs",
+  "tr": "Tasarım onayı bekleniyor"
  },
  "Waiting for storyboard approval": {
   "de": "Wartet auf Freigabe des Storyboards",
@@ -1882,6 +2002,10 @@
  "Weekly": {
   "de": "Wöchentlich",
   "tr": "Haftalık"
+ },
+ "What should the image show?": {
+  "de": "Was soll das Bild zeigen?",
+  "tr": "Görselde ne olsun?"
  },
  "What should the video be about?": {
   "de": "Worum soll es im Video gehen?",
@@ -1919,6 +2043,10 @@
   "de": "Du: %@",
   "tr": "Siz: %@"
  },
+ "Your Images": {
+  "de": "Deine Bilder",
+  "tr": "Görselleriniz"
+ },
  "Your Mac always stays awake while Remote Code runs; the display may still turn off. A closed MacBook that stays awake can get warm and drain its battery.": {
   "de": "Dein Mac bleibt immer wach, solange Remote Code läuft; der Bildschirm kann sich trotzdem ausschalten. Ein zugeklapptes, waches MacBook kann warm werden und den Akku leeren.",
   "tr": "Remote Code çalışırken Mac'iniz her zaman uyanık kalır; ekran yine de kapanabilir. Kapağı kapalı ve uyanık bir MacBook ısınabilir ve pilini tüketebilir."
@@ -1938,6 +2066,10 @@
  "Your Mac may slow down. %@ uses the most (%@).": {
   "de": "Dein Mac könnte langsamer werden. %@ belegt am meisten (%@).",
   "tr": "Mac'iniz yavaşlayabilir. En çok %@ kullanıyor (%@)."
+ },
+ "Your Mac needs attention": {
+  "de": "Dein Mac braucht Aufmerksamkeit",
+  "tr": "Mac'iniz ilgi bekliyor"
  },
  "Your coding agents run on your Mac. Remote Code lets you talk to them, follow every step and approve changes from your iPhone or iPad.": {
   "de": "Deine Coding-Agenten laufen auf deinem Mac. Mit Remote Code sprichst du von deinem iPhone oder iPad aus mit ihnen, verfolgst jeden Schritt und bestätigst Änderungen.",
@@ -1971,6 +2103,10 @@
   "de": "iOS erlaubt Apps nicht, ein VPN für dich zu installieren oder zu konfigurieren, daher musst du Schritt 2 selbst ausführen.",
   "tr": "iOS, uygulamaların sizin için VPN kurmasına veya yapılandırmasına izin vermez; bu yüzden 2. adım elle yapılmalıdır."
  },
+ "image": {
+  "de": "Bild",
+  "tr": "görseli"
+ },
  "of %@": {
   "de": "von %@",
   "tr": "toplam %@"
@@ -1979,8 +2115,16 @@
   "de": "pilothouse://pair?d=…",
   "tr": "pilothouse://pair?d=…"
  },
+ "video": {
+  "de": "Video",
+  "tr": "videoyu"
+ },
  "“%@” commands": {
   "de": "„%@“-Befehle",
   "tr": "“%@” komutları"
+ },
+ "📸 Photos edited with AI.": {
+  "de": "📸 Fotos mit KI bearbeitet.",
+  "tr": "📸 Fotoğraflar yapay zekâ ile düzenlendi."
  }
 }

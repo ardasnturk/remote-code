@@ -13,6 +13,7 @@ enum AlertText {
         case .sessionFailed: String(localized: "Session failed · \(folder)")
         case .subagentFinished: String(localized: "Sub-agent finished · \(folder)")
         case .promoVideoReady: String(localized: "Video ready · \(folder)")
+        case .promoImageReady: String(localized: "Image ready · \(folder)")
         case .promoStoryboardReady: String(localized: "Storyboard ready · \(folder)")
         case .promoFailed: String(localized: "Video failed · \(folder)")
         case .promoPublished: String(localized: "Posted to Instagram · \(folder)")

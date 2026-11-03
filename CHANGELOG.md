@@ -6,6 +6,22 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.5.1] — 2026-11-03
+
+### Added
+- Promo Studio: failures explained with a fix button (Try Again, Let Claude
+  Fix It, Produce Without Voiceover, Reconnect Account) and their details.
+- Promo Studio: Mac Status, the Mac's setup checklist, with a notice when the
+  Mac needs attention.
+- Promo Studio: photos from the library for a new video, image posts with
+  Save to Photos, and choosing or re-editing people's photos (Codex).
+- An "Image ready" notification on the Mac for Promo Studio image posts.
+  Needs Promo Studio 1.4.0 for these.
+
+### Changed
+- Promo Studio: clearer messages when Promo Studio isn't open on the Mac or is
+  too old for a feature.
+
 ## [1.5.0] — 2026-11-01
 
 ### Added

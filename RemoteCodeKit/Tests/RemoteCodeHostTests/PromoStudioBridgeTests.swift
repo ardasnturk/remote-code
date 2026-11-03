@@ -39,6 +39,14 @@ import Testing
         #expect(AlertContent.english(for: alert, includeDetail: false).body == "Video ready · Launch film")
     }
 
+    @Test func announcesImagePostsUnderTheVideoPreference() throws {
+        let event = PromoStudioEvent(event: "finished", data: #"{"id":"P1","postId":"AB-12","kind":"produce","notice":"imageReady","title":"Derby poster"}"#)
+        let alert = try #require(PromoStudioNotifier.alert(for: event))
+        #expect(alert.kind == .promoImageReady)
+        #expect(alert.kind.preference == .promoVideoReady)
+        #expect(AlertContent.english(for: alert, includeDetail: false).body == "Image ready · Derby poster")
+    }
+
     @Test func carriesTheErrorOfAFailedJob() throws {
         let event = PromoStudioEvent(event: "finished", data: #"{"id":"P1","notice":"failed","title":"","error":"Gemini quota is used up"}"#)
         let alert = try #require(PromoStudioNotifier.alert(for: event))

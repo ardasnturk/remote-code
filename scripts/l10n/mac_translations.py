@@ -309,5 +309,6 @@ T = {
 "System and background": ("Sistem ve arka plan", "System und Hintergrund"),
 "The app is no longer running.": ("Uygulama artık çalışmıyor.", "Die App läuft nicht mehr."),
 "This app can't be quit from your iPhone. Refresh the list and try again.": ("Bu uygulama iPhone'unuzdan kapatılamaz. Listeyi yenileyip tekrar deneyin.", "Diese App kann nicht vom iPhone aus beendet werden. Aktualisiere die Liste und versuche es erneut."),
+"Image ready · %@": ("Görsel hazır · %@", "Bild fertig · %@"),
 }
 json.dump({k: {"tr": v[0], "de": v[1]} for k, v in T.items()}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mac.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, sort_keys=True)

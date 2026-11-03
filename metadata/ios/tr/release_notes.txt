@@ -1,7 +1,7 @@
-Mac'inize telefonunuzdan bakın:
-• Depolama: boş alanı görün; önbellekleri, günlükleri, Xcode verilerini ve Çöp Kutusu'nu temizleyin
-• Bellek ve İşlemci: Mac'i neyin yavaşlattığını görün, bir uygulamayı kapatın
-• Güç: ekranı açık tutun, kapak kapalı modunu açıp kapatın
-• Disk alanı veya bellek azaldığında bildirim
-• Promo Studio: tam tarif ettiğiniz gibi serbest videolar, kapak karesi seçimi, Promo Templates şablonları, projesiz videolar ve Fotoğraflara Kaydet
-Mac özellikleri için Mac'te Remote Code 1.5 gerekir.
+Telefonunuzdan Promo Studio (Mac'te Promo Studio 1.4 ile):
+• Hatalar anlaşılır dille ve çözen bir butonla: tekrar dene, Claude videoyu düzeltsin, Instagram'ı yeniden bağla
+• Mac Durumu: Mac'teki Promo Studio'nun nelere ihtiyacı olduğunu görün
+• Arşivinizden fotoğraf ekleyin, Claude videoyu onların etrafında kursun
+• 4:5, 1:1 veya 9:16 görsel gönderileri, Fotoğraflar'a kaydedin
+• Videodaki kişilerin gerçek fotoğrafları; orijinali veya düzenlenmiş halini seçin
+1.5'te ayrıca: depolama temizliği, bellek ve işlemci, güç kontrolleri ve disk ya da bellek azaldığında bildirim (Mac'te Remote Code 1.5).

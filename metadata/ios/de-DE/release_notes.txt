@@ -1,7 +1,7 @@
-Kümmere dich vom iPhone aus um deinen Mac:
-• Speicher: freien Platz sehen und Caches, Protokolle, Xcode-Daten und den Papierkorb bereinigen
-• Arbeitsspeicher und CPU: sehen, was den Mac bremst, und eine App beenden
-• Energie: Bildschirm eingeschaltet lassen, Modus bei geschlossenem Deckel umschalten
-• Mitteilungen bei wenig Speicherplatz oder Arbeitsspeicher
-• Promo Studio: freie Videos, genau wie du sie beschreibst, Coverbild, Vorlagen aus Promo Templates, Videos ohne Projekt und „In Fotos sichern“
-Die Mac-Funktionen erfordern Remote Code 1.5 auf dem Mac.
+Promo Studio vom iPhone aus, mit Promo Studio 1.4 auf dem Mac:
+• Fehler verständlich erklärt, mit einer Taste, die sie behebt: erneut versuchen, Claude das Video reparieren lassen, Instagram neu verbinden
+• Mac-Status: sehen, was Promo Studio auf dem Mac braucht
+• Fotos aus deiner Mediathek hinzufügen, Claude baut das Video darum herum
+• Bildbeiträge in 4:5, 1:1 oder 9:16, in Fotos sichern
+• Echte Fotos der Personen im Video; Original oder Bearbeitung wählen
+Ebenfalls neu in 1.5: Speicher bereinigen, Arbeitsspeicher und CPU, Energieoptionen und Mitteilungen bei wenig Speicher (Remote Code 1.5 auf dem Mac).

@@ -367,6 +367,10 @@
   "de": "Bereit",
   "tr": "Boşta"
  },
+ "Image ready · %@": {
+  "de": "Bild fertig · %@",
+  "tr": "Görsel hazır · %@"
+ },
  "In the Tailscale admin console under DNS, enable MagicDNS so your Mac gets a stable name.": {
   "de": "Aktiviere in der Tailscale-Admin-Konsole unter DNS MagicDNS, damit dein Mac einen stabilen Namen erhält.",
   "tr": "Mac'inizin kalıcı bir adı olması için Tailscale yönetim konsolunda DNS altında MagicDNS'i etkinleştirin."

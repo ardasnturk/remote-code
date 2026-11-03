@@ -18,6 +18,8 @@ public struct HostAlert: Sendable, Hashable {
         /// Promo Studio finished a video (D-113). For these four kinds
         /// `sessionId` is the Promo Studio post ID and `folderName` its title.
         case promoVideoReady
+        /// Promo Studio finished an image post; follows the "video ready" preference.
+        case promoImageReady
         /// Promo Studio's storyboard (or script) waits for approval.
         case promoStoryboardReady
         /// A Promo Studio job failed; `detail` is the error.
@@ -32,8 +34,10 @@ public struct HostAlert: Sendable, Hashable {
         case memoryPressure
 
         /// Kinds that come from Promo Studio rather than an agent session.
-        public static let promoStudio: [Kind] = [.promoVideoReady, .promoStoryboardReady, .promoFailed, .promoPublished]
+        public static let promoStudio: [Kind] = [.promoVideoReady, .promoImageReady, .promoStoryboardReady, .promoFailed, .promoPublished]
         public var isPromoStudio: Bool { Self.promoStudio.contains(self) }
+        /// The preference that turns this kind on and off (images share the one for videos).
+        public var preference: Kind { self == .promoImageReady ? .promoVideoReady : self }
     }
 
     public var kind: Kind
@@ -75,6 +79,7 @@ public struct AlertContent: Sendable, Hashable {
         case .sessionFailed: "Session failed · \(alert.folderName)"
         case .subagentFinished: "Sub-agent finished · \(alert.folderName)"
         case .promoVideoReady: "Video ready · \(alert.folderName)"
+        case .promoImageReady: "Image ready · \(alert.folderName)"
         case .promoStoryboardReady: "Storyboard ready · \(alert.folderName)"
         case .promoFailed: "Video failed · \(alert.folderName)"
         case .promoPublished: "Posted to Instagram · \(alert.folderName)"
@@ -178,7 +183,7 @@ public actor NotificationService {
     /// Delivers `alert` to every sink if the preferences allow it. Also the
     /// entry point for alerts produced elsewhere (e.g. `.subagentFinished`).
     public func post(_ alert: HostAlert) async {
-        guard preferences.enabled, preferences.kinds.contains(alert.kind) else { return }
+        guard preferences.enabled, preferences.kinds.contains(alert.kind.preference) else { return }
         let includeDetail = preferences.includeDetail
         for sink in sinks {
             do {

@@ -44,9 +44,16 @@ struct PromoStudioHomeView: View {
                 case .project(let id): PromoStudioProjectView(store: store, projectId: id)
                 case .library(let id): PromoStudioLibraryView(store: store, libraryId: id)
                 case .post(let id): PromoStudioPostView(store: store, postId: id)
+                case .health: PromoStudioHealthView(store: store)
                 }
             }
             .sheet(isPresented: $showAccounts) { PromoStudioAccountsView(store: store) }
+            // A fix such as "Reconnect Account" asks for the accounts screen
+            .onChange(of: store.accountsRequested) { _, requested in
+                guard requested else { return }
+                store.accountsRequested = false
+                showAccounts = true
+            }
             .sheet(item: $newVideo) { request in
                 PromoStudioNewVideoView(store: store, request: request) { path = [.post($0)] }
             }
@@ -63,7 +70,22 @@ struct PromoStudioHomeView: View {
     @ViewBuilder private func content(_ state: PromoStudioState) -> some View {
         let scheduled = state.posts.filter { $0.status == .scheduled }.sorted { ($0.scheduledAt ?? .distantFuture) < ($1.scheduledAt ?? .distantFuture) }
         let recent = state.posts.filter { $0.status != .scheduled }
+        let attention = (state.health ?? []).filter(\.needsAttention)
         List {
+            if !attention.isEmpty {
+                Section {
+                    NavigationLink(value: PromoStudioRoute.health) {
+                        Label {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Your Mac needs attention").font(.subheadline.weight(.semibold))
+                                Text(attention.map(\.title).joined(separator: ", ")).font(.caption).foregroundStyle(.secondary)
+                            }
+                        } icon: {
+                            Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(.orange)
+                        }
+                    }
+                }
+            }
             Section("Projects") {
                 ForEach(state.projects) { project in
                     NavigationLink(value: PromoStudioRoute.project(project.id)) {
@@ -114,6 +136,13 @@ struct PromoStudioHomeView: View {
             Section("Posts") {
                 ForEach(recent) { post in postLink(post) }
             }
+            if state.health != nil {
+                Section {
+                    NavigationLink(value: PromoStudioRoute.health) {
+                        Label("Mac Status", systemImage: "checklist")
+                    }
+                }
+            }
         }
     }
 
@@ -128,6 +157,7 @@ enum PromoStudioRoute: Hashable {
     case project(String)
     case library(String)
     case post(String)
+    case health
 }
 
 struct PromoStudioPostRow: View {
@@ -219,13 +249,14 @@ struct PromoStudioJobLine: View {
 struct PromoStudioImage: View {
     let store: PromoStudioStore
     let path: String?
+    var contentMode: ContentMode = .fill
     @State private var image: UIImage?
 
     var body: some View {
         ZStack {
             Rectangle().fill(.quaternary)
             if let image {
-                Image(uiImage: image).resizable().scaledToFill()
+                Image(uiImage: image).resizable().aspectRatio(contentMode: contentMode)
             } else {
                 Image(systemName: "photo").foregroundStyle(.tertiary)
             }
@@ -244,7 +275,24 @@ extension View {
             store.alert?.title ?? "",
             isPresented: Binding(get: { store.alert != nil }, set: { if !$0 { store.alert = nil } })
         ) {
-            Button("OK") {
+            // The fix of a failure that can run from the phone
+            if let problem = store.alert?.problem, let fix = problem.fix, let postId = problem.subject, store.post(postId) != nil,
+               [.retry, .repair, .withoutVoiceover].contains(fix), let label = PromoStudioProblemCard.label(fix, problem) {
+                Button(label) {
+                    store.alert = nil
+                    Task {
+                        _ = try? await store.action("dismissAlert")
+                        try? await store.fix(fix, postId: postId)
+                    }
+                }
+            } else if let problem = store.alert?.problem, problem.fix == .reconnect {
+                Button("Reconnect Account") {
+                    store.alert = nil
+                    store.accountsRequested = true
+                    Task { _ = try? await store.action("dismissAlert") }
+                }
+            }
+            Button("OK", role: .cancel) {
                 store.alert = nil
                 Task { _ = try? await store.action("dismissAlert") }
             }

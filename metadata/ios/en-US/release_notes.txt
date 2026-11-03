@@ -1,7 +1,7 @@
-Look after your Mac from your phone:
-• Storage: see free space and clean up caches, logs, Xcode data and the Trash
-• Memory and CPU: see what slows the Mac down and quit an app
-• Power: keep the display on, switch lid-closed mode
-• Notifications when disk space or memory runs low
-• Promo Studio: free-form videos, exactly as you describe them, the cover frame, Promo Templates, videos without a project and Save to Photos
-The Mac features need Remote Code 1.5 on the Mac.
+Promo Studio from your phone, with Promo Studio 1.4 on the Mac:
+• Errors explained, with a button that fixes them: try again, let Claude fix the video, reconnect Instagram
+• Mac Status: see what Promo Studio on the Mac needs
+• Add photos from your library and Claude builds the video around them
+• Image posts in 4:5, 1:1 or 9:16, saved to Photos
+• Real photos of the people in a video; pick the original or an edit
+Also new in 1.5: storage cleanup, memory and CPU, power controls and low disk or memory notifications (Remote Code 1.5 on the Mac).

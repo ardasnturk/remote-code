@@ -116,6 +116,7 @@ public struct NtfyPublisher: AlertSink {
         case .sessionFailed: (4, "x")
         case .subagentFinished: (2, "robot")
         case .promoVideoReady: (3, "clapper")
+        case .promoImageReady: (3, "frame_with_picture")
         case .promoStoryboardReady: (3, "memo")
         case .promoFailed: (4, "x")
         case .promoPublished: (3, "rocket")

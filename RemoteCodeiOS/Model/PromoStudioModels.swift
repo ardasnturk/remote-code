@@ -15,6 +15,62 @@ struct PromoStudioState: Decodable {
     var themes: [PromoStudioOption]
     var libraries: [PromoStudioLibrary]?
     var alert: String?
+    /// The failure shown in the Mac's alert, explained (Promo Studio 1.4.0+)
+    var problem: PromoStudioProblem?
+    /// The Mac's setup checklist: tools, keys, sessions, disk (Promo Studio 1.4.0+)
+    var health: [PromoStudioHealth]?
+}
+
+/// A failure explained by Promo Studio: what went wrong, what fixes it and the raw output.
+struct PromoStudioProblem: Decodable, Hashable {
+    var code: String
+    var title: String
+    var message: String
+    var fix: Fix?
+    var details: String?
+    /// The post (or project) it belongs to
+    var subject: String?
+
+    enum Fix: String, Decodable, Hashable {
+        /// Run the failed step again; have Claude fix the video code; produce without voiceover
+        case retry, repair, withoutVoiceover
+        /// Reconnect the Instagram account; open settings or the setup checklist on the Mac
+        case reconnect, settings, setup
+    }
+
+    /// A Promo Studio version that doesn't know a fix yet decodes as no fix
+    enum CodingKeys: String, CodingKey { case code, title, message, fix, details, subject }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        code = try c.decodeIfPresent(String.self, forKey: .code) ?? "unknown"
+        title = try c.decodeIfPresent(String.self, forKey: .title) ?? ""
+        message = try c.decodeIfPresent(String.self, forKey: .message) ?? ""
+        fix = (try? c.decodeIfPresent(String.self, forKey: .fix)).flatMap { $0.flatMap(Fix.init(rawValue:)) }
+        details = try c.decodeIfPresent(String.self, forKey: .details)
+        subject = try c.decodeIfPresent(String.self, forKey: .subject)
+    }
+
+    init(title: String, message: String) {
+        code = "unknown"
+        self.title = title
+        self.message = message
+    }
+
+    /// Instagram problems are fixed in the accounts screen
+    var isInstagram: Bool { code.hasPrefix("instagram") }
+}
+
+/// One row of the Mac's setup checklist.
+struct PromoStudioHealth: Decodable, Hashable, Identifiable {
+    var id: String
+    var title: String
+    /// ready, missing, notSetUp or warning
+    var status: String
+    var detail: String
+    var required: Bool?
+
+    var needsAttention: Bool { status == "warning" || (status == "missing" && required == true) }
 }
 
 /// A template library on the Mac (e.g. Promo Templates): Claude Code skills that make ready-made videos.
@@ -78,6 +134,8 @@ struct PromoStudioSettings: Decodable, Hashable {
     var contentLanguage: String
     var voiceoverEnabled: Bool
     var defaultTheme: String
+    /// Codex can edit people's photos on the Mac (Promo Studio 1.4.0+)
+    var editPhotos: Bool?
 }
 
 struct PromoStudioProject: Decodable, Hashable, Identifiable {
@@ -153,6 +211,12 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     var spec: Spec
     var external: External?
     var media: Media
+    /// Why the last step failed and what fixes it (Promo Studio 1.4.0+)
+    var problem: PromoStudioProblem?
+    /// "image": a single picture instead of a video (Promo Studio 1.4.0+)
+    var format: String?
+    /// Images the user added for Claude to use
+    var uploads: [String]?
     /// Second of the video the cover comes from (also the Reel's cover on Instagram); missing before Promo Studio 1.2.2
     var coverSec: Double?
 
@@ -187,6 +251,8 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     struct Directed: Decodable, Hashable {
         var storyboard: Storyboard
         var produced: Bool
+        /// Size of an image post: portrait, square or story
+        var size: String?
         var muted: Bool?
         var summary: String?
         var notes: String?
@@ -195,6 +261,18 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     struct Storyboard: Codable, Hashable {
         var concept: String
         var scenes: [Scene]
+        /// Real people whose photos the video uses
+        var people: [Person]?
+    }
+
+    struct Person: Codable, Hashable {
+        var name: String
+        /// How Codex edits the photo
+        var edit: String?
+        /// The user chose the downloaded photo over the edit
+        var useOriginal: Bool?
+        /// Why the last edit failed
+        var editError: String?
     }
 
     struct Scene: Codable, Hashable {
@@ -228,7 +306,19 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     struct Media: Decodable, Hashable {
         var video: String?
         var cover: String?
+        /// The picture of an image post
+        var image: String?
+        /// Photos of the storyboard's people: downloaded and Codex-edited
+        var people: [PersonPhotos]?
     }
+
+    struct PersonPhotos: Decodable, Hashable {
+        var name: String
+        var original: String?
+        var edited: String?
+    }
+
+    var isImage: Bool { format == "image" }
 
     /// The post's text without Promo Studio's *emphasis* markers.
     static func plain(_ text: String) -> String { text.replacingOccurrences(of: "*", with: "") }
