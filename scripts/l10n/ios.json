@@ -79,6 +79,10 @@
   "de": "5 Stunden",
   "tr": "5 saat"
  },
+ "A 9:16 image can only be a story; Instagram’s feed allows 4:5 at most.": {
+  "de": "Ein 9:16-Bild kann nur eine Story sein; der Instagram-Feed erlaubt höchstens 4:5.",
+  "tr": "9:16 bir görsel yalnızca hikâye olabilir; Instagram akışı en fazla 4:5'e izin veriyor."
+ },
  "About": {
   "de": "Über",
   "tr": "Hakkında"
@@ -255,6 +259,14 @@
   "de": "Beschreibung",
   "tr": "Açıklama"
  },
+ "Carousel": {
+  "de": "Karussell",
+  "tr": "Karusel"
+ },
+ "Carousel: %lld slides": {
+  "de": "Karussell: %lld Folien",
+  "tr": "Karusel: %lld slayt"
+ },
  "Chats": {
   "de": "Chats",
   "tr": "Sohbetler"
@@ -270,6 +282,10 @@
  "Choose Cover…": {
   "de": "Cover wählen …",
   "tr": "Kapak Seç…"
+ },
+ "Choose an account to post, or save the image and post it yourself.": {
+  "de": "Wähle ein Konto zum Posten oder sichere das Bild und poste es selbst.",
+  "tr": "Paylaşmak için bir hesap seçin ya da görseli kaydedip kendiniz paylaşın."
  },
  "Choose an account to post, or save the video and post it yourself.": {
   "de": "Wähle ein Konto zum Posten oder sichere das Video und poste es selbst.",
@@ -583,6 +599,10 @@
   "de": "Jedes Projekt postet mit seinem eigenen Konto. Konten, die mit einer von dir verwalteten Facebook-Seite verknüpft sind, werden gemeinsam hinzugefügt.",
   "tr": "Her proje kendi hesabıyla paylaşır. Yönettiğin bir Facebook Sayfasına bağlı hesaplar birlikte eklenir."
  },
+ "Each slide becomes a story. Stories have no caption and disappear after 24 hours.": {
+  "de": "Jede Folie wird zu einer Story. Storys haben keine Bildunterschrift und verschwinden nach 24 Stunden.",
+  "tr": "Her slayt bir hikâye olur. Hikâyelerde açıklama olmaz ve 24 saat sonra kaybolurlar."
+ },
  "Earlier": {
   "de": "Früher",
   "tr": "Daha önce"
@@ -802,10 +822,6 @@
  "Instagram account": {
   "de": "Instagram-Konto",
   "tr": "Instagram hesabı"
- },
- "Instagram’s API can publish a picture only from a public web address, which Promo Studio doesn’t have. Save the image and post it from Instagram with the caption.": {
-  "de": "Die Instagram-API kann ein Bild nur von einer öffentlichen Webadresse veröffentlichen, die Promo Studio nicht hat. Sichere das Bild und poste es mit der Bildunterschrift in Instagram.",
-  "tr": "Instagram'ın API'si bir resmi yalnızca herkese açık bir web adresinden yayınlayabiliyor; Promo Studio'nun böyle bir adresi yok. Görseli kaydedin ve açıklamasıyla Instagram'dan paylaşın."
  },
  "Install Remote Code on your Mac": {
   "de": "Remote Code auf deinem Mac installieren",
@@ -1275,17 +1291,29 @@
   "de": "Hochformat 4:5",
   "tr": "Dikey 4:5"
  },
+ "Post": {
+  "de": "Beitrag",
+  "tr": "Gönderi"
+ },
  "Post Now": {
   "de": "Jetzt posten",
   "tr": "Şimdi Paylaş"
  },
- "Post as Reel Now": {
-  "de": "Jetzt als Reel posten",
-  "tr": "Reels Olarak Şimdi Paylaş"
+ "Post as %@ Now": {
+  "de": "Jetzt als %@ posten",
+  "tr": "%@ Olarak Şimdi Paylaş"
+ },
+ "Post this image to Instagram now?": {
+  "de": "Dieses Bild jetzt auf Instagram posten?",
+  "tr": "Bu görsel şimdi Instagram'da paylaşılsın mı?"
  },
  "Post this video to Instagram now?": {
   "de": "Dieses Video jetzt auf Instagram posten?",
   "tr": "Bu video şimdi Instagram'da paylaşılsın mı?"
+ },
+ "Posting pictures needs cloudflared on the Mac: install it from the setup checklist.": {
+  "de": "Zum Posten von Bildern braucht der Mac cloudflared: Installiere es über die Einrichtungsliste.",
+  "tr": "Resim paylaşmak için Mac'te cloudflared gerekiyor: kurulum listesinden kurun."
  },
  "Posts": {
   "de": "Beiträge",
@@ -1390,6 +1418,10 @@
  "Reconnect Account": {
   "de": "Konto neu verbinden",
   "tr": "Hesabı Yeniden Bağla"
+ },
+ "Reel": {
+  "de": "Reel",
+  "tr": "Reels"
  },
  "Refresh Accounts": {
   "de": "Konten aktualisieren",
@@ -1635,6 +1667,10 @@
   "de": "Teilen",
   "tr": "Paylaş"
  },
+ "Share as": {
+  "de": "Teilen als",
+  "tr": "Paylaşım türü"
+ },
  "Shares": {
   "de": "Geteilt",
   "tr": "Paylaşım"
@@ -1670,6 +1706,10 @@
  "Signed in until %@": {
   "de": "Angemeldet bis %@",
   "tr": "%@ tarihine kadar giriş yapılı"
+ },
+ "Single image": {
+  "de": "Einzelbild",
+  "tr": "Tek görsel"
  },
  "Size": {
   "de": "Größe",
@@ -1746,6 +1786,14 @@
  "Storage": {
   "de": "Speicher",
   "tr": "Depolama"
+ },
+ "Stories have no caption and disappear after 24 hours.": {
+  "de": "Storys haben keine Bildunterschrift und verschwinden nach 24 Stunden.",
+  "tr": "Hikâyelerde açıklama olmaz ve 24 saat sonra kaybolurlar."
+ },
+ "Story": {
+  "de": "Story",
+  "tr": "Hikâye"
  },
  "Story 9:16": {
   "de": "Story 9:16",
@@ -1934,6 +1982,10 @@
  "Until turned off": {
   "de": "Bis zum Ausschalten",
   "tr": "Kapatılana kadar"
+ },
+ "Update Promo Studio on your Mac to post pictures to Instagram. Until then, save the image and post it from Instagram.": {
+  "de": "Aktualisiere Promo Studio auf deinem Mac, um Bilder auf Instagram zu posten. Bis dahin sichere das Bild und poste es in Instagram.",
+  "tr": "Instagram'a resim paylaşmak için Mac'teki Promo Studio'yu güncelleyin. O zamana kadar görseli kaydedip Instagram'dan paylaşın."
  },
  "Update Promo Studio on your Mac to see its status here.": {
   "de": "Aktualisiere Promo Studio auf deinem Mac, um seinen Status hier zu sehen.",

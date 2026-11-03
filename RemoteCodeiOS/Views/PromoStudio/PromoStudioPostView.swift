@@ -164,7 +164,12 @@ struct PromoStudioVideoPanel: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 18).fill(.black)
-            if post.isImage, let image = post.media.image, post.status != .rendering {
+            if post.isImage, post.isCarousel, post.status != .rendering {
+                TabView {
+                    ForEach(post.pictures, id: \.self) { PromoStudioImage(store: store, path: $0, contentMode: .fit) }
+                }
+                .tabViewStyle(.page(indexDisplayMode: .always))
+            } else if post.isImage, let image = post.media.image, post.status != .rendering {
                 PromoStudioImage(store: store, path: image, contentMode: .fit)
             } else if post.isImage {
                 VStack(spacing: 8) {
@@ -412,15 +417,7 @@ struct PromoStudioShareSection: View {
             if post.usesEditedPhotos {
                 aiNote
             }
-            if post.isImage {
-                if post.media.image != nil {
-                    PromoStudioSaveVideo(store: store, post: post, onError: onError)
-                }
-                Text("Instagram’s API can publish a picture only from a public web address, which Promo Studio doesn’t have. Save the image and post it from Instagram with the caption.")
-                    .font(.footnote).foregroundStyle(.secondary)
-            } else {
-                videoSharing
-            }
+            sharing
         }
         .onAppear { if let at = post.scheduledAt { date = at } }
     }
@@ -437,9 +434,45 @@ struct PromoStudioShareSection: View {
         }
     }
 
-    @ViewBuilder private var videoSharing: some View {
+    /// Reel/Post/Carousel or Story; a 9:16 image can only be a story
+    @ViewBuilder private var placementPicker: some View {
+        let story = post.isStory
+        Picker("Share as", selection: Binding(
+            get: { story },
+            set: { run("setPlacement", ["postId": post.id, "placement": $0 ? "story" : "feed"]) }
+        )) {
+            Self.label(post, story: false).tag(false)
+            Self.label(post, story: true).tag(true)
+        }
+        .pickerStyle(.segmented)
+        .disabled(post.canPostToFeed == false || [.scheduled, .publishing, .published].contains(post.status))
+        if post.canPostToFeed == false {
+            Text("A 9:16 image can only be a story; Instagram’s feed allows 4:5 at most.")
+                .font(.footnote).foregroundStyle(.secondary)
+        } else if story {
+            (post.isCarousel ? Text("Each slide becomes a story. Stories have no caption and disappear after 24 hours.") : Text("Stories have no caption and disappear after 24 hours."))
+                .font(.footnote).foregroundStyle(.secondary)
+        }
+    }
+
+    static func label(_ post: PromoStudioPost, story: Bool) -> Text {
+        story ? Text("Story") : post.isImage ? (post.isCarousel ? Text("Carousel") : Text("Post")) : Text("Reel")
+    }
+
+    @ViewBuilder private var sharing: some View {
         VStack(alignment: .leading, spacing: 12) {
-            if post.media.video != nil {
+            let hasMedia = post.isImage ? !post.pictures.isEmpty : post.media.video != nil
+            // Promo Studio before 1.5.0 can't post pictures (no `slides` in its state)
+            let canPost = post.isImage ? post.media.slides != nil && store.state?.settings.canPostPictures == true : hasMedia
+            placementPicker
+            if post.isImage, post.media.slides == nil, hasMedia {
+                Text("Update Promo Studio on your Mac to post pictures to Instagram. Until then, save the image and post it from Instagram.")
+                    .font(.footnote).foregroundStyle(.secondary)
+            } else if post.isImage, store.state?.settings.canPostPictures == false {
+                Label("Posting pictures needs cloudflared on the Mac: install it from the setup checklist.", systemImage: "exclamationmark.triangle")
+                    .font(.footnote).foregroundStyle(.orange)
+            }
+            if post.media.video != nil, !post.isImage, !post.isStory {
                 HStack(spacing: 12) {
                     PromoStudioImage(store: store, path: post.media.cover)
                         .frame(width: 54, height: 96)
@@ -459,7 +492,7 @@ struct PromoStudioShareSection: View {
                 }
                 Divider()
             }
-            if post.media.video != nil {
+            if hasMedia {
                 PromoStudioSaveVideo(store: store, post: post, onError: onError)
                 Divider()
             }
@@ -487,25 +520,30 @@ struct PromoStudioShareSection: View {
                 }
                 .disabled(post.status == .scheduled || post.status == .publishing)
                 if account == nil {
-                    Text("Choose an account to post, or save the video and post it yourself.")
+                    (post.isImage ? Text("Choose an account to post, or save the image and post it yourself.") : Text("Choose an account to post, or save the video and post it yourself."))
                         .foregroundStyle(.secondary).font(.footnote)
                 }
             }
-            let canShare = post.media.video != nil && account != nil && post.status != .published && store.job(post.id) == nil
+            let canShare = canPost && account != nil && post.status != .published && store.job(post.id) == nil
             Button {
                 confirmPublish = true
             } label: {
-                Label("Post as Reel Now", systemImage: "paperplane.fill").frame(maxWidth: .infinity)
+                Label {
+                    Text("Post as \(Self.label(post, story: post.isStory)) Now")
+                } icon: {
+                    Image(systemName: "paperplane.fill")
+                }
+                .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
             .disabled(!canShare)
-            .confirmationDialog(Text("Post this video to Instagram now?"), isPresented: $confirmPublish, titleVisibility: .visible) {
-                Button("Post Now") { run("publish", ["postId": post.id]) }
+            .confirmationDialog(post.isImage ? Text("Post this image to Instagram now?") : Text("Post this video to Instagram now?"), isPresented: $confirmPublish, titleVisibility: .visible) {
+                Button("Post Now") { run("publish", ["postId": post.id, "placement": post.isStory ? "story" : "feed"]) }
             }
 
             DatePicker("Post at", selection: $date, in: Date()...)
             HStack {
-                Button("Schedule") { run("schedule", ["postId": post.id, "at": ISO8601DateFormatter().string(from: date)]) }
+                Button("Schedule") { run("schedule", ["postId": post.id, "at": ISO8601DateFormatter().string(from: date), "placement": post.isStory ? "story" : "feed"]) }
                     .buttonStyle(.bordered)
                     .disabled(!canShare)
                 if post.status == .scheduled {

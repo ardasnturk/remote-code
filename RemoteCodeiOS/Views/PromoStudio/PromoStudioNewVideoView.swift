@@ -35,6 +35,7 @@ struct PromoStudioNewVideoView: View {
     @State private var error: String?
     @State private var image = false
     @State private var size = "portrait"
+    @State private var slides = 1
     @State private var picked: [PhotosPickerItem] = []
     /// Images for Claude to look at and use, with a thumbnail to show here
     @State private var photos: [(id: UUID, data: Data, thumbnail: UIImage)] = []
@@ -124,6 +125,9 @@ struct PromoStudioNewVideoView: View {
                             Text("Portrait 4:5").tag("portrait")
                             Text("Square 1:1").tag("square")
                             Text("Story 9:16").tag("story")
+                        }
+                        Stepper(value: $slides, in: 1...10) {
+                            slides == 1 ? Text("Single image") : Text("Carousel: \(slides) slides")
                         }
                         Picker("Language", selection: $language) {
                             ForEach(store.state?.languages ?? []) { Text($0.label).tag($0.id) }
@@ -224,6 +228,7 @@ struct PromoStudioNewVideoView: View {
             if image {
                 body["format"] = "image"
                 body["size"] = size
+                if slides > 1 { body["slides"] = slides }
             }
         }
         let uploads = template == nil ? photos.map(\.data) : []
@@ -303,10 +308,10 @@ struct PromoStudioSaveVideo: View {
     let post: PromoStudioPost
     var onError: (String) -> Void
     @State private var progress: Double?
-    @State private var file: URL?
+    @State private var files: [URL]?
     @State private var saved = false
-    /// The share sheet opens as soon as the file is downloaded (one tap)
-    @State private var sharing: SharedFile?
+    /// The share sheet opens as soon as the files are downloaded (one tap)
+    @State private var sharing: SharedFiles?
 
     var body: some View {
         HStack {
@@ -325,7 +330,7 @@ struct PromoStudioSaveVideo: View {
             .disabled(progress != nil)
             Spacer()
             Button {
-                Task { sharing = await download().map(SharedFile.init) }
+                Task { sharing = await download().map(SharedFiles.init) }
             } label: {
                 Label("Share", systemImage: "square.and.arrow.up")
             }
@@ -334,25 +339,36 @@ struct PromoStudioSaveVideo: View {
         }
         .controlSize(.small)
         .sheet(item: $sharing) { shared in
-            PromoStudioShareSheet(items: [shared.url]).presentationDetents([.medium, .large])
+            PromoStudioShareSheet(items: shared.urls).presentationDetents([.medium, .large])
         }
         // A re-rendered video or image is a new file
-        .onChange(of: post.isImage ? post.media.image : post.media.video) { file = nil; saved = false }
+        .onChange(of: paths) { files = nil; saved = false }
     }
 
-    /// The file under a readable name (the cache file is named by a hash)
-    private func download() async -> URL? {
-        if let file { return file }
-        guard let path = post.isImage ? post.media.image : post.media.video else { return nil }
+    /// The video, or every picture of an image post (a carousel's slides in order)
+    private var paths: [String] {
+        post.isImage ? post.pictures : post.media.video.map { [$0] } ?? []
+    }
+
+    /// The files under readable names (cache files are named by a hash)
+    private func download() async -> [URL]? {
+        if let files { return files }
+        let paths = paths
+        guard !paths.isEmpty else { return nil }
         progress = 0
         defer { progress = nil }
         do {
-            let cached = try await store.mediaFile(path) { progress = $0 }
             let name = post.title.components(separatedBy: CharacterSet(charactersIn: "/\\:?*\"<>|")).joined().trimmingCharacters(in: .whitespaces)
-            let named = FileManager.default.temporaryDirectory.appendingPathComponent((name.isEmpty ? "Promo Studio" : String(name.prefix(60))) + "." + cached.pathExtension)
-            try? FileManager.default.removeItem(at: named)
-            try FileManager.default.copyItem(at: cached, to: named)
-            file = named
+            let base = name.isEmpty ? "Promo Studio" : String(name.prefix(60))
+            var named: [URL] = []
+            for (i, path) in paths.enumerated() {
+                let cached = try await store.mediaFile(path) { progress = (Double(i) + $0) / Double(paths.count) }
+                let url = FileManager.default.temporaryDirectory.appendingPathComponent((paths.count > 1 ? "\(base) \(i + 1)" : base) + "." + cached.pathExtension)
+                try? FileManager.default.removeItem(at: url)
+                try FileManager.default.copyItem(at: cached, to: url)
+                named.append(url)
+            }
+            files = named
             return named
         } catch {
             onError(error.localizedDescription)
@@ -361,13 +377,13 @@ struct PromoStudioSaveVideo: View {
     }
 
     private func saveToPhotos() async {
-        guard let url = await download() else { return }
+        guard let urls = await download() else { return }
         guard await PHPhotoLibrary.requestAuthorization(for: .addOnly) == .authorized else {
             onError(String(localized: "Allow Remote Code to add to Photos in Settings to save videos."))
             return
         }
         do {
-            try await Self.addToPhotos(url, isImage: post.isImage)
+            try await Self.addToPhotos(urls, isImage: post.isImage)
             saved = true
         } catch {
             onError(error.localizedDescription)
@@ -376,12 +392,14 @@ struct PromoStudioSaveVideo: View {
 
     /// Photos runs the change block on its own queue. Written inside the view, the block would be
     /// main-actor isolated and Swift's isolation check would stop the app there; here it is not.
-    nonisolated private static func addToPhotos(_ url: URL, isImage: Bool) async throws {
+    nonisolated private static func addToPhotos(_ urls: [URL], isImage: Bool) async throws {
         try await PHPhotoLibrary.shared().performChanges {
-            if isImage {
-                PHAssetCreationRequest.creationRequestForAssetFromImage(atFileURL: url)
-            } else {
-                PHAssetCreationRequest.creationRequestForAssetFromVideo(atFileURL: url)
+            for url in urls {
+                if isImage {
+                    PHAssetCreationRequest.creationRequestForAssetFromImage(atFileURL: url)
+                } else {
+                    PHAssetCreationRequest.creationRequestForAssetFromVideo(atFileURL: url)
+                }
             }
         }
     }
@@ -398,7 +416,7 @@ struct PromoStudioShareSheet: UIViewControllerRepresentable {
     func updateUIViewController(_ controller: UIActivityViewController, context: Context) {}
 }
 
-struct SharedFile: Identifiable {
+struct SharedFiles: Identifiable {
     let id = UUID()
-    let url: URL
+    let urls: [URL]
 }

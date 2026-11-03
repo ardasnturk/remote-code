@@ -136,6 +136,8 @@ struct PromoStudioSettings: Decodable, Hashable {
     var defaultTheme: String
     /// Codex can edit people's photos on the Mac (Promo Studio 1.4.0+)
     var editPhotos: Bool?
+    /// cloudflared is installed, so pictures can be posted (Promo Studio 1.5.0+)
+    var canPostPictures: Bool?
 }
 
 struct PromoStudioProject: Decodable, Hashable, Identifiable {
@@ -219,6 +221,10 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     var uploads: [String]?
     /// Second of the video the cover comes from (also the Reel's cover on Instagram); missing before Promo Studio 1.2.2
     var coverSec: Double?
+    /// Where it goes on Instagram: nil or "feed" (a Reel, photo or carousel), or "story" (Promo Studio 1.5.0+)
+    var placement: String?
+    /// False for a 9:16 image, which can only be a story
+    var canPostToFeed: Bool?
 
     enum Status: String, Decodable, Hashable {
         case draft, rendering, ready, scheduled, publishing, published, failed
@@ -308,6 +314,8 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
         var cover: String?
         /// The picture of an image post
         var image: String?
+        /// Every picture of an image post in order (a carousel has several; Promo Studio 1.5.0+)
+        var slides: [String]?
         /// Photos of the storyboard's people: downloaded and Codex-edited
         var people: [PersonPhotos]?
     }
@@ -319,6 +327,10 @@ struct PromoStudioPost: Decodable, Hashable, Identifiable {
     }
 
     var isImage: Bool { format == "image" }
+    /// Pictures of an image post: a carousel's slides, else the one image
+    var pictures: [String] { media.slides.flatMap { $0.isEmpty ? nil : $0 } ?? media.image.map { [$0] } ?? [] }
+    var isCarousel: Bool { pictures.count > 1 }
+    var isStory: Bool { placement == "story" || canPostToFeed == false }
 
     /// The post's text without Promo Studio's *emphasis* markers.
     static func plain(_ text: String) -> String { text.replacingOccurrences(of: "*", with: "") }

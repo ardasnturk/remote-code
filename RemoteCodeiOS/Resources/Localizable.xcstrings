@@ -1161,6 +1161,64 @@
         }
       }
     },
+    "A 9:16 image can only be a story; Instagram’s feed allows 4:5 at most.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein 9:16-Bild kann nur eine Story sein; der Instagram-Feed erlaubt höchstens 4:5."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una imagen 9:16 solo puede ser una historia; el feed de Instagram permite como máximo 4:5."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une image 9:16 ne peut être qu’une story ; le fil Instagram accepte au plus 4:5."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un’immagine 9:16 può essere solo una storia; il feed di Instagram consente al massimo 4:5."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "9:16の画像はストーリーズにしかできません。Instagramのフィードは最大4:5です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "9:16 이미지는 스토리로만 올릴 수 있습니다. Instagram 피드는 최대 4:5까지 허용합니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uma imagem 9:16 só pode ser um story; o feed do Instagram permite no máximo 4:5."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "9:16 bir görsel yalnızca hikâye olabilir; Instagram akışı en fazla 4:5'e izin veriyor."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "9:16 的图片只能发为快拍;Instagram 动态最多支持 4:5。"
+          }
+        }
+      }
+    },
     "About": {
       "localizations": {
         "de": {
@@ -3713,6 +3771,122 @@
         }
       }
     },
+    "Carousel": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karussell"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carrusel"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carrousel"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carosello"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カルーセル"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캐러셀"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carrossel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karusel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "轮播"
+          }
+        }
+      }
+    },
+    "Carousel: %lld slides": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karussell: %lld Folien"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carrusel: %lld diapositivas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carrousel : %lld diapositives"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carosello: %lld slide"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カルーセル:%lld枚"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캐러셀: 슬라이드 %lld장"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carrossel: %lld slides"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karusel: %lld slayt"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "轮播:%lld 张幻灯片"
+          }
+        }
+      }
+    },
     "Chats": {
       "localizations": {
         "de": {
@@ -3941,6 +4115,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "选择封面…"
+          }
+        }
+      }
+    },
+    "Choose an account to post, or save the image and post it yourself.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle ein Konto zum Posten oder sichere das Bild und poste es selbst."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elige una cuenta para publicar, o guarda la imagen y publícala tú."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisissez un compte pour publier, ou enregistrez l’image et publiez-la vous-même."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scegli un account per pubblicare, oppure salva l’immagine e pubblicala tu."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "投稿するアカウントを選ぶか、画像を保存して自分で投稿してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "게시할 계정을 선택하거나, 이미지를 저장해 직접 게시하세요."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolha uma conta para publicar ou salve a imagem e publique você mesmo."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaşmak için bir hesap seçin ya da görseli kaydedip kendiniz paylaşın."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择一个账户来发布,或保存图片后自行发布。"
           }
         }
       }
@@ -8469,6 +8701,64 @@
         }
       }
     },
+    "Each slide becomes a story. Stories have no caption and disappear after 24 hours.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jede Folie wird zu einer Story. Storys haben keine Bildunterschrift und verschwinden nach 24 Stunden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada diapositiva se convierte en una historia. Las historias no llevan texto y desaparecen a las 24 horas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaque diapositive devient une story. Les stories n’ont pas de légende et disparaissent après 24 heures."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ogni slide diventa una storia. Le storie non hanno didascalia e scompaiono dopo 24 ore."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "各スライドが1件のストーリーズになります。ストーリーズにはキャプションがなく、24時間後に消えます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "각 슬라이드가 하나의 스토리가 됩니다. 스토리에는 캡션이 없으며 24시간 후 사라집니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada slide vira um story. Stories não têm legenda e somem depois de 24 horas."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her slayt bir hikâye olur. Hikâyelerde açıklama olmaz ve 24 saat sonra kaybolurlar."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每张幻灯片会成为一条快拍。快拍没有文案,24 小时后消失。"
+          }
+        }
+      }
+    },
     "Earlier": {
       "localizations": {
         "de": {
@@ -11655,64 +11945,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Instagram 账户"
-          }
-        }
-      }
-    },
-    "Instagram’s API can publish a picture only from a public web address, which Promo Studio doesn’t have. Save the image and post it from Instagram with the caption.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Instagram-API kann ein Bild nur von einer öffentlichen Webadresse veröffentlichen, die Promo Studio nicht hat. Sichere das Bild und poste es mit der Bildunterschrift in Instagram."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La API de Instagram solo puede publicar una foto desde una dirección web pública, que Promo Studio no tiene. Guarda la imagen y publícala desde Instagram con el texto."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’API d’Instagram ne peut publier une photo qu’à partir d’une adresse web publique, ce dont Promo Studio ne dispose pas. Enregistrez l’image et publiez-la depuis Instagram avec la légende."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’API di Instagram può pubblicare una foto solo da un indirizzo web pubblico, che Promo Studio non ha. Salva l’immagine e pubblicala da Instagram con la didascalia."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Instagram の API は公開 Web アドレスにある画像しか投稿できませんが、Promo Studio にはそのアドレスがありません。画像を保存し、キャプションを付けて Instagram から投稿してください。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Instagram API는 공개 웹 주소의 사진만 게시할 수 있는데, Promo Studio에는 그런 주소가 없습니다. 이미지를 저장한 후 캡션과 함께 Instagram에서 게시하세요."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A API do Instagram só publica uma foto a partir de um endereço web público, que o Promo Studio não tem. Salve a imagem e publique pelo Instagram com a legenda."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Instagram'ın API'si bir resmi yalnızca herkese açık bir web adresinden yayınlayabiliyor; Promo Studio'nun böyle bir adresi yok. Görseli kaydedin ve açıklamasıyla Instagram'dan paylaşın."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Instagram 的 API 只能发布公开网址上的图片，而 Promo Studio 没有这样的网址。请保存图片，并配上文案在 Instagram 中发布。"
           }
         }
       }
@@ -18503,6 +18735,64 @@
         }
       }
     },
+    "Post": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beitrag"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Publicación"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Publication"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Post"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "投稿"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "게시물"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Publicação"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gönderi"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "帖子"
+          }
+        }
+      }
+    },
     "Post Now": {
       "localizations": {
         "de": {
@@ -18561,60 +18851,118 @@
         }
       }
     },
-    "Post as Reel Now": {
+    "Post as %@ Now": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jetzt als Reel posten"
+            "value": "Jetzt als %@ posten"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Publicar como reel ahora"
+            "value": "Publicar como %@ ahora"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Publier maintenant en Reel"
+            "value": "Publier en tant que %@ maintenant"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pubblica ora come reel"
+            "value": "Pubblica come %@ ora"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "今すぐリールとして投稿"
+            "value": "%@として今すぐ投稿"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "지금 릴스로 게시"
+            "value": "지금 %@(으)로 게시"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Publicar como Reel agora"
+            "value": "Publicar como %@ agora"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reels Olarak Şimdi Paylaş"
+            "value": "%@ Olarak Şimdi Paylaş"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "立即作为 Reels 发布"
+            "value": "立即以%@发布"
+          }
+        }
+      }
+    },
+    "Post this image to Instagram now?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Bild jetzt auf Instagram posten?"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Publicar esta imagen en Instagram ahora?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Publier cette image sur Instagram maintenant ?"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pubblicare questa immagine su Instagram ora?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この画像を今すぐInstagramに投稿しますか?"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 이미지를 지금 Instagram에 게시할까요?"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Publicar esta imagem no Instagram agora?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu görsel şimdi Instagram'da paylaşılsın mı?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "现在将这张图片发布到 Instagram?"
           }
         }
       }
@@ -18673,6 +19021,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "立即将此视频发布到 Instagram？"
+          }
+        }
+      }
+    },
+    "Posting pictures needs cloudflared on the Mac: install it from the setup checklist.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zum Posten von Bildern braucht der Mac cloudflared: Installiere es über die Einrichtungsliste."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para publicar imágenes el Mac necesita cloudflared: instálalo desde la lista de configuración."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour publier des images, le Mac a besoin de cloudflared : installez-le depuis la liste de configuration."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per pubblicare immagini il Mac ha bisogno di cloudflared: installalo dall’elenco di configurazione."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画像の投稿にはMacにcloudflaredが必要です。セットアップリストからインストールしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이미지를 게시하려면 Mac에 cloudflared가 필요합니다. 설정 목록에서 설치하세요."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para publicar imagens, o Mac precisa do cloudflared: instale pela lista de configuração."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resim paylaşmak için Mac'te cloudflared gerekiyor: kurulum listesinden kurun."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "发布图片需要 Mac 上安装 cloudflared:请从设置清单中安装。"
           }
         }
       }
@@ -20181,6 +20587,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "重新连接账号"
+          }
+        }
+      }
+    },
+    "Reel": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reel"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reel"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reel"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reel"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "リール"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "릴스"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reels"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reels"
           }
         }
       }
@@ -23723,6 +24187,64 @@
         }
       }
     },
+    "Share as": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teilen als"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartir como"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partager en tant que"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Condividi come"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "共有形式"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "공유 형식"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartilhar como"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaşım türü"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分享为"
+          }
+        }
+      }
+    },
     "Shares": {
       "localizations": {
         "de": {
@@ -24241,6 +24763,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "登录有效期至 %@"
+          }
+        }
+      }
+    },
+    "Single image": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einzelbild"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imagen única"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image unique"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Immagine singola"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1枚の画像"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "단일 이미지"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imagem única"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tek görsel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "单张图片"
           }
         }
       }
@@ -25343,6 +25923,122 @@
           "stringUnit": {
             "state": "translated",
             "value": "储存空间"
+          }
+        }
+      }
+    },
+    "Stories have no caption and disappear after 24 hours.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Storys haben keine Bildunterschrift und verschwinden nach 24 Stunden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las historias no llevan texto y desaparecen a las 24 horas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les stories n’ont pas de légende et disparaissent après 24 heures."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le storie non hanno didascalia e scompaiono dopo 24 ore."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ストーリーズにはキャプションがなく、24時間後に消えます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스토리에는 캡션이 없으며 24시간 후 사라집니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stories não têm legenda e somem depois de 24 horas."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hikâyelerde açıklama olmaz ve 24 saat sonra kaybolurlar."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快拍没有文案,24 小时后消失。"
+          }
+        }
+      }
+    },
+    "Story": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Story"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Story"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Storia"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ストーリーズ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스토리"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Story"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hikâye"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快拍"
           }
         }
       }
@@ -28069,6 +28765,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "直到关闭"
+          }
+        }
+      }
+    },
+    "Update Promo Studio on your Mac to post pictures to Instagram. Until then, save the image and post it from Instagram.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktualisiere Promo Studio auf deinem Mac, um Bilder auf Instagram zu posten. Bis dahin sichere das Bild und poste es in Instagram."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actualiza Promo Studio en tu Mac para publicar imágenes en Instagram. Mientras tanto, guarda la imagen y publícala desde Instagram."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mettez à jour Promo Studio sur votre Mac pour publier des images sur Instagram. En attendant, enregistrez l’image et publiez-la depuis Instagram."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aggiorna Promo Studio sul Mac per pubblicare immagini su Instagram. Nel frattempo, salva l’immagine e pubblicala da Instagram."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instagramに画像を投稿するには、MacのPromo Studioをアップデートしてください。それまでは画像を保存してInstagramから投稿してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instagram에 이미지를 게시하려면 Mac의 Promo Studio를 업데이트하세요. 그 전까지는 이미지를 저장해 Instagram에서 게시하세요."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atualize o Promo Studio no seu Mac para publicar imagens no Instagram. Até lá, salve a imagem e publique pelo Instagram."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instagram'a resim paylaşmak için Mac'teki Promo Studio'yu güncelleyin. O zamana kadar görseli kaydedip Instagram'dan paylaşın."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请在 Mac 上更新 Promo Studio 以将图片发布到 Instagram。在此之前,请保存图片并从 Instagram 发布。"
           }
         }
       }
