@@ -1083,6 +1083,10 @@
   "de": "Anthropic-API-Schlüssel statt CLI-Anmeldung verwenden",
   "tr": "CLI girişi yerine bir Anthropic API anahtarı kullan"
  },
+ "Use on battery too": {
+  "de": "Auch im Akkubetrieb nutzen",
+  "tr": "Pildeyken de çalış"
+ },
  "Uses a small privileged helper that only runs `pmset -a disablesleep`. A closed MacBook that stays awake can get warm and drain its battery; the setting is reverted when Remote Code quits.": {
   "de": "Verwendet ein kleines privilegiertes Hilfsprogramm, das nur `pmset -a disablesleep` ausführt. Ein zugeklapptes MacBook, das wach bleibt, kann warm werden und den Akku leeren; die Einstellung wird beim Beenden von Remote Code zurückgesetzt.",
   "tr": "Yalnızca `pmset -a disablesleep` çalıştıran küçük, yetkili bir yardımcı kullanır. Kapağı kapalıyken uyanık kalan bir MacBook ısınabilir ve pilini tüketebilir; Remote Code kapanınca ayar geri alınır."

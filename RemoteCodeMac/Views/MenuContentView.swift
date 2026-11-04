@@ -326,9 +326,16 @@ struct MenuContentView: View {
                 .font(.caption)
                 .foregroundStyle(.orange)
         case .pausedOnBattery:
-            Text("Paused while on battery. It resumes on power.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Paused while on battery. It resumes on power.")
+                    .foregroundStyle(.secondary)
+                Button("Use on battery too") {
+                    controller.settings.pauseLidModeOnBattery = false
+                    Task { await controller.applySettings() }
+                }
+                .buttonStyle(.link)
+            }
+            .font(.caption)
         case .needsApproval:
             Button("Allow the Remote Code helper in Login Items…") {
                 controller.lidClosed.openApprovalSettings()

@@ -270,6 +270,7 @@
  "Updates": "Actualizaciones",
  "Usage limits": "Límites de uso",
  "Use an Anthropic API key instead of the CLI login": "Usar una clave de API de Anthropic en lugar del inicio de sesión de la CLI",
+ "Use on battery too": "Usar también con batería",
  "Uses a small privileged helper that only runs `pmset -a disablesleep`. A closed MacBook that stays awake can get warm and drain its battery; the setting is reverted when Remote Code quits.": "Usa un pequeño asistente con privilegios que solo ejecuta `pmset -a disablesleep`. Un MacBook cerrado que se mantiene activo puede calentarse y agotar la batería; el ajuste se revierte al salir de Remote Code.",
  "Valid for %lld:%@ · single use": "Válido durante %lld:%@ · un solo uso",
  "Verification code": "Código de verificación",

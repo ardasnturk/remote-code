@@ -180,6 +180,7 @@ T = {
 "Pairing QR code": ("Eşleştirme QR kodu", "Kopplungs-QR-Code"),
 "Pause while on battery": ("Pildeyken duraklat", "Im Akkubetrieb pausieren"),
 "Paused while on battery. It resumes on power.": ("Pildeyken duraklatıldı. Güce bağlanınca devam eder.", "Im Akkubetrieb pausiert. Wird am Netzteil fortgesetzt."),
+"Use on battery too": ("Pildeyken de çalış", "Auch im Akkubetrieb nutzen"),
 "Remote Code": ("Remote Code", "Remote Code"),
 "Remote Code could not start: %@": ("Remote Code başlatılamadı: %@", "Remote Code konnte nicht starten: %@"),
 "Remote Code is not running.": ("Remote Code çalışmıyor.", "Remote Code läuft nicht."),

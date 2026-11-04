@@ -270,6 +270,7 @@
  "Updates": "업데이트",
  "Usage limits": "사용 한도",
  "Use an Anthropic API key instead of the CLI login": "CLI 로그인 대신 Anthropic API 키 사용",
+ "Use on battery too": "배터리 사용 중에도 켜기",
  "Uses a small privileged helper that only runs `pmset -a disablesleep`. A closed MacBook that stays awake can get warm and drain its battery; the setting is reverted when Remote Code quits.": "`pmset -a disablesleep`만 실행하는 작은 권한 있는 도우미를 사용합니다. 덮개가 닫힌 채로 깨어 있는 MacBook은 뜨거워지고 배터리가 소모될 수 있으며, 이 설정은 Remote Code를 종료하면 원래대로 되돌아갑니다.",
  "Valid for %lld:%@ · single use": "%lld:%@ 동안 유효 · 1회용",
  "Verification code": "확인 코드",
