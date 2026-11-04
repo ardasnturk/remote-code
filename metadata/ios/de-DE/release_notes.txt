@@ -4,3 +4,4 @@ Vitrin auf Ihrem iPhone, mit Remote Code 1.6 auf dem Mac:
 • Verbinden Sie sich mit einem API-Schlüssel oder Ihrem Apple Account
 • Einstellungen → Plugins installiert Vitrin auf Ihrem Mac
 • Der Promo Studio-Tab zeigt jetzt die Farben von Promo Studio
+• Der Vitrin-Tab öffnet sofort aus einem Cache auf Ihrem iPhone und hat jetzt eine Suche

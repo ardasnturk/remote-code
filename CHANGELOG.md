@@ -6,6 +6,8 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.6.2] — 2026-11-04
+
 ### Added
 - **Vitrin tab, search:** find apps, projects and team pages from the top of the tab,
   and filter long lists (builds, reviews, testers, users and more) in place.
