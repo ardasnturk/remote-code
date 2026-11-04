@@ -3,3 +3,4 @@ Mac'te Remote Code 1.6 ile Vitrin artık telefonunuzda:
 • App Store Connect'i yönetin: uygulamalar, sürümler, TestFlight, yorumlar, fiyatlar, analizler, kullanıcılar ve imzalama
 • API anahtarınızla ya da Apple hesabınızla bağlanın
 • Ayarlar → Eklentiler, Vitrin'i Mac'inize kurar
+• Promo Studio sekmesi artık Promo Studio'nun kendi renkleriyle görünür

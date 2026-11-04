@@ -78,6 +78,8 @@ struct RootView: View {
                             }
                         }
                     }
+                    // The tab bar wears the open plugin's color
+                    .tint(model.selectedTab == .promoStudio ? PromoStudioBrand.accent : nil)
                 } else {
                     MainSplitView()
                 }

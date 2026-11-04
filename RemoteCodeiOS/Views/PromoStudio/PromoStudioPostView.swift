@@ -43,6 +43,7 @@ struct PromoStudioPostView: View {
                 }
                 .padding()
             }
+            .promoStudioScreen()
             .navigationTitle(post.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -119,7 +120,7 @@ struct PromoStudioPostView: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.promoStudioPrimary)
                 if !post.isImage {
                     Button("No Voiceover") { run("produce", ["postId": postId, "voiceover": false]) }
                         .buttonStyle(.bordered)
@@ -344,7 +345,7 @@ struct PromoStudioReviseSection: View {
             } label: {
                 Label("Revise with Claude", systemImage: "wand.and.stars").frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.promoStudioPrimary)
             .disabled(store.job(post.id) != nil || post.isLocked || !post.hasScript || instruction.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             if post.isLocked {
                 Text("Scheduled or published posts cannot be revised.").font(.caption).foregroundStyle(.secondary)
@@ -399,7 +400,7 @@ struct PromoStudioCaptionSection: View {
             } label: {
                 Label("Save", systemImage: "checkmark").frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.promoStudioPrimary)
             .disabled(caption == post.caption && hashtags == tagText(post))
             if let tip = post.postingTip {
                 Label(tip, systemImage: "lightbulb").font(.footnote).foregroundStyle(.secondary)
@@ -558,7 +559,7 @@ struct PromoStudioShareSection: View {
                 }
                 .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.promoStudioPrimary)
             .disabled(!canShare)
             .confirmationDialog(post.isImage ? Text("Post this image to Instagram now?") : Text("Post this video to Instagram now?"), isPresented: $confirmPublish, titleVisibility: .visible) {
                 Button("Post Now") { run("publish", ["postId": post.id, "placement": post.isStory ? "story" : "feed"]) }
@@ -644,6 +645,7 @@ struct PromoStudioCoverPicker: View {
                     .font(.caption).foregroundStyle(.secondary).multilineTextAlignment(.center)
             }
             .padding()
+            .promoStudioScreen()
             .navigationTitle(Text("Choose Cover"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

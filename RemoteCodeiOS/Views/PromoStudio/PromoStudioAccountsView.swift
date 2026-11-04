@@ -48,6 +48,7 @@ struct PromoStudioAccountsView: View {
                     Text("After linking a new Instagram account to one of your Facebook Pages, refresh to add it without signing in again.")
                 }
             }
+            .promoStudioScreen()
             .navigationTitle(Text("Accounts"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -118,6 +119,7 @@ struct PromoStudioLoginSheet: View {
         NavigationStack {
             PromoStudioLoginWebView(login: login, onFinish: onFinish)
                 .ignoresSafeArea(edges: .bottom)
+                .promoStudioScreen()
                 .navigationTitle(Text("Sign In"))
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

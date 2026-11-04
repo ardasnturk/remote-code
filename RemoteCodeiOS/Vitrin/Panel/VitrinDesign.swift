@@ -23,6 +23,8 @@ enum VitrinBrand {
 struct BrandBackground: View {
     @Environment(\.colorScheme) private var colorScheme
     var intensity: Double = 1
+    /// Top left, right, bottom left. A plugin's tab passes its own colors.
+    var blobs = [VitrinBrand.amber, VitrinBrand.coral, VitrinBrand.pink]
 
     var body: some View {
         ZStack {
@@ -30,11 +32,11 @@ struct BrandBackground: View {
             GeometryReader { proxy in
                 let size = proxy.size
                 ZStack {
-                    blob(VitrinBrand.amber, diameter: size.width * 0.9)
+                    blob(blobs[0], diameter: size.width * 0.9)
                         .offset(x: -size.width * 0.35, y: -size.height * 0.35)
-                    blob(VitrinBrand.coral, diameter: size.width * 0.8)
+                    blob(blobs[1], diameter: size.width * 0.8)
                         .offset(x: size.width * 0.4, y: -size.height * 0.1)
-                    blob(VitrinBrand.pink, diameter: size.width * 0.9)
+                    blob(blobs[2], diameter: size.width * 0.9)
                         .offset(x: -size.width * 0.1, y: size.height * 0.45)
                 }
                 .frame(width: size.width, height: size.height)
@@ -65,10 +67,10 @@ extension View {
     }
 
     /// Screen content: brand background, with list/form backgrounds hidden.
-    func brandWindowBackground(intensity: Double = 0.45) -> some View {
+    func brandWindowBackground(intensity: Double = 0.45, blobs: [Color] = [VitrinBrand.amber, VitrinBrand.coral, VitrinBrand.pink]) -> some View {
         self
             .scrollContentBackground(.hidden)
-            .background(BrandBackground(intensity: intensity))
+            .background(BrandBackground(intensity: intensity, blobs: blobs))
     }
 }
 
@@ -95,6 +97,7 @@ struct VitrinBadge: View {
 struct VitrinGradientButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) private var isEnabled
     var fullWidth = true
+    var gradient = VitrinBrand.buttonGradient
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -103,7 +106,7 @@ struct VitrinGradientButtonStyle: ButtonStyle {
             .padding(.vertical, 8)
             .padding(.horizontal, 14)
             .frame(maxWidth: fullWidth ? .infinity : nil)
-            .background(VitrinBrand.buttonGradient, in: RoundedRectangle(cornerRadius: 11, style: .continuous))
+            .background(gradient, in: RoundedRectangle(cornerRadius: 11, style: .continuous))
             .opacity(isEnabled ? (configuration.isPressed ? 0.8 : 1) : 0.45)
             .scaleEffect(configuration.isPressed ? 0.98 : 1)
             .contentShape(RoundedRectangle(cornerRadius: 11, style: .continuous))

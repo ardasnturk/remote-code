@@ -12,6 +12,11 @@ All notable changes to Remote Code are recorded here. The format follows
 - **Lid-closed mode on battery:** when the mode is paused on battery, the Mac menu
   now offers "Use on battery too", so it can be turned on where the pause shows.
 
+### Changed
+- Promo Studio tab on iPhone and iPad (build 24): it now wears Promo Studio's own
+  colors, with the indigo, violet and pink background, purple controls and gradient
+  buttons, the way the Vitrin tab wears Vitrin's.
+
 ## [1.6.0] — 2026-11-04
 
 ### Added

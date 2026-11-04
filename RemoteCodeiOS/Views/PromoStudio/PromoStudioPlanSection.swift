@@ -79,7 +79,7 @@ struct PromoStudioPlanSection: View {
             } label: {
                 Label("Start Now", systemImage: "play.fill").frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.promoStudioPrimary)
             .disabled(working || store.job(post.id) != nil)
         }
         .onAppear {

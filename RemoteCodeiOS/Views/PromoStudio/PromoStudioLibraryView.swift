@@ -56,7 +56,7 @@ struct PromoStudioLibraryView: View {
                             Text(verbatim: "/\(skill.name)").font(.headline.monospaced())
                             Text(skill.description).font(.caption).foregroundStyle(.secondary).lineLimit(4)
                             Button("Generate…") { generate = PromoStudioNewVideoRequest(template: PromoStudioTemplateRef(libraryId: libraryId, skill: skill.name)) }
-                                .buttonStyle(.borderedProminent)
+                                .buttonStyle(.promoStudioPrimary)
                                 .controlSize(.small)
                         }
                         .padding(.vertical, 2)
@@ -74,6 +74,7 @@ struct PromoStudioLibraryView: View {
                     }
                 }
             }
+            .promoStudioScreen()
             .navigationTitle(library.name)
             .navigationBarTitleDisplayMode(.inline)
             .sheet(item: $generate) { request in

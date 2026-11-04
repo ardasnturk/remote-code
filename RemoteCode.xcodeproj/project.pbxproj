@@ -45,6 +45,7 @@
 		32450B966CD71E23FB01064F /* GetIPhoneAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFDEA710CA5F6711033F310 /* GetIPhoneAppView.swift */; };
 		35809D1F3F5D5E8735D49254 /* com.ardasenturk.Pilothouse.Helper.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE23AD0468610D93863D200B /* com.ardasenturk.Pilothouse.Helper.plist */; };
 		366D0F4AD8B119BA44E2CC7B /* UpdateCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3126FFA93518BB6C8ACEB /* UpdateCore.swift */; };
+		36E2DE7602A0D1F00C47DE03 /* PromoStudioDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BFB7284E1499017B0ADACA /* PromoStudioDesign.swift */; };
 		37452016A8C2B09BFD1816C0 /* RemoteCodeMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1B93FB8CEE2872E432FDF3 /* RemoteCodeMacApp.swift */; };
 		3AD72DB56F38719C72328025 /* AscActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84144F7927170DE5ECBF88 /* AscActions.swift */; };
 		3B7E4CE8AF1FF7A46C057193 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4256D951C6206245360AB2C7 /* QRCode.swift */; };
@@ -306,6 +307,7 @@
 		C6FDA37C7AB118F6488D582B /* AscTestFlightSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscTestFlightSections.swift; sourceTree = "<group>"; };
 		CE23AD0468610D93863D200B /* com.ardasenturk.Pilothouse.Helper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = com.ardasenturk.Pilothouse.Helper.plist; sourceTree = "<group>"; };
 		CEB3509BBAE9FF5A08221CFE /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
+		D0BFB7284E1499017B0ADACA /* PromoStudioDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoStudioDesign.swift; sourceTree = "<group>"; };
 		D15588B10256923DCE37B501 /* VitrinHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitrinHomeView.swift; sourceTree = "<group>"; };
 		D43E4DAC245724873B602FE8 /* StudioComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioComponents.swift; sourceTree = "<group>"; };
 		D6402B68AE49FAF2FE9DBF7C /* UploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				C06922C9924E59942AC234DD /* PromoStudioAccountsView.swift */,
+				D0BFB7284E1499017B0ADACA /* PromoStudioDesign.swift */,
 				63AAE25B6B5CFC7BBA1118B7 /* PromoStudioHomeView.swift */,
 				76CCAB96162C76356EC6DCF3 /* PromoStudioLibraryView.swift */,
 				82F051E1E2D8E10BF5B2F8E7 /* PromoStudioNewVideoView.swift */,
@@ -1068,6 +1071,7 @@
 				F0F82940636DC5448CA0BFF5 /* ProjectDetailView.swift in Sources */,
 				2F30419476A0EBBE812E80E6 /* ProjectSession.swift in Sources */,
 				6ED31F7FDCEEA42C8DB7AE39 /* PromoStudioAccountsView.swift in Sources */,
+				36E2DE7602A0D1F00C47DE03 /* PromoStudioDesign.swift in Sources */,
 				2415F32E09EC8BA119B36CAA /* PromoStudioHomeView.swift in Sources */,
 				1D583786DADCF459F4917256 /* PromoStudioLibraryView.swift in Sources */,
 				F548B2EDD54FA8CE53DADD56 /* PromoStudioModels.swift in Sources */,
@@ -1302,7 +1306,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 5JMD3VSD7N;
@@ -1398,7 +1402,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5JMD3VSD7N;

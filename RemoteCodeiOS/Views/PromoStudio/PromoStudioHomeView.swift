@@ -26,6 +26,7 @@ struct PromoStudioHomeView: View {
                     ProgressView()
                 }
             }
+            .promoStudioScreen()
             .navigationTitle(Text("Promo Studio"))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -113,7 +114,7 @@ struct PromoStudioHomeView: View {
                                     .font(.title3)
                                     .foregroundStyle(.white)
                                     .frame(width: 40, height: 40)
-                                    .background(LinearGradient(colors: [.purple, .pink], startPoint: .topLeading, endPoint: .bottomTrailing), in: RoundedRectangle(cornerRadius: 10))
+                                    .background(PromoStudioBrand.gradient, in: RoundedRectangle(cornerRadius: 10))
                                 VStack(alignment: .leading) {
                                     Text(library.name).font(.headline)
                                     Text("\(library.skills.count) video templates").font(.caption).foregroundStyle(.secondary)

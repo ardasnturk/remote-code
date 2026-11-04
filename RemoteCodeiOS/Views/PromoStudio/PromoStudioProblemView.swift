@@ -27,7 +27,7 @@ struct PromoStudioProblemCard: View {
                     } label: {
                         if working { ProgressView() } else { Text(label) }
                     }
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.promoStudioPrimary)
                     .controlSize(.small)
                     .disabled(working || store.job(postId) != nil)
                 }
@@ -104,6 +104,7 @@ struct PromoStudioHealthView: View {
                 }
             }
         }
+        .promoStudioScreen()
         .navigationTitle(Text("Mac Status"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

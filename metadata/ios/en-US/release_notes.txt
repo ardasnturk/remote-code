@@ -3,3 +3,4 @@ Vitrin on your phone, with Remote Code 1.6 on your Mac:
 • Manage App Store Connect: apps, versions, TestFlight, reviews, prices, analytics, users and signing
 • Connect with an API key or your Apple Account
 • Settings → Plugins installs Vitrin on your Mac
+• The Promo Studio tab now wears Promo Studio's own colors

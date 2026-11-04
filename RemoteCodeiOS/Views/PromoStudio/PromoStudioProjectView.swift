@@ -64,7 +64,7 @@ struct PromoStudioProjectView: View {
                                     Button("Quick Video") {
                                         create("createPost", ["projectId": projectId, "featureId": feature.id, "seconds": 15, "autoRender": true])
                                     }
-                                    .buttonStyle(.borderedProminent)
+                                    .buttonStyle(.promoStudioPrimary)
                                     Button("Prompt…") { composer = PromoStudioComposerRequest(projectId: projectId, featureId: feature.id) }
                                         .buttonStyle(.bordered)
                                 }
@@ -99,6 +99,7 @@ struct PromoStudioProjectView: View {
                     }
                 }
             }
+            .promoStudioScreen()
             .navigationTitle(project.name)
             .navigationBarTitleDisplayMode(.inline)
             .sheet(item: $composer) { request in
@@ -198,6 +199,7 @@ struct PromoStudioComposerView: View {
                     Section { Text(error).foregroundStyle(.red) }
                 }
             }
+            .promoStudioScreen()
             .navigationTitle(Text("New Video"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

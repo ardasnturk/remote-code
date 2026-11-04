@@ -177,6 +177,7 @@ struct PromoStudioNewVideoView: View {
                     Section { Text(error).foregroundStyle(.red) }
                 }
             }
+            .promoStudioScreen()
             .navigationTitle(image ? Text("New Image") : Text("New Video"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -323,6 +324,7 @@ struct PromoStudioNewTemplateView: View {
                     Section { Text(error).foregroundStyle(.red) }
                 }
             }
+            .promoStudioScreen()
             .navigationTitle(Text("New Template"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
