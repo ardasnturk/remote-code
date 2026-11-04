@@ -6,6 +6,8 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.6.1] — 2026-11-04
+
 ### Added
 - **Lid-closed mode on battery:** when the mode is paused on battery, the Mac menu
   now offers "Use on battery too", so it can be turned on where the pause shows.
