@@ -111,13 +111,15 @@ final class RemoteCodeUITests: XCTestCase {
         let drop = app.buttons["simulateNetworkDrop"]
         XCTAssertTrue(app.scrollToElement(drop))
         drop.tap()
-        // The sheet scrolled to the bottom; when its toolbar is not hittable yet,
-        // close it with a swipe instead.
+        // At the bottom of the long Settings form the toolbar can leave the
+        // hierarchy, and one swipe only scrolls the form. Scroll back until
+        // Done can be tapped; a swipe that closes the sheet is fine too.
         let done = app.buttons["Done"]
-        if done.waitForExistence(timeout: 10), done.isHittable {
-            done.tap()
-        } else {
+        for _ in 0..<4 where !done.isHittable {
             app.swipeDown(velocity: .fast)
+        }
+        if done.exists, done.isHittable {
+            done.tap()
         }
 
         // The client reconnects by itself and the Mac's sessions are still there.
