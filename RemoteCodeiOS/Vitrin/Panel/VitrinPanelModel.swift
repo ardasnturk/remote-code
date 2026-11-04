@@ -36,20 +36,23 @@ enum VitrinRoute: Hashable {
     /// `AscCLI` talks to one Mac: the one whose tab is showing.
     func activate() {
         AscCLI.store = store
+        AscCache.shared.account = connection.account
     }
 
-    /// After the store read the hub: who runs App Store Connect now, and with that the app list.
-    func refresh() async {
+    /// After the store read the hub: who runs App Store Connect now, and with that the app list, cache first unless
+    /// `force`.
+    func refresh(force: Bool = false) async {
         connection.apply(store?.hub?.connection)
+        if AscCLI.store === store { AscCache.shared.account = connection.account }
         await credentials.refresh()
-        await ascApps.refresh(connection: connection)
+        await ascApps.refresh(connection: connection, force: force)
         Task { await icons.load(apps: ascApps.apps) }
     }
 
-    /// Reads the connection and the team's apps again.
+    /// Reads the connection and the team's apps again, from App Store Connect.
     func refreshApps() async {
         await store?.refresh()
-        await refresh()
+        await refresh(force: true)
     }
 
     /// The project on the Mac whose `vitrin.config.yaml` names the app's bundle id.

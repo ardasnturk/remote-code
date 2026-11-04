@@ -65,6 +65,7 @@ struct TeamView: View {
                 }
             }
         }
+        .refreshable { AscCache.shared.reloadVisible() }
         .brandWindowBackground()
         .navigationTitle(L.t(page.titleKey))
         .navigationBarTitleDisplayMode(.inline)

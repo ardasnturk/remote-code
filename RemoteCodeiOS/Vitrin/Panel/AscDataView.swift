@@ -85,15 +85,41 @@ struct AscDataView: View {
     private static func rank(_ key: String) -> Int { titles.firstIndex(of: key) ?? (AscText.isStateKey(key) ? 100 : 200) }
 }
 
+/// The search field of a list long enough to need one. It filters what the page already has, so it needs no request.
+struct AscListSearch: View {
+    /// Shorter lists are read at a glance.
+    static let threshold = 6
+    @Binding var text: String
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
+            TextField(L.t("search.list"), text: $text)
+                .textInputAutocapitalization(.never).autocorrectionDisabled().submitLabel(.search)
+                .accessibilityIdentifier("asc.listSearch")
+            if !text.isEmpty {
+                Button { text = "" } label: { Image(systemName: "xmark.circle.fill") }.buttonStyle(.plain).foregroundStyle(.secondary)
+            }
+        }
+        .font(.callout)
+        .padding(.horizontal, 10).padding(.vertical, 7)
+        .background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 8))
+    }
+}
+
 /// Rows of resources: image, title, two details, state; a row opens to all of its fields.
 struct AscRowList: View {
     var rows: [AscDataView.Row]
     @State private var open: String?
     private static let pageSize = 50
     @State private var shown = pageSize
+    @State private var query = ""
 
     var body: some View {
+        let rows = self.rows.filter { Self.matches($0, query) }
         VStack(spacing: 0) {
+            if self.rows.count > AscListSearch.threshold { AscListSearch(text: $query).padding(6) }
+            if rows.isEmpty { Text(L.t("search.noResults")).font(.callout).foregroundStyle(.secondary).padding(10) }
             ForEach(Array(rows.prefix(shown).enumerated()), id: \.element.id) { i, r in
                 row(r)
                 if i < min(shown, rows.count) - 1 { Divider().opacity(0.4) }
@@ -128,6 +154,11 @@ struct AscRowList: View {
                 AscFields(fields: r.fields).padding(.horizontal, 10).padding(.bottom, 10)
             }
         }
+    }
+
+    /// Any field of the row, in the words the page shows it.
+    @MainActor static func matches(_ r: AscDataView.Row, _ query: String) -> Bool {
+        query.isEmpty || r.fields.contains { AscText.plain($0.key, $0.value).matches(search: query) }
     }
 
     struct Summary {

@@ -204,6 +204,7 @@ final class AppModel {
         if activeMac?.id == mac.id { await disconnect() }
         store.remove(mac.id)
         for session in cache.sessions(macId: mac.id) { cache.deleteSession(session.id) }
+        AscCache.shared.removeAll()
         if preferences.activeMacId == mac.id { preferences.activeMacId = store.macs.first?.id }
         connect()
     }
@@ -215,6 +216,7 @@ final class AppModel {
 
     func clearCache() {
         cache.clearAll()
+        AscCache.shared.removeAll()
     }
 
     /// UI tests only: cut the demo connection to exercise reconnection.

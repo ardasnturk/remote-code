@@ -18,9 +18,12 @@ third-party SDKs.
   own terms and privacy policy.
 * **Stored on your devices.** Session transcripts are kept on your Mac
   (`~/Library/Application Support/Pilothouse`, deleted after 30 days by default)
-  and cached on your phone for offline reading. Pairing keys are kept in the
-  Keychain of each device. You can delete all of it at any time: clear the cache
-  in the app's settings, unpair the Mac, or uninstall the apps.
+  and cached on your phone for offline reading. If you use the Vitrin tab, what
+  it reads from your App Store Connect account (apps, builds, testers, reviews and
+  so on) is cached on your phone too, so its pages open without waiting. Pairing
+  keys are kept in the Keychain of each device. You can delete all of it at any
+  time: clear the cache in the app's settings, unpair the Mac, or uninstall the
+  apps.
 * **Camera.** Used only to scan the pairing QR code; images are not stored.
 * **Local network.** Used only to find and connect to your own Mac.
 * **Photos you attach** to a message are sent to your Mac only.
@@ -52,8 +55,11 @@ Hesap, analitik, reklam, çökme raporu ya da üçüncü taraf SDK yoktur.
   politikası altında işler.
 * **Cihazlarınızda saklananlar.** Oturum dökümleri Mac'inizde
   (`~/Library/Application Support/Pilothouse`, varsayılan olarak 30 gün sonra
-  silinir) ve çevrimdışı okuma için telefonunuzda önbellekte tutulur. Eşleştirme
-  anahtarları her cihazın Anahtar Zinciri'ndedir. Hepsini istediğiniz zaman
+  silinir) ve çevrimdışı okuma için telefonunuzda önbellekte tutulur. Vitrin
+  sekmesini kullanıyorsanız, App Store Connect hesabınızdan okuduğu veriler
+  (uygulamalar, build'ler, test kullanıcıları, yorumlar vb.) sayfaların beklemeden
+  açılması için yine telefonunuzda önbellekte tutulur. Eşleştirme anahtarları
+  her cihazın Anahtar Zinciri'ndedir. Hepsini istediğiniz zaman
   silebilirsiniz: uygulama ayarlarından önbelleği temizleyin, Mac eşleşmesini
   kaldırın ya da uygulamaları silin.
 * **Kamera.** Yalnızca eşleştirme QR kodunu okumak için kullanılır; görüntü
@@ -91,8 +97,11 @@ Absturzberichte und keine SDKs von Drittanbietern.
   Bedingungen und der Datenschutzerklärung von Anthropic.
 * **Auf deinen Geräten gespeichert.** Sitzungsverläufe liegen auf deinem Mac
   (`~/Library/Application Support/Pilothouse`, standardmäßig nach 30 Tagen
-  gelöscht) und zum Offline-Lesen im Cache deines iPhones. Kopplungsschlüssel
-  liegen im Schlüsselbund des jeweiligen Geräts. Du kannst alles jederzeit
+  gelöscht) und zum Offline-Lesen im Cache deines iPhones. Was der Vitrin-Tab aus
+  deinem App-Store-Connect-Konto liest (Apps, Builds, Tester, Rezensionen usw.),
+  liegt ebenfalls im Cache deines iPhones, damit seine Seiten ohne Wartezeit
+  öffnen. Kopplungsschlüssel liegen im Schlüsselbund des jeweiligen Geräts. Du
+  kannst alles jederzeit
   löschen: Cache in den Einstellungen leeren, Mac entkoppeln oder die Apps
   entfernen.
 * **Kamera.** Nur zum Scannen des Kopplungs-QR-Codes; Bilder werden nicht

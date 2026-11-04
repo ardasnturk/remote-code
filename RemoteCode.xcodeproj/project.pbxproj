@@ -84,6 +84,7 @@
 		6F5F8E7EE3A86E866849D92A /* WeeklySummarizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798F6950E03A68986AB21762 /* WeeklySummarizer.swift */; };
 		715CC710A44B46D791F9B0B7 /* ResearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5BB9991A6529A31357CCD /* ResearchView.swift */; };
 		7164E738FD7CED642DA526DD /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8AE93E6091959646870AF6 /* PairingView.swift */; };
+		72A7D83F8D4409C7DBCC2CCF /* AscCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD0042D224B83D41B92E702 /* AscCache.swift */; };
 		731234AA773E0887FD48B1DB /* AppIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96B4A2FDE9E103F2B5759F /* AppIcons.swift */; };
 		735C4BAE7539C1CB19580040 /* MacConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCC7AD6E7134746DB99686 /* MacConnection.swift */; };
 		760F0771466F64D213501526 /* VitrinJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9462D8C3DB5D8A1309FEA /* VitrinJSON.swift */; };
@@ -255,6 +256,7 @@
 		6AE738C2DF14A593DB3CFC1B /* AccountForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountForm.swift; sourceTree = "<group>"; };
 		6BCE0B24D7668F977B01DE93 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		6C4744BBCAEC6707B89296D6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		6CD0042D224B83D41B92E702 /* AscCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscCache.swift; sourceTree = "<group>"; };
 		6F96B4A2FDE9E103F2B5759F /* AppIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcons.swift; sourceTree = "<group>"; };
 		70D7671F08AA11B2389475B5 /* RemoteCodeUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RemoteCodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7187EE5C045287158B4AB7BD /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				24F994FA295540470F1D6A39 /* AscAnalyticsSections.swift */,
 				22290016BBBE299ACC84E747 /* ASCApps.swift */,
 				91409CC5AD100B227962F710 /* AscBuildSections.swift */,
+				6CD0042D224B83D41B92E702 /* AscCache.swift */,
 				EC0144143425CF65C4EB3E21 /* AscCatalog.swift */,
 				E317017478E67077E7DF9871 /* AscCLI.swift */,
 				AFB5BF9CDB0C7C316D901AEF /* AscCommandShelf.swift */,
@@ -1035,6 +1038,7 @@
 				0BB42A429FCE38DCE66494DF /* AscAnalyticsSections.swift in Sources */,
 				53C6E6FC9CDFF460F2C4A693 /* AscBuildSections.swift in Sources */,
 				D87E44A2C7A95D497AFB5848 /* AscCLI.swift in Sources */,
+				72A7D83F8D4409C7DBCC2CCF /* AscCache.swift in Sources */,
 				9BDD85C5AE5DBED6E412AD98 /* AscCatalog.swift in Sources */,
 				B327D2E52B694DA9A06A2B1F /* AscCommandShelf.swift in Sources */,
 				B180188B577A17159DF1C53F /* AscDataView.swift in Sources */,

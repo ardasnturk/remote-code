@@ -33,19 +33,31 @@ enum AscCLI {
 
     /// Runs `asc <args>` on the Mac. `readOnly` makes asc refuse any POST, PATCH, PUT or DELETE. The Mac's `extraEnv`
     /// has no counterpart: the hub takes no environment, and Apple Account runs go through `AppleWebSession`.
-    @MainActor static func run(_ args: [String], readOnly: Bool = true, timeout: TimeInterval = 180) async throws -> Result {
+    @MainActor static func run(_ args: [String], readOnly: Bool = true, timeout: TimeInterval = 180, changes: Bool? = nil) async throws -> Result {
         guard let store else { throw Failure(message: L.t("vitrin.notConnected")) }
         if store.hub?.tools["asc"] == false { throw Failure(message: L.t("asc.missing")) }
         let r = try await store.asc(args, write: !readOnly, timeout: timeout)
+        // A write that went through marks the cache old, unless it was a read that needs write access.
+        if r.code == 0, changes ?? !readOnly { AscCache.shared.markStale() }
         return Result(code: Int32(r.code), stdout: r.stdout, stderr: r.stderr)
     }
 
     /// `asc <args> --output json`, decoded; throws with asc's own message when it fails.
     @MainActor static func json(_ args: [String], readOnly: Bool = true, timeout: TimeInterval = 180) async throws -> VitrinJSON {
-        let r = try await run(args + ["--output", "json"], readOnly: readOnly, timeout: timeout)
+        let r = try await run(args + ["--output", "json"], readOnly: readOnly, timeout: timeout, changes: false)
         guard r.ok else { throw Failure(message: r.errorLine) }
         guard let j = r.json else { throw Failure(message: r.stdout.isEmpty ? r.errorLine : String(r.stdout.prefix(300))) }
         return j
+    }
+
+    /// `json`, cache first: `deliver` gets what is stored at once, and the new result when it had to be read.
+    @MainActor static func read(_ args: [String], readOnly: Bool = true, timeout: TimeInterval = 180, force: Bool = false, deliver: (AscCache.Entry) -> Void) async throws {
+        try await AscCache.shared.read(args, force: force, fetch: { try await json(args, readOnly: readOnly, timeout: timeout) }, deliver: deliver)
+    }
+
+    /// `json`, cache first, for code that needs one answer.
+    @MainActor static func cached(_ args: [String]) async throws -> VitrinJSON {
+        try await AscCache.shared.value(args) { try await json(args) }
     }
 }
 
@@ -67,6 +79,15 @@ enum AscCLI {
         switch state {
         case .vitrinKey, .ascLogin: return true
         default: return false
+        }
+    }
+
+    /// The key whose results the cache keeps.
+    var account: String? {
+        switch state {
+        case .vitrinKey(let id): return id
+        case .ascLogin(let name, let id): return "\(name)/\(id)"
+        default: return nil
         }
     }
 

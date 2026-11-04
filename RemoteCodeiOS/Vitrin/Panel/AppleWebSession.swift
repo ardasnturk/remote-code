@@ -82,6 +82,7 @@ import Observation
             needsCode = state.needsCode
             guard !state.running else { continue }
             guard let output = state.result else { throw AscCLI.Failure(message: L.t("web.failed")) }
+            if output.code == 0 { AscCache.shared.markStale() }
             return AscCLI.Result(code: Int32(output.code), stdout: output.stdout, stderr: output.stderr)
         }
         throw AscCLI.Failure(message: L.t("web.failed"))

@@ -33,17 +33,30 @@ private struct VitrinHomeList: View {
     @State private var showFolderPicker = false
     @State private var projectError: String?
     @State private var installError: String?
+    @State private var query = ""
+
+    private var searching: Bool { !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+    private var projects: [VitrinProject] { store.projects.filter { [$0.name, $0.path, $0.bundleId ?? ""].contains { $0.matches(search: query) } } }
+    private var apps: [ASCApp] { model.ascApps.apps.filter { $0.matches(query) } }
+    private var teamPages: [TeamPage] { TeamPage.allCases.filter { L.t($0.titleKey).matches(search: query) } }
 
     var body: some View {
         List {
             if let error = store.loadError { problem(error) }
-            connectionSection
-            projectsSection
-            appsSection
-            teamSection
+            if searching {
+                if projects.isEmpty, apps.isEmpty, teamPages.isEmpty {
+                    Text(L.t("search.noResults")).foregroundStyle(.secondary).accessibilityIdentifier("vitrin.noResults")
+                }
+            } else {
+                connectionSection
+            }
+            if !searching || !projects.isEmpty { projectsSection }
+            if !searching || !apps.isEmpty { appsSection }
+            if !teamPages.isEmpty { teamSection }
         }
         .brandWindowBackground()
         .navigationTitle(Text(verbatim: "Vitrin"))
+        .searchable(text: $query, prompt: Text(L.t("search.apps")))
         .refreshable { await reload() }
         .sheet(isPresented: $showNewApp) {
             NewAppSheet { showNewApp = false }
@@ -59,7 +72,7 @@ private struct VitrinHomeList: View {
 
     private func reload() async {
         await store.refresh()
-        await model.refresh()
+        await model.refresh(force: true)
     }
 
     /// The hub could not be read. A hub older than the Mac's plugin wants goes away with the latest Vitrin.
@@ -143,7 +156,7 @@ private struct VitrinHomeList: View {
             } else if list.apps.isEmpty, model.connection.isConnected {
                 Text(L.t("asc.empty")).foregroundStyle(.secondary)
             }
-            ForEach(list.apps) { app in
+            ForEach(apps) { app in
                 NavigationLink(value: VitrinRoute.app(app)) {
                     AppRow(app: app, linked: model.linkedProject(for: app))
                 }
@@ -160,7 +173,7 @@ private struct VitrinHomeList: View {
             if store.projects.isEmpty {
                 Text(L.t("vitrin.noProjects")).foregroundStyle(.secondary)
             }
-            ForEach(store.projects) { project in
+            ForEach(projects) { project in
                 Group {
                     if project.exists {
                         NavigationLink(value: VitrinRoute.project(project)) { row(project) }
@@ -217,7 +230,7 @@ private struct VitrinHomeList: View {
 
     private var teamSection: some View {
         Section {
-            ForEach(TeamPage.allCases) { page in
+            ForEach(teamPages) { page in
                 NavigationLink(value: VitrinRoute.team(page)) {
                     HStack(spacing: 12) {
                         VitrinBadge(symbol: page.symbol, colors: page.colors, size: 28)

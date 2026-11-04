@@ -29,9 +29,9 @@ import Observation
         let ids = Set(apps.map(\.id))
         guard !ids.isEmpty, ids != loadedFor else { return }
         loadedFor = ids
-        if let doc = try? await AscCLI.json(Self.recentBuildsArgs) { merge(Self.icons(from: doc)) }
+        if let doc = try? await AscCLI.cached(Self.recentBuildsArgs) { merge(Self.icons(from: doc)) }
         for app in apps where templates[app.id] == nil {
-            if let doc = try? await AscCLI.json(["builds", "list", "--app", app.id, "--limit", "1", "--sort", "-uploadedDate"]) { merge(Self.icons(from: doc, app: app.id)) }
+            if let doc = try? await AscCLI.cached(["builds", "list", "--app", app.id, "--limit", "1", "--sort", "-uploadedDate"]) { merge(Self.icons(from: doc, app: app.id)) }
         }
         save()
     }

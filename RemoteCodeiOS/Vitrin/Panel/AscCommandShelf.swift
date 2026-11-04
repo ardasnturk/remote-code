@@ -186,7 +186,7 @@ struct AscIDPicker: View {
             guard let source = AscCatalog.source(flag: flag, path: command.path) else { options = []; return }
             var a = source.words
             for f in source.takes { if let v = prefill[f], !v.isEmpty { a += ["--\(f)", v] } }
-            guard let doc = try? await AscCLI.json(a), case .list(let rows) = AscDataView.shape(doc) else { options = []; return }
+            guard let doc = try? await AscCLI.cached(a), case .list(let rows) = AscDataView.shape(doc) else { options = []; return }
             options = rows.map { r in
                 let s = AscRowList.summary(r)
                 return (r.id, s.detail.isEmpty ? s.title : "\(s.title) · \(s.detail)")

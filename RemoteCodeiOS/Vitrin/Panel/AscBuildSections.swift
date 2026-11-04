@@ -6,17 +6,22 @@ struct BuildList: View {
     var appID: String
     var reload: () -> Void = {}
     @State private var open: String?
+    @State private var query = ""
 
     var body: some View {
         AscLoad(args: ["builds", "list", "--app", appID, "--limit", "50", "--sort", "-uploadedDate", "--include", "preReleaseVersion"]) { doc, _ in
-            let builds = JSONAPI.items(doc)
+            let all = JSONAPI.items(doc)
             let versions = Self.versions(doc)
-            if builds.isEmpty {
+            let version = { (b: [String: VitrinJSON]) in b["relationships"]?.objectValue?["preReleaseVersion"]?.objectValue?["data"]?.objectValue?["id"]?.stringValue.flatMap { versions[$0] } }
+            let builds = all.filter { b in [version(b) ?? "", JSONAPI.text(b, "version"), ASCWords.state(JSONAPI.text(b, "processingState"))].contains { $0.matches(search: query) } }
+            if all.isEmpty {
                 AscDataView(doc: .array([]))
             } else {
                 VStack(spacing: 0) {
+                    if all.count > AscListSearch.threshold { AscListSearch(text: $query).padding(6) }
+                    if builds.isEmpty { Text(L.t("search.noResults")).font(.callout).foregroundStyle(.secondary).padding(10) }
                     ForEach(Array(builds.enumerated()), id: \.offset) { i, b in
-                        row(b, version: b["relationships"]?.objectValue?["preReleaseVersion"]?.objectValue?["data"]?.objectValue?["id"]?.stringValue.flatMap { versions[$0] })
+                        row(b, version: version(b))
                         if i < builds.count - 1 { Divider().opacity(0.4) }
                     }
                 }

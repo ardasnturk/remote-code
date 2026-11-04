@@ -6,6 +6,18 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added
+- **Vitrin tab, search:** find apps, projects and team pages from the top of the tab,
+  and filter long lists (builds, reviews, testers, users and more) in place.
+
+### Changed
+- **Vitrin tab opens from a cache:** what it reads from App Store Connect is kept on
+  the phone, per account. Pages open at once and most need no request; results older
+  than 15 minutes to 6 hours, depending on how often they change, show right away and
+  update behind the page. Each page says how old it is, and pulling down or the refresh
+  button reads it again. A change made from the phone marks the cache old. Clear Cached
+  Transcripts in Settings and unpairing a Mac empty it too.
+
 ## [1.6.1] — 2026-11-04
 
 ### Added
