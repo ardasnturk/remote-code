@@ -72,6 +72,9 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case "promoStudio": message = .promoStudio(try payload(PromoStudioRequest.self))
         case "promoStudioSubscribe": message = .promoStudioSubscribe
         case "promoStudioUnsubscribe": message = .promoStudioUnsubscribe
+        case "plugin": message = .plugin(try payload(PluginRequest.self))
+        case "pluginSubscribe": message = .pluginSubscribe(try payload(PluginRef.self))
+        case "pluginUnsubscribe": message = .pluginUnsubscribe(try payload(PluginRef.self))
         case "setPower": message = .setPower(try payload(SetPower.self))
         case "getStorage": message = .getStorage
         case "scanCleanup": message = .scanCleanup
@@ -96,6 +99,8 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
             .getActivity:
             try container.encode(EmptyPayload(), forKey: .payload)
         case .promoStudio(let payload): try container.encode(payload, forKey: .payload)
+        case .plugin(let payload): try container.encode(payload, forKey: .payload)
+        case .pluginSubscribe(let payload), .pluginUnsubscribe(let payload): try container.encode(payload, forKey: .payload)
         case .setPower(let payload): try container.encode(payload, forKey: .payload)
         case .runCleanup(let payload): try container.encode(payload, forKey: .payload)
         case .quitApp(let payload): try container.encode(payload, forKey: .payload)
@@ -162,6 +167,8 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case "commandCatalog": message = .commandCatalog(try payload(CommandCatalog.self))
         case "promoStudioResponse": message = .promoStudioResponse(try payload(PromoStudioResponse.self))
         case "promoStudioEvent": message = .promoStudioEvent(try payload(PromoStudioEvent.self))
+        case "pluginResponse": message = .pluginResponse(try payload(PluginResponse.self))
+        case "pluginEvent": message = .pluginEvent(try payload(PluginEvent.self))
         case "storage": message = .storage(try payload(StorageOverview.self))
         case "cleanupScan": message = .cleanupScan(try payload(CleanupScan.self))
         case "cleanupResult": message = .cleanupResult(try payload(CleanupResult.self))
@@ -195,6 +202,8 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case .commandCatalog(let payload): try container.encode(payload, forKey: .payload)
         case .promoStudioResponse(let payload): try container.encode(payload, forKey: .payload)
         case .promoStudioEvent(let payload): try container.encode(payload, forKey: .payload)
+        case .pluginResponse(let payload): try container.encode(payload, forKey: .payload)
+        case .pluginEvent(let payload): try container.encode(payload, forKey: .payload)
         case .storage(let payload): try container.encode(payload, forKey: .payload)
         case .cleanupScan(let payload): try container.encode(payload, forKey: .payload)
         case .cleanupResult(let payload): try container.encode(payload, forKey: .payload)

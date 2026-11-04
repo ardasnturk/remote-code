@@ -1061,3 +1061,38 @@ Perch's Activity view (MIT, see NOTICE):
   when it becomes critical, naming the app that uses the most memory; it stays
   quiet until pressure is back to normal. Its tap link
   `pilothouse://activity?mac=<fingerprint>` opens the screen.
+
+### D-117 — Plugins, and Vitrin as the first one
+**Status:** accepted
+
+Promo Studio got its own messages, and every further tool would have grown the
+protocol the same way. The `plugin` messages carry a plugin id and otherwise know
+nothing about the tool, so a new plugin needs a `HostPlugin` on the Mac and a tab on
+the phone. Promo Studio stays on its messages: phones and Macs in the field speak them.
+
+Vitrin (the owner's App Store listing tool) is the first plugin. `VitrinPlugin`
+forwards to `vitrin hub`, Vitrin's local control API (its `docs/HUB_API.md`), found
+through `~/Library/Application Support/Vitrin/control.json`. Unlike Promo Studio the
+Vitrin Mac app needn't run: the plugin starts the hub from the CLI on the Mac, and the
+hub ends with Remote Code (`--attached`). `GET /host/status` and `POST /host/install`
+are answered by the plugin itself, because they must work with no Vitrin yet. The
+install runs Vitrin's own launcher from the release's tag, which checks the tarball
+against the checksums in the repository. The capability is always announced, so
+Settings can offer the install; the tab shows once Vitrin is there.
+
+The tab has three parts. Home is native. The App Store Connect panel is the Mac app's
+SwiftUI, ported to `RemoteCodeiOS/Vitrin/Panel` with `AscCLI` calling `asc` on the Mac
+through the hub, because it is 3,700 lines that already render what `asc` returns.
+A project's pages are native too (`RemoteCodeiOS/Vitrin/Project`): the Mac's Flow,
+Research, Listing, Upload, Claude and Log, reshaped for one column, plus Setup, Screens,
+Design and Video written from the Studio's React pages, which the Mac app doesn't have
+natively. `StudioClient` is the Mac's client with each request sent through the plugin,
+so the Studio on the Mac stays the API and the pages hold no logic of their own. The
+first build showed the Studio in a `WKWebView`, which was one implementation fewer, and
+it was dropped because a native app shouldn't turn into a web page when a project opens.
+Review draws the same items as `metadata/report.html` from `/api/review`. The one web
+view left shows `store-preview.html`, a generated result rather than a screen of the app.
+
+The panel and the pages are copies, so a change on the Mac doesn't reach the phone by itself.
+A Swift package shared across the two repositories would avoid that, at the price of
+moving the Mac app's views and strings; revisit that if the panels start to drift.

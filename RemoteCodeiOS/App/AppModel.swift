@@ -223,7 +223,7 @@ final class AppModel {
     }
 }
 
-/// Tabs of the root view when Promo Studio is available.
+/// Tabs of the root view when Promo Studio or Vitrin is available.
 enum RootTab: Hashable {
-    case chats, promoStudio
+    case chats, promoStudio, vitrin
 }

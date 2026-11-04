@@ -61,6 +61,10 @@ public protocol HostService: Sendable {
     func promoStudio(_ request: PromoStudioRequest) async throws -> PromoStudioResponse
     /// Promo Studio's server-sent events until the stream is cancelled.
     func promoStudioEvents() async throws -> AsyncStream<PromoStudioEvent>
+    /// Forwards a request to a plugin (capability `plugin.<id>`, D-117).
+    func plugin(_ request: PluginRequest) async throws -> PluginResponse
+    /// A plugin's events until the stream is cancelled.
+    func pluginEvents(_ plugin: String) async throws -> AsyncStream<PluginEvent>
     /// Changes power settings and returns the new status (capability `power`).
     func setPower(_ request: SetPower) async throws -> MacStatus
     /// Free space of the startup volume (capability `storage`).
@@ -82,6 +86,14 @@ extension HostService {
 
     public func promoStudioEvents() async throws -> AsyncStream<PromoStudioEvent> {
         throw ErrorPayload(code: .promoStudioUnavailable, message: "Promo Studio is not available on this Mac.")
+    }
+
+    public func plugin(_ request: PluginRequest) async throws -> PluginResponse {
+        throw ErrorPayload(code: .pluginUnavailable, message: "This plugin is not available on this Mac.")
+    }
+
+    public func pluginEvents(_ plugin: String) async throws -> AsyncStream<PluginEvent> {
+        throw ErrorPayload(code: .pluginUnavailable, message: "This plugin is not available on this Mac.")
     }
 
     public func setPower(_ request: SetPower) async throws -> MacStatus {

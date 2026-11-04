@@ -563,5 +563,10 @@
  "pilothouse://pair?d=…": "pilothouse://pair?d=…",
  "video": "동영상",
  "“%@” commands": "‘%@’ 명령",
- "📸 Photos edited with AI.": "📸 AI로 편집한 사진입니다."
+ "📸 Photos edited with AI.": "📸 AI로 편집한 사진입니다.",
+ "Plugins": "플러그인",
+ "Install Vitrin on your Mac": "Mac에 Vitrin 설치",
+ "Installing Vitrin on your Mac…": "Mac에 Vitrin 설치 중…",
+ "Vitrin builds your App Store listing and runs App Store Connect from a tab here. It downloads about 450 MB to your Mac once.": "Vitrin은 App Store 페이지를 만들고 여기 탭에서 App Store Connect를 관리합니다. Mac에 약 450MB를 한 번 다운로드합니다.",
+ "Vitrin": "Vitrin"
 }

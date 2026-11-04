@@ -55,6 +55,9 @@ struct SettingsView: View {
                     if connection.capabilities.contains(HostCapability.power), let power = status.power {
                         PowerSection(connection: connection, power: power)
                     }
+                    if connection.vitrin.isOffered {
+                        VitrinPluginSection(store: connection.vitrin)
+                    }
                 }
                 Section {
                     Toggle("Use Tailscale when away", isOn: $preferences.usesTailscale)

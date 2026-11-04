@@ -333,6 +333,9 @@ public enum ClientMessage: Sendable, Hashable {
     case promoStudio(PromoStudioRequest)
     case promoStudioSubscribe
     case promoStudioUnsubscribe
+    case plugin(PluginRequest)
+    case pluginSubscribe(PluginRef)
+    case pluginUnsubscribe(PluginRef)
     case setPower(SetPower)
     case getStorage
     case scanCleanup
@@ -363,6 +366,9 @@ public enum ClientMessage: Sendable, Hashable {
         case .promoStudio: "promoStudio"
         case .promoStudioSubscribe: "promoStudioSubscribe"
         case .promoStudioUnsubscribe: "promoStudioUnsubscribe"
+        case .plugin: "plugin"
+        case .pluginSubscribe: "pluginSubscribe"
+        case .pluginUnsubscribe: "pluginUnsubscribe"
         case .setPower: "setPower"
         case .getStorage: "getStorage"
         case .scanCleanup: "scanCleanup"
@@ -392,6 +398,8 @@ public enum ServerMessage: Sendable, Hashable {
     case commandCatalog(CommandCatalog)
     case promoStudioResponse(PromoStudioResponse)
     case promoStudioEvent(PromoStudioEvent)
+    case pluginResponse(PluginResponse)
+    case pluginEvent(PluginEvent)
     case storage(StorageOverview)
     case cleanupScan(CleanupScan)
     case cleanupResult(CleanupResult)
@@ -417,6 +425,8 @@ public enum ServerMessage: Sendable, Hashable {
         case .commandCatalog: "commandCatalog"
         case .promoStudioResponse: "promoStudioResponse"
         case .promoStudioEvent: "promoStudioEvent"
+        case .pluginResponse: "pluginResponse"
+        case .pluginEvent: "pluginEvent"
         case .storage: "storage"
         case .cleanupScan: "cleanupScan"
         case .cleanupResult: "cleanupResult"

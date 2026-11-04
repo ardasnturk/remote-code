@@ -566,5 +566,10 @@ T = {
 "Start Now": ("Şimdi Başlat", "Jetzt starten"),
 "Start at": ("Başlangıç", "Start um"),
 "To post automatically, choose an Instagram account or a project with one.": ("Otomatik paylaşım için bir Instagram hesabı ya da hesabı olan bir proje seçin.", "Wähle zum automatischen Posten ein Instagram-Konto oder ein Projekt mit Konto."),
+"Plugins": ("Eklentiler", "Plugins"),
+"Install Vitrin on your Mac": ("Vitrin'i Mac'inize kurun", "Vitrin auf dem Mac installieren"),
+"Installing Vitrin on your Mac…": ("Vitrin Mac'inize kuruluyor…", "Vitrin wird auf dem Mac installiert …"),
+"Vitrin builds your App Store listing and runs App Store Connect from a tab here. It downloads about 450 MB to your Mac once.": ("Vitrin, App Store sayfanızı hazırlar ve App Store Connect'i buradaki bir sekmeden yönetir. Mac'inize bir kez yaklaşık 450 MB indirir.", "Vitrin erstellt Ihren App-Store-Eintrag und führt App Store Connect über einen Tab hier aus. Einmalig werden etwa 450 MB auf Ihren Mac geladen."),
+"Vitrin": ("Vitrin", "Vitrin"),
 }
 json.dump({k: {"tr": v[0], "de": v[1]} for k, v in T.items()}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "ios.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, sort_keys=True)

@@ -563,5 +563,10 @@
  "pilothouse://pair?d=…": "pilothouse://pair?d=…",
  "video": "视频",
  "“%@” commands": "“%@”命令",
- "📸 Photos edited with AI.": "📸 照片经 AI 编辑。"
+ "📸 Photos edited with AI.": "📸 照片经 AI 编辑。",
+ "Plugins": "插件",
+ "Install Vitrin on your Mac": "在 Mac 上安装 Vitrin",
+ "Installing Vitrin on your Mac…": "正在 Mac 上安装 Vitrin…",
+ "Vitrin builds your App Store listing and runs App Store Connect from a tab here. It downloads about 450 MB to your Mac once.": "Vitrin 可创建 App Store 页面,并在此处的标签页中管理 App Store Connect。它会向 Mac 下载一次约 450 MB 的内容。",
+ "Vitrin": "Vitrin"
 }

@@ -13,6 +13,7 @@ public actor ServerConnection {
     private var subscriptions: [String: Task<Void, Never>] = [:]
     private var notificationTask: Task<Void, Never>?
     private var promoStudioTask: Task<Void, Never>?
+    private var pluginTasks: [String: Task<Void, Never>] = [:]
     private var didHello = false
     private var isClosed = false
 
@@ -175,6 +176,21 @@ public actor ServerConnection {
             promoStudioTask?.cancel()
             promoStudioTask = nil
             return .ok
+        case .plugin(let request):
+            return .pluginResponse(try await service.plugin(request))
+        case .pluginSubscribe(let ref):
+            let stream = try await service.pluginEvents(ref.plugin)
+            pluginTasks[ref.plugin]?.cancel()
+            pluginTasks[ref.plugin] = Task { [weak self] in
+                for await event in stream {
+                    guard let self else { return }
+                    await self.send(.pluginEvent(event))
+                }
+            }
+            return .ok
+        case .pluginUnsubscribe(let ref):
+            pluginTasks.removeValue(forKey: ref.plugin)?.cancel()
+            return .ok
         case .setPower(let request):
             return .macStatus(try await service.setPower(request))
         case .getStorage:
@@ -246,6 +262,8 @@ public actor ServerConnection {
         notificationTask = nil
         promoStudioTask?.cancel()
         promoStudioTask = nil
+        for task in pluginTasks.values { task.cancel() }
+        pluginTasks.removeAll()
         for task in subscriptions.values { task.cancel() }
         subscriptions.removeAll()
     }

@@ -164,6 +164,9 @@ the documented result, `ok`, or `error`.
 | `promoStudio` | `{ method: "GET" \| "POST", path: "/v1/…", body?: JSON text, range?: "bytes=a-b" }` — forwarded to the Promo Studio app's local API; capability `promoStudio` | `promoStudioResponse` (`error{promoStudioUnavailable}` when Promo Studio is not running) |
 | `promoStudioSubscribe` | `{}` — capability `promoStudio` | `ok`, then `promoStudioEvent` pushes |
 | `promoStudioUnsubscribe` | `{}` | `ok` |
+| `plugin` | `{ plugin, method: "GET" \| "POST" \| "PUT" \| "DELETE", path, body?: text, range?: "bytes=a-b", timeout?: seconds }` — forwarded to a plugin on the Mac; capability `plugin.<id>` | `pluginResponse` |
+| `pluginSubscribe` | `{ plugin }` | `ok`, then `pluginEvent` pushes |
+| `pluginUnsubscribe` | `{ plugin }` | `ok` |
 | `getStorage` | `{}` — capability `storage` | `storage` |
 | `scanCleanup` | `{}` — looks for safe-to-delete files; can take a minute | `cleanupScan` |
 | `runCleanup` | `{ scanId, itemIds: [id], categoryIds: [id], permanently }` — items and whole categories of that scan; a scan can be used once | `cleanupResult` (`error{scanExpired}` for an unknown or used scan) |
@@ -184,7 +187,8 @@ older Macs). A client only sends them when the Mac lists the capability, so
 (`startSession.effort`, `updateSessionSettings`, `Session.effort`),
 `modelCatalog` (`macStatus.agents[].modelOptions`) and `sessionPermissionMode`
 (`updateSessionSettings.permissionMode`). `promoStudio` (`promoStudio`,
-`promoStudioSubscribe`) is announced only by the real Mac host, not the demo.
+`promoStudioSubscribe`) is announced only by the real Mac host, not the demo. A plugin is announced
+as `plugin.<id>`, also by the real Mac host only; `plugin.vitrin` is the first.
 `power` (`setPower`, `macStatus.power`) controls the display and lid-closed mode.
 `storage` (`getStorage`, `scanCleanup`, `runCleanup`) reports free space and cleans up.
 `activity` (`getActivity`, `quitApp`) reports memory pressure, CPU and running apps.
@@ -213,6 +217,8 @@ older Macs). A client only sends them when the Mac lists the capability, so
 | `activity` | `{ sampledAt, cpuPercent (0–100), memoryUsedBytes, memoryTotalBytes, pressure: normal \| warning \| critical (open-ended), apps: [{ id, name, bundleIdentifier?, cpuPercent, memoryBytes, processCount, canQuit }] (largest 20 by memory), background?: same shape }` |
 | `cleanupResult` | `{ freedBytes, removedCount, failedCount, movedToTrash, storage }` |
 | `promoStudioEvent` | `{ event: changed \| job \| jobEnded \| alert \| ping, data: JSON text }` — Promo Studio's server-sent events, pushed after `promoStudioSubscribe` until `promoStudioUnsubscribe` or disconnect |
+| `pluginResponse` | `{ status, contentType?, contentRange?, body (base64) }` — the plugin's answer; files are fetched in chunks of at most 4 MB with `range` |
+| `pluginEvent` | `{ plugin, event, data: text }` — pushed after `pluginSubscribe` |
 | `error` | `{ code, message }` |
 
 `Session`:
@@ -240,6 +246,7 @@ folder; `message` says which switch to turn on), `notADirectory`,
 `claudeNotInstalled`, `sessionClosed`, `modeNotAllowed`, `unauthorized`,
 `deviceRevoked`, `pairingTokenInvalid`, `clockSkew`, `timeout`, `internal`,
 `promoStudioUnavailable` (the Promo Studio app is not running on the Mac),
+`pluginUnavailable` (the plugin is not on the Mac or did not answer),
 `powerUnavailable` (the host cannot change power settings),
 `storageUnavailable`, `activityUnavailable`, `scanExpired` (`runCleanup` for a scan the Mac no longer has).
 Codes are open-ended strings; clients must handle unknown codes generically.

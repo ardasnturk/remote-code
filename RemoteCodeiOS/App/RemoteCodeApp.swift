@@ -60,13 +60,22 @@ struct RootView: View {
                     Text(error)
                 }
             } else if model.hasPairedMac {
-                if let promoStudio = model.connection?.promoStudio, promoStudio.isAvailable {
+                let promoStudio = model.connection?.promoStudio
+                let vitrin = model.connection?.vitrin
+                if promoStudio?.isAvailable == true || vitrin?.isAvailable == true {
                     TabView(selection: $model.selectedTab) {
                         Tab("Chats", systemImage: "bubble.left.and.text.bubble.right", value: RootTab.chats) {
                             MainSplitView()
                         }
-                        Tab("Promo Studio", systemImage: "sparkles.tv", value: RootTab.promoStudio) {
-                            PromoStudioHomeView(store: promoStudio)
+                        if let promoStudio, promoStudio.isAvailable {
+                            Tab("Promo Studio", systemImage: "sparkles.tv", value: RootTab.promoStudio) {
+                                PromoStudioHomeView(store: promoStudio)
+                            }
+                        }
+                        if let vitrin, vitrin.isAvailable {
+                            Tab("Vitrin", systemImage: "storefront", value: RootTab.vitrin) {
+                                VitrinHomeView(store: vitrin)
+                            }
                         }
                     }
                 } else {

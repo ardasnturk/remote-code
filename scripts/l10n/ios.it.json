@@ -563,5 +563,10 @@
  "pilothouse://pair?d=…": "pilothouse://pair?d=…",
  "video": "video",
  "“%@” commands": "Comandi “%@”",
- "📸 Photos edited with AI.": "📸 Foto modificate con l’IA."
+ "📸 Photos edited with AI.": "📸 Foto modificate con l’IA.",
+ "Plugins": "Plugin",
+ "Install Vitrin on your Mac": "Installa Vitrin sul Mac",
+ "Installing Vitrin on your Mac…": "Installazione di Vitrin sul Mac…",
+ "Vitrin builds your App Store listing and runs App Store Connect from a tab here. It downloads about 450 MB to your Mac once.": "Vitrin crea la tua scheda App Store e gestisce App Store Connect da una scheda qui. Scarica circa 450 MB sul Mac una sola volta.",
+ "Vitrin": "Vitrin"
 }

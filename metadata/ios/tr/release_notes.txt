@@ -1,6 +1,5 @@
-Telefonunuzdan Promo Studio (Mac'te Promo Studio 1.6 ile):
-• Gönderiyi sonraya planlayın: isteği şimdi yazın, seçtiğiniz saatte oluşturulsun
-• Storyboard'u otomatik onaylayın ve otomatik paylaşın ya da sizi beklesin
-• Planlı gönderiyi değiştirin veya hemen başlatın
-• Reels, hikâye, fotoğraf gönderisi veya karusel olarak paylaşın
-• 2 ila 10 slaytlık karuseller: kaydırarak bakın, hepsini kaydedin veya paylaşın
+Mac'te Remote Code 1.6 ile Vitrin artık telefonunuzda:
+• Yeni sekme Vitrin'i çalıştırır: uygulama klasörlerinizi ekleyin, mağaza sayfanızın tamamını yerel ekranlarda hazırlayın
+• App Store Connect'i yönetin: uygulamalar, sürümler, TestFlight, yorumlar, fiyatlar, analizler, kullanıcılar ve imzalama
+• API anahtarınızla ya da Apple hesabınızla bağlanın
+• Ayarlar → Eklentiler, Vitrin'i Mac'inize kurar

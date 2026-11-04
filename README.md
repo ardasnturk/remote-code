@@ -54,6 +54,11 @@ end-to-end encrypted.
   runs on the Mac, a tab on the phone creates promo videos with Claude, shows
   storyboards to approve and posts or schedules them on Instagram; you get
   notified when a video is ready, also with the app closed.
+* **Plugins** — a tool on the Mac can become a tab on the phone.
+  [Vitrin](https://vitrin.ardasnturk.com) is the first: add your app folders with
+  the file browser, work through the whole store listing in native screens, and
+  manage App Store Connect: apps, versions, TestFlight, reviews, prices, analytics,
+  users and signing. Settings → Plugins installs it on your Mac.
 * **Look after the Mac** — free space and a safe cleanup (caches, logs, Xcode
   data, package caches, Trash), memory and CPU with a Quit button, keep the
   display on or switch lid-closed mode; notifications when disk space or

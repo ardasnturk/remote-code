@@ -6,6 +6,18 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.6.0] — 2026-11-04
+
+### Added
+- **Plugins:** a tool on the Mac can now become a tab on the phone with no change
+  to the protocol.
+- **Vitrin is the first plugin:** a third tab that runs Vitrin from the phone. Add
+  your app folders with the file browser, work through the whole flow in native
+  screens (setup, metadata, screens, design, video, review, upload and Claude), and
+  manage App Store Connect: apps, versions, TestFlight, reviews, prices, analytics,
+  users, signing and every asc command. Needs Vitrin 2.1.0 on the Mac; Settings →
+  Plugins installs it. The Vitrin Mac app doesn't need to be running.
+
 ## [1.5.3] — 2026-11-04 (iOS)
 
 ### Added

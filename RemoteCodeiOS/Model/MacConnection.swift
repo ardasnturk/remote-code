@@ -20,6 +20,8 @@ final class MacConnection {
     var resumedWhileAwayNotice: String?
     /// The Promo Studio app on the Mac (capability `promoStudio`).
     let promoStudio = PromoStudioStore()
+    /// Vitrin on the Mac (the plugin `vitrin`, D-117).
+    let vitrin = VitrinStore()
 
     @ObservationIgnored let client: MacClient
     @ObservationIgnored private var chats: [String: ChatState] = [:]
@@ -56,6 +58,7 @@ final class MacConnection {
         )
         sessions = cache.sessions(macId: mac.id)
         promoStudio.attach(self)
+        vitrin.attach(self)
     }
 
     var isConnected: Bool { state.isConnected }
@@ -115,6 +118,7 @@ final class MacConnection {
         state = newState
         guard newState.isConnected else {
             promoStudio.disconnected()
+            vitrin.disconnected()
             return
         }
         await refreshSessions()
@@ -137,8 +141,11 @@ final class MacConnection {
             capabilities = Set(ack.capabilities ?? [])
             let capabilities = self.capabilities
             Task { await promoStudio.connected(capabilities: capabilities) }
+            Task { await vitrin.connected(capabilities: capabilities) }
         case .promoStudioEvent(let event):
             promoStudio.handle(event)
+        case .pluginEvent(let event):
+            vitrin.handle(event)
         case .event(let payload):
             let event = payload.sequencedEvent
             chat(for: payload.sessionId).apply(event)
@@ -164,7 +171,7 @@ final class MacConnection {
             if error.code == .deviceRevoked {
                 state = .failed(message: error.message, code: error.code)
             }
-        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog, .promoStudioResponse,
+        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog, .promoStudioResponse, .pluginResponse,
             .storage, .cleanupScan, .cleanupResult, .activity:
             break
         }

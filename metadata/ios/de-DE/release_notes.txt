@@ -1,6 +1,5 @@
-Promo Studio vom iPhone aus, mit Promo Studio 1.6 auf dem Mac:
-• Beiträge für später planen: Anfrage jetzt schreiben, zur gewählten Zeit wird sie erstellt
-• Storyboard automatisch freigeben und automatisch posten, oder auf dich warten lassen
-• Geplante Beiträge ändern oder sofort starten
-• Als Reel, Story, Fotobeitrag oder Karussell teilen
-• Karussells mit 2 bis 10 Folien: durchwischen, alle sichern oder teilen
+Vitrin auf Ihrem iPhone, mit Remote Code 1.6 auf dem Mac:
+• Ein neuer Tab führt Vitrin aus: Fügen Sie Ihre App-Ordner hinzu und erstellen Sie den ganzen Store-Eintrag in nativen Ansichten
+• Verwalten Sie App Store Connect: Apps, Versionen, TestFlight, Bewertungen, Preise, Analysen, Benutzer und Signierung
+• Verbinden Sie sich mit einem API-Schlüssel oder Ihrem Apple Account
+• Einstellungen → Plugins installiert Vitrin auf Ihrem Mac

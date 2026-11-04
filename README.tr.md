@@ -54,6 +54,11 @@ uca şifrelenmiş şekilde konuşan kendi cihazlarınız vardır.
   çalışıyorsa telefondaki bir sekmeyle Claude'a tanıtım videoları yaptırın,
   storyboard'ları onaylayın, Instagram'da paylaşın ya da zamanlayın; video
   hazır olunca uygulama kapalıyken de bildirim alın.
+* **Eklentiler** — Mac'teki bir araç telefonda sekme olabilir. İlki
+  [Vitrin](https://vitrin.ardasnturk.com): dosya tarayıcısıyla uygulama
+  klasörlerinizi ekleyin, mağaza sayfanızın tamamını yerel ekranlarda hazırlayın ve
+  App Store Connect'i yönetin: uygulamalar, sürümler, TestFlight, yorumlar, fiyatlar,
+  analizler, kullanıcılar ve imzalama. Ayarlar → Eklentiler, Vitrin'i Mac'inize kurar.
 * **Mac'in bakımı** — boş alan ve güvenli temizlik (önbellekler, günlükler,
   Xcode verileri, paket önbellekleri, Çöp Kutusu), bellek ve işlemci ile
   uygulama kapatma, ekranı açık tutma ve kapak kapalı modu; disk alanı veya

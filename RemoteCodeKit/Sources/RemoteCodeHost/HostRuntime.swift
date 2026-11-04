@@ -37,6 +37,8 @@ public struct MacHostService: HostService {
     let serverVersion: String
     let status: any MacStatusProviding
     let promoStudioBridge = PromoStudioBridge()
+    /// Tools on this Mac the phone can drive (D-117).
+    let plugins: [String: any HostPlugin] = [PluginID.vitrin: VitrinPlugin()]
     let cleanup: CleanupService
 
     public func weeklySummary(_ request: GetWeeklySummary) async throws -> WeeklySummary {
@@ -57,7 +59,7 @@ public struct MacHostService: HostService {
             macId: macId,
             serverVersion: serverVersion,
             pendingPermissions: await broker.pendingRequests,
-            capabilities: HostCapability.all + [HostCapability.promoStudio]
+            capabilities: HostCapability.all + [HostCapability.promoStudio] + plugins.keys.map(HostCapability.plugin)
         )
     }
 
@@ -67,6 +69,20 @@ public struct MacHostService: HostService {
 
     public func promoStudioEvents() async throws -> AsyncStream<PromoStudioEvent> {
         promoStudioBridge.events()
+    }
+
+    public func plugin(_ request: PluginRequest) async throws -> PluginResponse {
+        guard let plugin = plugins[request.plugin] else {
+            throw ErrorPayload(code: .pluginUnavailable, message: "This Mac has no plugin named \(request.plugin).")
+        }
+        return try await plugin.send(request)
+    }
+
+    public func pluginEvents(_ plugin: String) async throws -> AsyncStream<PluginEvent> {
+        guard let plugin = plugins[plugin] else {
+            throw ErrorPayload(code: .pluginUnavailable, message: "This Mac has no such plugin.")
+        }
+        return plugin.events()
     }
 
     public func macStatus() async -> MacStatus {

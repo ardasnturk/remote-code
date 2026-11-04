@@ -1,6 +1,5 @@
-Promo Studio from your phone, with Promo Studio 1.6 on the Mac:
-• Plan a post for later: write the request now and it's made at the time you pick
-• Approve the storyboard and post automatically, or let it wait for you
-• Change a planned post, or start it now
-• Share as a Reel, a story, a photo post or a carousel
-• Carousels of 2 to 10 slides: swipe through them, save or share them all
+Vitrin on your phone, with Remote Code 1.6 on your Mac:
+• A new tab runs Vitrin: add your app folders and work through the whole store listing in native screens
+• Manage App Store Connect: apps, versions, TestFlight, reviews, prices, analytics, users and signing
+• Connect with an API key or your Apple Account
+• Settings → Plugins installs Vitrin on your Mac

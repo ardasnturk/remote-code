@@ -33,6 +33,9 @@ import Testing
         .promoStudio(PromoStudioRequest(path: "/v1/media/posts/X/video.mp4", range: "bytes=0-99")),
         .promoStudioSubscribe,
         .promoStudioUnsubscribe,
+        .plugin(PluginRequest(plugin: "vitrin", method: "POST", path: "/v1/projects", body: "{}", timeout: 300)),
+        .pluginSubscribe(PluginRef(plugin: "vitrin")),
+        .pluginUnsubscribe(PluginRef(plugin: "vitrin")),
         .setPower(SetPower(keepDisplayOn: true, displayOnDuration: 3_600)),
         .setPower(SetPower(lidClosedMode: false, pauseLidModeOnBattery: true, dimDisplayWhenLidClosed: true)),
         .getStorage,
@@ -91,6 +94,15 @@ import Testing
         for message in messages {
             #expect(try roundTrip(message) == message, "\(message.typeName)")
         }
+    }
+
+    @Test func pluginMessagesRoundTrip() throws {
+        let response = ServerMessage.pluginResponse(PluginResponse(status: 206, contentType: "image/png", contentRange: "bytes 0-1/9", body: Data([1, 2])))
+        let event = ServerMessage.pluginEvent(PluginEvent(plugin: "vitrin", event: "studio", data: "{}"))
+        #expect(try roundTrip(response) == response)
+        #expect(try roundTrip(event) == event)
+        #expect(PluginResponse(status: 206, contentRange: "bytes 0-1/9").totalSize == 9)
+        #expect(HostCapability.vitrin == "plugin.vitrin")
     }
 
     @Test func promoStudioMessagesRoundTrip() throws {

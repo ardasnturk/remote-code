@@ -563,5 +563,10 @@
  "pilothouse://pair?d=…": "pilothouse://pair?d=…",
  "video": "動画",
  "“%@” commands": "「%@」のコマンド",
- "📸 Photos edited with AI.": "📸 写真は AI で編集されています。"
+ "📸 Photos edited with AI.": "📸 写真は AI で編集されています。",
+ "Plugins": "プラグイン",
+ "Install Vitrin on your Mac": "Mac に Vitrin をインストール",
+ "Installing Vitrin on your Mac…": "Mac に Vitrin をインストール中…",
+ "Vitrin builds your App Store listing and runs App Store Connect from a tab here. It downloads about 450 MB to your Mac once.": "Vitrin は App Store のページを作成し、ここのタブから App Store Connect を管理します。Mac に一度だけ約 450 MB をダウンロードします。",
+ "Vitrin": "Vitrin"
 }

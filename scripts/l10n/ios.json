@@ -839,6 +839,14 @@
   "de": "Installiere Tailscale aus dem App Store und melde dich mit demselben Konto an.",
   "tr": "App Store'dan Tailscale'i kurun ve aynı hesapla giriş yapın."
  },
+ "Install Vitrin on your Mac": {
+  "de": "Vitrin auf dem Mac installieren",
+  "tr": "Vitrin'i Mac'inize kurun"
+ },
+ "Installing Vitrin on your Mac…": {
+  "de": "Vitrin wird auf dem Mac installiert …",
+  "tr": "Vitrin Mac'inize kuruluyor…"
+ },
  "Instruction": {
   "de": "Anweisung",
   "tr": "Talimat"
@@ -1338,6 +1346,10 @@
  "Play": {
   "de": "Abspielen",
   "tr": "Oynat"
+ },
+ "Plugins": {
+  "de": "Plugins",
+  "tr": "Eklentiler"
  },
  "Portrait 4:5": {
   "de": "Hochformat 4:5",
@@ -2102,6 +2114,14 @@
  "Views": {
   "de": "Aufrufe",
   "tr": "İzlenme"
+ },
+ "Vitrin": {
+  "de": "Vitrin",
+  "tr": "Vitrin"
+ },
+ "Vitrin builds your App Store listing and runs App Store Connect from a tab here. It downloads about 450 MB to your Mac once.": {
+  "de": "Vitrin erstellt Ihren App-Store-Eintrag und führt App Store Connect über einen Tab hier aus. Einmalig werden etwa 450 MB auf Ihren Mac geladen.",
+  "tr": "Vitrin, App Store sayfanızı hazırlar ve App Store Connect'i buradaki bir sekmeden yönetir. Mac'inize bir kez yaklaşık 450 MB indirir."
  },
  "Voiceover": {
   "de": "Sprecher",
