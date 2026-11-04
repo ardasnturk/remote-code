@@ -32,6 +32,9 @@ public struct HostAlert: Sendable, Hashable {
         /// Memory is almost full (D-116). `folderName` names the app using the
         /// most memory and its size, already formatted; `detail` the Mac's name.
         case memoryPressure
+        /// An app reached a new stage of App Review (D-118). `sessionId` is the App Store
+        /// Connect app ID, `folderName` its name, `detail` an `AppReviewStage`, always shown.
+        case appStateChanged
 
         /// Kinds that come from Promo Studio rather than an agent session.
         public static let promoStudio: [Kind] = [.promoVideoReady, .promoImageReady, .promoStoryboardReady, .promoFailed, .promoPublished]
@@ -85,8 +88,9 @@ public struct AlertContent: Sendable, Hashable {
         case .promoPublished: "Posted to Instagram · \(alert.folderName)"
         case .lowDiskSpace: "Low disk space · \(alert.folderName) free"
         case .memoryPressure: "Memory almost full · \(alert.folderName)"
+        case .appStateChanged: "App Review: \(alert.detail ?? "") · \(alert.folderName)"
         }
-        return AlertContent(title: "Remote Code", body: body(headline, detail: includeDetail ? alert.detail : nil))
+        return AlertContent(title: "Remote Code", body: body(headline, detail: includeDetail && alert.kind != .appStateChanged ? alert.detail : nil))
     }
 
     /// `headline`, plus a shortened `detail` on a second line.
@@ -178,6 +182,11 @@ public actor NotificationService {
     /// turns produce "task finished" alerts.
     public func noteTurnFromPhone(_ sessionId: String) {
         phoneTurns.insert(sessionId)
+    }
+
+    /// Whether an alert of `kind` would reach anyone, for work that only serves that alert.
+    public func wants(_ kind: HostAlert.Kind) -> Bool {
+        preferences.enabled && preferences.kinds.contains(kind.preference) && !sinks.isEmpty
     }
 
     /// Delivers `alert` to every sink if the preferences allow it. Also the

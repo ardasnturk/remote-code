@@ -5,3 +5,4 @@ Vitrin on your phone, with Remote Code 1.6 on your Mac:
 • Settings → Plugins installs Vitrin on your Mac
 • The Promo Studio tab now wears Promo Studio's own colors
 • The Vitrin tab opens at once from a cache on your phone, and has search
+• Get notified when an app moves through App Review: waiting, in review, approved, live or rejected

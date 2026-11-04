@@ -306,5 +306,11 @@
  "ntfy: %@": "ntfy: %@",
  "ntfy: delivered (HTTP %lld)": "ntfy: entregada (HTTP %lld)",
  "open chats": "chats abiertos",
- "working": "trabajando"
+ "working": "trabajando",
+ "App Review status": "Estado de App Review",
+ "Waiting for review · %@": "Esperando revisión · %@",
+ "In review · %@": "En revisión · %@",
+ "Approved · %@": "Aprobada · %@",
+ "On the App Store · %@": "En el App Store · %@",
+ "Rejected by App Review · %@": "Rechazada por App Review · %@"
 }

@@ -19,6 +19,8 @@ struct RemoteCodeApp: App {
                         Task { await model.open(link) }
                     } else if let link = MacScreenLink(url: url) {
                         Task { await model.open(link) }
+                    } else if let link = VitrinAppLink(url: url) {
+                        Task { await model.open(link) }
                     } else if url.scheme == PairingPayload.scheme {
                         model.incomingPairingLink = url.absoluteString
                         model.isPresentingPairing = true

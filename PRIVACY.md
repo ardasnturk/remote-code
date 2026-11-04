@@ -32,7 +32,10 @@ third-party SDKs.
   server you choose (`ntfy.sh` unless you enter your own): the topic name, the
   event and folder name (e.g. "Task finished · my-app") and a link containing
   the session ID and Mac ID. Only if you turn on "Include a short summary" is a
-  shortened last message, tool name or error text added. ntfy.sh is run by a
+  shortened last message, tool name or error text added. With "App Review status"
+  on, your Mac also checks your apps in App Store Connect every few minutes through
+  Vitrin, keeps their state in a file on the Mac, and a notification carries the app's
+  name, its App Store Connect ID and its new state. ntfy.sh is run by a
   third party under its own privacy policy and keeps messages for a few hours;
   anyone who knows your topic can read them on a public server. Notifications
   shown on the Mac itself stay on the Mac.
@@ -71,7 +74,10 @@ Hesap, analitik, reklam, çökme raporu ya da üçüncü taraf SDK yoktur.
   ntfy sunucusuna gönderir (kendi sunucunuzu girmediyseniz `ntfy.sh`): konu adı,
   olay ve klasör adı (örn. "Görev bitti · my-app") ve oturum kimliğiyle Mac
   kimliğini içeren bir bağlantı. Kısaltılmış son mesaj, araç adı veya hata
-  metni yalnızca "Kısa bir özet ekle" açıksa eklenir. ntfy.sh üçüncü bir tarafça,
+  metni yalnızca "Kısa bir özet ekle" açıksa eklenir. "App Review durumu" açıksa
+  Mac'iniz Vitrin aracılığıyla App Store Connect'teki uygulamalarınızı birkaç dakikada
+  bir kontrol eder, durumlarını Mac'teki bir dosyada tutar ve bildirim uygulamanın adını,
+  App Store Connect kimliğini ve yeni durumunu içerir. ntfy.sh üçüncü bir tarafça,
   kendi gizlilik politikası altında işletilir ve mesajları birkaç saat saklar;
   herkese açık bir sunucuda konunuzu bilen herkes mesajları okuyabilir. Mac'in
   kendisinde gösterilen bildirimler Mac'te kalır.
@@ -114,7 +120,10 @@ Absturzberichte und keine SDKs von Drittanbietern.
   den Themennamen, Ereignis und Ordnernamen (z. B. „Aufgabe fertig · my-app“)
   und einen Link mit Sitzungs- und Mac-ID. Nur mit „Kurze Zusammenfassung
   hinzufügen“ kommen eine gekürzte letzte Nachricht, der Werkzeugname oder der
-  Fehlertext hinzu. ntfy.sh wird von einem Dritten nach dessen eigener
+  Fehlertext hinzu. Mit „App-Review-Status“ prüft dein Mac über Vitrin alle paar
+  Minuten deine Apps in App Store Connect und speichert ihren Status in einer Datei auf
+  dem Mac; eine Mitteilung enthält dann den Namen der App, ihre App-Store-Connect-ID und
+  ihren neuen Status. ntfy.sh wird von einem Dritten nach dessen eigener
   Datenschutzerklärung betrieben und bewahrt Nachrichten einige Stunden auf;
   auf einem öffentlichen Server kann jeder, der dein Thema kennt, sie lesen.
   Auf dem Mac selbst angezeigte Mitteilungen bleiben auf dem Mac.

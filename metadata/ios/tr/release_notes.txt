@@ -5,3 +5,4 @@ Mac'te Remote Code 1.6 ile Vitrin artık telefonunuzda:
 • Ayarlar → Eklentiler, Vitrin'i Mac'inize kurar
 • Promo Studio sekmesi artık Promo Studio'nun kendi renkleriyle görünür
 • Vitrin sekmesi telefonunuzdaki önbellekten anında açılır ve artık arama içerir
+• Bir uygulama App Review aşamalarından geçerken bildirim alın: bekliyor, incelemede, onaylandı, yayında veya reddedildi

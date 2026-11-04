@@ -195,6 +195,8 @@ public final class HostRuntime: Sendable {
     public let cleanup: CleanupService
     /// Warns when the startup volume runs low on space (D-115).
     let storageMonitor: StorageMonitor
+    /// Tells when an app moves through App Review (D-118).
+    let appStateWatcher: AppStateWatcher?
     #if canImport(Darwin)
     /// Warns when memory is almost full (D-116).
     let memoryMonitor: MemoryMonitor
@@ -282,6 +284,9 @@ public final class HostRuntime: Sendable {
         self.insights = insights
         self.cleanup = cleanup
         storageMonitor = StorageMonitor(home: configuration.homeDirectory, notifications: notifications, macName: macName)
+        appStateWatcher = service.plugins[PluginID.vitrin].map {
+            AppStateWatcher(plugin: $0, notifications: notifications, file: AppStateWatcher.defaultFile(home: URL(fileURLWithPath: configuration.homeDirectory)))
+        }
         #if canImport(Darwin)
         memoryMonitor = MemoryMonitor(notifications: notifications, macName: macName)
         #endif
@@ -298,6 +303,7 @@ public final class HostRuntime: Sendable {
         await notifications.start()
         await promoStudioNotifier.start()
         await storageMonitor.start()
+        await appStateWatcher?.start()
         #if canImport(Darwin)
         await memoryMonitor.start()
         #endif
@@ -312,6 +318,7 @@ public final class HostRuntime: Sendable {
         await notifications.stop()
         await promoStudioNotifier.stop()
         await storageMonitor.stop()
+        await appStateWatcher?.stop()
         #if canImport(Darwin)
         await memoryMonitor.stop()
         #endif

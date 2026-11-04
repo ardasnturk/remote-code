@@ -511,6 +511,7 @@ private struct NotificationSettings: View {
                 Toggle("Session failed", isOn: kind(.sessionFailed))
                 Toggle("Low disk space", isOn: kind(.lowDiskSpace))
                 Toggle("Memory almost full", isOn: kind(.memoryPressure))
+                Toggle("App Review status", isOn: kind(.appStateChanged))
                 Toggle("Include a short summary", isOn: $settings.notificationIncludesSummary)
             } header: {
                 Text("Events")

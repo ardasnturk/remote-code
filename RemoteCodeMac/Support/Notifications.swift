@@ -19,12 +19,26 @@ enum AlertText {
         case .promoPublished: String(localized: "Posted to Instagram · \(folder)")
         case .lowDiskSpace: String(localized: "Low disk space · \(folder) free")
         case .memoryPressure: String(localized: "Memory almost full · \(folder)")
+        case .appStateChanged: reviewHeadline(alert)
         }
-        guard includeDetail, let detail = alert.detail else { return (headline, nil) }
+        // For this kind `detail` is the stage, which the headline already says.
+        guard includeDetail, alert.kind != .appStateChanged, let detail = alert.detail else { return (headline, nil) }
         if alert.kind == .permissionRequested {
             return (headline, String(localized: "Claude wants to use \(detail)"))
         }
         return (headline, detail)
+    }
+
+    private static func reviewHeadline(_ alert: HostAlert) -> String {
+        let app = alert.folderName
+        return switch AppReviewStage(rawValue: alert.detail ?? "") {
+        case .waitingForReview: String(localized: "Waiting for review · \(app)")
+        case .inReview: String(localized: "In review · \(app)")
+        case .approved: String(localized: "Approved · \(app)")
+        case .live: String(localized: "On the App Store · \(app)")
+        case .rejected: String(localized: "Rejected by App Review · \(app)")
+        case nil: app
+        }
     }
 
     /// ntfy: the app name as title, the headline (and detail) as message.

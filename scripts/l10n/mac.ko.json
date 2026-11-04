@@ -306,5 +306,11 @@
  "ntfy: %@": "ntfy: %@",
  "ntfy: delivered (HTTP %lld)": "ntfy: 전달됨(HTTP %lld)",
  "open chats": "열린 채팅",
- "working": "작업 중"
+ "working": "작업 중",
+ "App Review status": "App Review 상태",
+ "Waiting for review · %@": "심사 대기 중 · %@",
+ "In review · %@": "심사 중 · %@",
+ "Approved · %@": "승인됨 · %@",
+ "On the App Store · %@": "App Store에 출시됨 · %@",
+ "Rejected by App Review · %@": "App Review에서 거부됨 · %@"
 }

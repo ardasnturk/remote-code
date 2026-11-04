@@ -6,6 +6,15 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.7.0] — 2026-11-04
+
+### Added
+- **App Review notifications:** with Vitrin on the Mac, Remote Code tells you when an app
+  is waiting for review, in review, approved, on the App Store or rejected, on the Mac
+  and through ntfy on your phone. Tapping one opens the app in the Vitrin tab. It checks
+  every five minutes while the Mac is awake; Settings → Notifications → App Review status
+  turns it off.
+
 ## [1.6.2] — 2026-11-04
 
 ### Added

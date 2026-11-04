@@ -1062,6 +1062,26 @@ Perch's Activity view (MIT, see NOTICE):
   quiet until pressure is back to normal. Its tap link
   `pilothouse://activity?mac=<fingerprint>` opens the screen.
 
+### D-118 — App Review notifications from a watcher on the Mac
+**Status:** accepted
+
+The user hears when an app moves through App Review: waiting, in review, approved,
+on the App Store, rejected. Apple's own push and webhooks need a public server, so
+`AppStateWatcher` (RemoteCodeHost) reads the team's apps through Vitrin's `POST /v1/asc`
+every five minutes and compares them with the last look, and alerts travel the same
+way as every other kind (D-095): macOS and ntfy.
+
+* **On the host, not in `vitrin hub`.** The hub only runs while something uses it, and
+  the point is to hear about a change when the phone is in a pocket. This also works
+  with any Vitrin since 2.1 and needs nothing new from it.
+* **Only while wanted.** With notifications or the kind off, nothing is read.
+* **`asc-watch.json`** in Vitrin's folder holds the last look. Vitrin for Mac watches
+  too, for people without Remote Code, and stays quiet while the file says Remote Code
+  looked in the last ten minutes, so a change is told once.
+* **The first look only records**, and new apps, a new version being prepared and
+  states between stages say nothing.
+* **Limits:** a Mac that sleeps tells on waking, and the delay is up to five minutes.
+
 ### D-117 — Plugins, and Vitrin as the first one
 **Status:** accepted
 

@@ -30,6 +30,8 @@ final class AppSettings {
         static let lowDiskSpaceKindAdded = "lowDiskSpaceKindAdded"
         /// Set once the memory kind (D-116) was added to an existing selection.
         static let memoryPressureKindAdded = "memoryPressureKindAdded"
+        /// Set once the App Review kind (1.7) was added to an existing selection.
+        static let appStateKindAdded = "appStateKindAdded"
         static let notificationIncludesSummary = "notificationIncludesSummary"
         static let ntfyServer = "ntfyServer"
         static let ntfyTopic = "ntfyTopic"
@@ -180,6 +182,11 @@ final class AppSettings {
             defaults.set(kinds.map(\.rawValue).sorted(), forKey: Key.notificationKinds)
             defaults.set(true, forKey: Key.memoryPressureKindAdded)
         }
+        if !defaults.bool(forKey: Key.appStateKindAdded) {
+            kinds.insert(.appStateChanged)
+            defaults.set(kinds.map(\.rawValue).sorted(), forKey: Key.notificationKinds)
+            defaults.set(true, forKey: Key.appStateKindAdded)
+        }
         notificationKinds = kinds
         notificationIncludesSummary = defaults.bool(forKey: Key.notificationIncludesSummary)
         ntfyServer = defaults.string(forKey: Key.ntfyServer) ?? NtfyConfiguration.defaultServer
@@ -194,7 +201,7 @@ final class AppSettings {
 
     /// Events offered in Settings.
     static let notificationKindsInSettings: [HostAlert.Kind] = [.turnFinished, .permissionRequested, .subagentFinished, .sessionFailed]
-        + HostAlert.Kind.promoStudio + [.lowDiskSpace, .memoryPressure]
+        + HostAlert.Kind.promoStudio + [.lowDiskSpace, .memoryPressure, .appStateChanged]
 
     /// Model aliases offered in pickers (free text is accepted too).
     static let modelSuggestions = ["", "fable", "opus", "sonnet", "haiku"]

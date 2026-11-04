@@ -306,5 +306,11 @@
  "ntfy: %@": "ntfy：%@",
  "ntfy: delivered (HTTP %lld)": "ntfy：配信済み（HTTP %lld）",
  "open chats": "開いているチャット",
- "working": "作業中"
+ "working": "作業中",
+ "App Review status": "App Reviewの状況",
+ "Waiting for review · %@": "審査待ち · %@",
+ "In review · %@": "審査中 · %@",
+ "Approved · %@": "承認済み · %@",
+ "On the App Store · %@": "App Storeで配信中 · %@",
+ "Rejected by App Review · %@": "App Reviewで却下 · %@"
 }

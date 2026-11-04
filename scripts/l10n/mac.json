@@ -71,6 +71,10 @@
   "de": "Modus „Berechtigungen umgehen“ erlauben",
   "tr": "“İzinleri atla” moduna izin ver"
  },
+ "App Review status": {
+  "de": "App-Review-Status",
+  "tr": "App Review durumu"
+ },
  "Apple Intelligence is not available on your Mac right now.": {
   "de": "Apple Intelligence ist auf deinem Mac gerade nicht verfügbar.",
   "tr": "Apple Intelligence şu anda Mac'inizde kullanılamıyor."
@@ -90,6 +94,10 @@
  "Approval needed · %@": {
   "de": "Freigabe nötig · %@",
   "tr": "Onay gerekiyor · %@"
+ },
+ "Approved · %@": {
+  "de": "Genehmigt · %@",
+  "tr": "Onaylandı · %@"
  },
  "Ask every time": {
   "de": "Jedes Mal fragen",
@@ -371,6 +379,10 @@
   "de": "Bild fertig · %@",
   "tr": "Görsel hazır · %@"
  },
+ "In review · %@": {
+  "de": "In Prüfung · %@",
+  "tr": "İncelemede · %@"
+ },
  "In the Tailscale admin console under DNS, enable MagicDNS so your Mac gets a stable name.": {
   "de": "Aktiviere in der Tailscale-Admin-Konsole unter DNS MagicDNS, damit dein Mac einen stabilen Namen erhält.",
   "tr": "Mac'inizin kalıcı bir adı olması için Tailscale yönetim konsolunda DNS altında MagicDNS'i etkinleştirin."
@@ -571,6 +583,10 @@
   "de": "Auf einem öffentlichen Server kann jeder, der das Thema kennt, die Mitteilungen lesen – behandle es also wie ein Passwort. Eigene Server brauchen HTTPS; ein Zugriffstoken ist nur nötig, wenn dein Server eines verlangt.",
   "tr": "Herkese açık bir sunucuda konuyu bilen herkes bildirimleri okuyabilir; bu yüzden onu bir şifre gibi saklayın. Kendi sunucunuz HTTPS kullanmalıdır; erişim token'ı yalnızca sunucunuz istiyorsa gerekir."
  },
+ "On the App Store · %@": {
+  "de": "Im App Store · %@",
+  "tr": "App Store'da · %@"
+ },
  "On this Mac": {
   "de": "Auf diesem Mac",
   "tr": "Bu Mac'te"
@@ -694,6 +710,10 @@
  "Ready": {
   "de": "Bereit",
   "tr": "Hazır"
+ },
+ "Rejected by App Review · %@": {
+  "de": "Von App Review abgelehnt · %@",
+  "tr": "App Review reddetti · %@"
  },
  "Remote Access": {
   "de": "Fernzugriff",
@@ -1122,6 +1142,10 @@
  "Waiting for approval": {
   "de": "Wartet auf Freigabe",
   "tr": "Onay bekleniyor"
+ },
+ "Waiting for review · %@": {
+  "de": "Wartet auf Prüfung · %@",
+  "tr": "İnceleme bekliyor · %@"
  },
  "Week": {
   "de": "Woche",

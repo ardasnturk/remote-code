@@ -122,8 +122,11 @@ public struct NtfyPublisher: AlertSink {
         case .promoPublished: (3, "rocket")
         case .lowDiskSpace: (4, "floppy_disk")
         case .memoryPressure: (4, "warning")
+        case .appStateChanged: alert.detail == AppReviewStage.rejected.rawValue ? (4, "x") : (3, "iphone")
         }
-        let link = if alert.kind == .lowDiskSpace {
+        let link = if alert.kind == .appStateChanged {
+            VitrinAppLink(appId: alert.sessionId, macId: macId).url
+        } else if alert.kind == .lowDiskSpace {
             MacScreenLink(.storage, macId: macId).url
         } else if alert.kind == .memoryPressure {
             MacScreenLink(.activity, macId: macId).url

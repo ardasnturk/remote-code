@@ -160,6 +160,21 @@ final class AppModel {
         presentedMacScreen = link.screen
     }
 
+    /// Opens an app of a `pilothouse://vitrin/app/<id>` link in the Vitrin tab, once its list
+    /// has loaded (a tapped notification, D-118).
+    func open(_ link: VitrinAppLink) async {
+        guard hasPairedMac else { return }
+        isPresentingNewChat = false
+        isPresentingSettings = false
+        if let macId = link.macId, macId != activeMac?.id, store.mac(id: macId) != nil {
+            await switchToMac(macId)
+        }
+        selectedTab = .vitrin
+        guard let panel = connection?.vitrin.panel else { return }
+        if panel.ascApps.app(link.appId) == nil { await panel.refresh() }
+        if let app = panel.ascApps.app(link.appId) { panel.path = [.app(app)] }
+    }
+
     func scenePhaseChanged(_ phase: ScenePhase) {
         switch phase {
         case .active:
