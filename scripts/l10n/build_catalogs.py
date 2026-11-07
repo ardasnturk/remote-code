@@ -35,7 +35,7 @@ PATTERNS = [
     r'(?<![A-Za-z])SectionTitle\(\s*' + STRING,
     r'String\(localized:\s*' + STRING,
     r'LocalizedStringKey\(\s*' + STRING,
-    r'\b(?:title|detail|text):\s*' + STRING,
+    r'\b(?:title|detail|text|note):\s*' + STRING,
 ]
 FORMATTING_PATTERN = r'case \.\w+:\s*' + STRING
 
@@ -54,6 +54,11 @@ EXTRA_KEYS = {
     "ios": [
         # Extension summaries, shown via LocalizedStringKey.
         "Subscription analytics, forecasts and alerts for your RevenueCat apps.", "Funnel leaks, retention and alerts for your Mixpanel projects.", "App Store listings, screenshots and App Store Connect.", "Short videos and posts, written and rendered with Claude Code.",
+        # FunnelRadar's chart note, one of two by state.
+        "%@, the busiest event until you pick one in Settings. Marked days are far from the 28 before them. Dashed: a straight line through the last 60 days, for 30 more. A trend, not a forecast.",
+        "%@. Marked days are far from the 28 before them. Dashed: a straight line through the last 60 days, for 30 more. A trend, not a forecast.",
+        # Labels passed to small views in the MRRadar and FunnelRadar tabs.
+        "Change", "Countries", "Month-end pace", "Churn / mo", "Best funnel", "Stores", "subscribers", "trials", "28 days",
         # MRRadar alert kinds, shown via LocalizedStringKey.
         "New subscribers", "MRR is falling", "MRR milestone", "Unusually good day", "Unusually quiet day", "Refunds are high", "Churn is up",
         # ToolSummary titles (RemoteCodeKit) shown via LocalizedStringKey.

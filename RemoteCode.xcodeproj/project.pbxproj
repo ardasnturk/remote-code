@@ -103,6 +103,7 @@
 		891BF942C408D79F6D214DC6 /* FunnelViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FE890E46D169906623D40C /* FunnelViews.swift */; };
 		8AF5843D7543DCC5221CC606 /* AccountForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE738C2DF14A593DB3CFC1B /* AccountForm.swift */; };
 		8BD0B4A996DB2C0BD1211A1F /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712F7EA816A8171D5A38B84 /* SessionListView.swift */; };
+		8CC42C019961EFBBB983D9EF /* RadarComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7288DAFDCDEB17F6E635BE0E /* RadarComponents.swift */; };
 		8DCEDE4044061B37240A9F15 /* RemoteCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A97B36EF53F03495341EF7 /* RemoteCodeUITests.swift */; };
 		949EE9A61C0F970FFDA286FE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 44F9A9CAF58960B4CAAFFCED /* PrivacyInfo.xcprivacy */; };
 		984B213A436A47E6BA9C83A2 /* PromoStudioProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E133E8043533A2147047F21 /* PromoStudioProblemView.swift */; };
@@ -270,6 +271,7 @@
 		6F96B4A2FDE9E103F2B5759F /* AppIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcons.swift; sourceTree = "<group>"; };
 		70D7671F08AA11B2389475B5 /* RemoteCodeUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RemoteCodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7187EE5C045287158B4AB7BD /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		7288DAFDCDEB17F6E635BE0E /* RadarComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarComponents.swift; sourceTree = "<group>"; };
 		7411D8D50F0B33764F0BCFAC /* RemoteCodeKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RemoteCodeKit; path = RemoteCodeKit; sourceTree = SOURCE_ROOT; };
 		7554EDFF82550D3CD5C72E02 /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		75CED5B459ABE6A8F080C21B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 		F2176CF4AA08E876967CF2B0 /* MRRadar */ = {
 			isa = PBXGroup;
 			children = (
+				7288DAFDCDEB17F6E635BE0E /* RadarComponents.swift */,
 				2C40E8667E7BA19D900EF96E /* RadarStore.swift */,
 				A4A4E143A30E0BC807BD75C1 /* RadarViews.swift */,
 			);
@@ -1136,6 +1139,7 @@
 				984B213A436A47E6BA9C83A2 /* PromoStudioProblemView.swift in Sources */,
 				5AC00709098C51BFB4588F28 /* PromoStudioProjectView.swift in Sources */,
 				65C93D9EAABDB50390C55849 /* PromoStudioStore.swift in Sources */,
+				8CC42C019961EFBBB983D9EF /* RadarComponents.swift in Sources */,
 				2F3B01C0D1509E5002D006FB /* RadarStore.swift in Sources */,
 				16882B3F92B3E8A86129DE93 /* RadarViews.swift in Sources */,
 				28A0E465A78DAB80A7F11B52 /* RemoteCodeApp.swift in Sources */,
@@ -1362,7 +1366,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 5JMD3VSD7N;
@@ -1458,7 +1462,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5JMD3VSD7N;

@@ -3,9 +3,17 @@
   "de": "#tag",
   "tr": "#etiket"
  },
+ "%@ convert": {
+  "de": "%@ wandeln um",
+  "tr": "%@ dönüşüyor"
+ },
  "%@ does not report its commands to Remote Code.": {
   "de": "%@ meldet seine Befehle nicht an Remote Code.",
   "tr": "%@ komutlarını Remote Code'a bildirmiyor."
+ },
+ "%@ each": {
+  "de": "je %@",
+  "tr": "kişi başı %@"
  },
  "%@ free": {
   "de": "%@ frei",
@@ -19,6 +27,26 @@
   "de": "%@ ist auf deinem Mac nicht angemeldet. Starte es dort einmal im Terminal.",
   "tr": "%@ Mac'inizde oturum açmamış. Orada Terminal'de bir kez çalıştırın."
  },
+ "%@ is your best day, %@ against an average day.": {
+  "de": "%1$@ ist dein bester Tag, %2$@ gegenüber einem Durchschnittstag.",
+  "tr": "En iyi gününüz %1$@, ortalama bir güne göre %2$@."
+ },
+ "%@ is your busiest day, %@ against an average day.": {
+  "de": "%1$@ ist dein aktivster Tag, %2$@ gegenüber einem Durchschnittstag.",
+  "tr": "%1$@ en yoğun gününüz, normal bir güne göre %2$@."
+ },
+ "%@ loses the most people at %@: only %@ get there from %@.": {
+  "de": "%1$@ verliert die meisten Leute bei %2$@: Nur %3$@ kommen von %4$@ dorthin.",
+  "tr": "%1$@ en çok insanı %2$@ adımında kaybediyor: %4$@ adımından oraya yalnızca %3$@ ulaşıyor."
+ },
+ "%@ months": {
+  "de": "%@ Monate",
+  "tr": "%@ ay"
+ },
+ "%@ more active subscribers.": {
+  "de": "%@ aktive Abonnenten mehr.",
+  "tr": "%@ aktif abone daha."
+ },
  "%@ moved to the Trash.": {
   "de": "%@ in den Papierkorb gelegt.",
   "tr": "%@ Çöp Kutusu'na taşındı."
@@ -26,6 +54,26 @@
  "%@ of %@": {
   "de": "%@ von %@",
   "tr": "%@ / %@"
+ },
+ "%@ of last month's transactions were refunded.": {
+  "de": "%@ der Transaktionen des letzten Monats wurden erstattet.",
+  "tr": "Geçen ayın işlemlerinin %@ kadarı iade edildi."
+ },
+ "%@ of revenue comes from %@.": {
+  "de": "%1$@ des Umsatzes kommen aus %2$@.",
+  "tr": "Gelirin %1$@ kadarı %2$@ kaynaklı."
+ },
+ "%@ of subscribers left this week, %@ above normal.": {
+  "de": "%1$@ der Abonnenten sind diese Woche gegangen, %2$@ über normal.",
+  "tr": "Bu hafta abonelerin %1$@ kadarı ayrıldı, normalin %2$@ üzerinde."
+ },
+ "%@ on last week": {
+  "de": "%@ zur Vorwoche",
+  "tr": "Geçen haftaya göre %@"
+ },
+ "%@ people stop before %@": {
+  "de": "%1$@ Leute steigen vor %2$@ aus",
+  "tr": "%1$@ kişi %2$@ öncesinde ayrılıyor"
  },
  "%@ runs on your Mac. You'll see every step here.": {
   "de": "%@ läuft auf deinem Mac. Du siehst hier jeden Schritt.",
@@ -38,6 +86,34 @@
  "%@ uses the most (%@). Quitting it frees memory right away.": {
   "de": "%@ belegt am meisten (%@). Beendest du es, wird sofort Speicher frei.",
   "tr": "En çok %@ kullanıyor (%@). Kapatırsanız bellek hemen boşalır."
+ },
+ "%@ · was %@": {
+  "de": "%1$@ · vorher %2$@",
+  "tr": "%1$@ · önceki %2$@"
+ },
+ "%@ – %@, against the 28 days before. The newest 7 days are left out: people who just entered may still convert.": {
+  "de": "%1$@ – %2$@, gegenüber den 28 Tagen davor. Die neuesten 7 Tage fehlen: Wer gerade erst eingestiegen ist, konvertiert vielleicht noch.",
+  "tr": "%1$@ – %2$@, önceki 28 güne göre. En yeni 7 gün dışarıda bırakıldı: yeni giren kişiler hâlâ dönüşebilir."
+ },
+ "%@, %@ away from a normal day.": {
+  "de": "%1$@, %2$@ Abweichung von einem normalen Tag.",
+  "tr": "%1$@, normal bir günden %2$@ farklı."
+ },
+ "%@, the busiest event until you pick one in Settings. Marked days are far from the 28 before them. Dashed: a straight line through the last 60 days, for 30 more. A trend, not a forecast.": {
+  "de": "%@, das aktivste Ereignis, bis du in den Einstellungen eines wählst. Markierte Tage weichen stark von den 28 Tagen davor ab. Gestrichelt: eine Gerade durch die letzten 60 Tage, 30 weitere Tage lang. Ein Trend, keine Prognose.",
+  "tr": "%@, Ayarlar'dan birini seçene kadar en yoğun olay. İşaretli günler, öncesindeki 28 günden çok farklı. Kesikli çizgi: son 60 günden geçen düz bir doğru, 30 gün daha uzatılmış. Bir eğilim, tahmin değil."
+ },
+ "%@. Marked days are far from the 28 before them. Dashed: a straight line through the last 60 days, for 30 more. A trend, not a forecast.": {
+  "de": "%@. Markierte Tage weichen stark von den 28 Tagen davor ab. Gestrichelt: eine Gerade durch die letzten 60 Tage, 30 weitere Tage lang. Ein Trend, keine Prognose.",
+  "tr": "%@. İşaretli günler, öncesindeki 28 günden çok farklı. Kesikli çizgi: son 60 günden geçen düz bir doğru, 30 gün daha uzatılmış. Bir eğilim, tahmin değil."
+ },
+ "%@: %@ now, %@ the period before.": {
+  "de": "%1$@: jetzt %2$@, davor %3$@.",
+  "tr": "%1$@: şimdi %2$@, önceki dönemde %3$@."
+ },
+ "%@: %@ users, against about %@ on a normal day.": {
+  "de": "%1$@: %2$@ Nutzer, gegenüber etwa %3$@ an einem normalen Tag.",
+  "tr": "%1$@: %2$@ kullanıcı, normal bir günde yaklaşık %3$@."
  },
  "%@: %lld percent used": {
   "de": "%@: %lld Prozent verbraucht",
@@ -75,9 +151,29 @@
   "de": "(keine Ausgabe)",
   "tr": "(çıktı yok)"
  },
+ "1 year": {
+  "de": "1 Jahr",
+  "tr": "1 yıl"
+ },
+ "28 days": {
+  "de": "28 Tage",
+  "tr": "28 gün"
+ },
+ "30 days": {
+  "de": "30 Tage",
+  "tr": "30 gün"
+ },
  "5 hours": {
   "de": "5 Stunden",
   "tr": "5 saat"
+ },
+ "90 days": {
+  "de": "90 Tage",
+  "tr": "90 gün"
+ },
+ "A 7-day average, 100 = each app 90 days ago. Apps count different events and can share people, so they are compared and never added.": {
+  "de": "Ein 7-Tage-Durchschnitt, 100 = jede App vor 90 Tagen. Apps zählen verschiedene Ereignisse und können dieselben Leute teilen, deshalb werden sie verglichen und nie addiert.",
+  "tr": "7 günlük ortalama, 100 = her uygulamanın 90 gün öncesi. Uygulamalar farklı olayları sayar ve aynı kişileri paylaşabilir; bu yüzden karşılaştırılır, asla toplanmaz."
  },
  "A 9:16 image can only be a story; Instagram’s feed allows 4:5 at most.": {
   "de": "Ein 9:16-Bild kann nur eine Story sein; der Instagram-Feed erlaubt höchstens 4:5.",
@@ -115,9 +211,13 @@
   "de": "Aktive Zeit",
   "tr": "Aktif süre"
  },
- "Active users": {
-  "de": "Aktive Nutzer",
-  "tr": "Aktif kullanıcılar"
+ "Active trials": {
+  "de": "Aktive Tests",
+  "tr": "Aktif denemeler"
+ },
+ "Active users, side by side": {
+  "de": "Aktive Nutzer im Vergleich",
+  "tr": "Aktif kullanıcılar, yan yana"
  },
  "Add AI Note to Caption": {
   "de": "KI-Hinweis zur Bildunterschrift hinzufügen",
@@ -135,6 +235,10 @@
   "de": "Nachdem du ein neues Instagram-Konto mit einer deiner Facebook-Seiten verknüpft hast, aktualisiere, um es ohne erneute Anmeldung hinzuzufügen.",
   "tr": "Facebook Sayfalarından birine yeni bir Instagram hesabı bağladıktan sonra, yeniden giriş yapmadan eklemek için yenile."
  },
+ "Against an average day, last 12 weeks.": {
+  "de": "Gegenüber einem Durchschnittstag, letzte 12 Wochen.",
+  "tr": "Ortalama bir güne göre, son 12 hafta."
+ },
  "Agent default": {
   "de": "Agent-Standard",
   "tr": "Ajan varsayılanı"
@@ -150,6 +254,10 @@
  "All": {
   "de": "Alle",
   "tr": "Tümü"
+ },
+ "All cohorts, weighted by size. A curve that flattens means people stay.": {
+  "de": "Alle Kohorten, nach Größe gewichtet. Eine Kurve, die abflacht, heißt: Die Leute bleiben.",
+  "tr": "Tüm kohortlar, büyüklüğe göre ağırlıklandırıldı. Düzleşen bir eğri, insanların kaldığı anlamına gelir."
  },
  "All good": {
   "de": "Alles in Ordnung",
@@ -227,9 +335,9 @@
   "de": "Storyboard automatisch freigeben",
   "tr": "Storyboard'u otomatik onayla"
  },
- "Apps": {
-  "de": "Apps",
-  "tr": "Uygulamalar"
+ "Apps compared": {
+  "de": "Apps im Vergleich",
+  "tr": "Uygulamaları karşılaştır"
  },
  "Ask %@ anything about this folder": {
   "de": "Frag %@ alles zu diesem Ordner",
@@ -247,13 +355,21 @@
   "de": "Zu Hause spricht Remote Code über WLAN mit deinem Mac. Um ihn überall zu erreichen, treten beide Geräte deinem privaten Tailscale-Netzwerk bei.",
   "tr": "Evde Remote Code, Mac'inizle Wi-Fi üzerinden konuşur. Her yerden erişmek için iki cihaz da özel Tailscale ağınıza katılır."
  },
+ "At this pace the month ends at %@, %@ against last month.": {
+  "de": "In diesem Tempo endet der Monat bei %1$@, %2$@ gegenüber dem Vormonat.",
+  "tr": "Bu hızla ay %1$@ ile biter, geçen aya göre %2$@."
+ },
  "Attach photos or videos": {
   "de": "Fotos oder Videos anhängen",
   "tr": "Fotoğraf veya video ekle"
  },
- "Biggest leak: %@ lost": {
-  "de": "Größtes Leck: %@ verloren",
-  "tr": "En büyük kayıp: %@"
+ "Best days": {
+  "de": "Beste Tage",
+  "tr": "En iyi günler"
+ },
+ "Best funnel": {
+  "de": "Bester Funnel",
+  "tr": "En iyi huni"
  },
  "Biggest movers": {
   "de": "Größte Veränderungen",
@@ -270,6 +386,10 @@
  "Built-in": {
   "de": "Integriert",
   "tr": "Yerleşik"
+ },
+ "Busiest events, from the latest check.": {
+  "de": "Die aktivsten Ereignisse, laut letzter Prüfung.",
+  "tr": "Son kontrole göre en yoğun olaylar."
  },
  "Bypass permissions": {
   "de": "Berechtigungen umgehen",
@@ -331,9 +451,17 @@
   "de": "Wähle ein Konto zum Posten oder sichere das Video und poste es selbst.",
   "tr": "Paylaşmak için bir hesap seçin ya da videoyu kaydedip kendiniz paylaşın."
  },
+ "Churn / mo": {
+  "de": "Churn / Mon.",
+  "tr": "Kayıp / ay"
+ },
  "Churn is up": {
   "de": "Churn steigt",
   "tr": "Abone kaybı arttı"
+ },
+ "Churn is up · %@": {
+  "de": "Churn steigt · %@",
+  "tr": "Abone kaybı arttı · %@"
  },
  "Claude Code": {
   "de": "Claude Code",
@@ -503,9 +631,9 @@
   "de": "Diese Sitzung fortsetzen",
   "tr": "Bu Oturuma Devam Et"
  },
- "Conversion": {
-  "de": "Conversion",
-  "tr": "Dönüşüm"
+ "Conversion fell · %@": {
+  "de": "Conversion gesunken · %@",
+  "tr": "Dönüşüm düştü · %@"
  },
  "Copied": {
   "de": "Kopiert",
@@ -559,9 +687,33 @@
   "de": "Eigenes …",
   "tr": "Özel…"
  },
+ "D1 retention": {
+  "de": "D1-Bindung",
+  "tr": "D1 elde tutma"
+ },
+ "D30 retention": {
+  "de": "D30-Bindung",
+  "tr": "D30 elde tutma"
+ },
+ "D7 retention": {
+  "de": "D7-Bindung",
+  "tr": "D7 elde tutma"
+ },
+ "DAU/MAU of the key event, full months only.": {
+  "de": "DAU/MAU des Schlüsselereignisses, nur volle Monate.",
+  "tr": "Ana olayın DAU/MAU değeri, yalnızca tam aylar."
+ },
  "Daily revenue": {
   "de": "Tagesumsatz",
   "tr": "Günlük gelir"
+ },
+ "Daily users": {
+  "de": "Tägliche Nutzer",
+  "tr": "Günlük kullanıcılar"
+ },
+ "Daily users are of each app's key event, a 7-day average. Stickiness is DAU/MAU of the last full month. D7 is the share of a cohort back on day 7.": {
+  "de": "Tägliche Nutzer beziehen sich auf das Schlüsselereignis jeder App, als 7-Tage-Durchschnitt. Stickiness ist DAU/MAU des letzten vollen Monats. D7 ist der Anteil einer Kohorte, der an Tag 7 zurück ist.",
+  "tr": "Günlük kullanıcılar her uygulamanın ana olayına aittir ve 7 günlük ortalamadır. Stickiness, son tam ayın DAU/MAU değeridir. D7, bir kohortun 7. günde geri dönen payıdır."
  },
  "Dark": {
   "de": "Dunkel",
@@ -570,6 +722,14 @@
  "Darken the built-in screen while the lid is closed": {
   "de": "Eingebauten Bildschirm bei geschlossenem Deckel abdunkeln",
   "tr": "Kapak kapalıyken dahili ekranı karart"
+ },
+ "Dashed: a straight line through the last 60 days, for 90 more. A trend, not a promise.": {
+  "de": "Gestrichelt: eine Gerade durch die letzten 60 Tage, 90 weitere fortgesetzt. Ein Trend, kein Versprechen.",
+  "tr": "Kesikli çizgi: son 60 günden geçen doğrunun 90 gün uzantısı. Bir eğilimdir, garanti değil."
+ },
+ "Day 7 retention is %@, down from %@.": {
+  "de": "Die Bindung an Tag 7 liegt bei %1$@, vorher %2$@.",
+  "tr": "7. gün elde tutma %1$@, önceki değer %2$@."
  },
  "Default model": {
   "de": "Standardmodell",
@@ -635,6 +795,10 @@
   "de": "Fertig in %@",
   "tr": "%@ içinde tamamlandı"
  },
+ "Down %@ in 7 days (%@).": {
+  "de": "%1$@ weniger in 7 Tagen (%2$@).",
+  "tr": "7 günde %1$@ düştü (%2$@)."
+ },
  "Download it from the website and open it. A >_ icon appears in the menu bar at the top of the screen.": {
   "de": "Lade sie von der Website herunter und öffne sie. Oben auf dem Bildschirm erscheint in der Menüleiste ein >_-Symbol.",
   "tr": "Web sitesinden indirip açın. Ekranın üstündeki menü çubuğunda bir >_ simgesi belirir."
@@ -658,6 +822,10 @@
  "Each slide becomes a story. Stories have no caption and disappear after 24 hours.": {
   "de": "Jede Folie wird zu einer Story. Storys haben keine Bildunterschrift und verschwinden nach 24 Stunden.",
   "tr": "Her slayt bir hikâye olur. Hikâyelerde açıklama olmaz ve 24 saat sonra kaybolurlar."
+ },
+ "Each week: new, returning and upgraded subscribers against those who left.": {
+  "de": "Jede Woche: neue, zurückgekehrte und hochgestufte Abonnenten gegenüber denen, die gingen.",
+  "tr": "Her hafta yeni, dönen ve yükselten aboneler ile ayrılanlar."
  },
  "Earlier": {
   "de": "Früher",
@@ -815,6 +983,10 @@
   "de": "Funnel-Lecks, Bindung und Hinweise für deine Mixpanel-Projekte.",
   "tr": "Mixpanel projeleriniz için huni kayıpları, elde tutma ve uyarılar."
  },
+ "Funnels": {
+  "de": "Funnels",
+  "tr": "Huniler"
+ },
  "Generate This": {
   "de": "Das erstellen",
   "tr": "Bunu üret"
@@ -890,6 +1062,10 @@
  "Implied LTV": {
   "de": "Implizierter LTV",
   "tr": "Tahmini LTV"
+ },
+ "In %@ an active user came back on about %@ days of 30.": {
+  "de": "In %1$@ kam ein aktiver Nutzer an etwa %2$@ von 30 Tagen zurück.",
+  "tr": "%1$@ içinde aktif bir kullanıcı 30 günün yaklaşık %2$@ gününde geri geldi."
  },
  "In progress": {
   "de": "In Arbeit",
@@ -983,6 +1159,14 @@
   "de": "Sprache",
   "tr": "Dil"
  },
+ "Last 90 days": {
+  "de": "Letzte 90 Tage",
+  "tr": "Son 90 gün"
+ },
+ "Last read": {
+  "de": "Zuletzt gelesen",
+  "tr": "Son okuma"
+ },
  "Later": {
   "de": "Später",
   "tr": "Sonra"
@@ -1055,9 +1239,21 @@
   "de": "MRR sinkt",
   "tr": "MRR düşüyor"
  },
+ "MRR is falling · %@": {
+  "de": "MRR sinkt · %@",
+  "tr": "MRR düşüyor · %@"
+ },
  "MRR milestone": {
   "de": "MRR-Meilenstein",
   "tr": "MRR kilometre taşı"
+ },
+ "MRR milestone · %@": {
+  "de": "MRR-Meilenstein · %@",
+  "tr": "MRR kilometre taşı · %@"
+ },
+ "MRR passed %@.": {
+  "de": "MRR hat %@ überschritten.",
+  "tr": "MRR %@ eşiğini geçti."
  },
  "MRR won and lost": {
   "de": "MRR gewonnen und verloren",
@@ -1090,6 +1286,10 @@
  "Make sure Remote Code is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.": {
   "de": "Achte darauf, dass Remote Code auf deinem Mac läuft und beide Geräte im selben WLAN sind. Nicht in diesem WLAN? Nutze Tailscale.",
   "tr": "Remote Code'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun. O Wi-Fi'den uzakta mısınız? Tailscale kullanın."
+ },
+ "Marked days are far from the 28 before them.": {
+  "de": "Markierte Tage weichen stark von den 28 Tagen davor ab.",
+  "tr": "İşaretli günler önceki 28 günden belirgin şekilde farklı."
  },
  "Max": {
   "de": "Maximum",
@@ -1143,10 +1343,6 @@
   "de": "Monatsend-Tempo",
   "tr": "Ay sonu hızı"
  },
- "Monthly churn": {
-  "de": "Monatlicher Churn",
-  "tr": "Aylık abone kaybı"
- },
  "Mostly %@": {
   "de": "Meist %@",
   "tr": "Çoğunlukla %@"
@@ -1154,6 +1350,10 @@
  "Move to Trash": {
   "de": "In den Papierkorb legen",
   "tr": "Çöp Kutusu'na Taşı"
+ },
+ "Movers": {
+  "de": "Veränderungen",
+  "tr": "Değişenler"
  },
  "Moving to the Trash frees the space only after the Trash is emptied. Items in the Trash itself are always deleted permanently.": {
   "de": "Beim Verschieben in den Papierkorb wird Platz erst frei, wenn der Papierkorb entleert wird. Objekte im Papierkorb selbst werden immer endgültig gelöscht.",
@@ -1203,6 +1403,10 @@
   "de": "Neue Abonnenten",
   "tr": "Yeni aboneler"
  },
+ "New subscribers · %@": {
+  "de": "Neue Abonnenten · %@",
+  "tr": "Yeni aboneler · %@"
+ },
  "Next week": {
   "de": "Nächste Woche",
   "tr": "Sonraki hafta"
@@ -1223,6 +1427,18 @@
   "de": "Keine Antwort",
   "tr": "Yanıt yok"
  },
+ "No cohorts to draw yet.": {
+  "de": "Noch keine Kohorten zum Zeichnen.",
+  "tr": "Henüz çizilecek kohort yok."
+ },
+ "No data yet.": {
+  "de": "Noch keine Daten.",
+  "tr": "Henüz veri yok."
+ },
+ "No events yet today.": {
+  "de": "Heute noch keine Ereignisse.",
+  "tr": "Bugün henüz olay yok."
+ },
  "No limits reported yet. Run a session to see them.": {
   "de": "Noch keine Limits gemeldet. Starte eine Sitzung, um sie zu sehen.",
   "tr": "Henüz limit bildirilmedi. Görmek için bir oturum çalıştırın."
@@ -1239,6 +1455,10 @@
   "de": "Kein Foto gefunden; das Video zeigt stattdessen den Namen.",
   "tr": "Fotoğraf bulunamadı; video bunun yerine ismi gösterir."
  },
+ "No revenue yet. The charts fill in with your first subscribers.": {
+  "de": "Noch kein Umsatz. Die Charts füllen sich mit deinen ersten Abonnenten.",
+  "tr": "Henüz gelir yok. Grafikler ilk abonelerinizle dolacak."
+ },
  "No sessions yet": {
   "de": "Noch keine Sitzungen",
   "tr": "Henüz oturum yok"
@@ -1250,6 +1470,10 @@
  "No work this week": {
   "de": "Diese Woche keine Arbeit",
   "tr": "Bu hafta çalışma yok"
+ },
+ "Nobody entered this funnel in the period.": {
+  "de": "In diesem Zeitraum ist niemand in diesen Funnel eingestiegen.",
+  "tr": "Bu döneme bu huniye kimse girmedi."
  },
  "None": {
   "de": "Keiner",
@@ -1263,6 +1487,10 @@
   "de": "Nicht mit deinem Mac verbunden.",
   "tr": "Mac'ine bağlı değil."
  },
+ "Not enough data yet.": {
+  "de": "Noch nicht genug Daten.",
+  "tr": "Henüz yeterli veri yok."
+ },
  "Not installed": {
   "de": "Nicht installiert",
   "tr": "Kurulu değil"
@@ -1275,6 +1503,10 @@
   "de": "Nicht angemeldet",
   "tr": "Oturum açılmamış"
  },
+ "Nothing has moved much yet.": {
+  "de": "Bisher hat sich noch nicht viel bewegt.",
+  "tr": "Henüz pek bir şey değişmedi."
+ },
  "Nothing is made until then.": {
   "de": "Bis dahin wird nichts erstellt.",
   "tr": "O zamana kadar hiçbir şey oluşturulmaz."
@@ -1282,6 +1514,10 @@
  "Nothing to clean up": {
   "de": "Nichts zu bereinigen",
   "tr": "Temizlenecek bir şey yok"
+ },
+ "Nothing to compare with yet.": {
+  "de": "Noch nichts zum Vergleichen.",
+  "tr": "Henüz karşılaştırılacak bir şey yok."
  },
  "OK": {
   "de": "OK",
@@ -1419,6 +1655,10 @@
   "de": "Personen",
   "tr": "Kişiler"
  },
+ "Period": {
+  "de": "Zeitraum",
+  "tr": "Dönem"
+ },
  "Permissions": {
   "de": "Berechtigungen",
   "tr": "İzinler"
@@ -1446,6 +1686,10 @@
  "Pick any folder": {
   "de": "Beliebigen Ordner wählen",
   "tr": "İstediğiniz klasörü seçin"
+ },
+ "Pick the two events of this project's cohort in FunnelRadar's Settings on your Mac.": {
+  "de": "Wähle die zwei Events der Kohorte dieses Projekts in den FunnelRadar-Einstellungen auf deinem Mac.",
+  "tr": "Mac'inizdeki FunnelRadar Ayarları'ndan bu projenin kohortu için iki olayı seçin."
  },
  "Plan": {
   "de": "Planen",
@@ -1639,6 +1883,10 @@
   "de": "Hohe Erstattungen",
   "tr": "İadeler yüksek"
  },
+ "Refunds are high · %@": {
+  "de": "Hohe Erstattungen · %@",
+  "tr": "İadeler yüksek · %@"
+ },
  "Remote Access": {
   "de": "Fernzugriff",
   "tr": "Uzaktan Erişim"
@@ -1747,17 +1995,33 @@
   "de": "Wiederherstellen",
   "tr": "Geri Dön"
  },
- "Retention": {
-  "de": "Bindung",
-  "tr": "Elde tutma"
- },
  "Retention by month": {
   "de": "Bindung nach Monat",
   "tr": "Aylara göre elde tutma"
  },
+ "Retention by week": {
+  "de": "Bindung nach Woche",
+  "tr": "Haftaya göre elde tutma"
+ },
+ "Retention curve": {
+  "de": "Bindungskurve",
+  "tr": "Elde tutma eğrisi"
+ },
+ "Retention fell · %@": {
+  "de": "Bindung gesunken · %@",
+  "tr": "Elde tutma düştü · %@"
+ },
  "Retry": {
   "de": "Erneut versuchen",
   "tr": "Yeniden Dene"
+ },
+ "Revenue, all apps": {
+  "de": "Umsatz, alle Apps",
+  "tr": "Gelir, tüm uygulamalar"
+ },
+ "Revenue, last 3 months.": {
+  "de": "Umsatz, letzte 3 Monate.",
+  "tr": "Gelir, son 3 ay."
  },
  "Revise": {
   "de": "Überarbeiten",
@@ -1782,6 +2046,10 @@
  "Running": {
   "de": "Läuft",
   "tr": "Çalışıyor"
+ },
+ "Running trials should add about %@ of MRR.": {
+  "de": "Laufende Tests dürften etwa %@ MRR bringen.",
+  "tr": "Devam eden denemeler yaklaşık %@ MRR eklemeli."
  },
  "Save": {
   "de": "Sichern",
@@ -1891,6 +2159,14 @@
   "de": "Teilen als",
   "tr": "Paylaşım türü"
  },
+ "Share of each month's new subscribers still paying.": {
+  "de": "Anteil der neuen Abonnenten jedes Monats, die noch zahlen.",
+  "tr": "Her ayın yeni abonelerinden hâlâ ödeyenlerin oranı."
+ },
+ "Share of subscribers lost.": {
+  "de": "Anteil verlorener Abonnenten.",
+  "tr": "Kaybedilen abone oranı."
+ },
  "Shares": {
   "de": "Geteilt",
   "tr": "Paylaşım"
@@ -1910,6 +2186,10 @@
  "Show all %lld lines": {
   "de": "Alle %lld Zeilen anzeigen",
   "tr": "%lld satırın tümünü göster"
+ },
+ "Showing the %@ most recently changed of %@ saved funnels. Each one costs queries.": {
+  "de": "Gezeigt werden die %1$@ zuletzt geänderten von %2$@ gespeicherten Funnels. Jeder kostet Abfragen.",
+  "tr": "Kayıtlı %2$@ hunin en son değişen %1$@ tanesi gösteriliyor. Her biri sorgu harcar."
  },
  "Shows the details": {
   "de": "Zeigt die Details",
@@ -1975,6 +2255,10 @@
   "de": "Etwas ist schiefgelaufen",
   "tr": "Bir şeyler ters gitti"
  },
+ "Sorted by MRR. Quick ratio is MRR won per unit lost over 8 weeks; above 4 is strong, below 1 is shrinking.": {
+  "de": "Nach MRR sortiert. Quick Ratio ist gewonnener MRR je verlorener Einheit über 8 Wochen; über 4 ist stark, unter 1 schrumpft.",
+  "tr": "MRR'a göre sıralı. Quick ratio, 8 haftada kaybedilen birim başına kazanılan MRR'dır; 4 üstü güçlü, 1 altı küçülme demektir."
+ },
  "Source Code on GitHub": {
   "de": "Quellcode auf GitHub",
   "tr": "GitHub'da Kaynak Kod"
@@ -2003,6 +2287,10 @@
   "de": "Starte deinen ersten Chat",
   "tr": "İlk sohbetinizi başlatın"
  },
+ "Started, and converted, each week.": {
+  "de": "Gestartet und umgewandelt, pro Woche.",
+  "tr": "Her hafta başlayan ve dönüşen."
+ },
  "Starting": {
   "de": "Startet",
   "tr": "Başlatılıyor"
@@ -2015,6 +2303,14 @@
   "de": "Behalte die Kontrolle",
   "tr": "Kontrol sizde"
  },
+ "Stickiness": {
+  "de": "Stickiness",
+  "tr": "Stickiness"
+ },
+ "Stickiness by month": {
+  "de": "Stickiness nach Monat",
+  "tr": "Aya göre Stickiness"
+ },
  "Stop": {
   "de": "Stopp",
   "tr": "Durdur"
@@ -2026,6 +2322,10 @@
  "Storage": {
   "de": "Speicher",
   "tr": "Depolama"
+ },
+ "Stores": {
+  "de": "Stores",
+  "tr": "Mağazalar"
  },
  "Stories have no caption and disappear after 24 hours.": {
   "de": "Storys haben keine Bildunterschrift und verschwinden nach 24 Stunden.",
@@ -2127,6 +2427,10 @@
   "de": "Das Video konnte nicht geladen werden.",
   "tr": "Video yüklenemedi."
  },
+ "The worst step of each saved funnel, worst first.": {
+  "de": "Der schwächste Schritt jedes gespeicherten Funnels, der schlechteste zuerst.",
+  "tr": "Kayıtlı her hunideki en kötü adım, en kötüsü başta."
+ },
  "Thinking": {
   "de": "Denkprozess",
   "tr": "Düşünme süreci"
@@ -2151,6 +2455,18 @@
   "de": "Dieses Gerät vergisst den Mac und seine zwischengespeicherten Verläufe. Um das Gerät auch auf dem Mac zu sperren, widerrufe es im Remote-Code-Menü auf dem Mac.",
   "tr": "Bu cihaz Mac'i ve önbellekteki dökümlerini unutur. Bu cihazı Mac'te de engellemek için Mac'teki Remote Code menüsünden iptal edin."
  },
+ "This fills in after a full month of data.": {
+  "de": "Das füllt sich nach einem vollen Monat an Daten.",
+  "tr": "Bu, tam bir aylık veriden sonra dolar."
+ },
+ "This fills in after a week of data.": {
+  "de": "Das füllt sich nach einer Woche an Daten.",
+  "tr": "Bu, bir haftalık veriden sonra dolar."
+ },
+ "This fills in after two weeks of data.": {
+  "de": "Das füllt sich nach zwei Wochen an Daten.",
+  "tr": "Bu, iki haftalık veriden sonra dolar."
+ },
  "This folder is empty.": {
   "de": "Dieser Ordner ist leer.",
   "tr": "Bu klasör boş."
@@ -2171,6 +2487,10 @@
   "de": "Dieser Beitrag verwendet mit KI bearbeitete Fotos. Füge der Bildunterschrift einen Hinweis hinzu oder aktiviere beim Posten in Instagram die KI-Kennzeichnung.",
   "tr": "Bu gönderi yapay zekâ ile düzenlenmiş fotoğraflar kullanıyor. Açıklamaya bir not ekleyin ya da Instagram'dan paylaşırken yapay zekâ etiketini açın."
  },
+ "This project has no saved funnels. Save one in Mixpanel and it appears here.": {
+  "de": "Dieses Projekt hat keine gespeicherten Funnels. Speichere einen in Mixpanel, dann erscheint er hier.",
+  "tr": "Bu projede kayıtlı huni yok. Mixpanel'de bir tane kaydedin, burada görünür."
+ },
  "This sub-agent left no transcript.": {
   "de": "Dieser Sub-Agent hat keinen Verlauf hinterlassen.",
   "tr": "Bu alt ajan bir döküm bırakmadı."
@@ -2178,6 +2498,10 @@
  "This week": {
   "de": "Diese Woche",
   "tr": "Bu hafta"
+ },
+ "This week against last week.": {
+  "de": "Diese Woche gegenüber der letzten.",
+  "tr": "Bu hafta, geçen haftaya göre."
  },
  "Thought": {
   "de": "Nachgedacht",
@@ -2199,6 +2523,14 @@
   "de": "Heute",
   "tr": "Bugün"
  },
+ "Today so far": {
+  "de": "Heute bisher",
+  "tr": "Bugün şimdiye kadar"
+ },
+ "Top events, this week against last week.": {
+  "de": "Top-Ereignisse, diese Woche gegenüber der letzten.",
+  "tr": "En çok olan olaylar, bu hafta geçen haftaya göre."
+ },
  "Transcripts stay on your Mac and are downloaded again when you open a session.": {
   "de": "Verläufe bleiben auf deinem Mac und werden beim Öffnen einer Sitzung erneut geladen.",
   "tr": "Dökümler Mac'inizde kalır ve bir oturumu açtığınızda yeniden indirilir."
@@ -2206,10 +2538,6 @@
  "Trash": {
   "de": "Papierkorb",
   "tr": "Çöp Kutusu"
- },
- "Trial conversion": {
-  "de": "Testumwandlung",
-  "tr": "Deneme dönüşümü"
  },
  "Trials": {
   "de": "Tests",
@@ -2243,13 +2571,25 @@
   "de": "Bis zum Ausschalten",
   "tr": "Kapatılana kadar"
  },
+ "Unusually busy day · %@": {
+  "de": "Ungewöhnlich aktiver Tag · %@",
+  "tr": "Olağandışı yoğun gün · %@"
+ },
  "Unusually good day": {
   "de": "Ungewöhnlich guter Tag",
   "tr": "Olağandışı iyi gün"
  },
+ "Unusually good day · %@": {
+  "de": "Ungewöhnlich guter Tag · %@",
+  "tr": "Olağandışı iyi gün · %@"
+ },
  "Unusually quiet day": {
   "de": "Ungewöhnlich ruhiger Tag",
   "tr": "Olağandışı sakin gün"
+ },
+ "Unusually quiet day · %@": {
+  "de": "Ungewöhnlich ruhiger Tag · %@",
+  "tr": "Olağandışı sakin gün · %@"
  },
  "Update Promo Studio on your Mac to post pictures to Instagram. Until then, save the image and post it from Instagram.": {
   "de": "Aktualisiere Promo Studio auf deinem Mac, um Bilder auf Instagram zu posten. Bis dahin sichere das Bild und poste es in Instagram.",
@@ -2335,9 +2675,21 @@
   "de": "Website",
   "tr": "Web sitesi"
  },
+ "Weekday pattern": {
+  "de": "Wochentagsmuster",
+  "tr": "Haftanın günlerine göre örüntü"
+ },
  "Weekly": {
   "de": "Wöchentlich",
   "tr": "Haftalık"
+ },
+ "Weekly churn": {
+  "de": "Wöchentlicher Churn",
+  "tr": "Haftalık abone kaybı"
+ },
+ "Weekly cohorts by day. Blank cells are too young to know.": {
+  "de": "Wöchentliche Kohorten nach Tag. Leere Zellen sind noch zu jung, um etwas zu sagen.",
+  "tr": "Haftalık kohortlar, güne göre. Boş hücreler henüz bilinemeyecek kadar yeni."
  },
  "What should the image show?": {
   "de": "Was soll das Bild zeigen?",
@@ -2350,6 +2702,14 @@
  "Where": {
   "de": "Wo",
   "tr": "Nerede"
+ },
+ "Where MRR comes from": {
+  "de": "Woher der MRR kommt",
+  "tr": "MRR nereden geliyor"
+ },
+ "Where people drop out": {
+  "de": "Wo Leute abspringen",
+  "tr": "İnsanların ayrıldığı yer"
  },
  "Who": {
   "de": "Wer",
@@ -2399,6 +2759,10 @@
   "de": "Dein Mac liest die Charts noch.",
   "tr": "Mac'iniz grafikleri okumaya devam ediyor."
  },
+ "Your Mac is still reading the reports.": {
+  "de": "Dein Mac liest die Berichte noch.",
+  "tr": "Mac'iniz raporları okumaya devam ediyor."
+ },
  "Your Mac is summarising the week…": {
   "de": "Dein Mac fasst die Woche zusammen …",
   "tr": "Mac'iniz haftayı özetliyor…"
@@ -2447,6 +2811,14 @@
   "de": "Bild",
   "tr": "görseli"
  },
+ "keeps %@": {
+  "de": "behält %@",
+  "tr": "%@ kalıyor"
+ },
+ "new": {
+  "de": "neu",
+  "tr": "yeni"
+ },
  "of %@": {
   "de": "von %@",
   "tr": "toplam %@"
@@ -2454,6 +2826,14 @@
  "pilothouse://pair?d=…": {
   "de": "pilothouse://pair?d=…",
   "tr": "pilothouse://pair?d=…"
+ },
+ "subscribers": {
+  "de": "Abonnenten",
+  "tr": "abone"
+ },
+ "trials": {
+  "de": "Tests",
+  "tr": "deneme"
  },
  "video": {
   "de": "Video",

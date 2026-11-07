@@ -10,6 +10,7 @@ struct RadarValue: Decodable, Identifiable, Hashable, Sendable {
 
 struct RadarShare: Decodable, Identifiable, Hashable, Sendable {
     var name: String
+    var value: Double
     var fraction: Double
     var id: String { name }
 }
@@ -18,6 +19,20 @@ struct RadarWeek: Decodable, Identifiable, Hashable, Sendable {
     var date: Date
     var gained: Double
     var lost: Double
+    var id: Date { date }
+}
+
+struct RadarTrialWeek: Decodable, Identifiable, Hashable, Sendable {
+    var date: Date
+    var starts: Double
+    var conversions: Double
+    var id: Date { date }
+}
+
+struct RadarAnomaly: Decodable, Identifiable, Hashable, Sendable {
+    var date: Date
+    var value: Double
+    var expected: Double
     var id: Date { date }
 }
 
@@ -53,11 +68,15 @@ struct RadarInsights: Decodable, Hashable, Sendable {
     var quickRatio: Double?
     var arpu: Double?
     var monthlyChurn: Double?
+    var lifetimeMonths: Double?
     var impliedLTV: Double?
     var monthEndPace: Double?
     var lastMonth: Double?
     var trialConversion: Double?
     var trialPipelineMRR: Double?
+    var weekdayIndex: [Double]
+    var bestWeekday: Int?
+    var topCountryShare: Double?
     var forecast: [RadarValue]
 }
 
@@ -69,8 +88,12 @@ struct RadarReport: Decodable, Identifiable, Hashable, Sendable {
     var revenueDaily: [RadarValue]
     var mrrDaily: [RadarValue]
     var movement: [RadarWeek]
+    var churnWeekly: [RadarValue]
+    var trialsWeekly: [RadarTrialWeek]
     var retention: [RadarRetention]
     var countries: [RadarShare]
+    var stores: [RadarShare]
+    var anomalies: [RadarAnomaly]
     var insights: RadarInsights
     var id: String { project.id }
 }
@@ -82,12 +105,15 @@ struct RadarTotal: Decodable, Identifiable, Hashable, Sendable {
     var activeSubscriptions: Double
     var activeTrials: Double
     var mrrChange30: Double?
+    var revenueDaily: [RadarValue]
+    var mrrShare: [RadarShare]
     var id: String { currency }
 }
 
 struct RadarPortfolio: Decodable, Hashable, Sendable {
     var totals: [RadarTotal]
     var reports: [RadarReport]
+    var updatedAt: Date?
 }
 
 struct RadarAlertItem: Decodable, Identifiable, Hashable, Sendable {
@@ -96,6 +122,9 @@ struct RadarAlertItem: Decodable, Identifiable, Hashable, Sendable {
     var projectID: String
     var projectName: String
     var date: Date
+    var value: Double
+    var fraction: Double?
+    var currency: String?
 }
 
 /// The MRRadar tab (the plugin `mrradar`, D-119). The Mac holds the sign-in and does the

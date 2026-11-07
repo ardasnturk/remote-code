@@ -54,6 +54,16 @@ struct RemoteCodeApp: App {
 struct RootView: View {
     @Environment(AppModel.self) private var model
 
+    /// The tab bar wears the open extension's color.
+    private var tabTint: Color? {
+        switch model.selectedTab {
+        case .promoStudio: PromoStudioBrand.accent
+        case .mrradar: RadarBrand.accent
+        case .funnelradar: FunnelBrand.accent
+        default: nil
+        }
+    }
+
     var body: some View {
         @Bindable var model = model
         Group {
@@ -97,7 +107,7 @@ struct RootView: View {
                         }
                     }
                     // The tab bar wears the open plugin's color
-                    .tint(model.selectedTab == .promoStudio ? PromoStudioBrand.accent : nil)
+                    .tint(tabTint)
                 } else {
                     MainSplitView()
                 }

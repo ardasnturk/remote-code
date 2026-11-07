@@ -14,6 +14,9 @@ All notable changes to Remote Code are recorded here. The format follows
 - **MRRadar:** subscription analytics and alerts in a tab on the phone, and alerts through ntfy.
 - **FunnelRadar:** funnel leaks, retention and active users in a tab on the phone, and alerts through ntfy.
 
+### Changed
+- iOS build 28: the MRRadar and FunnelRadar tabs show everything their Mac apps show, in each app's own colors.
+
 ## [1.7.0] — 2026-11-04
 
 ### Added
