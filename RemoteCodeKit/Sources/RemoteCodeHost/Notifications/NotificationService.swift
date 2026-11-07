@@ -35,6 +35,9 @@ public struct HostAlert: Sendable, Hashable {
         /// An app reached a new stage of App Review (D-118). `sessionId` is the App Store
         /// Connect app ID, `folderName` its name, `detail` an `AppReviewStage`, always shown.
         case appStateChanged
+        /// MRRadar or FunnelRadar raised an alert (D-119). `sessionId` is the project, `folderName` its
+        /// name, `detail` a `RevenueAlert` as JSON, always used.
+        case revenueChanged
 
         /// Kinds that come from Promo Studio rather than an agent session.
         public static let promoStudio: [Kind] = [.promoVideoReady, .promoImageReady, .promoStoryboardReady, .promoFailed, .promoPublished]
@@ -89,8 +92,10 @@ public struct AlertContent: Sendable, Hashable {
         case .lowDiskSpace: "Low disk space · \(alert.folderName) free"
         case .memoryPressure: "Memory almost full · \(alert.folderName)"
         case .appStateChanged: "App Review: \(alert.detail ?? "") · \(alert.folderName)"
+        case .revenueChanged: "Alert · \(alert.folderName)"
         }
-        return AlertContent(title: "Remote Code", body: body(headline, detail: includeDetail && alert.kind != .appStateChanged ? alert.detail : nil))
+        let hidesDetail = alert.kind == .appStateChanged || alert.kind == .revenueChanged
+        return AlertContent(title: "Remote Code", body: body(headline, detail: includeDetail && !hidesDetail ? alert.detail : nil))
     }
 
     /// `headline`, plus a shortened `detail` on a second line.

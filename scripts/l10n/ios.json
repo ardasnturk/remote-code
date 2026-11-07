@@ -83,6 +83,10 @@
   "de": "Ein 9:16-Bild kann nur eine Story sein; der Instagram-Feed erlaubt höchstens 4:5.",
   "tr": "9:16 bir görsel yalnızca hikâye olabilir; Instagram akışı en fazla 4:5'e izin veriyor."
  },
+ "ARR": {
+  "de": "ARR",
+  "tr": "ARR"
+ },
  "About": {
   "de": "Über",
   "tr": "Hakkında"
@@ -111,6 +115,10 @@
   "de": "Aktive Zeit",
   "tr": "Aktif süre"
  },
+ "Active users": {
+  "de": "Aktive Nutzer",
+  "tr": "Aktif kullanıcılar"
+ },
  "Add AI Note to Caption": {
   "de": "KI-Hinweis zur Bildunterschrift hinzufügen",
   "tr": "Açıklamaya Yapay Zekâ Notu Ekle"
@@ -134,6 +142,10 @@
  "Agent: %@": {
   "de": "Agent: %@",
   "tr": "Ajan: %@"
+ },
+ "Alerts": {
+  "de": "Hinweise",
+  "tr": "Uyarılar"
  },
  "All": {
   "de": "Alle",
@@ -183,6 +195,10 @@
   "de": "Antwort an Claude",
   "tr": "Claude'a verilen cevap"
  },
+ "App Store listings, screenshots and App Store Connect.": {
+  "de": "App-Store-Einträge, Screenshots und App Store Connect.",
+  "tr": "App Store sayfaları, ekran görüntüleri ve App Store Connect."
+ },
  "App caches": {
   "de": "App-Caches",
   "tr": "Uygulama önbellekleri"
@@ -211,6 +227,10 @@
   "de": "Storyboard automatisch freigeben",
   "tr": "Storyboard'u otomatik onayla"
  },
+ "Apps": {
+  "de": "Apps",
+  "tr": "Uygulamalar"
+ },
  "Ask %@ anything about this folder": {
   "de": "Frag %@ alles zu diesem Ordner",
   "tr": "Bu klasörle ilgili %@'e istediğini sor"
@@ -230,6 +250,14 @@
  "Attach photos or videos": {
   "de": "Fotos oder Videos anhängen",
   "tr": "Fotoğraf veya video ekle"
+ },
+ "Biggest leak: %@ lost": {
+  "de": "Größtes Leck: %@ verloren",
+  "tr": "En büyük kayıp: %@"
+ },
+ "Biggest movers": {
+  "de": "Größte Veränderungen",
+  "tr": "En çok değişenler"
  },
  "Both are optional. Without a project the video isn’t about any app; without an account you can save the video and post it yourself.": {
   "de": "Beides ist optional. Ohne Projekt handelt das Video von keiner App; ohne Konto kannst du das Video speichern und selbst posten.",
@@ -275,6 +303,10 @@
   "de": "Karussell: %lld Folien",
   "tr": "Karusel: %lld slayt"
  },
+ "Change": {
+  "de": "Veränderung",
+  "tr": "Değişim"
+ },
  "Chats": {
   "de": "Chats",
   "tr": "Sohbetler"
@@ -298,6 +330,10 @@
  "Choose an account to post, or save the video and post it yourself.": {
   "de": "Wähle ein Konto zum Posten oder sichere das Video und poste es selbst.",
   "tr": "Paylaşmak için bir hesap seçin ya da videoyu kaydedip kendiniz paylaşın."
+ },
+ "Churn is up": {
+  "de": "Churn steigt",
+  "tr": "Abone kaybı arttı"
  },
  "Claude Code": {
   "de": "Claude Code",
@@ -467,6 +503,10 @@
   "de": "Diese Sitzung fortsetzen",
   "tr": "Bu Oturuma Devam Et"
  },
+ "Conversion": {
+  "de": "Conversion",
+  "tr": "Dönüşüm"
+ },
  "Copied": {
   "de": "Kopiert",
   "tr": "Kopyalandı"
@@ -499,6 +539,10 @@
   "de": "Die Sitzung konnte nicht gestartet werden",
   "tr": "Oturum başlatılamadı"
  },
+ "Countries": {
+  "de": "Länder",
+  "tr": "Ülkeler"
+ },
  "Cover": {
   "de": "Cover",
   "tr": "Kapak"
@@ -514,6 +558,10 @@
  "Custom…": {
   "de": "Eigenes …",
   "tr": "Özel…"
+ },
+ "Daily revenue": {
+  "de": "Tagesumsatz",
+  "tr": "Günlük gelir"
  },
  "Dark": {
   "de": "Dunkel",
@@ -639,6 +687,10 @@
   "de": "Aufwand",
   "tr": "Efor"
  },
+ "Enabled": {
+  "de": "Aktiviert",
+  "tr": "Etkin"
+ },
  "End-to-end encrypted between your devices. No accounts, no cloud, no tracking.": {
   "de": "Ende-zu-Ende verschlüsselt zwischen deinen Geräten. Keine Konten, keine Cloud, kein Tracking.",
   "tr": "Cihazlarınız arasında uçtan uca şifreli. Hesap yok, bulut yok, takip yok."
@@ -650,6 +702,14 @@
  "Explore Remote Code with a simulated Mac. Nothing is sent anywhere and no Mac is needed.": {
   "de": "Erkunde Remote Code mit einem simulierten Mac. Es wird nichts gesendet und kein Mac benötigt.",
   "tr": "Remote Code'u simüle edilmiş bir Mac ile keşfedin. Hiçbir yere bir şey gönderilmez ve Mac gerekmez."
+ },
+ "Extensions": {
+  "de": "Erweiterungen",
+  "tr": "Eklentiler"
+ },
+ "Extensions run on your Mac. Installing checks the download's checksum, its developer signature and Gatekeeper first. Turning one off hides its tab and stops its alerts.": {
+  "de": "Erweiterungen laufen auf deinem Mac. Vor der Installation werden Prüfsumme, Entwicklersignatur und Gatekeeper geprüft. Ausschalten blendet den Tab aus und stoppt die Hinweise.",
+  "tr": "Eklentiler Mac'inizde çalışır. Kurulumdan önce sağlama toplamı, geliştirici imzası ve Gatekeeper denetlenir. Bir eklentiyi kapatmak sekmesini gizler ve uyarılarını durdurur."
  },
  "Extra high": {
   "de": "Sehr hoch",
@@ -703,6 +763,14 @@
   "de": "Dateien finden",
   "tr": "Dosya bul"
  },
+ "Finish setup in FunnelRadar on your Mac.": {
+  "de": "Schließe die Einrichtung in FunnelRadar auf deinem Mac ab.",
+  "tr": "Mac'inizdeki FunnelRadar'da kurulumu tamamlayın."
+ },
+ "Finish setup in MRRadar on your Mac.": {
+  "de": "Schließe die Einrichtung in MRRadar auf deinem Mac ab.",
+  "tr": "Mac'inizdeki MRRadar'da kurulumu tamamlayın."
+ },
  "First message (optional)": {
   "de": "Erste Nachricht (optional)",
   "tr": "İlk mesaj (isteğe bağlı)"
@@ -742,6 +810,10 @@
  "Free-form video (directed by Claude)": {
   "de": "Freies Video (Regie: Claude)",
   "tr": "Serbest video (Claude yönetir)"
+ },
+ "Funnel leaks, retention and alerts for your Mixpanel projects.": {
+  "de": "Funnel-Lecks, Bindung und Hinweise für deine Mixpanel-Projekte.",
+  "tr": "Mixpanel projeleriniz için huni kayıpları, elde tutma ve uyarılar."
  },
  "Generate This": {
   "de": "Das erstellen",
@@ -815,6 +887,10 @@
   "de": "Bild",
   "tr": "Görsel"
  },
+ "Implied LTV": {
+  "de": "Implizierter LTV",
+  "tr": "Tahmini LTV"
+ },
  "In progress": {
   "de": "In Arbeit",
   "tr": "Sürüyor"
@@ -843,9 +919,17 @@
   "de": "Vitrin auf dem Mac installieren",
   "tr": "Vitrin'i Mac'inize kurun"
  },
+ "Install on Mac": {
+  "de": "Auf dem Mac installieren",
+  "tr": "Mac'e Yükle"
+ },
  "Installing Vitrin on your Mac…": {
   "de": "Vitrin wird auf dem Mac installiert …",
   "tr": "Vitrin Mac'inize kuruluyor…"
+ },
+ "Installing on your Mac…": {
+  "de": "Wird auf dem Mac installiert…",
+  "tr": "Mac'e yükleniyor…"
  },
  "Instruction": {
   "de": "Anweisung",
@@ -959,6 +1043,26 @@
   "de": "Niedrig",
   "tr": "Düşük"
  },
+ "MRR": {
+  "de": "MRR",
+  "tr": "MRR"
+ },
+ "MRR and where it's heading": {
+  "de": "MRR und wohin er geht",
+  "tr": "MRR ve gidişatı"
+ },
+ "MRR is falling": {
+  "de": "MRR sinkt",
+  "tr": "MRR düşüyor"
+ },
+ "MRR milestone": {
+  "de": "MRR-Meilenstein",
+  "tr": "MRR kilometre taşı"
+ },
+ "MRR won and lost": {
+  "de": "MRR gewonnen und verloren",
+  "tr": "Kazanılan ve kaybedilen MRR"
+ },
  "Mac Status": {
   "de": "Mac-Status",
   "tr": "Mac Durumu"
@@ -1035,6 +1139,14 @@
   "de": "Modell: %@",
   "tr": "Model: %@"
  },
+ "Month-end pace": {
+  "de": "Monatsend-Tempo",
+  "tr": "Ay sonu hızı"
+ },
+ "Monthly churn": {
+  "de": "Monatlicher Churn",
+  "tr": "Aylık abone kaybı"
+ },
  "Mostly %@": {
   "de": "Meist %@",
   "tr": "Çoğunlukla %@"
@@ -1086,6 +1198,10 @@
  "New chats": {
   "de": "Neue Chats",
   "tr": "Yeni sohbetler"
+ },
+ "New subscribers": {
+  "de": "Neue Abonnenten",
+  "tr": "Yeni aboneler"
  },
  "Next week": {
   "de": "Nächste Woche",
@@ -1214,6 +1330,14 @@
  "Only the first entries are shown.": {
   "de": "Es werden nur die ersten Einträge angezeigt.",
   "tr": "Yalnızca ilk girişler gösteriliyor."
+ },
+ "Open FunnelRadar on your Mac to finish its setup.": {
+  "de": "Öffne FunnelRadar auf deinem Mac, um die Einrichtung abzuschließen.",
+  "tr": "Kurulumu tamamlamak için Mac'inizde FunnelRadar'ı açın."
+ },
+ "Open MRRadar on your Mac to finish its setup.": {
+  "de": "Öffne MRRadar auf deinem Mac, um die Einrichtung abzuschließen.",
+  "tr": "Kurulumu tamamlamak için Mac'inizde MRRadar'ı açın."
  },
  "Open Remote Code on your Mac, choose “Pair New Device…” and point the camera at the QR code.": {
   "de": "Öffne Remote Code auf deinem Mac, wähle „Neues Gerät koppeln …“ und richte die Kamera auf den QR-Code.",
@@ -1463,6 +1587,10 @@
   "de": "Schnelles Video",
   "tr": "Hızlı Video"
  },
+ "Quick ratio": {
+  "de": "Quick Ratio",
+  "tr": "Quick ratio"
+ },
  "Quick template (screenshots)": {
   "de": "Schnelle Vorlage (Screenshots)",
   "tr": "Hızlı şablon (ekran görüntüleri)"
@@ -1506,6 +1634,10 @@
  "Refresh Statistics": {
   "de": "Statistiken aktualisieren",
   "tr": "İstatistikleri Yenile"
+ },
+ "Refunds are high": {
+  "de": "Hohe Erstattungen",
+  "tr": "İadeler yüksek"
  },
  "Remote Access": {
   "de": "Fernzugriff",
@@ -1614,6 +1746,14 @@
  "Restore": {
   "de": "Wiederherstellen",
   "tr": "Geri Dön"
+ },
+ "Retention": {
+  "de": "Bindung",
+  "tr": "Elde tutma"
+ },
+ "Retention by month": {
+  "de": "Bindung nach Monat",
+  "tr": "Aylara göre elde tutma"
  },
  "Retry": {
   "de": "Erneut versuchen",
@@ -1755,6 +1895,10 @@
   "de": "Geteilt",
   "tr": "Paylaşım"
  },
+ "Short videos and posts, written and rendered with Claude Code.": {
+  "de": "Kurze Videos und Beiträge, geschrieben und gerendert mit Claude Code.",
+  "tr": "Claude Code ile yazılan ve işlenen kısa videolar ve gönderiler."
+ },
  "Show Hidden Files": {
   "de": "Versteckte Dateien anzeigen",
   "tr": "Gizli Dosyaları Göster"
@@ -1782,6 +1926,14 @@
  "Sign In with Facebook": {
   "de": "Mit Facebook anmelden",
   "tr": "Facebook ile Giriş Yap"
+ },
+ "Sign in again in FunnelRadar on your Mac.": {
+  "de": "Melde dich in FunnelRadar auf deinem Mac erneut an.",
+  "tr": "Mac'inizdeki FunnelRadar'da yeniden giriş yapın."
+ },
+ "Sign in again in MRRadar on your Mac.": {
+  "de": "Melde dich in MRRadar auf deinem Mac erneut an.",
+  "tr": "Mac'inizdeki MRRadar'da yeniden giriş yapın."
  },
  "Signed in until %@": {
   "de": "Angemeldet bis %@",
@@ -1894,6 +2046,14 @@
  "Sub-agent": {
   "de": "Sub-Agent",
   "tr": "Alt ajan"
+ },
+ "Subscribers": {
+  "de": "Abonnenten",
+  "tr": "Aboneler"
+ },
+ "Subscription analytics, forecasts and alerts for your RevenueCat apps.": {
+  "de": "Abo-Analysen, Prognosen und Hinweise für deine RevenueCat-Apps.",
+  "tr": "RevenueCat uygulamalarınız için abonelik analizi, tahmin ve uyarılar."
  },
  "Summary": {
   "de": "Rückblick",
@@ -2047,6 +2207,14 @@
   "de": "Papierkorb",
   "tr": "Çöp Kutusu"
  },
+ "Trial conversion": {
+  "de": "Testumwandlung",
+  "tr": "Deneme dönüşümü"
+ },
+ "Trials": {
+  "de": "Tests",
+  "tr": "Denemeler"
+ },
  "Try Again": {
   "de": "Erneut versuchen",
   "tr": "Tekrar Dene"
@@ -2075,6 +2243,14 @@
   "de": "Bis zum Ausschalten",
   "tr": "Kapatılana kadar"
  },
+ "Unusually good day": {
+  "de": "Ungewöhnlich guter Tag",
+  "tr": "Olağandışı iyi gün"
+ },
+ "Unusually quiet day": {
+  "de": "Ungewöhnlich ruhiger Tag",
+  "tr": "Olağandışı sakin gün"
+ },
  "Update Promo Studio on your Mac to post pictures to Instagram. Until then, save the image and post it from Instagram.": {
   "de": "Aktualisiere Promo Studio auf deinem Mac, um Bilder auf Instagram zu posten. Bis dahin sichere das Bild und poste es in Instagram.",
   "tr": "Instagram'a resim paylaşmak için Mac'teki Promo Studio'yu güncelleyin. O zamana kadar görseli kaydedip Instagram'dan paylaşın."
@@ -2082,6 +2258,10 @@
  "Update Promo Studio on your Mac to see its status here.": {
   "de": "Aktualisiere Promo Studio auf deinem Mac, um seinen Status hier zu sehen.",
   "tr": "Durumunu burada görmek için Mac'inizdeki Promo Studio'yu güncelleyin."
+ },
+ "Update to %@": {
+  "de": "Auf %@ aktualisieren",
+  "tr": "%@ sürümüne güncelle"
  },
  "Use Tailscale": {
   "de": "Tailscale verwenden",
@@ -2151,6 +2331,10 @@
   "de": "Websuche",
   "tr": "Web araması"
  },
+ "Website": {
+  "de": "Website",
+  "tr": "Web sitesi"
+ },
  "Weekly": {
   "de": "Wöchentlich",
   "tr": "Haftalık"
@@ -2210,6 +2394,10 @@
  "Your Mac is running out of space. Agents may fail to build or save files.": {
   "de": "Auf deinem Mac wird der Platz knapp. Agents können dann eventuell nicht bauen oder Dateien sichern.",
   "tr": "Mac'inizde yer azalıyor. Ajanlar derleme yapamayabilir veya dosya kaydedemeyebilir."
+ },
+ "Your Mac is still reading the charts.": {
+  "de": "Dein Mac liest die Charts noch.",
+  "tr": "Mac'iniz grafikleri okumaya devam ediyor."
  },
  "Your Mac is summarising the week…": {
   "de": "Dein Mac fasst die Woche zusammen …",

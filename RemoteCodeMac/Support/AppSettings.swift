@@ -32,6 +32,7 @@ final class AppSettings {
         static let memoryPressureKindAdded = "memoryPressureKindAdded"
         /// Set once the App Review kind (1.7) was added to an existing selection.
         static let appStateKindAdded = "appStateKindAdded"
+        static let revenueKindAdded = "revenueKindAdded"
         static let notificationIncludesSummary = "notificationIncludesSummary"
         static let ntfyServer = "ntfyServer"
         static let ntfyTopic = "ntfyTopic"
@@ -187,6 +188,11 @@ final class AppSettings {
             defaults.set(kinds.map(\.rawValue).sorted(), forKey: Key.notificationKinds)
             defaults.set(true, forKey: Key.appStateKindAdded)
         }
+        if !defaults.bool(forKey: Key.revenueKindAdded) {
+            kinds.insert(.revenueChanged)
+            defaults.set(kinds.map(\.rawValue).sorted(), forKey: Key.notificationKinds)
+            defaults.set(true, forKey: Key.revenueKindAdded)
+        }
         notificationKinds = kinds
         notificationIncludesSummary = defaults.bool(forKey: Key.notificationIncludesSummary)
         ntfyServer = defaults.string(forKey: Key.ntfyServer) ?? NtfyConfiguration.defaultServer
@@ -201,7 +207,7 @@ final class AppSettings {
 
     /// Events offered in Settings.
     static let notificationKindsInSettings: [HostAlert.Kind] = [.turnFinished, .permissionRequested, .subagentFinished, .sessionFailed]
-        + HostAlert.Kind.promoStudio + [.lowDiskSpace, .memoryPressure, .appStateChanged]
+        + HostAlert.Kind.promoStudio + [.lowDiskSpace, .memoryPressure, .appStateChanged, .revenueChanged]
 
     /// Model aliases offered in pickers (free text is accepted too).
     static let modelSuggestions = ["", "fable", "opus", "sonnet", "haiku"]

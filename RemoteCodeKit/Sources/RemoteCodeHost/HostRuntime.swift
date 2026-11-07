@@ -38,7 +38,14 @@ public struct MacHostService: HostService {
     let status: any MacStatusProviding
     let promoStudioBridge = PromoStudioBridge()
     /// Tools on this Mac the phone can drive (D-117).
-    let plugins: [String: any HostPlugin] = [PluginID.vitrin: VitrinPlugin()]
+    let plugins: [String: any HostPlugin] = [
+        PluginID.vitrin: VitrinPlugin(), PluginID.mrradar: Self.mrradar, PluginID.funnelradar: Self.funnelradar,
+        PluginID.extensions: Self.extensions,
+    ]
+    static let funnelradar = LocalHubPlugin(.init(id: PluginID.funnelradar, name: "FunnelRadar", bundle: "FunnelRadar.app", tool: "funnelradar-hub", support: "FunnelRadar"))
+    /// Settings → Extensions (D-120).
+    public static let extensions = ExtensionsPlugin()
+    static let mrradar = LocalHubPlugin(.init(id: PluginID.mrradar, name: "MRRadar", bundle: "MRRadar.app", tool: "mrradar-hub", support: "MRRadar"))
     let cleanup: CleanupService
 
     public func weeklySummary(_ request: GetWeeklySummary) async throws -> WeeklySummary {
@@ -197,6 +204,8 @@ public final class HostRuntime: Sendable {
     let storageMonitor: StorageMonitor
     /// Tells when an app moves through App Review (D-118).
     let appStateWatcher: AppStateWatcher?
+    let revenueAlertWatcher: RevenueAlertWatcher
+    let funnelAlertWatcher: RevenueAlertWatcher
     #if canImport(Darwin)
     /// Warns when memory is almost full (D-116).
     let memoryMonitor: MemoryMonitor
@@ -287,6 +296,8 @@ public final class HostRuntime: Sendable {
         appStateWatcher = service.plugins[PluginID.vitrin].map {
             AppStateWatcher(plugin: $0, notifications: notifications, file: AppStateWatcher.defaultFile(home: URL(fileURLWithPath: configuration.homeDirectory)))
         }
+        revenueAlertWatcher = RevenueAlertWatcher(plugin: MacHostService.mrradar, notifications: notifications)
+        funnelAlertWatcher = RevenueAlertWatcher(plugin: MacHostService.funnelradar, notifications: notifications)
         #if canImport(Darwin)
         memoryMonitor = MemoryMonitor(notifications: notifications, macName: macName)
         #endif
@@ -304,6 +315,8 @@ public final class HostRuntime: Sendable {
         await promoStudioNotifier.start()
         await storageMonitor.start()
         await appStateWatcher?.start()
+        await revenueAlertWatcher.start()
+        await funnelAlertWatcher.start()
         #if canImport(Darwin)
         await memoryMonitor.start()
         #endif
@@ -319,6 +332,8 @@ public final class HostRuntime: Sendable {
         await promoStudioNotifier.stop()
         await storageMonitor.stop()
         await appStateWatcher?.stop()
+        await revenueAlertWatcher.stop()
+        await funnelAlertWatcher.stop()
         #if canImport(Darwin)
         await memoryMonitor.stop()
         #endif

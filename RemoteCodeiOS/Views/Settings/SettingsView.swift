@@ -55,6 +55,16 @@ struct SettingsView: View {
                     if connection.capabilities.contains(HostCapability.power), let power = status.power {
                         PowerSection(connection: connection, power: power)
                     }
+                    if connection.extensions.isOffered {
+                        Section {
+                            NavigationLink {
+                                ExtensionsView(store: connection.extensions)
+                            } label: {
+                                Label("Extensions", systemImage: "puzzlepiece.extension")
+                            }
+                            .accessibilityIdentifier("extensionsLink")
+                        }
+                    }
                     if connection.vitrin.isOffered {
                         VitrinPluginSection(store: connection.vitrin)
                     }

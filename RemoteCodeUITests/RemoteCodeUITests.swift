@@ -133,6 +133,26 @@ final class RemoteCodeUITests: XCTestCase {
     }
 
     @MainActor
+    func testExtensionsListAndInstall() throws {
+        let app = XCUIApplication.remoteCode(demo: true)
+        app.launch()
+        XCTAssertTrue(app.buttons["settingsButton"].waitForExistence(timeout: 20))
+        app.buttons["settingsButton"].tap()
+        let link = app.element("extensionsLink")
+        XCTAssertTrue(app.scrollToElement(link))
+        link.tap()
+        XCTAssertTrue(app.staticTexts["FunnelRadar"].waitForExistence(timeout: 10))
+        let install = app.buttons["Install on Mac"]
+        XCTAssertTrue(install.waitForExistence(timeout: 5))
+        let shot = XCTAttachment(screenshot: app.screenshot())
+        shot.name = "extensions"
+        shot.lifetime = .keepAlways
+        add(shot)
+        install.tap()
+        XCTAssertTrue(install.waitForNonExistence(timeout: 10))
+    }
+
+    @MainActor
     func testCreatesAFolderAndStartsThere() throws {
         let app = XCUIApplication.remoteCode(demo: true)
         app.launch()

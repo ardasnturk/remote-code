@@ -52,6 +52,10 @@ DOUBLE_EXPRESSIONS = set()
 # Keys that are not literals in Text(...) but are looked up at runtime.
 EXTRA_KEYS = {
     "ios": [
+        # Extension summaries, shown via LocalizedStringKey.
+        "Subscription analytics, forecasts and alerts for your RevenueCat apps.", "Funnel leaks, retention and alerts for your Mixpanel projects.", "App Store listings, screenshots and App Store Connect.", "Short videos and posts, written and rendered with Claude Code.",
+        # MRRadar alert kinds, shown via LocalizedStringKey.
+        "New subscribers", "MRR is falling", "MRR milestone", "Unusually good day", "Unusually quiet day", "Refunds are high", "Churn is up",
         # ToolSummary titles (RemoteCodeKit) shown via LocalizedStringKey.
         "Read", "Edit", "Write", "Edit notebook", "Run", "Search", "Find files", "Fetch", "Web search", "Tasks", "Sub-agent",
         # Notices produced by the Mac (shown via LocalizedStringKey).
@@ -63,6 +67,8 @@ EXTRA_KEYS = {
         "Every action in this chat is now allowed without asking.", "The permission mode of this chat was changed.",
     ],
     "mac": [
+        # Extension summaries, shown via LocalizedStringKey.
+        "Subscription analytics, forecasts and alerts for your RevenueCat apps.", "Funnel leaks, retention and alerts for your Mixpanel projects.", "App Store listings, screenshots and App Store Connect.", "Short videos and posts, written and rendered with Claude Code.",
         # TailscaleSetup.manualSteps (RemoteCodeHost) shown via LocalizedStringKey.
         "Install Tailscale",
         "Download Tailscale for macOS from tailscale.com, or install it with Homebrew.",

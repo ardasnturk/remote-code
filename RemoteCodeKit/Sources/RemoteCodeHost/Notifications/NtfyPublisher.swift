@@ -123,9 +123,12 @@ public struct NtfyPublisher: AlertSink {
         case .lowDiskSpace: (4, "floppy_disk")
         case .memoryPressure: (4, "warning")
         case .appStateChanged: alert.detail == AppReviewStage.rejected.rawValue ? (4, "x") : (3, "iphone")
+        case .revenueChanged: (3, "chart_with_upwards_trend")
         }
         let link = if alert.kind == .appStateChanged {
             VitrinAppLink(appId: alert.sessionId, macId: macId).url
+        } else if alert.kind == .revenueChanged {
+            RadarLink(app: RevenueAlert.decode(alert.detail)?.source ?? PluginID.mrradar, project: alert.sessionId, macId: macId).url
         } else if alert.kind == .lowDiskSpace {
             MacScreenLink(.storage, macId: macId).url
         } else if alert.kind == .memoryPressure {

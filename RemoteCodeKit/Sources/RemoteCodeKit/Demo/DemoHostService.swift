@@ -40,6 +40,13 @@ public actor DemoHostService: HostService {
         }
     }
 
+    private var demoExtensions = [
+        ExtensionInfo(id: PluginID.mrradar, name: "MRRadar", website: "https://mrradar.ardasnturk.com", installed: true, version: "0.1.1", latestVersion: "0.1.1", enabled: true, installing: false),
+        ExtensionInfo(id: PluginID.funnelradar, name: "FunnelRadar", website: "https://funnelradar.ardasnturk.com", installed: false, version: nil, latestVersion: "0.1.0", enabled: true, installing: false),
+        ExtensionInfo(id: PluginID.vitrin, name: "Vitrin", website: "https://vitrin.ardasnturk.com", installed: true, version: "2.4.0", latestVersion: "2.4.1", enabled: true, installing: false),
+        ExtensionInfo(id: PluginID.promoStudio, name: "Promo Studio", website: "https://promo.ardasnturk.com", installed: true, version: "1.6.3", latestVersion: "1.6.3", enabled: false, installing: false),
+    ]
+
     // MARK: HostService
 
     public func helloAck(for client: ClientContext) async -> HelloAck {
@@ -47,8 +54,29 @@ public actor DemoHostService: HostService {
             macName: DemoContent.macName,
             macId: "demo",
             serverVersion: "1.0 (demo)",
-            pendingPermissions: pendingPermissions.values.map(\.request)
+            pendingPermissions: pendingPermissions.values.map(\.request),
+            capabilities: HostCapability.all + [HostCapability.extensions]
         )
+    }
+
+    public func plugin(_ request: PluginRequest) async throws -> PluginResponse {
+        guard request.plugin == PluginID.extensions else {
+            throw ErrorPayload(code: .pluginUnavailable, message: "The demo Mac has no plugins.")
+        }
+        struct Change: Decodable {
+            var id: String
+            var enabled: Bool?
+        }
+        if let body = request.body, let change = try? JSONDecoder().decode(Change.self, from: Data(body.utf8)),
+           let index = demoExtensions.firstIndex(where: { $0.id == change.id }) {
+            if let enabled = change.enabled {
+                demoExtensions[index].enabled = enabled
+            } else {
+                demoExtensions[index].installed = true
+                demoExtensions[index].version = demoExtensions[index].latestVersion
+            }
+        }
+        return PluginResponse(status: 200, contentType: "application/json", body: try JSONEncoder().encode(demoExtensions))
     }
 
     public func macStatus() async -> MacStatus {

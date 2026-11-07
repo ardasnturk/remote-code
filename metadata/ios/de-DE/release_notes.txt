@@ -1,8 +1,5 @@
-Vitrin auf Ihrem iPhone, mit Remote Code 1.6 auf dem Mac:
-• Ein neuer Tab führt Vitrin aus: Fügen Sie Ihre App-Ordner hinzu und erstellen Sie den ganzen Store-Eintrag in nativen Ansichten
-• Verwalten Sie App Store Connect: Apps, Versionen, TestFlight, Bewertungen, Preise, Analysen, Benutzer und Signierung
-• Verbinden Sie sich mit einem API-Schlüssel oder Ihrem Apple Account
-• Einstellungen → Plugins installiert Vitrin auf Ihrem Mac
-• Der Promo Studio-Tab zeigt jetzt die Farben von Promo Studio
-• Der Vitrin-Tab öffnet sofort aus einem Cache auf Ihrem iPhone und hat jetzt eine Suche
-• Erhalten Sie Mitteilungen zum App-Review-Status: wartend, in Prüfung, genehmigt, live oder abgelehnt
+Erweiterungen, mit Remote Code 1.8 auf dem Mac:
+• Einstellungen → Erweiterungen zeigt deine Tools: auf dem Mac installieren, aktualisieren oder ausschalten
+• MRRadar-Tab: Abo-Analysen, MRR-Prognosen und Hinweise für deine RevenueCat-Apps
+• FunnelRadar-Tab: Funnel-Lecks, Bindung und aktive Nutzer für deine Mixpanel-Projekte
+• Hinweise erreichen dein iPhone, ein Tipp öffnet das Projekt

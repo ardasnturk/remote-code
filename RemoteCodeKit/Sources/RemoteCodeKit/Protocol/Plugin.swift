@@ -82,10 +82,12 @@ extension HostCapability {
     /// The capability a host announces for a plugin.
     public static func plugin(_ id: String) -> String { "plugin.\(id)" }
     public static let vitrin = plugin(PluginID.vitrin)
+    public static let mrradar = plugin(PluginID.mrradar)
 }
 
 public enum PluginID {
     public static let vitrin = "vitrin"
+    public static let mrradar = "mrradar"
 }
 
 extension ErrorCode {

@@ -75,6 +75,10 @@
   "de": "App-Review-Status",
   "tr": "App Review durumu"
  },
+ "App Store listings, screenshots and App Store Connect.": {
+  "de": "App-Store-Einträge, Screenshots und App Store Connect.",
+  "tr": "App Store sayfaları, ekran görüntüleri ve App Store Connect."
+ },
  "Apple Intelligence is not available on your Mac right now.": {
   "de": "Apple Intelligence ist auf deinem Mac gerade nicht verfügbar.",
   "tr": "Apple Intelligence şu anda Mac'inizde kullanılamıyor."
@@ -150,6 +154,10 @@
  "Checking…": {
   "de": "Wird geprüft …",
   "tr": "Kontrol ediliyor…"
+ },
+ "Churn is up · %@": {
+  "de": "Churn steigt · %@",
+  "tr": "Abone kaybı arttı · %@"
  },
  "Claude Code": {
   "de": "Claude Code",
@@ -231,6 +239,10 @@
   "de": "Verbunden.",
   "tr": "Bağlı."
  },
+ "Conversion is falling · %@": {
+  "de": "Conversion sinkt · %@",
+  "tr": "Dönüşüm düşüyor · %@"
+ },
  "Copied": {
   "de": "Kopiert",
   "tr": "Kopyalandı"
@@ -299,6 +311,10 @@
   "de": "Wird geladen …",
   "tr": "İndiriliyor…"
  },
+ "Enabled": {
+  "de": "Aktiviert",
+  "tr": "Etkin"
+ },
  "Encryption, identity and risky modes.": {
   "de": "Verschlüsselung, Identität und riskante Modi.",
   "tr": "Şifreleme, kimlik ve riskli modlar."
@@ -318,6 +334,18 @@
  "Events": {
   "de": "Ereignisse",
   "tr": "Olaylar"
+ },
+ "Extension alerts": {
+  "de": "Hinweise von Erweiterungen",
+  "tr": "Eklenti uyarıları"
+ },
+ "Extensions": {
+  "de": "Erweiterungen",
+  "tr": "Eklentiler"
+ },
+ "Funnel leaks, retention and alerts for your Mixpanel projects.": {
+  "de": "Funnel-Lecks, Bindung und Hinweise für deine Mixpanel-Projekte.",
+  "tr": "Mixpanel projeleriniz için huni kayıpları, elde tutma ve uyarılar."
  },
  "General": {
   "de": "Allgemein",
@@ -391,6 +419,10 @@
   "de": "Kurze Zusammenfassung hinzufügen",
   "tr": "Kısa bir özet ekle"
  },
+ "Install": {
+  "de": "Installieren",
+  "tr": "Yükle"
+ },
  "Install Claude Code": {
   "de": "Claude Code installieren",
   "tr": "Claude Code'u kurun"
@@ -435,6 +467,10 @@
   "de": "Installiert: %@",
   "tr": "Kurulu: %@"
  },
+ "Installing checks the download's checksum, its developer signature and Gatekeeper first. Turning one off hides its tab on your iPhone and stops its alerts.": {
+  "de": "Vor der Installation werden Prüfsumme, Entwicklersignatur und Gatekeeper geprüft. Ausschalten blendet den Tab auf dem iPhone aus und stoppt die Hinweise.",
+  "tr": "Kurulumdan önce sağlama toplamı, geliştirici imzası ve Gatekeeper denetlenir. Bir eklentiyi kapatmak iPhone'daki sekmesini gizler ve uyarılarını durdurur."
+ },
  "Installing the update failed. Try again, or download it from GitHub.": {
   "de": "Die Installation des Updates ist fehlgeschlagen. Versuche es erneut oder lade es von GitHub herunter.",
   "tr": "Güncelleme kurulamadı. Tekrar deneyin veya GitHub'dan indirin."
@@ -478,6 +514,14 @@
  "Low disk space · %@ free": {
   "de": "Wenig Speicherplatz · %@ frei",
   "tr": "Disk alanı azaldı · %@ boş"
+ },
+ "MRR is falling · %@": {
+  "de": "MRR sinkt · %@",
+  "tr": "MRR düşüyor · %@"
+ },
+ "MRR milestone · %@": {
+  "de": "MRR-Meilenstein · %@",
+  "tr": "MRR kilometre taşı · %@"
  },
  "Mac ID": {
   "de": "Mac-ID",
@@ -530,6 +574,10 @@
  "New chats on your iPhone or iPad can use any installed agent. Each one uses its own sign-in from Terminal; Remote Code never sees it.": {
   "de": "Neue Chats auf deinem iPhone oder iPad können jeden installierten Agenten verwenden. Jeder nutzt seine eigene Anmeldung aus dem Terminal; Remote Code sieht sie nie.",
   "tr": "iPhone veya iPad'inizdeki yeni sohbetler kurulu herhangi bir ajanı kullanabilir. Her biri Terminal'deki kendi oturumunu kullanır; Remote Code bunu hiç görmez."
+ },
+ "New subscribers · %@": {
+  "de": "Neue Abonnenten · %@",
+  "tr": "Yeni aboneler · %@"
  },
  "No Remote Code on your iPhone yet? Get the app": {
   "de": "Noch kein Remote Code auf deinem iPhone? App laden",
@@ -594,6 +642,10 @@
  "On-device summaries need macOS 26 or later on your Mac.": {
   "de": "Rückblicke auf dem Gerät brauchen macOS 26 oder neuer auf deinem Mac.",
   "tr": "Cihaz içi özetler için Mac'inizde macOS 26 veya üstü gerekir."
+ },
+ "Open": {
+  "de": "Öffnen",
+  "tr": "Aç"
  },
  "Open Remote Code at login": {
   "de": "Remote Code bei der Anmeldung öffnen",
@@ -711,6 +763,10 @@
   "de": "Bereit",
   "tr": "Hazır"
  },
+ "Refunds are high · %@": {
+  "de": "Hohe Erstattungen · %@",
+  "tr": "İadeler yüksek · %@"
+ },
  "Rejected by App Review · %@": {
   "de": "Von App Review abgelehnt · %@",
   "tr": "App Review reddetti · %@"
@@ -778,6 +834,10 @@
  "Resets %@": {
   "de": "Wird %@ zurückgesetzt",
   "tr": "%@ yenilenir"
+ },
+ "Retention is falling · %@": {
+  "de": "Bindung sinkt · %@",
+  "tr": "Elde tutma düşüyor · %@"
  },
  "Revoke": {
   "de": "Widerrufen",
@@ -859,6 +919,10 @@
   "de": "Einstellungen …",
   "tr": "Ayarlar…"
  },
+ "Short videos and posts, written and rendered with Claude Code.": {
+  "de": "Kurze Videos und Beiträge, geschrieben und gerendert mit Claude Code.",
+  "tr": "Claude Code ile yazılan ve işlenen kısa videolar ve gönderiler."
+ },
  "Show on this Mac": {
   "de": "Auf diesem Mac anzeigen",
   "tr": "Bu Mac'te göster"
@@ -926,6 +990,10 @@
  "Subscribe on your iPhone": {
   "de": "Auf dem iPhone abonnieren",
   "tr": "iPhone'unuzda abone olun"
+ },
+ "Subscription analytics, forecasts and alerts for your RevenueCat apps.": {
+  "de": "Abo-Analysen, Prognosen und Hinweise für deine RevenueCat-Apps.",
+  "tr": "RevenueCat uygulamalarınız için abonelik analizi, tahmin ve uyarılar."
  },
  "System and background": {
   "de": "System und Hintergrund",
@@ -1067,6 +1135,10 @@
   "de": "Um Remote Code außerhalb dieses WLANs zu nutzen, installiere Tailscale auf diesem Mac und auf deinem iPhone, melde dich auf beiden mit demselben Konto an und aktiviere dann „Unterwegs Tailscale verwenden“ in den Einstellungen der iPhone-App. Remote Code versucht trotzdem zuerst das lokale Netzwerk.",
   "tr": "Remote Code'u o Wi-Fi'den uzakta kullanmak için bu Mac'e ve iPhone'unuza Tailscale'i kurun, ikisinde de aynı hesapla giriş yapın, ardından iPhone uygulamasının ayarlarında “Uzaktayken Tailscale kullan” seçeneğini açın. Remote Code yine önce yerel ağı dener."
  },
+ "Tools that work with Remote Code and get a tab on your iPhone.": {
+  "de": "Tools, die mit Remote Code arbeiten und einen Tab auf dem iPhone bekommen.",
+  "tr": "Remote Code ile çalışan ve iPhone'unuzda sekmesi olan araçlar."
+ },
  "Topic": {
   "de": "Thema",
   "tr": "Konu"
@@ -1090,6 +1162,22 @@
  "Unknown helper status.": {
   "de": "Unbekannter Status des Hilfsprogramms.",
   "tr": "Bilinmeyen yardımcı durumu."
+ },
+ "Unusually busy day · %@": {
+  "de": "Ungewöhnlich aktiver Tag · %@",
+  "tr": "Olağandışı yoğun gün · %@"
+ },
+ "Unusually good day · %@": {
+  "de": "Ungewöhnlich guter Tag · %@",
+  "tr": "Olağandışı iyi gün · %@"
+ },
+ "Unusually quiet day · %@": {
+  "de": "Ungewöhnlich ruhiger Tag · %@",
+  "tr": "Olağandışı sakin gün · %@"
+ },
+ "Update to %@": {
+  "de": "Auf %@ aktualisieren",
+  "tr": "%@ sürümüne güncelle"
  },
  "Updates": {
   "de": "Updates",
@@ -1146,6 +1234,10 @@
  "Waiting for review · %@": {
   "de": "Wartet auf Prüfung · %@",
   "tr": "İnceleme bekliyor · %@"
+ },
+ "Website": {
+  "de": "Website",
+  "tr": "Web sitesi"
  },
  "Week": {
   "de": "Woche",

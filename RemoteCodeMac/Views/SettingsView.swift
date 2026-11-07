@@ -5,7 +5,7 @@ import SwiftUI
 /// The Settings window (⌘,): a sidebar of panes like System Settings (D-104).
 struct SettingsView: View {
     enum Pane: String, CaseIterable, Identifiable {
-        case general, devices, agents, notifications, remoteAccess, updates, security
+        case general, devices, agents, extensions, notifications, remoteAccess, updates, security
         var id: String { rawValue }
     }
 
@@ -43,6 +43,7 @@ struct SettingsView: View {
         case .general: GeneralSettings()
         case .devices: DeviceSettings()
         case .agents: AgentSettings()
+        case .extensions: ExtensionsSettings()
         case .notifications: NotificationSettings()
         case .remoteAccess: RemoteAccessSettings()
         case .updates: UpdateSettings()
@@ -57,6 +58,7 @@ struct SettingsView: View {
         case .agents: Text("Agents")
         case .notifications: Text("Notifications")
         case .remoteAccess: Text("Remote Access")
+        case .extensions: Text("Extensions")
         case .updates: Text("Updates")
         case .security: Text("Security")
         }
@@ -69,6 +71,7 @@ struct SettingsView: View {
         case .agents: Text("Claude Code, Codex and Gemini on this Mac, defaults and sub-agents.")
         case .notifications: Text("When and where Remote Code tells you something happened.")
         case .remoteAccess: Text("Optional: reach this Mac when you are away from its Wi-Fi.")
+        case .extensions: Text("Tools that work with Remote Code and get a tab on your iPhone.")
         case .updates: Text("Install new versions of Remote Code from GitHub.")
         case .security: Text("Encryption, identity and risky modes.")
         }
@@ -81,6 +84,7 @@ struct SettingsView: View {
         case .agents: "sparkles"
         case .notifications: "bell.badge.fill"
         case .remoteAccess: "network"
+        case .extensions: "puzzlepiece.extension.fill"
         case .updates: "arrow.down.circle.fill"
         case .security: "lock.shield.fill"
         }
@@ -93,6 +97,7 @@ struct SettingsView: View {
         case .agents: [Brand.violet, Brand.pink]
         case .notifications: [.red, .orange]
         case .remoteAccess: [Brand.indigo, Brand.violet]
+        case .extensions: [Brand.violet, Brand.indigo]
         case .updates: [.green, Brand.teal]
         case .security: [.blue, Brand.indigo]
         }
@@ -512,6 +517,7 @@ private struct NotificationSettings: View {
                 Toggle("Low disk space", isOn: kind(.lowDiskSpace))
                 Toggle("Memory almost full", isOn: kind(.memoryPressure))
                 Toggle("App Review status", isOn: kind(.appStateChanged))
+                Toggle("Extension alerts", isOn: kind(.revenueChanged))
                 Toggle("Include a short summary", isOn: $settings.notificationIncludesSummary)
             } header: {
                 Text("Events")

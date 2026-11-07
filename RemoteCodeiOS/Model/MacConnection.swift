@@ -22,6 +22,12 @@ final class MacConnection {
     let promoStudio = PromoStudioStore()
     /// Vitrin on the Mac (the plugin `vitrin`, D-117).
     let vitrin = VitrinStore()
+    /// MRRadar on the Mac (the plugin `mrradar`, D-119).
+    let radar = RadarStore()
+    /// FunnelRadar on the Mac (the plugin `funnelradar`, D-120).
+    let funnel = FunnelStore()
+    /// Settings → Extensions (D-120).
+    let extensions = ExtensionsStore()
 
     @ObservationIgnored let client: MacClient
     @ObservationIgnored private var chats: [String: ChatState] = [:]
@@ -59,6 +65,9 @@ final class MacConnection {
         sessions = cache.sessions(macId: mac.id)
         promoStudio.attach(self)
         vitrin.attach(self)
+        radar.attach(self)
+        funnel.attach(self)
+        extensions.attach(self)
     }
 
     var isConnected: Bool { state.isConnected }
@@ -119,6 +128,8 @@ final class MacConnection {
         guard newState.isConnected else {
             promoStudio.disconnected()
             vitrin.disconnected()
+            radar.disconnected()
+            funnel.disconnected()
             return
         }
         await refreshSessions()
@@ -142,10 +153,14 @@ final class MacConnection {
             let capabilities = self.capabilities
             Task { await promoStudio.connected(capabilities: capabilities) }
             Task { await vitrin.connected(capabilities: capabilities) }
+            Task { await connectPlugins(capabilities) }
         case .promoStudioEvent(let event):
             promoStudio.handle(event)
         case .pluginEvent(let event):
             vitrin.handle(event)
+            radar.handle(event)
+            funnel.handle(event)
+            extensions.handle(event)
         case .event(let payload):
             let event = payload.sequencedEvent
             chat(for: payload.sessionId).apply(event)
@@ -415,5 +430,18 @@ enum DeviceDescription {
         let device = UIDevice.current
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
         return DeviceInfo(name: device.name, platform: device.userInterfaceIdiom == .pad ? "iPadOS" : "iOS", appVersion: version)
+    }
+}
+
+extension MacConnection {
+    fileprivate func connectPlugins(_ capabilities: Set<String>) async {
+        await extensions.connected(capabilities: capabilities)
+        await radar.connected(capabilities: capabilities)
+        await funnel.connected(capabilities: capabilities)
+    }
+
+    /// After an install, so a new tool's tab shows.
+    func reconnectPlugins() async {
+        await connectPlugins(capabilities)
     }
 }

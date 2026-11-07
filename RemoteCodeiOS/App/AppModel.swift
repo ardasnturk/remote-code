@@ -175,6 +175,23 @@ final class AppModel {
         if let app = panel.ascApps.app(link.appId) { panel.path = [.app(app)] }
     }
 
+    /// Opens a project of a `pilothouse://mrradar/<id>` link in the MRRadar tab (D-119).
+    func open(_ link: RadarLink) async {
+        guard hasPairedMac else { return }
+        isPresentingNewChat = false
+        isPresentingSettings = false
+        if let macId = link.macId, macId != activeMac?.id, store.mac(id: macId) != nil {
+            await switchToMac(macId)
+        }
+        if link.app == PluginID.funnelradar {
+            selectedTab = .funnelradar
+            connection?.funnel.path = [link.project]
+        } else {
+            selectedTab = .mrradar
+            connection?.radar.path = [link.project]
+        }
+    }
+
     func scenePhaseChanged(_ phase: ScenePhase) {
         switch phase {
         case .active:
@@ -242,5 +259,5 @@ final class AppModel {
 
 /// Tabs of the root view when Promo Studio or Vitrin is available.
 enum RootTab: Hashable {
-    case chats, promoStudio, vitrin
+    case chats, promoStudio, vitrin, mrradar, funnelradar
 }

@@ -20,9 +20,10 @@ enum AlertText {
         case .lowDiskSpace: String(localized: "Low disk space · \(folder) free")
         case .memoryPressure: String(localized: "Memory almost full · \(folder)")
         case .appStateChanged: reviewHeadline(alert)
+        case .revenueChanged: revenueHeadline(alert)
         }
-        // For this kind `detail` is the stage, which the headline already says.
-        guard includeDetail, alert.kind != .appStateChanged, let detail = alert.detail else { return (headline, nil) }
+        // For these kinds `detail` isn't text for the reader.
+        guard includeDetail, alert.kind != .appStateChanged, alert.kind != .revenueChanged, let detail = alert.detail else { return (headline, nil) }
         if alert.kind == .permissionRequested {
             return (headline, String(localized: "Claude wants to use \(detail)"))
         }
@@ -41,6 +42,25 @@ enum AlertText {
         }
     }
 
+    private static func revenueHeadline(_ alert: HostAlert) -> String {
+        let app = alert.folderName
+        guard let revenue = RevenueAlert.decode(alert.detail) else { return app }
+        return switch revenue.kind {
+        case "newSubscribers": String(localized: "New subscribers · \(app)")
+        case "mrrDrop": String(localized: "MRR is falling · \(app)")
+        case "mrrMilestone": String(localized: "MRR milestone · \(app)")
+        case "revenueSpike": String(localized: "Unusually good day · \(app)")
+        case "revenueDip": String(localized: "Unusually quiet day · \(app)")
+        case "refundSpike": String(localized: "Refunds are high · \(app)")
+        case "churnSpike": String(localized: "Churn is up · \(app)")
+        case "conversionDrop": String(localized: "Conversion is falling · \(app)")
+        case "retentionDrop": String(localized: "Retention is falling · \(app)")
+        case "eventSpike": String(localized: "Unusually busy day · \(app)")
+        case "eventDip": String(localized: "Unusually quiet day · \(app)")
+        default: app
+        }
+    }
+
     /// ntfy: the app name as title, the headline (and detail) as message.
     @Sendable static func ntfyContent(for alert: HostAlert, includeDetail: Bool) -> AlertContent {
         let (headline, detail) = parts(of: alert, includeDetail: includeDetail)
@@ -51,6 +71,8 @@ enum AlertText {
 /// Native notifications through `UNUserNotificationCenter`.
 struct MacNotificationSink: AlertSink {
     func deliver(_ alert: HostAlert, includeDetail: Bool) async throws {
+        // The MRRadar app shows its own, on this Mac.
+        if alert.kind == .revenueChanged, RevenueAlert.decode(alert.detail)?.showOnMac == false { return }
         let (headline, detail) = AlertText.parts(of: alert, includeDetail: includeDetail)
         let content = UNMutableNotificationContent()
         content.title = headline

@@ -1,8 +1,5 @@
-Mac'te Remote Code 1.6 ile Vitrin artık telefonunuzda:
-• Yeni sekme Vitrin'i çalıştırır: uygulama klasörlerinizi ekleyin, mağaza sayfanızın tamamını yerel ekranlarda hazırlayın
-• App Store Connect'i yönetin: uygulamalar, sürümler, TestFlight, yorumlar, fiyatlar, analizler, kullanıcılar ve imzalama
-• API anahtarınızla ya da Apple hesabınızla bağlanın
-• Ayarlar → Eklentiler, Vitrin'i Mac'inize kurar
-• Promo Studio sekmesi artık Promo Studio'nun kendi renkleriyle görünür
-• Vitrin sekmesi telefonunuzdaki önbellekten anında açılır ve artık arama içerir
-• Bir uygulama App Review aşamalarından geçerken bildirim alın: bekliyor, incelemede, onaylandı, yayında veya reddedildi
+Mac'te Remote Code 1.8 ile eklentiler:
+• Ayarlar → Eklentiler araçlarınızı listeler: Mac'inize kurun, güncelleyin ya da kapatın
+• MRRadar sekmesi: RevenueCat uygulamalarınız için abonelik analizi, MRR tahmini ve uyarılar
+• FunnelRadar sekmesi: Mixpanel projeleriniz için huni kayıpları, elde tutma ve aktif kullanıcılar
+• Uyarılar telefonunuza gelir, dokununca ilgili proje açılır

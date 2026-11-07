@@ -19,6 +19,8 @@ struct RemoteCodeApp: App {
                         Task { await model.open(link) }
                     } else if let link = MacScreenLink(url: url) {
                         Task { await model.open(link) }
+                    } else if let link = RadarLink(url: url) {
+                        Task { await model.open(link) }
                     } else if let link = VitrinAppLink(url: url) {
                         Task { await model.open(link) }
                     } else if url.scheme == PairingPayload.scheme {
@@ -62,9 +64,13 @@ struct RootView: View {
                     Text(error)
                 }
             } else if model.hasPairedMac {
-                let promoStudio = model.connection?.promoStudio
-                let vitrin = model.connection?.vitrin
-                if promoStudio?.isAvailable == true || vitrin?.isAvailable == true {
+                let extensions = model.connection?.extensions
+                let shown = { (id: String) in extensions?.isEnabled(id) ?? true }
+                let promoStudio = shown(PluginID.promoStudio) ? model.connection?.promoStudio : nil
+                let vitrin = shown(PluginID.vitrin) ? model.connection?.vitrin : nil
+                let radar = shown(PluginID.mrradar) ? model.connection?.radar : nil
+                let funnel = shown(PluginID.funnelradar) ? model.connection?.funnel : nil
+                if promoStudio?.isAvailable == true || vitrin?.isAvailable == true || radar?.isAvailable == true || funnel?.isAvailable == true {
                     TabView(selection: $model.selectedTab) {
                         Tab("Chats", systemImage: "bubble.left.and.text.bubble.right", value: RootTab.chats) {
                             MainSplitView()
@@ -77,6 +83,16 @@ struct RootView: View {
                         if let vitrin, vitrin.isAvailable {
                             Tab("Vitrin", systemImage: "storefront", value: RootTab.vitrin) {
                                 VitrinHomeView(store: vitrin)
+                            }
+                        }
+                        if let radar, radar.isAvailable {
+                            Tab("MRRadar", systemImage: "chart.line.uptrend.xyaxis", value: RootTab.mrradar) {
+                                RadarHomeView(store: radar)
+                            }
+                        }
+                        if let funnel, funnel.isAvailable {
+                            Tab("FunnelRadar", systemImage: "line.3.horizontal.decrease.circle", value: RootTab.funnelradar) {
+                                FunnelHomeView(store: funnel)
                             }
                         }
                     }

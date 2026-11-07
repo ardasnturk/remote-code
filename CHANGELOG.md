@@ -6,6 +6,14 @@ All notable changes to Remote Code are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.8.0] — 2026-11-07
+
+### Added
+- **Extensions:** Settings on the Mac and on the iPhone list Promo Studio, Vitrin, MRRadar and
+  FunnelRadar: install them, see newer versions, and switch their tab and alerts off.
+- **MRRadar:** subscription analytics and alerts in a tab on the phone, and alerts through ntfy.
+- **FunnelRadar:** funnel leaks, retention and active users in a tab on the phone, and alerts through ntfy.
+
 ## [1.7.0] — 2026-11-04
 
 ### Added

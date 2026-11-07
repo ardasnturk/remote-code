@@ -1116,3 +1116,17 @@ view left shows `store-preview.html`, a generated result rather than a screen of
 The panel and the pages are copies, so a change on the Mac doesn't reach the phone by itself.
 A Swift package shared across the two repositories would avoid that, at the price of
 moving the Mac app's views and strings; revisit that if the panels start to drift.
+
+### D-119 — Native apps as plugins: MRRadar
+**Status:** accepted
+
+MRRadar (`ardasnturk/mrradar`) is the owner's menu bar app that reads RevenueCat and works out what its dashboard doesn't show. It is a native Mac app, so `LocalHubPlugin` holds what such an app needs: it finds `<App>.app`, starts the bundled hub tool with `--attached` when the app isn't open, and reads `control.json` on every request, because the app takes over from that tool when it opens (MRRadar's `docs/HUB_API.md`). Vitrin keeps its own plugin, which also installs a CLI.
+
+The sign-in stays on the Mac and the phone only gets finished reports, so the tab has no setup of its own: it shows once MRRadar is installed and asks the user to finish setup on the Mac. `RevenueAlertWatcher` turns the hub's `alert` events into a `HostAlert`, so they reach the phone through ntfy. The Mac notification is dropped while the MRRadar app runs, since the app posts its own.
+
+### D-120 — Extensions in Settings
+**Status:** accepted
+
+Settings on the Mac and on the phone list Promo Studio, Vitrin, MRRadar and FunnelRadar: installed or not, the version, a newer release, and a switch. `ExtensionsPlugin` holds this and is reached through the plugin messages, so the protocol stays as it is and both sides read the same answers. A switched-off extension loses its tab and its alerts; the app itself isn't touched.
+
+Installing runs on the Mac, also when the phone asks. It downloads the release's DMG from GitHub and only copies the app to Applications after the checksum, `codesign --verify --deep --strict`, the team ID and Gatekeeper pass. The phone gets a tab for each tool, so with all four there are five tabs and iOS moves the last into More.
